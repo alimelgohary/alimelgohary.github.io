@@ -1,0 +1,271 @@
+:root {
+    --heading-color: #012f63;
+    /* --backgroung--color: #012F63; */
+    --text--clolor: #FE667B;
+    --footer-color: #CBF1F5;
+    --backgroung--color: #A6E3E9;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+
+.tittle {
+    color: var(--heading-color);
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.tittle:hover {
+    transform: rotate(7deg);
+    transition-duration: .5s;
+}
+
+
+/* .landing {
+background-image: url("../imgs/landing.webp");
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 100vh;
+position: relative;
+} */
+
+
+/* start landing  */
+
+.landing {
+    width: 100%;
+    height: 88vh;
+    position: relative;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.landing .background {
+    max-width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* max-width: 100%;*/
+    height: 100%;
+}
+
+.footer-back-color {
+    background-color: var(--footer-color);
+}
+
+.text-Landing {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: black;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.s-heading {
+    color: #ccdbe9;
+    font-size: 90px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-left: 500px;
+    margin-bottom: 50px;
+}
+
+@media (max-width:767px) {
+    .s-heading {
+        font-size: 60px;
+        margin-left: 80px;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .s-heading {
+        margin-left: 190px;
+    }
+}
+
+.opreation {
+    font-size: 40px;
+    margin-left: 400px;
+}
+
+@media (max-width:767px) {
+    .opreation {
+        font-size: 32px;
+        margin-left: -23px;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .opreation {
+        margin-left: 85px;
+    }
+}
+
+@media (min-width:992px) and (max-width:1100px) {
+    .opreation {
+        margin-left: 190px;
+    }
+}
+
+
+/* end landing  */
+
+
+/* start services */
+
+@media (max-width: 767px) {
+    .customize-mobile {
+        margin-left: 12px;
+        width: 93%;
+    }
+}
+
+
+/* .customize-mobile:hover {
+transition-duration: .5s;
+box-shadow: 2px 2px 2px rgb(0 0 0 / 60%);
+-webkit-transform: scale(1.1);
+transform: scale(1.1);
+cursor: pointer;
+} */
+
+.customize-mobile {
+    cursor: pointer;
+}
+
+.rounding {
+    animation-name: rotating;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+.rounding:hover {
+    animation-play-state: paused;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* end services */
+
+.resize-img {
+    width: 200px;
+    height: 200px;
+}
+
+.ok {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resize-img:hover {
+    border: 1px solid blue;
+    transition-duration: .3s;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.c-heading {
+    color: #ccdbe9;
+    font-size: 90px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-left: 480px;
+    margin-bottom: 50px;
+}
+
+@media (max-width:767px) {
+    .c-heading {
+        font-size: 60px;
+        margin-left: 40px;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    .c-heading {
+        margin-left: 150px;
+    }
+}
+
+.para-modifing {
+    background-color: var(--backgroung--color);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+    color: white;
+}
+
+.para-modifing p {
+    margin: 0;
+}
+
+.slider-resizing {
+    width: 1427px;
+    height: 400px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#contact .aroww ul {
+    list-style-type: ">";
+}
+
+::marker {
+    font-size: 16px;
+}
+
+#contact .aroww ul li a:hover {
+    padding-left: 20px;
+    transition-duration: 1s;
+}
+
+#contact .aroww ul a {
+    margin-left: 5px;
+}
+
+#contact ul li img {
+    width: 20px;
+    height: auto;
+}
+
+#contact ul li img:hover {
+    transform: rotate(20deg);
+    transition-duration: .7s;
+    ;
+}
+
+.op-3 {
+    opacity: .3;
+}
+
+#contact>p {
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
