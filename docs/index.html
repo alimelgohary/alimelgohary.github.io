@@ -1,16 +1,41 @@
 <html>
+
 <head>
-<title>
-	Dummy Webpage = Always Redirecting
-</title>
+    <title>
+        Dummy Webpage = Always Redirecting
+    </title>
 
-<script>
-var lang = "/en";
 
-//Read storage & update lang if available
-
-window.location.href = "https://www.freesmile.me"+ lang;
-
-</script>
 </head>
+
+<body>
+
+
+
+
+
+
+
+    <script src="en/js/jquery-3.6.1.min.js"></script>
+
+
+    <script>
+        $(window).ready(function() {
+            if (window.localStorage.getItem("language") != "ar") {
+                window.localStorage.setItem("language", "en");
+
+            } else {
+                window.localStorage.setItem("language", "ar");
+            }
+        })
+
+
+
+        //Read storage & update lang if available
+
+        window.location.href = "https://www.freesmile.me" + "/" + window.localStorage.getItem("language");
+    </script>
+
+</body>
+
 </html>
