@@ -53,7 +53,7 @@
                     </li>
 
                     <li class="nav-item  fs-5 mr-15">
-                        <a class="nav-link active" aria-current="page" href="indexar.html">Arabic Version</a>
+                        <a class="nav-link active en" aria-current="page" href="../ar/">Arabic Version</a>
                     </li>
 
                     <li class="nav-item  fs-5">
@@ -372,6 +372,22 @@
 
 
     <script>
+        $(".en").click(function() {
+
+            window.localStorage.setItem("language", "ar");
+        })
+
+
+
+
+
+
+
+
+
+
+
+
         var options = {
             strings: ['Welcome to our Site...  ', 'We Hope That We Will Help You...', ' A site For All Dentists...', 'A site For All patients...'],
             typeSpeed: 120,

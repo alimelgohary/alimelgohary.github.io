@@ -1,12 +1,31 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>
-Free Smile
-</title>
+    <title>
+        Free Smile
+    </title>
 </head>
+
 <body>
 
-<h1>Arabic Version</h1>
+    <h1 class="ar">Arabic Version</h1>
+
+
+
+
+
+
+    <script src="../en/js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $(".ar").click(function() {
+            window.localStorage.setItem("language", "en");
+        })
+    </script>
+
+
 
 </body>
+
 </html>
