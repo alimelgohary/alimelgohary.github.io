@@ -118,6 +118,10 @@ position: relative;
 
 /* end landing  */
 
+.navbar .active:hover {
+    color: black;
+}
+
 
 /* start services */
 
@@ -214,6 +218,45 @@ cursor: pointer;
     margin-right: auto;
     border-radius: 6px;
     color: white;
+}
+
+.hover-box {
+    width: 50%;
+    height: 100%;
+    border: 2px solid #FFF;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-box h3 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5px 8px;
+    margin: 0;
+    border-top: 2px solid #FFF;
+    border-right: 2px solid #FFF;
+    color: #FFF;
+    font-size: 16px;
+    background-color: #333;
+    transform: translate(0, 100%);
+    transition: .4s;
+}
+
+.hover-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.hover-box:hover h3 {
+    transform: translate(0, 0);
+    transition: .4s;
+}
+
+.hover-box:hover img {
+    opacity: .5;
+    transition: .4s;
 }
 
 .para-modifing p {
