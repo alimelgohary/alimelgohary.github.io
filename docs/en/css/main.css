@@ -58,11 +58,11 @@ position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 36px;
+    font-size: 29px;
     color: #522A08;
     font-weight: bolder;
     font-style: italic;
-	text-align: center;
+    text-align: center;
 }
 
 .s-heading {
