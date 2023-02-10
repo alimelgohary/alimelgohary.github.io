@@ -1,0 +1,44 @@
+body {
+    background-color: #E3FDFD;
+}
+
+.logo img {
+    width: 75px;
+}
+
+.pageins {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.signin {
+    width: 415px;
+    height: 350px;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.Forgetpass:hover {
+    color: red;
+    transition-duration: .5s;
+}
+
+.signin .form-control {
+    border-radius: 10px;
+    border: none;
+}
+
+.footlink {
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+.footlink a:hover {
+    color: black;
+    transition-duration: .5s;
+}

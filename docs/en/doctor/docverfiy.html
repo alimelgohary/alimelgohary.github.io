@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/Normalize.css">
+    <link rel="stylesheet" href="../css/imagehover.min.css">
+    <link rel="stylesheet" href="../css/imagehover.css">
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/framework.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/hover.css">
+    <link rel="stylesheet" href="../css/signup.css">
+    <title>Free Smile</title>
+    <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
+</head>
+
+<body>
+
+
+
+
+    <div class="logo d-flex mt-30 mb-40 justify-content-center align-center">
+        <img src="../imgs/logo.svg" />
+
+    </div>
+
+    <div class="txt-c  mb-30">
+        <h3 class="fw-bold">At Least We Want To Verify Your Academic Degree </h3>
+        <p class="fs-5 c-grey">( Rest assured as this information is deleted after varification )</p>
+
+    </div>
+
+    <div class="w-full babyblue-background-color docverfy mb-40">
+
+        <div class="container p-10">
+
+            <form method="post">
+                <div class=" row  ">
+
+                    <div class="col-6">
+                        <div>
+                            <p class=" fw-bold mt-20">Academic Degree*</p>
+
+                            <select class="form-select fs-4 p-10 mb-10 col-6 rad-10 babyblue-background-color2" aria-label="Default select example" required name="academicDegree">
+                               
+                                <option selected value="1">Student</option>
+                                <option value="2">Bachelor's </option>
+                                <option  value="3">Master's </option>
+                                <option  value="4">Doctoral </option>
+                            </select>
+                        </div>
+
+                        <div class="mt-35 idphoto">
+                            <p class=" fw-bold mt-20">National ID Photo <span class="c-grey fs-13">( Face )</span>*</p>
+
+                            <input accept="image/*" required type="file" name="idphoto" class="idphoto d-none">
+                            <p class="mt-20 txt-c rad-10  p-10  fidphoto" style="background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+
+
+
+                        </div>
+
+
+                        <div class="mt-35 idphoto2">
+                            <p class=" fw-bold mt-20">University ID photo or your degree certificate <span class="c-grey fs-13">( Face )</span>*</p>
+
+                            <input accept="image/*" required type="file" name="UniversityID " class="idphoto2 d-none">
+                            <p class="mt-20 txt-c rad-10 p-10 babyblue-background-color2 fidphoto2" style="background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="col-6 d-flex justify-content-center">
+                        <img src="../imgs/docverfy.svg" alt="Verify image" style="width: 200px;">
+                    </div>
+
+
+                </div>
+
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn  w-50 rad-10" style="background-color: #71C9CE;">Submit</button>
+
+                </div>
+
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../js/bootstrap.bundle.min.js "></script>
+    <script src="../js/all.min.js "></script>
+    <script src="../js/popper.min.js "></script>
+    <script src="../js/jquery-3.6.1.min.js "></script>
+
+
+
+    <script>
+        $(".fidphoto").click(function() {
+
+            $(".idphoto").trigger("click");
+            // document.querySelector(".idphoto1").value
+
+
+        })
+
+        $(".fidphoto2").click(function() {
+
+            $(".idphoto2").trigger("click");
+
+
+        })
+    </script>
+</body>
+
+</html>

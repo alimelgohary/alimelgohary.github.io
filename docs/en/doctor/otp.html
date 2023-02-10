@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/Normalize.css">
+    <link rel="stylesheet" href="../css/imagehover.min.css">
+    <link rel="stylesheet" href="../css/imagehover.css">
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/framework.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/hover.css">
+    <link rel="stylesheet" href="../css/signup.css">
+    <title>OTP</title>
+    <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
+</head>
+
+<body>
+
+    <div class="otppage mt-15  d-flex justify-content-center">
+        <div class="container pc-width-convert babyblue-background-color rad-10 ">
+            <div class=" p-20">
+                <div class="img d-flex justify-content-center mt-35 mb-40">
+                    <img class="" src="../imgs/otp.svg" alt="OTP image">
+                </div>
+
+                <div class="row flex-row g-4 justify-content-lg-around align-center mb-25 ">
+                    <div class="col-6 d-flex justify-content-center">
+                        <p class=" txt-c fw-bold fs-20">We Have Sent OTP to Your E-Mail for Verification</p>
+                    </div>
+
+                    <div class="col-6 d-flex justify-content-center">
+                        <img src="../imgs/message.svg" alt="Message Photo">
+                    </div>
+                </div>
+
+                <div>
+                    <form>
+
+                        <div class="inputfield">
+                            <input type="text" maxlength="1" name="otp1" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" name="otp2" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" name="otp3" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" name="otp4" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" name="otp5" required autocomplete="off" class="input">
+                        </div>
+
+                        <p class=" fs-13 c-red mt-1 txt-c wrong-pass ">Wrong Number Entered</p>
+
+                        <div class="col-12 mb-20 d-flex justify-content-center mt-40">
+                            <button type="submit" id="submit" class="btn btn-primary form-control"> Submit </button>
+                        </div>
+                        <p class=" txt-c fs-20 fw-bold ">Didn't Reseved The Code? <a href="#">Resend It</a></p>
+                    </form>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12 "></script>
+    <script src="../js/bootstrap.bundle.min.js "></script>
+    <script src="../js/all.min.js "></script>
+    <script src="../js/popper.min.js "></script>
+    <script src="../js/jquery-3.6.1.min.js "></script>
+
+
+
+    <script>
+        $(".otppage input[type='text']").keypress(function(event) {
+
+            if (isNaN(event.key)) {
+                event.preventDefault();
+            }
+        })
+    </script>
+</body>
+
+</html>
