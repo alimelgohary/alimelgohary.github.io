@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/Normalize.css">
+    <link rel="stylesheet" href="../css/imagehover.min.css">
+    <link rel="stylesheet" href="../css/imagehover.css">
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/framework.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/hover.css">
+    <link rel="stylesheet" href="../css/signup.css">
+    <title>Sign Up</title>
+    <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
+</head>
+
+<body>
+
+    <div class="patreg d-flex justify-content-center align-center flex-column ">
+        <div class="pc-width-convert">
+
+
+
+            <div class="patlogo d-flex justify-content-center mt-15 mb-40 ">
+                <img src="../imgs/logo.svg" alt="">
+                <span class=" fw-bold fs-25 mt-35">FreeSmile</span>
+            </div>
+
+            <div class="text txt-c d-flex justify-content-center container mb-60">
+                <p class=" fw-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus unde ratione dolores aspernatur culpa rem itaque sit, provident eaque? Vel blanditiis minus, esse veritatis ea distinctio exercitationem laborum necessitatibus cupiditate?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet a culpa debitis consequatur illum voluptates iure eius doloribus alias voluptas </p>
+
+            </div>
+
+
+            <div class=" container babyblue-background-color rad-10 ">
+                <form class="row g-3 needs-validation p-30" method="post">
+                    <div class="col-12">
+                        <label for="fname" class="form-label fw-bold">Full Name*</label>
+                        <input type="text" name="fullname" autocomplete="off" class="form-control" id="fname" required placeholder="Enter Your Full Name At least Four Names" maxlength="50" minlength="18">
+
+                    </div>
+
+
+
+                    <div class="col-12">
+                        <label for="username" class="form-label fw-bold">Username*</label>
+                        <input type="text" name="username" autocomplete="off" required class="form-control" id="username" placeholder="Enter Your User Name" minlength="5" maxlength="50">
+
+                    </div>
+
+                    <div class="col-12">
+                        <label for="emial" class="form-label fw-bold">E-Mail*</label>
+                        <input type="email" name="email" pattern=".+.edu.eg\b" autocomplete="off" class="form-control" id="emial" placeholder="Enter Your E-Mail (hint : it must contain .edu.eg)">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="password" class="form-label fw-bold">Password*</label>
+                        <input type="password" name="password" required class="form-control" id="password" placeholder="Enter Your Password">
+                    </div>
+
+                    <div class="col-12 mb-60">
+                        <label for="vpassword" class="form-label fw-bold">Confirm Password*</label>
+                        <input type="password" required class="form-control" id="vpassword" placeholder="Enter Your Password">
+                        <p class=" c-red mt-1 fs-13  wrong-pass">The password dos'nt match</p>
+                    </div>
+
+
+
+                    <div class="gender mb-40">
+                        <div>
+                            <p class=" fw-bold">Gender : </p>
+                        </div>
+
+                        <div class="d-felx flex-row">
+
+                            <div class="male ">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="m">
+                                    <label class="form-check-label fw-bold" for="male">Male</label>
+                                </div>
+                            </div>
+                            <div class="female ">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" name="gender" id="fmale" value="f">
+                                    <label class="form-check-label fw-bold" for="fmale">Female</label>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-30">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            <label class="form-check-label fs-15" for="gridCheck"> By Checking me out you  agree for our Terms , Policy and Cockies policy </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 mb-20 d-flex justify-content-center">
+                        <button type="submit" id="submit" class="btn btn-primary form-control"> Verify E-Mail</button>
+                    </div>
+
+                    <p class=" txt-c fs-20 fw-bold mb-40">Already Get an Account ? <a href="../login.html">Login</a></p>
+
+
+                    <div class="  d-flex align-center justify-content-center footlink  mb-10">
+                        <a href="#" class=" mr-20">Terms</a>
+                        <a href="#" class=" mr-20 ">Privacy</a>
+                        <a href="#" class=" mr-20 ">Security</a>
+                        <a href="#" class=" ">Contatcts</a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <script src="../js/bootstrap.bundle.min.js "></script>
+    <script src="../js/all.min.js "></script>
+    <script src="../js/popper.min.js "></script>
+    <script src="../js/jquery-3.6.1.min.js "></script>
+
+
+
+    <script>
+        $("#fname").keypress(function(event) {
+
+            if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
+
+            } else {
+                event.preventDefault();
+            }
+
+        })
+
+
+
+        $("#vpassword").keyup(function() {
+            if ($("#vpassword").val() != $("#password").val()) {
+                // $(".wrong-pass").css("display", "block");
+                document.querySelector(".wrong-pass").style.display = "block"
+
+            } else {
+                $(".wrong-pass").css("display", "none");
+            }
+
+        })
+
+        $("#submit").click(function(event) {
+            if ($(".wrong-pass").css("display") == "block") {
+                event.preventDefault();
+            }
+
+        })
+    </script>
+</body>
+
+</html>

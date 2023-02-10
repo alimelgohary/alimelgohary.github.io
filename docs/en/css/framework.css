@@ -145,6 +145,14 @@
     margin-top: 30px;
 }
 
+.mt-35 {
+    margin-top: 35px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
 .mt-80 {
     margin-top: 80px;
 }
@@ -377,8 +385,12 @@
     width: 100%;
 }
 
-.w-100 {
+.w-100px {
     width: 100px;
+}
+
+.w-80 {
+    width: 80%;
 }
 
 .w-fit {

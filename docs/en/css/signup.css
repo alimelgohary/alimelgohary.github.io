@@ -1,0 +1,153 @@
+.patient img,
+.doctor img {
+    width: 95px;
+}
+
+.babyblue-background-color {
+    background-color: #E3FDFD
+}
+
+.patient .p-absolute,
+.doctor .p-absolute {
+    top: 15px;
+    right: 15px;
+}
+
+.patient .p-absolute input,
+.doctor .p-absolute input {
+    transform: scale(1.3);
+}
+
+.patient:hover,
+.doctor:hover {
+    /* border: 2px solid #3B6A75; */
+    box-shadow: 3px 4px 10px 0px blue;
+    transition-duration: .5s;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+.footlink a:hover {
+    color: black;
+    transition-duration: .5s;
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .pc-width-convert {
+        width: 600px;
+    }
+}
+
+.patreg form {
+    padding-bottom: 10px;
+}
+
+.patreg form input {
+    border-radius: 10px;
+    background-color: #A6E3E9;
+    border: 2px solid #2E81DF;
+}
+
+.babyblue-background-color2 {
+    background-color: #9AE0FF;
+}
+
+.wrong-pass {
+    display: none;
+}
+
+.otppage .img img {
+    width: 250px;
+}
+
+.otppage .inputfield {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.otppage .input {
+    height: 50px;
+    width: 50px;
+    border: 2px solid #dad9df;
+    outline: none;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 0.3em;
+    background-color: #ffffff;
+    outline: none;
+    /*Hide number field arrows*/
+    margin-right: 5px;
+}
+
+.otppage input[type="text"]::-webkit-outer-spin-button,
+.otppage input[type="text"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* for removimg no file chosen */
+
+.fidphoto:hover {
+    color: red;
+    transition-duration: .5s;
+}
+
+.fidphoto2:hover {
+    color: red;
+    transition-duration: .5s;
+}
+
+.fidphoto2,
+.fidphoto {
+    width: 150px;
+}
+
+.moreinfo span.edit {
+    background-color: #2e81df70;
+    padding: 10px 30px 10px 10px;
+    top: 112px;
+    left: -37px;
+    cursor: pointer;
+}
+
+.moreinfo textarea {
+    resize: none;
+    border: 2px solid #2E81DF;
+    background-color: #A6E3E9;
+}
+
+.moreinfo select.removewebkit {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    padding: 10px 30px 10px 10px;
+    background-color: #2e81df70;
+    color: black;
+}
+
+.moreinfo .phonenum {
+    border: none;
+    background-color: #2e81df70;
+}
+
+.moreinfo .facebookAcc {
+    border: none;
+    background-color: #2e81df70;
+    border-radius: 10px;
+    border: 2px solid #2E81DF;
+}
+
+.moreinfo .skip {
+    top: 120%;
+    left: 71%;
+}
+
+.moreinfo .skip:hover {
+    text-decoration: underline;
+}
