@@ -42,7 +42,7 @@
 
 
             <div class=" container babyblue-background-color rad-10 ">
-                <form class="row g-3 needs-validation p-30" method="post">
+                <form class="row g-3 needs-validation p-30" method="POST" action="otp.html">
                     <div class="col-6">
                         <label for="fname" class="form-label fw-bold">First Name*</label>
                         <input type="text" name="firstname" autocomplete="off" class="form-control" id="fname" required placeholder="Enter Your First Name" maxlength="50" minlength="3">
@@ -51,7 +51,7 @@
 
                     <div class="col-6">
                         <label for="lname" class="form-label fw-bold">Last Name*</label>
-                        <input type="text" name="lastname" autocomplete="off" class="form-control" id="lname" required placeholder="Enter Your Last Name" maxlength="50" minlength="3" autocomplete="none">
+                        <input type="text" name="lastname" autocomplete="off" class="form-control" id="lname" required placeholder="Enter Your Last Name" maxlength="50" minlength="3">
                     </div>
 
                     <div class="col-12">
@@ -72,7 +72,7 @@
 
                     <div class="col-12 mb-60">
                         <label for="vpassword" class="form-label fw-bold">Confirm Password*</label>
-                        <input type="password" required class="form-control" id="vpassword" placeholder="Enter Your Password">
+                        <input type="password" name="verfiypassword" required class="form-control" id="vpassword" placeholder="Enter Your Password">
                         <p class=" c-red mt-1 fs-13  wrong-pass">The password dos'nt match</p>
                     </div>
 
@@ -135,21 +135,9 @@
                      
                         </select>
 
-                            <select class="form-select w-25" aria-label="Default select example" name="year">
+                            <select class="form-select w-25 makeoptions" aria-label="Default select example" name="year">
                       
-                        <option value="1990" selected>1990</option>
-                        <option value="1991">1991</option>
-                        <option value="1992">1992</option>
-                        <option value="1993">1993</option>
-                        <option value="1994">1994</option>
-                        <option value="1995">1995</option>
-                        <option value="1996">1996</option>
-                        <option value="1997">1997</option>
-                        <option value="1998">1998</option>
-                        <option value="1999">1999</option>
-                        <option value="2000">2000</option>
-                        <option value="2001">2001</option>
-                        <option value="2002">2002</option>
+                     
                         
                         </select>
                         </div>
@@ -265,6 +253,18 @@
             }
 
         })
+
+        let date = new Date();
+        let curyear = date.getFullYear();
+
+
+
+        for (i = date.getFullYear() - 120; i <= date.getFullYear() - 5; i++) {
+            let selectElem = document.querySelector(".makeoptions");
+            selectElem.innerHTML += ("<option value=" + i + ">" + i + "</option>");
+
+        }
+        $(".makeoptions option:nth-child(88)").attr("selected", "selected");
     </script>
 </body>
 
