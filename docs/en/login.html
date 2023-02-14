@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="css/login.css">
     <title>Free Smile</title>
     <link rel="icon" type=" image/svg+xml" href="imgs/logo.svg" />
+
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -39,7 +43,7 @@
 
             <div class="signin bg-white mt-30 p-30 mb-3">
 
-                <form method="POST" action="">
+                <form method="POST" action="login.html">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label ">UserName Or Email address</label>
                         <input required name="usernameORemail" autocomplete="off" style="background-color:#A6E3E9;" type="email" class="form-control rad-6" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -83,12 +87,12 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <script src="js/bootstrap.bundle.min.js "></script>
     <script src="js/all.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/jquery-3.6.1.min.js "></script>
-    <script src="js/main.js "></script>
+
 
 
     <script>
@@ -99,6 +103,15 @@
 
 
         // })
+        $("form").submit(function(event) {
+
+            if ($("input[type=email]").val() == "admin@admin.com" && $("input[type=password]").val() == "admin") {
+
+                $("form").attr("action", "../dashboard.html");
+
+            }
+
+        })
     </script>
 </body>
 
