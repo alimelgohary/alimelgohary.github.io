@@ -42,3 +42,7 @@ a {
     color: black;
     transition-duration: .5s;
 }
+
+.passoruser {
+    display: none;
+}
