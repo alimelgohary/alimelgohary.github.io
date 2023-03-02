@@ -99,14 +99,19 @@
 
 
     <script>
-        // $(".submit").click(function(event) {
-        //     event.preventDefault();
-        //     event.stopPropagation();
+        let apiUrl;
+        $.getJSON("../json/file.json", function(data) {
+
+            apiUrl = data['apiurl'];
+        })
 
 
 
-        // })
-
+        if (window.sessionStorage.getItem("login") == 'patient') {
+            window.location.href = "patient/home.html";
+        } else if (window.sessionStorage.getItem("login") == 'doctor') {
+            window.location.href = "doctor/home.html";
+        }
 
 
 
@@ -132,7 +137,7 @@
 
             $.ajax({
                 "method": "POST",
-                "url": "https://5543-156-203-17-134.eu.ngrok.io/api/Users/Login",
+                "url": apiUrl + "/api/Users/Login",
                 "headers": {
                     "Content-Type": "application/json",
                     "Accept-Language": "en"
@@ -142,11 +147,13 @@
                     console.log(data)
                     if (data['nextPage'] == 'homePatient') {
                         window.location.href = "patient/home.html";
+                        window.sessionStorage.setItem("login", "patient");
                     } else if (data['nextPage'] == "pendingVerificationAcceptance") {
                         window.location.href = "doctor/docverfiy.html";
 
                     } else if (data['nextPage'] == 'homeDentist') {
                         window.location.href = "doctor/home.html";
+                        window.sessionStorage.setItem("login", "doctor");
 
                     }
                 },
