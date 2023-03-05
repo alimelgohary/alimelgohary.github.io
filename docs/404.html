@@ -15,6 +15,7 @@
       box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     }
   </style>
+	<script src="en/js/jquery-3.6.1.min.js "></script>
 </head>
 <body style="background-image:url('en/imgs/404 Images/404 background.png');">
 	<div style="display: flex; align-items: center; justify-content: center;">
@@ -31,7 +32,6 @@
 
 	
 	<script>
-		<script src="en/js/jquery-3.6.1.min.js "></script>
 		lang = window.localStorage.getItem("language");
 		lang = lang === null ? "en" : lang;
 		document.getElementById("error-message").dir = lang == "en" ? "ltr" : "rtl";
