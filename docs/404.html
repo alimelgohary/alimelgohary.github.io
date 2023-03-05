@@ -35,7 +35,7 @@
 		lang = lang === null ? "en" : lang;
 		document.getElementById("error-message").dir = lang == "en" ? "ltr" : "rtl";
 		
-		imagesBase = "en/imgs/404 Images/"
+		imagesBase = window.location.hostname + "en/imgs/404 Images/"
 		
 		relativeImages = 
 		[
@@ -111,7 +111,7 @@
 		document.getElementById("error-image").src = randomImage;
 		
 		setTimeout(function() {
-			window.location.href = window.location.hostname;
+			window.location.replace(window.location.hostname);
 		}, 3000); 
 
 
