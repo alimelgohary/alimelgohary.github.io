@@ -5,37 +5,18 @@
     <title>
         FreeSmile
     </title>
-
-
 </head>
 
-
-
-
-
 <body>
-
-
-
-
     <script src="en/js/jquery-3.6.1.min.js"></script>
-
-
-
     <script>
         $(window).ready(function() {
-            if (window.localStorage.getItem("language") != "ar") {
+            let lang = window.localStorage.getItem("language")
+            if (lang === null) {
                 window.localStorage.setItem("language", "en");
-            } else {
-                window.localStorage.setItem("language", "ar");
             }
+            window.location.href = lang + "/";
 
-
-            // lang = "/" + window.localStorage.getItem("language");
-
-            window.location.href = window.localStorage.getItem("language") + "/" + "index.html";
-
-            // window.location.href = "https://www.freesmile.me" + lang;
 
         })
     </script>
