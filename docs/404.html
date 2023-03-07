@@ -19,13 +19,13 @@
 	
 		<script>
 			document.addEventListener('DOMContentLoaded', function(){
-				domain = window.location.hostname;
-				document.body.style.backgroundImage = `url(${domain}/en/imgs/404 Images/404 background.png)`;
+				domain = 'https://' + window.location.hostname;
+				document.body.style.backgroundImage = `url('${domain}/en/imgs/404 Images/404 background.png')`;
 				lang = window.localStorage.getItem("language");
 				lang = lang === null ? "en" : lang;
 				document.getElementById("error-message").dir = lang == "en" ? "ltr" : "rtl";
 				
-				imagesBase = `https://${domain}/en/imgs/404 Images/`
+				imagesBase = `${domain}/en/imgs/404 Images/`
 				
 				relativeImages = 
 				[
@@ -100,7 +100,7 @@
 				document.getElementById("error-image").src = randomImage;
 				
 				setTimeout(function() {
-					window.location.replace(`https://${window.location.hostname}`);
+					window.location.replace(domain);
 				}, 4000);
 			});
 	</script>
