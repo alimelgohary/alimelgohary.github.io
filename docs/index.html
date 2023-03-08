@@ -13,7 +13,8 @@
         $(window).ready(function() {
             let lang = window.localStorage.getItem("language")
             if (lang === null) {
-                window.localStorage.setItem("language", "en");
+                lang = "en";
+                window.localStorage.setItem("language", lang);
             }
             window.location.href = lang + "/";
 
