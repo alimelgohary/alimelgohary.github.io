@@ -50,7 +50,7 @@
                         <input required name="usernameORemail" autocomplete="off" style="background-color:#A6E3E9;" type="text" class="form-control rad-6" id="exampleInputEmail1" aria-describedby="emailHelp">
 
                         <div class=" d-flex justify-content-end mt-2">
-                            <a href="#" class="Forgetpass">Forgot Password ? </a>
+                            <a href="forgetpass.html" class="Forgetpass">Forgot Password ? </a>
                         </div>
                     </div>
                     <div class="mb-5">
@@ -60,7 +60,7 @@
 
 
 
-                    <button type="submit" class="btn btn-primary form-control submit">Submit</button>
+                    <button type="submit" class="btn btn-primary form-control submit">Login</button>
                     <p class="c-red txt-c fs-13 mt-20 mb-20 passoruser ">Your Password or Username is Wrong ,Try Again </p>
                 </form>
 
@@ -95,81 +95,85 @@
 
     <script src="js/bootstrap.bundle.min.js "></script>
     <script src="js/all.min.js "></script>
+    <script src="js/helper.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/jquery-3.6.1.min.js "></script>
 
 
 
     <script>
-        let apiUrl;
-        $.getJSON("../json/file.json", function(data) {
+        (async() => {
+            let apiUrl = await GetServerDomain();;
+            let language;
+            // $.getJSON("../json/file.json", function(data) {
 
-            apiUrl = data['apiurl'];
-        })
-
-
-
-        if (window.sessionStorage.getItem("login") == 'patient') {
-            window.location.href = "patient/home.html";
-        } else if (window.sessionStorage.getItem("login") == 'doctor') {
-            window.location.href = "doctor/home.html";
-        }
+            //     apiUrl = data['apiurl'];
+            // })
 
 
 
-        $("form").submit(function(event) {
-
-            event.preventDefault();
-            let userName = $("input[type=text]").val();
-            let inPassword = $("input[type=password]").val();
-
-
-            if ($("input[type=email]").val() == "admin@admin.com" && $("input[type=password]").val() == "admin") {
-
-                window.location.href = "../dashboard.html";
-
+            if (window.sessionStorage.getItem("login") == 'patient') {
+                window.location.href = "patient/home.html";
+            } else if (window.sessionStorage.getItem("login") == 'doctor') {
+                window.location.href = "doctor/home.html";
             }
-            // "https://5543-156-203-17-134.eu.ngrok.io/api/Users/Login
 
-            let obData = {
-                "usernameoremail": userName,
-                "password": inPassword
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
             }
-            let jsonData = JSON.stringify(obData);
 
-            $.ajax({
-                "method": "POST",
-                "url": apiUrl + "/api/Users/Login",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "Accept-Language": "en"
-                },
-                "data": jsonData,
-                success: function(data) {
-                    console.log(data)
-                    if (data['nextPage'] == 'homePatient') {
-                        window.location.href = "patient/home.html";
-                        window.sessionStorage.setItem("login", "patient");
-                    } else if (data['nextPage'] == "pendingVerificationAcceptance") {
-                        window.location.href = "doctor/docverfiy.html";
+            $("form").submit(function(event) {
 
-                    } else if (data['nextPage'] == 'homeDentist') {
-                        window.location.href = "doctor/home.html";
-                        window.sessionStorage.setItem("login", "doctor");
+                event.preventDefault();
+                let userName = $("input[type=text]").val();
+                let inPassword = $("input[type=password]").val();
+
+                if ($("input[type=email]").val() == "admin@admin.com" && $("input[type=password]").val() == "admin") {
+                    window.location.href = "../dashboard.html";
+                }
+                let obData = {
+                    "usernameoremail": userName,
+                    "password": inPassword
+                }
+                let jsonData = JSON.stringify(obData);
+
+                $.ajax({
+                    "method": "POST",
+                    "url": apiUrl + "/api/Users/Login",
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "Accept-Language": language
+                    },
+                    "data": jsonData,
+                    success: function(data, st, xhr) {
+                        console.log(data)
+                        if (data['nextPage'] == 'homePatient') {
+                            window.location.href = "patient/home.html";
+                            window.sessionStorage.setItem("login", "patient");
+                        } else if (data['nextPage'] == "pendingVerificationAcceptance") {
+                            window.location.href = "doctor/docverfiy.html";
+                        } else if (data['nextPage'] == 'homeDentist') {
+                            window.location.href = "doctor/home.html";
+                            window.sessionStorage.setItem("login", "doctor");
+                        } else if (data['nextPage'] == 'verifyDentist') {
+                            window.location.href = "doctor/docverfiy.html";
+                            window.sessionStorage.setItem("login", "doctor");
+                        }
+                    },
+                    error: function(xhr, status, err) {
+                        $(".passoruser").css("display", "block");
+                        console.log(xhr)
 
                     }
-                },
-                error: function(xhr, status, err) {
-
-                    $(".passoruser").css("display", "block");
-
-                }
+                })
 
             })
-
-
-
-        })
+        })();
     </script>
 </body>
 

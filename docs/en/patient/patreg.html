@@ -26,7 +26,9 @@
 <body>
 
     <div class="patreg d-flex justify-content-center align-center flex-column ">
-        <div class="pc-width-convert">
+        <div class="">
+            <!-- "pc-width-convert  to make it small-->
+
 
 
 
@@ -42,32 +44,32 @@
 
 
             <div class=" container babyblue-background-color rad-10 ">
-                <form class="row g-3 needs-validation p-30" method="POST" action="otp.html">
-                    <div class="col-6">
-                        <label for="fname" class="form-label fw-bold">First Name*</label>
-                        <input type="text" name="firstname" autocomplete="off" class="form-control" id="fname" required placeholder="Enter Your First Name" maxlength="50" minlength="3">
-
+                <form class="row g-3 needs-validation p-30" method="POST">
+                    <div class="col-12">
+                        <label for="fname" class="form-label fw-bold">Full Name*</label>
+                        <input type="text" name="fullname" autocomplete="off" class="form-control" id="fname" required placeholder="Enter Your Full Name At least Four Names" maxlength="50" minlength="18">
+                        <p class="fullnameerror c-red fs-13"></p>
                     </div>
 
-                    <div class="col-6">
-                        <label for="lname" class="form-label fw-bold">Last Name*</label>
-                        <input type="text" name="lastname" autocomplete="off" class="form-control" id="lname" required placeholder="Enter Your Last Name" maxlength="50" minlength="3">
-                    </div>
+
 
                     <div class="col-12">
                         <label for="username" class="form-label fw-bold">Username*</label>
-                        <input type="text" name="username" autocomplete="off" pattern="pattern: ^[A-Za-z]+[A-Za-z0-9_]*[A-Za-z0-9]+$" required class="form-control" id="username" placeholder="Enter Your User Name" minlength="5" maxlength="50">
-
+                        <input type="text" pattern="^[A-Za-z]+[A-Za-z0-9_]*[A-Za-z0-9]+$" name="username" autocomplete="off" required class="form-control " title="must begin with a letter and must be alphanumeric and underscore only" id="username" placeholder="Enter Your User Name (must begin with a letter and must be alphanumeric and underscore only)"
+                            minlength="5" maxlength="50">
+                        <p class="usernameerror c-red fs-13"></p>
                     </div>
 
                     <div class="col-12">
                         <label for="emial" class="form-label fw-bold">E-Mail*</label>
-                        <input type="email" name="email" autocomplete="off" class="form-control" id="emial" placeholder="Enter Your E-Mail (hint : it must contain .edu.eg)">
+                        <input type="email" required name="email" autocomplete="off" class="form-control " id="email" placeholder="Enter Your E-Mail ">
+                        <p class="emailerror c-red fs-13"></p>
                     </div>
 
                     <div class="col-12">
                         <label for="password" class="form-label fw-bold">Password*</label>
-                        <input type="password" name="password" required minlength="10" maxlength="50" class="form-control" id="password" placeholder="Enter Your Password">
+                        <input type="password" name="password" required minlength="10" maxlength="50" class="form-control " id="password" placeholder="Enter Your Password">
+                        <p class="passworderror c-red fs-13"></p>
                     </div>
 
                     <div class="col-12 mb-60">
@@ -83,17 +85,17 @@
                         </div>
 
                         <div class=" d-flex g-5">
-                            <select class="form-select w-25 mr-15" aria-label="Default select example" name="day">
-                      
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                            <select class="form-select w-25 mr-15 " id="day" aria-label="Default select example" name="day">
+                      <option value="" disabled selected> Day </option>
+                        <option value="01" >1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        <option value="05">5</option>
+                        <option value="06">6</option>
+                        <option value="07">7</option>
+                        <option value="08">8</option>
+                        <option value="09">9</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
@@ -115,32 +117,53 @@
                         <option value="28">28</option>
                         <option value="29">29</option>
                         <option value="30">30</option>
+                         <option value="31">31</option>
                        
                         </select>
 
-                            <select class="form-select w-25 mr-15" aria-label="Default select example" name="month">
-                      
-                        <option value="1" selected>January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
-                        <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
-                        <option value="9">September</option>
+                            <select class="form-select w-25 mr-15 " id="month" aria-label="Default select example" name="month">
+                      <option value="" disabled selected> Month </option>
+                        <option value="01" >January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
                         <option value="10">October</option>
                         <option value="11">November </option>
                         <option value="12">December</option>
                      
                         </select>
 
-                            <select class="form-select w-25 makeoptions" aria-label="Default select example" name="year">
-                      
+                            <select class="form-select w-25 makeoptions " id="year" aria-label="Default select example" name="year">
+                                  <option value="" disabled selected> Year </option>
                      
                         
                         </select>
+                            <p class="birthdayerror c-red fs-13"></p>
                         </div>
+
+                    </div>
+
+                    <p class=" fw-bold mt-35 mb-25 phoneee">Phone Number : </p>
+                    <div class="row  align-items-center mb-40">
+
+                        <div class="col-4">
+                            <select disabled class="removewebkit ">
+                            <option  selected>+20</option>
+
+                        </select>
+
+                        </div>
+
+                        <div class="d-flex justify-content-md-start col-8">
+                            <input type="text" class="rad-10 p-10 w-80 phonenum" name="phonenum" placeholder="Enter your phone Number" minlength="10" maxlength="10">
+                            <p class="phonenumerror c-red fs-13"></p>
+                        </div>
+
 
                     </div>
 
@@ -153,14 +176,14 @@
 
                             <div class="male ">
                                 <div class="form-check ">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="m">
+                                    <input class="form-check-input" checked type="radio" name="gender" id="male" value="true">
                                     <label class="form-check-label fw-bold" for="male">Male</label>
                                 </div>
                             </div>
                             <div class="female ">
                                 <div class="form-check ">
-                                    <input class="form-check-input" type="radio" name="gender" id="fmale" value="f">
-                                    <label class="form-check-label fw-bold" for="fmale">Female</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="fmale" value="false">
+                                    <label class="form-check-label fw-bold" for="false">Female</label>
                                 </div>
 
                             </div>
@@ -207,64 +230,144 @@
 
 
 
-
     <script src="../js/bootstrap.bundle.min.js "></script>
-    <script src="../js/all.min.js "></script>
+    <script src="../js/all.min.js"></script>
     <script src="../js/popper.min.js "></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
-
+    <script src="../js/helper.js"></script>
 
 
     <script>
-        $("#fname").keypress(function(event) {
+        (async() => {
+            let errorMessages;
 
-            if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
+            let apiUrl = await GetServerDomain();
 
+
+            $("#fname").keypress(function(event) {
+                if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
+
+                } else {
+                    event.preventDefault();
+                }
+            })
+
+            $("#lname").keypress(function(event) {
+
+                if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
+
+                } else {
+                    event.preventDefault();
+                }
+            })
+
+            $("#vpassword").keyup(function() {
+                if ($("#vpassword").val() != $("#password").val()) {
+                    // $(".wrong-pass").css("display", "block");
+                    document.querySelector(".wrong-pass").style.display = "block"
+
+                } else {
+                    $(".wrong-pass").css("display", "none");
+                }
+            })
+
+            $("#submit").click(function(event) {
+                if ($("#vpassword").val() != $("#password").val()) {
+                    event.preventDefault();
+                }
+            })
+
+            let date = new Date();
+            let curyear = date.getFullYear();
+
+            for (i = date.getFullYear() - 120; i <= date.getFullYear() - 5; i++) {
+                let selectElem = document.querySelector(".makeoptions");
+                selectElem.innerHTML += ("<option value=" + i + ">" + i + "</option>");
+            }
+
+            let language = window.localStorage.getItem("language")
+
+            if (language == null) {
+                language = "en";
             } else {
+                language = window.localStorage.getItem("language");
+            }
+
+            $("form").submit(function(event) {
+
                 event.preventDefault();
-            }
 
-        })
+                let fullName = $("#fname").val();
+                let userName = $("#username").val();
+                let email = $("#email").val();
+                let birthDay = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val() || "  -  -  ";
+                let gender = $('input[name="gender"]:checked').val();
+                let inPassword = $("#password").val();
+                let phoneNumber = $(".phonenum").val();
 
-        $("#lname").keypress(function(event) {
+                let obData = {
+                    "username": userName,
+                    "email": email,
+                    "password": inPassword,
+                    "fullname": fullName,
+                    "phone": phoneNumber,
+                    "gender": gender == true,
+                    "birthdate": birthDay
+                }
+                let jsonData = JSON.stringify(obData);
 
-            if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
+                $.ajax({
+                    "method": "POST",
+                    "url": apiUrl + "/api/Users/RegisterPatient",
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "Accept-Language": language
+                    },
+                    "data": jsonData,
+                    success: function(data, st, xhr) {
+                        window.sessionStorage.setItem("regeter", "reg");
+                        window.location.href = "otp.html"
+                    },
+                    error: function(xhr, status, err) {
+                        errorMessages = xhr.responseJSON;
+                        objofmessage = errorMessages.errors
+                        var key, keys = Object.keys(objofmessage);
+                        var n = keys.length;
+                        var newobj = {}
+                        while (n--) {
+                            key = keys[n];
+                            newobj[key.toLowerCase()] = objofmessage[key];
+                        }
+                        console.log(newobj);
+                        if (newobj.hasOwnProperty('email')) {
+                            $(".emailerror").text(newobj.email[0]);
+                            $(".emailerror").css('display', 'block');
+                        }
+                        if (newobj.hasOwnProperty('fullname')) {
+                            $(".fullnameerror").text(newobj.fullname[0]);
+                            $(".fullnameerror").css('display', 'block');
+                        }
+                        if (newobj.hasOwnProperty('username')) {
+                            $(".usernameerror").text(newobj.username[0]);
+                            $(".usernameerror").css('display', 'block');
+                        }
+                        if (newobj.hasOwnProperty('password')) {
+                            $(".passworderror").text(newobj.password[0]);
+                            $(".passworderror").css('display', 'block');
+                        }
+                        if (newobj.hasOwnProperty('phone')) {
+                            $(".phonenumerror").text(newobj.phone[0]);
+                            $(".phonenumerror").css('display', 'block');
+                        }
 
-            } else {
-                event.preventDefault();
-            }
+                    }
+                })
 
-        })
-
-        $("#vpassword").keyup(function() {
-            if ($("#vpassword").val() != $("#password").val()) {
-                // $(".wrong-pass").css("display", "block");
-                document.querySelector(".wrong-pass").style.display = "block"
-
-            } else {
-                $(".wrong-pass").css("display", "none");
-            }
-
-        })
-
-        $("#submit").click(function(event) {
-            if ($(".wrong-pass").css("display") == "block") {
-                event.preventDefault();
-            }
-
-        })
-
-        let date = new Date();
-        let curyear = date.getFullYear();
-
-
-
-        for (i = date.getFullYear() - 120; i <= date.getFullYear() - 5; i++) {
-            let selectElem = document.querySelector(".makeoptions");
-            selectElem.innerHTML += ("<option value=" + i + ">" + i + "</option>");
-
-        }
-        $(".makeoptions option:nth-child(88)").attr("selected", "selected");
+            })
+        })();
     </script>
 </body>
 

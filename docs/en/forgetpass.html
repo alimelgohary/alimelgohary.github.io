@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/Normalize.css">
+    <link rel="stylesheet" href="css/imagehover.min.css">
+    <link rel="stylesheet" href="css/imagehover.css">
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Free Smile</title>
+    <link rel="icon" type=" image/svg+xml" href="imgs/logo.svg" />
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="page p-relative w-100 h-100">
+
+        <div class="pageins w-full  d-flex justify-content-center align-center flex-column  p-20 p-absolute ">
+
+            <div class="logo  p-15 d-flex justify-content-center align-center mt-25">
+                <img src="imgs/logo.svg" class="" alt="logo">
+            </div>
+
+            <h3 class=" mt-40 fw-bold fs-25 txt-c ">Forget Password</h3>
+
+
+            <div class="forgetpass bg-white mt-30 p-30 mb-3">
+
+                <form method="POST" action="login.html">
+
+
+                    <div class="mb-5">
+                        <label for="exampleInputPassword1" class="form-label">UsernameOrEmail</label>
+                        <input required name="UsernameOrEmail" autocomplete="off" style="background-color:#9AE0FF;" type="text" class="form-control" id="UsernameOrEmail">
+                    </div>
+
+                    <div class="w-full d-flex justify-content-center mt-30">
+                        <p class="passforget c-red fs-14 "></p>
+                    </div>
+
+
+
+
+                    <div class="w-full d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mt-80 w-25 form-control submit">Send</button>
+                    </div>
+
+                </form>
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class=" form-control d-flex align-center justify-content-evenly footlink">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Security</a>
+                <a href="#">Contatcts</a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js "></script>
+    <script src="js/all.min.js "></script>
+    <script src="js/helper.js"></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/jquery-3.6.1.min.js "></script>
+
+
+
+    <script>
+        (async() => {
+
+            let apiUrl = await GetServerDomain();
+            let language;
+            let errorMessage;
+
+
+            // $.getJSON("../json/file.json", function(data) {
+
+            //     apiUrl = data['apiurl'];
+            // })
+
+
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+            $("form").submit(function(event) {
+
+                event.preventDefault();
+                let emailName = $("input[type=text]").val();
+
+                let obData = {
+                    "UsernameOrEmail": emailName,
+                }
+                let jsonData = JSON.stringify(obData);
+
+                $.ajax({
+                    "method": "put",
+                    "url": apiUrl + "/api/Users/RequestOtp",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "Accept-Language": language
+                    },
+                    "data": jsonData,
+                    success: function(data) {
+                        $(".passforget").text(data['message']);
+                        $(".passforget").css("display", "block");
+                        $(".passforget").css("color", "green");
+                        window.sessionStorage.setItem("username", emailName);
+                        setTimeout(function() {
+                            window.location.href = "confirmpass.html"
+                        }, 1000)
+                    },
+                    error: function(xhr, status, err) {
+                        errorMessage = JSON.parse(xhr.responseText);
+                        console.log(xhr)
+                        let finErrorMessage;
+                        if (errorMessage['error'] == null || errorMessage['error'] == undefined || errorMessage['error'].legnth < 1) {
+                            finErrorMessage = errorMessage['errors']['UsernameOrEmail'][0];
+                            console.log(errorMessage);
+                        } else {
+                            finErrorMessage = errorMessage['error'];
+                            console.log(errorMessage);
+                        }
+                        $(".passforget").text(finErrorMessage);
+                        $(".passforget").css("display", "block");
+
+                    }
+                })
+            })
+        })();
+    </script>
+</body>
+
+</html>
