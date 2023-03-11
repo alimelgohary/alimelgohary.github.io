@@ -122,7 +122,8 @@ a {
     background-color: #A6E3E9;
 }
 
-.moreinfo select.removewebkit {
+.moreinfo select.removewebkit,
+.patreg select.removewebkit {
     -moz-appearance: none;
     -webkit-appearance: none;
     border-radius: 10px;
@@ -131,7 +132,8 @@ a {
     color: black;
 }
 
-.moreinfo .phonenum {
+.moreinfo .phonenum,
+.patreg .phonenum {
     border: none;
     background-color: #2e81df70;
 }
@@ -150,4 +152,15 @@ a {
 
 .moreinfo .skip:hover {
     text-decoration: underline;
+}
+
+.phonenumerror,
+.birthdayerror,
+.passworderror,
+.emailerror,
+.usernameerror,
+.fullnameerror,
+.universityiderror,
+.idphotoerror {
+    display: none;
 }

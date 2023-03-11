@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/Normalize.css">
+    <link rel="stylesheet" href="css/imagehover.min.css">
+    <link rel="stylesheet" href="css/imagehover.css">
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Free Smile</title>
+    <link rel="icon" type=" image/svg+xml" href="imgs/logo.svg" />
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="page p-relative w-100 h-100">
+
+        <div class="pageins w-full  d-flex justify-content-center align-center flex-column  p-20 p-absolute ">
+
+            <div class="logo  p-15 d-flex justify-content-center align-center mt-25">
+                <img src="imgs/logo.svg" class="" alt="logo">
+            </div>
+
+            <h3 class=" mt-40 fw-bold fs-25 txt-c ">Forget Password</h3>
+
+
+            <div class="confirmpass bg-white mt-30 p-30 mb-3">
+
+                <form method="POST" action="login.html">
+                    <p class=" fw-bold fs-20"> OTP we have sent to you </p>
+                    <div class="otp-confirm-pass d-flex justify-content-center">
+                        <div class="inputfield">
+                            <input type="text" maxlength="1" id="otp1" name="otp1" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" id="otp2" name="otp2" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" id="otp3" name="otp3" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" id="otp4" name="otp4" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" id="otp5" name="otp5" required autocomplete="off" class="input">
+                            <input type="text" maxlength="1" id="otp6" name="otp5" required autocomplete="off" class="input">
+                        </div>
+
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input placeholder="must contain 1 lowercase letter , Upper , special , number" required name="password" minlength="10" maxlength="10" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-+=:\[\]?\._;])[A-Za-z\d\s!@#$%^&*()\-+=:\[\]?\._;~`']" autocomplete="off"
+                            style="background-color:#9AE0FF;" type="password" class="form-control" id="password">
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                        <input required name="password" autocomplete="off" style="background-color:#9AE0FF;" type="password" class="form-control" id="vpassword">
+                        <p class=" c-red mt-2 fs-13 txt-c  confirm-pass">The password dos'nt match</p>
+                    </div>
+
+
+
+                    <div class="w-full d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary w-25 form-control submit">Update</button>
+                    </div>
+
+                </form>
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class=" form-control d-flex align-center justify-content-evenly footlink">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Security</a>
+                <a href="#">Contatcts</a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js "></script>
+    <script src="js/all.min.js "></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/jquery-3.6.1.min.js "></script>
+    <script src="js/helper.js "></script>
+
+
+
+    <script>
+        // let otpcode = $("#otp1").val() + $("#otp2").val() + $("#otp3").val() + $("#otp4").val() + $("#otp5").val();
+        (async() => {
+            // if (window.sessionStorage.getItem("username") == null) {
+            //     window.location.href = "forgetpass.html"
+            // }
+
+            $("#vpassword").keyup(function() {
+                if ($("#vpassword").val() != $("#password").val()) {
+                    // $(".wrong-pass").css("display", "block");
+                    document.querySelector(".confirm-pass").style.display = "block"
+
+                } else {
+                    $(".confirm-pass").css("display", "none");
+                }
+
+            })
+
+            $(".otp-confirm-pass input[type='text']").keypress(function(event) {
+
+                if (isNaN(event.key)) {
+                    event.preventDefault();
+                }
+            })
+
+            $("#submit").click(function(event) {
+                if ($("#vpassword").val() != $("#password").val()) {
+                    event.preventDefault();
+                }
+
+            })
+
+            let apiUrl = await GetServerDomain();
+            let language, otpcode, otpcode1, otpcode2, otpcode3, otpcode4, otpcode5, otpcode6;
+            let errorMessage;
+            // $.getJSON("../json/file.json", function(data) {
+
+            //     apiUrl = data['apiurl'];
+            // })
+
+
+
+
+
+
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+
+            $("form").submit(function(event) {
+                console.log(otpcode);
+                event.preventDefault();
+
+
+                otpcode1 = $("#otp1").val();
+                otpcode2 = $("#otp2").val();
+                otpcode3 = $("#otp3").val();
+                otpcode4 = $("#otp4").val();
+                otpcode5 = $("#otp5").val();
+                otpcode6 = $("#otp6").val();
+                otpcode = otpcode1 + otpcode2 + otpcode3 + otpcode4 + otpcode5 + otpcode6;
+
+
+
+                let obData = {
+                    "UsernameOrEmail": window.sessionStorage.getItem("username"),
+                    "Otp": otpcode,
+                    "newPassword": $("#vpassword").val()
+
+                }
+                let jsonData = JSON.stringify(obData);
+
+                $.ajax({
+                    "method": "put",
+                    "url": apiUrl + "/api/Users/ForgotPassword",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "Accept-Language": language
+                    },
+                    "data": jsonData,
+                    success: function(data) {
+                        $(".confirm-pass").text(data['message']);
+                        $(".confirm-pass").css("display", "block");
+                        $(".confirm-pass").css("color", "green");
+
+                        setTimeout(function() {
+                            window.location.href = "login.html"
+                        }, 1000)
+                    },
+                    error: function(xhr, status, err) {
+                        errorMessage = JSON.parse(xhr.responseText);
+                        console.log(xhr)
+                        $(".confirm-pass").text(errorMessage.title);
+                        $(".confirm-pass").css("display", "block");
+                        console.log($("#otp1").val() + $("#otp2").val() + $("#otp3").val() + $("#otp4").val() + $("#otp5").val() + $("#otp6").val())
+
+                    }
+
+                })
+
+
+
+            })
+        })();
+    </script>
+</body>
+
+</html>

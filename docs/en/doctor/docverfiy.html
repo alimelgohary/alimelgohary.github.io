@@ -40,84 +40,64 @@
     </div>
 
     <div class="w-full babyblue-background-color docverfy mb-40">
-
         <div class="container p-10">
-
             <form method="post">
                 <div class=" row  ">
-
                     <div class="col-6">
                         <div>
-                            <p class=" fw-bold mt-20">Academic Degree*</p>
+                            <p class=" fw-bold mt-20 ca">Academic Degree*</p>
 
-                            <select class="form-select fs-4 p-10 mb-10 col-6 rad-10 babyblue-background-color2" aria-label="Default select example" required name="academicDegree">
+                            <select class="form-select fs-4 p-10 mb-10 col-6 rad-10 babyblue-background-color2 " id="acadimic-deg" aria-label="Default select example" required name="academicDegree">
+                                <option selected value="1">Undergradute</option>
+                                <option value="2">Graduated </option>
+                            
+                            </select>
+                        </div>
+                        <div>
+                            <p class=" fw-bold mt-20 ca">Current University*</p>
+
+                            <select class="form-select fs-4 p-10 mb-10 col-6 rad-10 babyblue-background-color2 " id="CurrentUni" aria-label="Default select example" name="academicDegree">
                                
-                                <option selected value="1">Student</option>
-                                <option value="2">Bachelor's </option>
-                                <option  value="3">Master's </option>
-                                <option  value="4">Doctoral </option>
+                            
                             </select>
                         </div>
 
                         <div class="mt-35 idphoto">
+
                             <p class=" fw-bold mt-20">National ID Photo <span class="c-grey fs-13">( Face )</span>*</p>
-
-                            <input accept="image/*" required type="file" name="idphoto" class="idphoto d-none">
-                            <p class="mt-20 txt-c rad-10  p-10  fidphoto" style="background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
-
-
-
+                            <input accept="image/*" required type="file" name="file[]" id="nationalphoto" class="idphoto d-none">
+                            <div class="d-flex align-center justify-content-between">
+                                <p class="mt-20 txt-c rad-10  p-10  fidphoto" style="display: inline-block;background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+                                <span class="c-red fs-15 idphotoerror ">error message </span>
+                            </div>
                         </div>
 
 
                         <div class="mt-35 idphoto2">
                             <p class=" fw-bold mt-20">University ID photo or your degree certificate <span class="c-grey fs-13">( Face )</span>*</p>
 
-                            <input accept="image/*" required type="file" name="UniversityID " class="idphoto2 d-none">
-                            <p class="mt-20 txt-c rad-10 p-10 babyblue-background-color2 fidphoto2" style="background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
-
-
-
+                            <input accept="image/*" required type="file" name="file[]" id="universityid" class="idphoto2 d-none">
+                            <div class="d-flex align-center justify-content-between">
+                                <p class="mt-20 txt-c rad-10 p-10 babyblue-background-color2 fidphoto2" style="background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+                                <span class="c-red fs-15 universityiderror ">error message </span>
+                            </div>
                         </div>
-
-
                     </div>
-
-
 
                     <div class="col-6 d-flex justify-content-center">
                         <img src="../imgs/docverfy.svg" alt="Verify image" style="width: 200px;">
                     </div>
-
-
                 </div>
-
 
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn  w-50 rad-10" style="background-color: #71C9CE;">Submit</button>
 
                 </div>
 
-
             </form>
-
-
-
-
 
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -128,24 +108,122 @@
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
+    <script src="../js/helper.js"></script>
 
 
 
     <script>
-        $(".fidphoto").click(function() {
+        (async() => {
 
-            $(".idphoto").trigger("click");
-            // document.querySelector(".idphoto1").value
+            let apiUrl = await GetServerDomain();
+            let errorMessages;
 
-
-        })
-
-        $(".fidphoto2").click(function() {
-
-            $(".idphoto2").trigger("click");
+            let language = window.localStorage.getItem("language")
+            if (language == null) {
+                language = "en";
+            }
 
 
-        })
+
+            if (!window.localStorage.getItem("resend")) {
+
+                $.ajax({
+                    "method": "GET",
+                    "url": apiUrl + "/api/Generic/GetUniversities",
+
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+
+                    success: function(data, st, xhr) {
+                        window.localStorage.setItem("resend", "value");
+
+                        for (let i = 0; i < data.length; i++) {
+                            let selectElem = document.querySelector("#CurrentUni");
+                            selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
+
+                        }
+
+                    },
+                    error: function(xhr, status, err) {
+                        let selectElem = document.querySelector("#CurrentUni");
+                        selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
+
+
+
+                    }
+                })
+            }
+
+
+
+
+
+
+
+            $(".fidphoto").click(function() {
+                $(".idphoto").trigger("click");
+            })
+            $(".fidphoto2").click(function() {
+                $(".idphoto2").trigger("click");
+            })
+
+
+            //  apiUrl + "/api/Dentists/RequestVerification"
+            $("form").submit(function(event) {
+                event.preventDefault();
+                let academicDegree = $("#acadimic-deg").val();
+                let nationalId = $("#nationalphoto").prop('files')[0];
+                let universityId = $("#universityid").prop('files')[0];
+                let currentUni = $("#CurrentUni").val();
+                const formData = new FormData();
+                formData.append('universityRequested', currentUni);
+                formData.append('degreeRequested', academicDegree);
+                formData.append('natIdPhoto', nationalId);
+                formData.append('proofOfDegreePhoto', universityId);
+
+                $.ajax({
+                    url: apiUrl + "/api/Dentists/RequestVerification",
+                    method: 'POST',
+                    data: formData,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+
+                        "Accept-Language": language
+                    },
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        window.location.replace("wait.html");
+                    },
+                    error: function(xhr, status, error) {
+                        let errorobj = xhr.responseJSON.errors
+                        console.log(errorobj);
+                        if (xhr.responseJSON.error == "You have already requested verification") {
+                            window.location.href = "wait.html"
+                        } else if (errorobj.hasOwnProperty('NatIdPhoto')) {
+                            $(".idphotoerror").text(errorobj.NatIdPhoto[0]);
+                            $(".idphotoerror").css('display', 'block');
+                        } else if (errorobj.hasOwnProperty('ProofOfDegreePhoto')) {
+                            $(".universityiderror").text(errorobj.ProofOfDegreePhoto[0]);
+                            $(".universityiderror").css('display', 'block');
+                        }
+                    }
+                });
+
+            })
+
+
+
+
+
+
+
+        })();
     </script>
 </body>
 

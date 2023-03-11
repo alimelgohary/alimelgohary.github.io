@@ -26,7 +26,7 @@
 <body>
 
     <div class="patreg d-flex justify-content-center align-center flex-column ">
-        <div class="pc-width-convert">
+        <div class="">
 
 
 
@@ -47,7 +47,7 @@
                     <div class="col-12">
                         <label for="fname" class="form-label fw-bold">Full Name*</label>
                         <input type="text" name="fullname" autocomplete="off" class="form-control" id="fname" required placeholder="Enter Your Full Name At least Four Names" maxlength="50" minlength="18">
-
+                        <p class="fullnameerror c-red fs-13"></p>
                     </div>
 
 
@@ -55,17 +55,19 @@
                     <div class="col-12">
                         <label for="username" class="form-label fw-bold">Username*</label>
                         <input type="text" pattern="^[A-Za-z]+[A-Za-z0-9_]*[A-Za-z0-9]+$" name="username" autocomplete="off" required class="form-control" id="username" placeholder="Enter Your User Name" minlength="5" maxlength="50">
-
+                        <p class="usernameerror c-red fs-13"></p>
                     </div>
 
                     <div class="col-12">
                         <label for="emial" class="form-label fw-bold">E-Mail*</label>
-                        <input type="email" name="email" pattern=".+.edu.eg\b" autocomplete="off" class="form-control" id="emial" placeholder="Enter Your E-Mail (hint : it must contain .edu.eg)">
+                        <input type="email" name="email" autocomplete="off" class="form-control" id="email" placeholder="Enter Your E-Mail ">
+                        <p class="emailerror c-red fs-13"></p>
                     </div>
 
                     <div class="col-12">
                         <label for="password" class="form-label fw-bold">Password*</label>
                         <input type="password" name="password" required class="form-control" minlength="10" maxlength="50" id="password" placeholder="Enter Your Password">
+                        <p class="passworderror c-red fs-13"></p>
                     </div>
 
                     <div class="col-12 mb-60">
@@ -74,6 +76,25 @@
                         <p class=" c-red mt-1 fs-13  wrong-pass">The password dos'nt match</p>
                     </div>
 
+
+                    <p class=" fw-bold mt-35 mb-25">Phone Number : </p>
+                    <div class="row  align-items-center mb-40">
+
+                        <div class="col-4">
+                            <select disabled class="removewebkit ">
+                            <option  selected>+20</option>
+
+                        </select>
+
+                        </div>
+
+                        <div class="d-flex justify-content-md-start col-8">
+                            <input type="text" class="rad-10 p-10 w-80 phonenum" name="phonenum" placeholder="Enter your phone Number" minlength="10" maxlength="10">
+                            <p class="phonenumerror c-red fs-13"></p>
+                        </div>
+
+
+                    </div>
 
 
                     <div class="gender mb-40">
@@ -85,7 +106,7 @@
 
                             <div class="male ">
                                 <div class="form-check ">
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="m">
+                                    <input class="form-check-input" checked type="radio" name="gender" id="male" value="m">
                                     <label class="form-check-label fw-bold" for="male">Male</label>
                                 </div>
                             </div>
@@ -144,39 +165,12 @@
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
+    <script src="../js/helper.js"></script>
+    <script src="../js/docreg.js"></script>
 
 
 
     <script>
-        $("#fname").keypress(function(event) {
-
-            if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
-
-            } else {
-                event.preventDefault();
-            }
-
-        })
-
-
-
-        $("#vpassword").keyup(function() {
-            if ($("#vpassword").val() != $("#password").val()) {
-                // $(".wrong-pass").css("display", "block");
-                document.querySelector(".wrong-pass").style.display = "block"
-
-            } else {
-                $(".wrong-pass").css("display", "none");
-            }
-
-        })
-
-        $("#submit").click(function(event) {
-            if ($(".wrong-pass").css("display") == "block") {
-                event.preventDefault();
-            }
-
-        })
     </script>
 </body>
 
