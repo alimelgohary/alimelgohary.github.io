@@ -62,8 +62,19 @@
                    }
                },
                error: function(xhr, status, err) {
-                   $(".passoruser").css("display", "block");
-                   console.log(xhr)
+                   if (xhr.status == 400) {
+                       $(".passoruser").css("display", "block");
+                   } else if (xhr.status == 403) {
+                       $(".passoruser").text("You're not allowed to enter this page");
+                       $(".passoruser").css("display", "block");
+
+                   } else if (xhr.status >= 500) {
+                       $(".passoruser").text("Something went wrong with the server side , Please try again later");
+                       $(".passoruser").css("display", "block");
+
+                   }
+
+
 
                }
            })
