@@ -10,37 +10,37 @@
 
 
 
-    if (!window.localStorage.getItem("resend")) {
 
-        $.ajax({
-            "method": "GET",
-            "url": apiUrl + "/api/Generic/GetUniversities",
 
-            "headers": {
-                "Content-Type": "application/json",
-                "ngrok-skip-browser-warning": "69420",
-                "Accept-Language": language
-            },
+    $.ajax({
+        "method": "GET",
+        "url": apiUrl + "/api/Generic/GetUniversities",
 
-            success: function(data, st, xhr) {
-                window.localStorage.setItem("resend", "value");
+        "headers": {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+            "Accept-Language": language
+        },
 
-                for (let i = 0; i < data.length; i++) {
-                    let selectElem = document.querySelector("#CurrentUni");
-                    selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
+        success: function(data, st, xhr) {
 
-                }
 
-            },
-            error: function(xhr, status, err) {
+            for (let i = 0; i < data.length; i++) {
                 let selectElem = document.querySelector("#CurrentUni");
-                selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-
-
+                selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
 
             }
-        })
-    }
+
+        },
+        error: function(xhr, status, err) {
+            let selectElem = document.querySelector("#CurrentUni");
+            selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
+
+
+
+        }
+    })
+
 
 
 
