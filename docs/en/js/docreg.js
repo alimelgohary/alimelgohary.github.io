@@ -59,6 +59,7 @@
         let phoneNumber = $(".phonenum").val();
         let gender = $('input[name="gender"]:checked').val();
         let inPassword = $("#password").val();
+        let birthDay = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val();
 
 
         let obData = {
@@ -67,9 +68,14 @@
             "phone": phoneNumber,
             "password": inPassword,
             "fullname": fullName,
-
             "gender": gender == "true",
-
+            "birthdate": birthDay
+        }
+        if (birthDay == "null-null-null") {
+            delete obData.birthdate
+        }
+        if (phoneNumber.length == 0) {
+            delete obData.phoneNumber
         }
         let jsonData = JSON.stringify(obData);
 
