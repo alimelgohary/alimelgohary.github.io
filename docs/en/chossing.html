@@ -39,7 +39,7 @@
                 <div class="patient col-12 col-md-5  babyblue-background-color p-relative mb-10  ">
                     <div class=" d-flex flex-column p-30">
                         <img src="imgs/patient.svg" alt="patient">
-                        <p class=" fw-bold fs-20 mt-40 mb-60">i'm Patient Looking For Doctor </p>
+                        <p class=" fw-bold fs-20 mt-40 mb-60">I'm a patient looking for a dentist </p>
                     </div>
 
                     <div class=" p-absolute">
@@ -53,7 +53,7 @@
                 <div class="doctor col-12 col-md-5   babyblue-background-color p-relative  mb-10 ">
                     <div class=" d-flex flex-column p-30">
                         <img src="imgs/doctor.svg" alt="patient">
-                        <p class=" fw-bold fs-20 mt-40 mb-60">i'm Doctor Doctor Offreing My Services </p>
+                        <p class=" fw-bold fs-20 mt-40 mb-60">I'm a dentist offering my services </p>
                     </div>
 
                     <div class=" p-absolute">
@@ -95,32 +95,7 @@
     <script src="js/all.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/jquery-3.6.1.min.js "></script>
-
-
-
-    <script>
-        $(".patient").click(function() {
-            $(".patient #patient").prop("checked", true);
-
-        })
-
-        $(".doctor").click(function() {
-            $(".doctor #doctor").prop("checked", true);
-
-        })
-
-        $(".submit").click(function(event) {
-            event.preventDefault();
-            var radioValue = $("input[name='case']:checked").val();
-            console.log(radioValue);
-            if (radioValue == "patient") {
-                window.location.href = "patient/patreg.html";
-            } else {
-                window.location.href = "doctor/docreg.html";
-            }
-
-
-        })
+    <script src="js/choosing.js">
     </script>
 </body>
 
