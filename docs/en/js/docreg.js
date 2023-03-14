@@ -12,6 +12,15 @@
         }
     })
 
+    $(".phonenum").keypress(function(event) {
+        if (isNaN(event.key)) {
+            event.preventDefault();
+
+        } else if (event.key == 0 && $(".phonenum").val().length == 0) {
+            event.preventDefault();
+        }
+    })
+
 
 
     $("#vpassword").keyup(function() {
@@ -59,7 +68,7 @@
             "password": inPassword,
             "fullname": fullName,
 
-            "gender": gender == true,
+            "gender": gender == "true",
 
         }
         let jsonData = JSON.stringify(obData);

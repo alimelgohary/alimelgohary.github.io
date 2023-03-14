@@ -41,7 +41,7 @@ position: relative;
     position: relative;
     margin-bottom: 50px;
     /*text-align: center;*/
-	padding-bottom: 49.3%;
+    padding-bottom: 49.3%;
 }
 
 .landing img {
@@ -75,16 +75,63 @@ position: relative;
     margin-bottom: 50px;
 }
 
-@media (max-width:767px) {
+@media(max-width:300px) {
     .s-heading {
-        font-size: 60px;
-        margin-left: 80px;
+        font-size: 40px;
+        margin-left: 60px;
+    }
+    .c-heading {
+        font-size: 40px !important;
+        margin-left: 40px !important;
     }
 }
 
-@media (min-width:768px) and (max-width:991px) {
+@media(min-width:301px) and (max-width:514px) {
+    .s-heading {
+        font-size: 60px;
+        margin-left: 100px;
+    }
+    .c-heading {
+        font-size: 60px !important;
+        margin-left: 100px !important;
+    }
+}
+
+@media (min-width:515px) and (max-width:676px) {
+    .s-heading {
+        font-size: 60px;
+        margin-left: 170px;
+    }
+    .c-heading {
+        font-size: 60px !important;
+        margin-left: 170px !important;
+    }
+}
+
+@media (min-width:677px) and (max-width:900px) {
     .s-heading {
         margin-left: 190px;
+    }
+    .c-heading {
+        margin-left: 230px !important;
+    }
+}
+
+@media (min-width:901px) and (max-width:998px) {
+    .s-heading {
+        margin-left: 325px;
+    }
+    .c-heading {
+        margin-left: 290px !important;
+    }
+}
+
+@media (min-width:999px) and (max-width:1115px) {
+    .s-heading {
+        margin-left: 345px;
+    }
+    .c-heading {
+        margin-left: 320px !important;
     }
 }
 
@@ -93,12 +140,8 @@ position: relative;
     margin-left: 400px;
 }
 
-@media (max-width:767px) {
-    .opreation {
-        font-size: 32px;
-        margin-left: -23px;
-    }
-}
+
+/* @media (max-width:767px) {}
 
 @media (min-width:768px) and (max-width:991px) {
     .opreation {
@@ -110,7 +153,7 @@ position: relative;
     .opreation {
         margin-left: 190px;
     }
-}
+} */
 
 
 /* end landing  */
@@ -195,7 +238,8 @@ cursor: pointer;
     margin-bottom: 50px;
 }
 
-@media (max-width:767px) {
+
+/* @media (max-width:767px) {
     .c-heading {
         font-size: 60px;
         margin-left: 40px;
@@ -206,7 +250,7 @@ cursor: pointer;
     .c-heading {
         margin-left: 150px;
     }
-}
+} */
 
 .para-modifing {
     background-color: var(--backgroung--color);
