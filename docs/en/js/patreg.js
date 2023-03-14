@@ -60,7 +60,7 @@
          let fullName = $("#fname").val();
          let userName = $("#username").val();
          let email = $("#email").val();
-         let birthDay = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val() || "  -  -  ";
+         let birthDay = $("#year").val() + "-" + $("#month").val() + "-" + $("#day").val();
          let gender = $('input[name="gender"]:checked').val();
          let inPassword = $("#password").val();
          let phoneNumber = $(".phonenum").val();
@@ -73,6 +73,12 @@
              "phone": phoneNumber,
              "gender": gender == "true",
              "birthdate": birthDay
+         }
+         if (birthDay == "null-null-null") {
+             delete obData.birthdate
+         }
+         if (phoneNumber.length == 0) {
+             delete obData.phoneNumber
          }
          let jsonData = JSON.stringify(obData);
 
@@ -92,6 +98,7 @@
                  window.location.href = "otp.html"
              },
              error: function(xhr, status, err) {
+                 console.log(jsonData)
                  errorMessages = xhr.responseJSON;
                  objofmessage = errorMessages.errors
                  var key, keys = Object.keys(objofmessage);
