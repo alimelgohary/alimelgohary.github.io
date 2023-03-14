@@ -65,7 +65,8 @@
 
                     <div class="col-12">
                         <label for="password" class="form-label fw-bold">Password*</label>
-                        <input type="password" name="password" required class="form-control" minlength="10" maxlength="50" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-+=:\[\]?\._;])[A-Za-z\d\s!@#$%^&*()\-+=:\[\]?\._;~`']" placeholder="Enter Your Password">
+                        <input type="password" title=" Password must contain at least one uppercase, one lowercase, one number and one special character " name="password" required class="form-control" minlength="10" maxlength="50" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-+=:\[\]?\._;])[A-Za-z\d\s!@#$%^&*()\-+=:\[\]?\._;~`']{4,}$"
+                            placeholder="Enter Your Password">
                         <p class="passworderror c-red fs-13"></p>
                     </div>
 
