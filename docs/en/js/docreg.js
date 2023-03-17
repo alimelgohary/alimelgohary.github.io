@@ -140,6 +140,10 @@
                     $(".phonenumerror").text(" ");
                     $(".phonenumerror").css('display', 'none');
                 }
+                if (newobj.hasOwnProperty('birthdate')) {
+                    $(".emailerror").text(newobj.birthdate[0]);
+                    $(".birthdayerror").css('display', 'block');
+                }
 
 
             }

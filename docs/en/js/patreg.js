@@ -77,8 +77,8 @@
          if (birthDay == "null-null-null") {
              delete obData.birthdate
          }
-         if (phoneNumber.length == 0) {
-             delete obData.phoneNumber
+         if (phoneNumber.length == 0 || phoneNumber == "") {
+             delete obData.phone
          }
          let jsonData = JSON.stringify(obData);
 
@@ -112,22 +112,49 @@
                  if (newobj.hasOwnProperty('email')) {
                      $(".emailerror").text(newobj.email[0]);
                      $(".emailerror").css('display', 'block');
+                 } else {
+                     $(".emailerror").text(" ");
+                     $(".emailerror").css('display', 'none');
                  }
+
+                 if (newobj.hasOwnProperty('birthdate')) {
+                     $(".birthdayerror").text(newobj.birthdate[0]);
+                     $(".birthdayerror").css('display', 'block');
+                 } else {
+                     $(".birthdayerror").text(" ");
+                     $(".birthdayerror").css('display', 'none');
+                 }
+
                  if (newobj.hasOwnProperty('fullname')) {
                      $(".fullnameerror").text(newobj.fullname[0]);
                      $(".fullnameerror").css('display', 'block');
+                 } else {
+                     $(".fullnameerror").text(" ");
+                     $(".fullnameerror").css('display', 'none');
                  }
+
                  if (newobj.hasOwnProperty('username')) {
                      $(".usernameerror").text(newobj.username[0]);
                      $(".usernameerror").css('display', 'block');
+                 } else {
+                     $(".usernameerror").text(" ");
+                     $(".usernameerror").css('display', 'none');
                  }
+
                  if (newobj.hasOwnProperty('password')) {
                      $(".passworderror").text(newobj.password[0]);
                      $(".passworderror").css('display', 'block');
+                 } else {
+                     $(".passworderror").text(" ");
+                     $(".passworderror").css('display', 'none');
                  }
+
                  if (newobj.hasOwnProperty('phone')) {
                      $(".phonenumerror").text(newobj.phone[0]);
                      $(".phonenumerror").css('display', 'block');
+                 } else {
+                     $(".phonenumerror").text(" ");
+                     $(".phonenumerror").css('display', 'none');
                  }
 
              }
