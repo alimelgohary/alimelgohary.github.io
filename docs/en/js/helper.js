@@ -29,6 +29,13 @@ async function GetServerDomain() {
 
 // }
 
+function addanimations() {
+    $(".watingtext").addClass("animate__tada");
+    setTimeout(function() {
+        $(".watingtext").removeClass("animate__tada")
+    }, 1000)
+}
+
 
 
 

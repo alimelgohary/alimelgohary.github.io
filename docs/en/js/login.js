@@ -2,23 +2,46 @@
        let apiUrl = await GetServerDomain();;
        let language;
        // $.getJSON("../json/file.json", function(data) {
-
        //     apiUrl = data['apiurl'];
        // })
+       //    if (window.sessionStorage.getItem("login") == 'patient') {
+       //        window.location.href = "patient/home.html";
+       //    } else if (window.sessionStorage.getItem("login") == 'doctor') {
+       //        window.location.href = "doctor/home.html";
+       //    }
 
-
-
-       if (window.sessionStorage.getItem("login") == 'patient') {
-           window.location.href = "patient/home.html";
-       } else if (window.sessionStorage.getItem("login") == 'doctor') {
-           window.location.href = "doctor/home.html";
-       }
 
        if (window.localStorage.getItem("language") == null) {
            language = "en";
        } else {
            language = window.localStorage.getItem("language");
        }
+       // "api/Users/IsAllowedToHome"
+
+       $.ajax({
+           "method": "GET",
+           "url": apiUrl + "/api/Users/IsAllowedToHome",
+           "xhrFields": {
+               "withCredentials": true
+           },
+           "headers": {
+               "Content-Type": "application/json",
+               "ngrok-skip-browser-warning": "69420",
+               "Accept-Language": language
+           },
+           "data": {},
+           success: function(data, st, xhr) {
+               if (data.nextPage == "homePatient") {
+                   window.location.href = "patient/home.html"
+               } else if (data.nextPage == "homeDentist") {
+                   window.location.href = "doctor/home.html";
+               }
+           },
+           error: function(xhr, status, err) {
+               console.log(xhr)
+           }
+       })
+
 
        $("form").submit(function(event) {
 
@@ -48,6 +71,7 @@
                "data": jsonData,
                success: function(data, st, xhr) {
                    console.log(data)
+                   console.log(xhr)
                    if (data['nextPage'] == 'homePatient') {
                        window.location.href = "patient/home.html";
                        window.sessionStorage.setItem("login", "patient");
@@ -62,13 +86,12 @@
                    }
                },
                error: function(xhr, status, err) {
+                   console.log(xhr);
                    if (xhr.status == 400) {
+                       $(".passoruser").text(xhr.responseJSON.error);
                        $(".passoruser").css("display", "block");
-                   } else if (xhr.status == 403) {
-                       $(".passoruser").text("You're not allowed to enter this page");
-                       $(".passoruser").css("display", "block");
-
-                   } else if (xhr.status >= 500) {
+                   }
+                   if (xhr.status >= 500) {
                        $(".passoruser").text("Something went wrong with the server side , Please try again later");
                        $(".passoruser").css("display", "block");
 
