@@ -54,9 +54,51 @@
     <script src="../js/jquery-3.6.1.min.js "></script>
     <script src="../js/helper.js"></script>
     <script>
-        setInterval(function() {
-            addanimations();
-        }, 2000)
+        (async() => {
+            let apiUrl = await GetServerDomain();
+
+            let language = window.localStorage.getItem("language")
+
+            if (language == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+            setInterval(function() {
+                addanimations();
+            }, 2000)
+
+            setInterval(function() {
+
+
+
+                $.ajax({
+                    "method": "GET",
+                    "url": apiUrl + "/api/Users/IsAllowedToHome",
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    "data": {},
+                    success: function(data, st, xhr) {
+                        console.log(data);
+                        if (data.nextPage == "homeDentist") {
+                            $(".watingtext").text("you have been verfied,Welcme to our community.")
+                            setTimeout(function() {
+                                window.location.replace("home.html");
+                            }, 2000)
+                        }
+                    },
+                    error: function(xhr, status, err) {
+                        console.log(xhr)
+                    }
+                })
+            }, 60000)
+        })();
     </script>
 </body>
 
