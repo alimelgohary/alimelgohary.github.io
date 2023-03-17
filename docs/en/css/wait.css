@@ -1,0 +1,9 @@
+.wating a {
+    color: black;
+    text-decoration: none;
+}
+
+.waitingimg img:hover {
+    transition-duration: .5s;
+    transform: scale(1.1)
+}
