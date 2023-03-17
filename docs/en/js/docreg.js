@@ -4,6 +4,19 @@
     let apiUrl = await GetServerDomain();
 
 
+    let date = new Date();
+    let curyear = date.getFullYear();
+
+
+
+    for (i = date.getFullYear() - 120; i <= date.getFullYear() - 5; i++) {
+        let selectElem = document.querySelector(".makeoptions");
+        selectElem.innerHTML += ("<option value=" + i + ">" + i + "</option>");
+
+    }
+
+
+
     $("#fname").keypress(function(event) {
         if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
 
@@ -87,6 +100,7 @@
             },
             "headers": {
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
                 "Accept-Language": language
             },
             "data": jsonData,
@@ -95,6 +109,7 @@
                 window.location.href = "otp.html"
             },
             error: function(xhr, status, err) {
+                console.log(xhr)
                 errorMessages = xhr.responseJSON;
                 objofmessage = errorMessages.errors
                 var key, keys = Object.keys(objofmessage);

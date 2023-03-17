@@ -9,24 +9,24 @@
     if (language == null) {
         language = "en";
     }
-    if (!window.localStorage.getItem("resend")) {
-        $.ajax({
-            "method": "PUT",
-            "url": apiUrl + "/api/Users/RequestOtp",
-            "xhrFields": {
-                "withCredentials": true
-            },
-            "headers": {
-                "Content-Type": "application/json",
-                "Accept-Language": language
-            },
-            "data": "{}",
-            success: function(data, st, xhr) {
-                window.localStorage.setItem("resend", "done");
-            },
-            error: function(xhr, status, err) {}
-        })
-    }
+
+    $.ajax({
+        "method": "PUT",
+        "url": apiUrl + "/api/Users/RequestOtp",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "headers": {
+            "Content-Type": "application/json",
+            "Accept-Language": language
+        },
+        "data": "{}",
+        success: function(data, st, xhr) {
+            window.localStorage.setItem("resend", "done");
+        },
+        error: function(xhr, status, err) {}
+    })
+
 
     let errorMessages, otpcode, otpcode1, otpcode2, otpcode3, otpcode4, otpcode5, otpcode6;
 
