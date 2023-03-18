@@ -18,13 +18,22 @@
         },
         "headers": {
             "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
             "Accept-Language": language
         },
         "data": "{}",
         success: function(data, st, xhr) {
-            window.localStorage.setItem("resend", "done");
+            $(".wrong-pass").text("otp sent successfully");
+            $(".wrong-pass").removeClass("c-red");
+            $(".wrong-pass").addClass("c-green");
+            $(".wrong-pass").css("display", "block");
         },
-        error: function(xhr, status, err) {}
+        error: function(xhr, status, err) {
+            $(".wrong-pass").text(xhr.responseJSON.error);
+            $(".wrong-pass").removeClass("c-green");
+            $(".wrong-pass").addClass("c-red");
+            $(".wrong-pass").css("display", "block");
+        }
     })
 
 
@@ -62,6 +71,7 @@
             },
             "headers": {
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
                 "Accept-Language": language
             },
             "data": jsonData,
@@ -73,15 +83,21 @@
             error: function(xhr, status, err) {
                 if (xhr.status == 401) {
                     $(".wrong-pass").text("you are not authorithed");
+                    $(".wrong-pass").removeClass("c-green");
+                    $(".wrong-pass").addClass("c-red");
                     $(".wrong-pass").css("display", "block");
                     setTimeout(function() {
                         window.location.href = "../login.html"
                     }, 1000)
                 } else if (xhr.status == 400) {
                     $(".wrong-pass").text(xhr.responseJSON.error);
+                    $(".wrong-pass").removeClass("c-green");
+                    $(".wrong-pass").addClass("c-red");
                     $(".wrong-pass").css("display", "block");
                 } else if (xhr.status >= 500) {
-                    $(".wrong-pass").text("Something with server went wrong , Please try again later");
+                    $(".wrong-pass").text(xhr.responseJSON.error);
+                    $(".wrong-pass").removeClass("c-green");
+                    $(".wrong-pass").addClass("c-red");
                     $(".wrong-pass").css("display", "block");
                 }
 
@@ -120,11 +136,23 @@
                         },
                         "headers": {
                             "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
                             "Accept-Language": language
                         },
                         "data": "{}",
-                        success: function(data, st, xhr) {},
-                        error: function(xhr, status, err) {}
+                        success: function(data, st, xhr) {
+                            $(".wrong-pass").text("otp sent successfully");
+                            $(".wrong-pass").removeClass("c-red");
+                            $(".wrong-pass").addClass("c-green");
+                            $(".wrong-pass").css("display", "block");
+
+                        },
+                        error: function(xhr, status, err) {
+                            $(".wrong-pass").text(xhr.responseJSON.error);
+                            $(".wrong-pass").removeClass("c-green");
+                            $(".wrong-pass").addClass("c-red");
+                            $(".wrong-pass").css("display", "block");
+                        }
                     })
                 }
                 minuts--;

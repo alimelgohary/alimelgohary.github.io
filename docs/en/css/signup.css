@@ -161,6 +161,7 @@ a {
 .usernameerror,
 .fullnameerror,
 .universityiderror,
-.idphotoerror {
+.idphotoerror,
+.servererror {
     display: none;
 }
