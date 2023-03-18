@@ -1,8 +1,8 @@
 (async() => {
 
-    if (!window.sessionStorage.getItem("regeter")) {
-        window.location.href = "patreg.html"
-    }
+    // if (!window.sessionStorage.getItem("regeter")) {
+    //     window.location.href = "patreg.html"
+    // }
 
     let apiUrl = await GetServerDomain();
     let language = window.localStorage.getItem("language")
@@ -10,25 +10,32 @@
         language = "en";
     }
 
-    if (!window.localStorage.getItem("resend")) {
-        $.ajax({
-            "method": "PUT",
-            "url": apiUrl + "/api/Users/RequestOtp",
-            "xhrFields": {
-                "withCredentials": true
-            },
-            "headers": {
-                "Content-Type": "application/json",
-                "Accept-Language": language
-            },
-            "data": "{}",
-            success: function(data, st, xhr) {
-                window.localStorage.setItem("resend", "done");
-            },
-            error: function(xhr, status, err) {}
-        })
 
-    }
+    $.ajax({
+        "method": "PUT",
+        "url": apiUrl + "/api/Users/RequestOtp",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "headers": {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+            "Accept-Language": language
+        },
+        "data": "{}",
+        success: function(data, st, xhr) {
+            window.localStorage.setItem("resend", "done");
+            console.log(xhr);
+            console.log(data);
+        },
+        error: function(xhr, status, err) {
+
+            $(".wrong-pass").text(xhr.responseJSON.error);
+            $(".wrong-pass").css("display", "block");
+        }
+    })
+
+
     let errorMessages, otpcode, otpcode1, otpcode2, otpcode3, otpcode4, otpcode5, otpcode6;
 
 
@@ -63,6 +70,7 @@
             },
             "headers": {
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
                 "Accept-Language": language
             },
             "data": jsonData,
@@ -83,7 +91,7 @@
                     $(".wrong-pass").text(xhr.responseJSON.error);
                     $(".wrong-pass").css("display", "block");
                 } else if (xhr.status >= 500) {
-                    $(".wrong-pass").text("Something with server went wrong , Please try again later");
+                    $(".wrong-pass").text(xhr.responseJSON.error);
                     $(".wrong-pass").css("display", "block");
                 }
 
@@ -103,9 +111,9 @@
         timer = setInterval(function() {
             seconds--
             if (seconds < 10) {
-                $(".lefttime").html("0" + minuts + " " + ":" + " " + "0" + seconds + "    " + "Remaind to resend again");
+                $(".lefttime").html("0" + minuts + " " + ":" + " " + "0" + seconds + "    " + "Remained to resend again");
             } else {
-                $(".lefttime").html("0" + minuts + " " + ":" + " " + seconds + "    " + "Remaind to resend again");
+                $(".lefttime").html("0" + minuts + " " + ":" + " " + seconds + "    " + "Remained to resend again");
             }
             if (seconds == 0) {
                 seconds = 59
@@ -122,11 +130,22 @@
                         },
                         "headers": {
                             "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
                             "Accept-Language": language
                         },
                         "data": "{}",
-                        success: function(data, st, xhr) {},
-                        error: function(xhr, status, err) {}
+                        success: function(data, st, xhr) {
+                            $(".wrong-pass").text("otp sent successfully");
+                            $(".wrong-pass").removeClass("c-red");
+                            $(".wrong-pass").addClass("c-green");
+                            $(".wrong-pass").css("display", "block");
+                        },
+                        error: function(xhr, status, err) {
+                            $(".wrong-pass").text(xhr.responseJSON.error);
+                            $(".wrong-pass").removeClass("c-green");
+                            $(".wrong-pass").addClass("c-red");
+                            $(".wrong-pass").css("display", "block");
+                        }
                     })
                 }
                 minuts--;

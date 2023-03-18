@@ -156,6 +156,10 @@
                      $(".phonenumerror").text(" ");
                      $(".phonenumerror").css('display', 'none');
                  }
+                 if (xhr.status == 500) {
+                     $(".servererror").text(xhr.responseJSON.error);
+                     $(".servererror").css('display', 'block');
+                 }
 
              }
          })

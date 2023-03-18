@@ -159,6 +159,10 @@
                     $(".emailerror").text(newobj.birthdate[0]);
                     $(".birthdayerror").css('display', 'block');
                 }
+                if (xhr.status == 500) {
+                    $(".servererror").text(xhr.responseJSON.error);
+                    $(".servererror").css('display', 'block');
+                }
 
 
             }
