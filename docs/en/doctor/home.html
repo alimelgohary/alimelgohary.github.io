@@ -21,11 +21,41 @@
     <link rel="stylesheet" href="../css/home.css">
     <title>Home</title>
     <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
+
+    <style>
+        .search::before {
+            font-family: var(--fa-style-family-classic);
+            content: "\f002";
+            font-weight: 900;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: var(--grey-color);
+        }
+        
+        .search input {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-left: 5px;
+            padding-left: 30px;
+            width: 160px;
+            transition: width 0.3s;
+        }
+        
+        .search input:focus {
+            width: 200px;
+        }
+    </style>
 </head>
 
 <body>
 
+    <div class="search p-relative">
+        <input type="search" placeholder="Type a Word" class="p-10 ">
 
+    </div>
 
 
 

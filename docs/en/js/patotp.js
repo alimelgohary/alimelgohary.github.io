@@ -29,9 +29,13 @@
             console.log(data);
         },
         error: function(xhr, status, err) {
-
-            $(".wrong-pass").text(xhr.responseJSON.error);
-            $(".wrong-pass").css("display", "block");
+            if (xhr.status == 500) {
+                $(".wrong-pass").text(xhr.responseJSON.error);
+                $(".wrong-pass").css("display", "block");
+            } else {
+                $(".wrong-pass").text(xhr.responseJSON.error);
+                $(".wrong-pass").css("display", "block");
+            }
         }
     })
 
@@ -90,7 +94,7 @@
                 } else if (xhr.status == 400) {
                     $(".wrong-pass").text(xhr.responseJSON.error);
                     $(".wrong-pass").css("display", "block");
-                } else if (xhr.status >= 500) {
+                } else if (xhr.status == 500) {
                     $(".wrong-pass").text(xhr.responseJSON.error);
                     $(".wrong-pass").css("display", "block");
                 }
