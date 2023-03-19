@@ -87,18 +87,20 @@
                 }
             },
             error: function(xhr, status, err) {
-
+                console.log(xhr)
                 if (xhr.status == 400) {
-                    $(".passoruser").text(xhr.responseJSON.error);
-                    $(".passoruser").css("display", "block");
-                } else if (xhr.status == 400 && xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
-                    window.location.href = "doctor/wait.html";
-                } else if (xhr.status == 400 && xhr.responseJSON.nextPage == 'verifyDentist') {
-                    window.location.href = "doctor/docverfiy.html";
+                    if (xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
+                        window.location.href = "doctor/wait.html";
+                    } else if (xhr.responseJSON.nextPage == 'verifyDentist') {
+                        window.location.href = "doctor/docverfiy.html";
 
-                }
-                if (xhr.status >= 500) {
-                    $(".passoruser").text("Something went wrong with the server side , Please try again later");
+                    } else {
+                        $(".passoruser").text(xhr.responseJSON.error);
+                        $(".passoruser").css("display", "block");
+                    }
+
+                } else if (xhr.status = 500) {
+                    $(".passoruser").text("Something went wrong , Please try again later");
                     $(".passoruser").css("display", "block");
 
                 }

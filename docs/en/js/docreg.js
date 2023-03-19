@@ -163,6 +163,10 @@
                     $(".servererror").text(xhr.responseJSON.error);
                     $(".servererror").css('display', 'block');
                 }
+                if (errorMessages.hasOwnProperty('error')) {
+                    $(".emailerror").text(errorMessages.error);
+                    $(".emailerror").css('display', 'block');
+                }
 
 
             }

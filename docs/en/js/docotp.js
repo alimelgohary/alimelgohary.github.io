@@ -94,7 +94,7 @@
                     $(".wrong-pass").removeClass("c-green");
                     $(".wrong-pass").addClass("c-red");
                     $(".wrong-pass").css("display", "block");
-                } else if (xhr.status >= 500) {
+                } else if (xhr.status == 500) {
                     $(".wrong-pass").text(xhr.responseJSON.error);
                     $(".wrong-pass").removeClass("c-green");
                     $(".wrong-pass").addClass("c-red");

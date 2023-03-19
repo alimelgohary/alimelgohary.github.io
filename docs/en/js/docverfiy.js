@@ -102,6 +102,9 @@
                     setTimeout(function() {
                         window.location.replace(".../login.html");
                     }, 1000)
+                } else if (xhr.status == 500) {
+                    $(".servererror").text(xhr.responseJSON.error);
+                    $(".servererror").css('display', 'block');
                 }
             }
         });
