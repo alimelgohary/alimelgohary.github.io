@@ -63,21 +63,14 @@
                     <div class="col-4">
                         <select disabled class="removewebkit ">
                             <option  selected>+20</option>
-
                         </select>
-
                     </div>
 
                     <div class="d-flex justify-content-md-start col-8">
                         <input type="text" class="rad-10 p-10 w-80 phonenum" name="phonenum" placeholder="Enter your phone Number" minlength="10" maxlength="10">
-
                     </div>
 
-
                 </div>
-
-
-
 
             </div>
 
@@ -164,19 +157,16 @@
             <div class=" p-15">
                 <p class="fw-bold">Facebook Account</p>
                 <input type="url" class="w-80 p-10 facebookAcc" placeholder="Enter your Facebook Account" name="facebookAcc">
-
             </div>
 
             <div class=" p-15">
                 <p class="fw-bold">linkedin Account</p>
                 <input type="url" class="w-80 p-10 facebookAcc" placeholder="Enter your Facebook Account" name="linhedAcc">
-
             </div>
 
             <div class=" p-15 mb-60">
                 <p class="fw-bold">Google Scholar Account</p>
                 <input type="url" class="w-80 p-10 facebookAcc" placeholder="Enter your Facebook Account" name="facebookAcc">
-
             </div>
 
 
@@ -191,18 +181,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="../js/bootstrap.bundle.min.js "></script>
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
@@ -212,18 +190,12 @@
 
     <script>
         $(".edit").click(function() {
-
             $(".profilephoto").trigger("click");
-            // document.querySelector(".idphoto1").value
-
-
         })
 
         $(".moreinfo input[type='text'].phonenum").keypress(function(event) {
-
             if (isNaN(event.key)) {
                 event.preventDefault();
-
             } else if (event.key == 0 && $(".moreinfo input[type='text'].phonenum").val().length == 0) {
                 event.preventDefault();
             }

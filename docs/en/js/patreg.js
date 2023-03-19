@@ -1,13 +1,9 @@
  (async() => {
      let errorMessages;
-
      let apiUrl = await GetServerDomain();
 
-
      $("#fname").keypress(function(event) {
-         if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {
-
-         } else {
+         if (isNaN(event.key) || event.keyCode == 8 || event.keyCode == 32) {} else {
              event.preventDefault();
          }
      })
@@ -15,7 +11,6 @@
      $(".phonenum").keypress(function(event) {
          if (isNaN(event.key)) {
              event.preventDefault();
-
          } else if (event.key == 0 && $(".phonenum").val().length == 0) {
              event.preventDefault();
          }
@@ -23,9 +18,7 @@
 
      $("#vpassword").keyup(function() {
          if ($("#vpassword").val() != $("#password").val()) {
-             // $(".wrong-pass").css("display", "block");
              document.querySelector(".wrong-pass").style.display = "block"
-
          } else {
              $(".wrong-pass").css("display", "none");
          }
@@ -39,14 +32,12 @@
 
      let date = new Date();
      let curyear = date.getFullYear();
-
      for (i = date.getFullYear() - 120; i <= date.getFullYear() - 5; i++) {
          let selectElem = document.querySelector(".makeoptions");
          selectElem.innerHTML += ("<option value=" + i + ">" + i + "</option>");
      }
 
      let language = window.localStorage.getItem("language")
-
      if (language == null) {
          language = "en";
      } else {
@@ -54,9 +45,7 @@
      }
 
      $("form").submit(function(event) {
-
          event.preventDefault();
-
          let fullName = $("#fname").val();
          let userName = $("#username").val();
          let email = $("#email").val();
@@ -64,7 +53,6 @@
          let gender = $('input[name="gender"]:checked').val();
          let inPassword = $("#password").val();
          let phoneNumber = $(".phonenum").val();
-
          let obData = {
              "username": userName,
              "email": email,
@@ -81,7 +69,6 @@
              delete obData.phone
          }
          let jsonData = JSON.stringify(obData);
-
          $.ajax({
              "method": "POST",
              "url": apiUrl + "/api/Users/RegisterPatient",
@@ -116,7 +103,6 @@
                      $(".emailerror").text(" ");
                      $(".emailerror").css('display', 'none');
                  }
-
                  if (newobj.hasOwnProperty('birthdate')) {
                      $(".birthdayerror").text(newobj.birthdate[0]);
                      $(".birthdayerror").css('display', 'block');
@@ -124,7 +110,6 @@
                      $(".birthdayerror").text(" ");
                      $(".birthdayerror").css('display', 'none');
                  }
-
                  if (newobj.hasOwnProperty('fullname')) {
                      $(".fullnameerror").text(newobj.fullname[0]);
                      $(".fullnameerror").css('display', 'block');
@@ -132,7 +117,6 @@
                      $(".fullnameerror").text(" ");
                      $(".fullnameerror").css('display', 'none');
                  }
-
                  if (newobj.hasOwnProperty('username')) {
                      $(".usernameerror").text(newobj.username[0]);
                      $(".usernameerror").css('display', 'block');
@@ -140,7 +124,6 @@
                      $(".usernameerror").text(" ");
                      $(".usernameerror").css('display', 'none');
                  }
-
                  if (newobj.hasOwnProperty('password')) {
                      $(".passworderror").text(newobj.password[0]);
                      $(".passworderror").css('display', 'block');
@@ -148,7 +131,6 @@
                      $(".passworderror").text(" ");
                      $(".passworderror").css('display', 'none');
                  }
-
                  if (newobj.hasOwnProperty('phone')) {
                      $(".phonenumerror").text(newobj.phone[0]);
                      $(".phonenumerror").css('display', 'block');
@@ -164,9 +146,7 @@
                      $(".emailerror").text(errorMessages.error);
                      $(".emailerror").css('display', 'block');
                  }
-
              }
          })
-
      })
  })();

@@ -1,32 +1,19 @@
    (async() => {
-
        let apiUrl = await GetServerDomain();
        let language;
        let errorMessage;
-
-
-       // $.getJSON("../json/file.json", function(data) {
-
-       //     apiUrl = data['apiurl'];
-       // })
-
-
        if (window.localStorage.getItem("language") == null) {
            language = "en";
        } else {
            language = window.localStorage.getItem("language");
        }
-
        $("form").submit(function(event) {
-
            event.preventDefault();
            let emailName = $("input[type=text]").val();
-
            let obData = {
                "UsernameOrEmail": emailName,
            }
            let jsonData = JSON.stringify(obData);
-
            $.ajax({
                "method": "PUT",
                "url": apiUrl + "/api/Users/RequestOtp",
@@ -58,7 +45,6 @@
                    }
                    $(".passforget").text(finErrorMessage);
                    $(".passforget").css("display", "block");
-
                }
            })
        })

@@ -1,11 +1,8 @@
    $(".patient").click(function() {
        $(".patient #patient").prop("checked", true);
-
    })
-
    $(".doctor").click(function() {
        $(".doctor #doctor").prop("checked", true);
-
    })
 
    $(".submit").click(function(event) {
@@ -17,6 +14,4 @@
        } else {
            window.location.href = "doctor/docreg.html";
        }
-
-
    })

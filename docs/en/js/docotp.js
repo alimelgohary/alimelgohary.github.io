@@ -1,8 +1,5 @@
 (async() => {
 
-    if (!window.sessionStorage.getItem("regeter")) {
-        window.location.href = "patreg.html"
-    }
 
     let apiUrl = await GetServerDomain();
     let language = window.localStorage.getItem("language")
@@ -36,17 +33,12 @@
         }
     })
 
-
     let errorMessages, otpcode, otpcode1, otpcode2, otpcode3, otpcode4, otpcode5, otpcode6;
-
-
     $(".otppage input[type='text']").keypress(function(event) {
-
         if (isNaN(event.key)) {
             event.preventDefault();
         }
     })
-
 
     $("form").submit(function(event) {
         event.preventDefault();
@@ -59,10 +51,8 @@
         otpcode = otpcode1 + otpcode2 + otpcode3 + otpcode4 + otpcode5 + otpcode6;
         let obData = {
             "otp": otpcode
-
         }
         let jsonData = JSON.stringify(obData);
-
         $.ajax({
             "method": "PUT",
             "url": apiUrl + "/api/Users/VerifyAccount",
@@ -76,8 +66,6 @@
             },
             "data": jsonData,
             success: function(data, st, xhr) {
-
-
                 window.location.href = "docverfiy.html"
             },
             error: function(xhr, status, err) {
@@ -100,10 +88,8 @@
                     $(".wrong-pass").addClass("c-red");
                     $(".wrong-pass").css("display", "block");
                 }
-
             }
         })
-
     })
 
     // Make resend anchor
@@ -124,7 +110,6 @@
             if (seconds == 0) {
                 seconds = 59
                 if (minuts == "0") {
-
                     clearInterval(timer);
                     $(".lefttime").html(" ")
                     $(".resend").css("pointer-events", "all");
@@ -145,7 +130,6 @@
                             $(".wrong-pass").removeClass("c-red");
                             $(".wrong-pass").addClass("c-green");
                             $(".wrong-pass").css("display", "block");
-
                         },
                         error: function(xhr, status, err) {
                             $(".wrong-pass").text(xhr.responseJSON.error);
@@ -158,9 +142,5 @@
                 minuts--;
             }
         }, 1000)
-
     })
-
-
-
 })();

@@ -167,8 +167,6 @@
                     $(".emailerror").text(errorMessages.error);
                     $(".emailerror").css('display', 'block');
                 }
-
-
             }
         })
 
