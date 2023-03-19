@@ -35,16 +35,7 @@
 
         </div>
         <div class="watingtext animate__animated txt-c mt-80 c-blue fs-25 fst-italic fw-bolder container-sm" style="font-size: 60px;"> Please wait until you have been verfied.. </div>
-
-
     </div>
-
-
-
-
-
-
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12 "></script>
@@ -56,9 +47,7 @@
     <script>
         (async() => {
             let apiUrl = await GetServerDomain();
-
             let language = window.localStorage.getItem("language")
-
             if (language == null) {
                 language = "en";
             } else {
@@ -67,11 +56,7 @@
             setInterval(function() {
                 addanimations();
             }, 2000)
-
             setInterval(function() {
-
-
-
                 $.ajax({
                     "method": "GET",
                     "url": apiUrl + "/api/Users/IsAllowedToHome",

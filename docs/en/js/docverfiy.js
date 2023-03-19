@@ -1,62 +1,35 @@
 (async() => {
-
     let apiUrl = await GetServerDomain();
     let errorMessages;
-
     let language = window.localStorage.getItem("language")
     if (language == null) {
         language = "en";
     }
-
-
-
-
-
     $.ajax({
         "method": "GET",
         "url": apiUrl + "/api/Generic/GetUniversities",
-
         "headers": {
             "Content-Type": "application/json",
             "ngrok-skip-browser-warning": "69420",
             "Accept-Language": language
         },
-
         success: function(data, st, xhr) {
-
-
             for (let i = 0; i < data.length; i++) {
                 let selectElem = document.querySelector("#CurrentUni");
                 selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
-
             }
-
         },
         error: function(xhr, status, err) {
             let selectElem = document.querySelector("#CurrentUni");
             selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-
-
-
         }
     })
-
-
-
-
-
-
-
-
     $(".fidphoto").click(function() {
         $(".idphoto").trigger("click");
     })
     $(".fidphoto2").click(function() {
         $(".idphoto2").trigger("click");
     })
-
-
-    //  apiUrl + "/api/Dentists/RequestVerification"
     $("form").submit(function(event) {
         event.preventDefault();
         let academicDegree = $("#acadimic-deg").val();
@@ -108,13 +81,5 @@
                 }
             }
         });
-
     })
-
-
-
-
-
-
-
 })();

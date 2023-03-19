@@ -11,23 +11,7 @@ async function GetServerDomain() {
     } catch (error) {
         console.error(error);
     }
-
 }
-
-// let serverName;
-
-// function server2() {
-//     return fetch('https://api.github.com/gists/458cc68066d2c1e0fa01ba1271e81699').then(function(response) {
-//         gist = response.json();
-//         return gist
-//     }).then(function(response) {
-//         res = response.files['ngrok.txt'].content;
-//         return res
-//     }).then(function(response) {
-//         serverName = response
-//     })
-
-// }
 
 function addanimations() {
     $(".watingtext").addClass("animate__tada");
