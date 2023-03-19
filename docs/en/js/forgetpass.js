@@ -28,10 +28,11 @@
            let jsonData = JSON.stringify(obData);
 
            $.ajax({
-               "method": "put",
+               "method": "PUT",
                "url": apiUrl + "/api/Users/RequestOtp",
                "headers": {
                    "Content-Type": "application/json",
+                   "ngrok-skip-browser-warning": "69420",
                    "Accept-Language": language
                },
                "data": jsonData,
