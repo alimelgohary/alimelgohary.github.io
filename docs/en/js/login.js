@@ -24,6 +24,8 @@
                 window.location.href = "patient/home.html"
             } else if (data.nextPage == "homeDentist") {
                 window.location.href = "doctor/home.html";
+            } else if (data.nextPage == "homeAdmin") {
+                window.location.href = "../dashboard.html";
             }
         },
         error: function(xhr, status, err) {
@@ -66,6 +68,8 @@
                     window.location.href = "patient/home.html";
                 } else if (data['nextPage'] == 'homeDentist') {
                     window.location.href = "doctor/home.html";
+                } else if (data.nextPage == "homeAdmin") {
+                    window.location.href = "../dashboard.html";
                 } else if (xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
                     window.location.href = "doctor/wait.html";
                 } else if (xhr.responseJSON.nextPage == 'verifyDentist') {
