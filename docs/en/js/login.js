@@ -32,7 +32,7 @@
             if (xhr.status == 400 && xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
                 window.location.href = "dentist/wait.html";
             } else if (xhr.status == 400 && xhr.responseJSON.nextPage == 'verifyDentist') {
-                window.location.href = "dentist/docverfiy.html";
+                window.location.href = "dentist/verify.html";
             }
         }
     })
@@ -73,7 +73,7 @@
                 } else if (xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
                     window.location.href = "dentist/wait.html";
                 } else if (xhr.responseJSON.nextPage == 'verifyDentist') {
-                    window.location.href = "dentist/docverfiy.html";
+                    window.location.href = "dentist/verify.html";
                 }
             },
             error: function(xhr, status, err) {
