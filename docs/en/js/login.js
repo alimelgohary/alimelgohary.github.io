@@ -23,16 +23,16 @@
             if (data.nextPage == "homePatient") {
                 window.location.href = "patient/home.html"
             } else if (data.nextPage == "homeDentist") {
-                window.location.href = "doctor/home.html";
+                window.location.href = "dentist/home.html";
             } else if (data.nextPage == "homeAdmin") {
                 window.location.href = "../dashboard.html";
             }
         },
         error: function(xhr, status, err) {
             if (xhr.status == 400 && xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
-                window.location.href = "doctor/wait.html";
+                window.location.href = "dentist/wait.html";
             } else if (xhr.status == 400 && xhr.responseJSON.nextPage == 'verifyDentist') {
-                window.location.href = "doctor/docverfiy.html";
+                window.location.href = "dentist/docverfiy.html";
             }
         }
     })
@@ -67,13 +67,13 @@
                 if (data['nextPage'] == 'homePatient') {
                     window.location.href = "patient/home.html";
                 } else if (data['nextPage'] == 'homeDentist') {
-                    window.location.href = "doctor/home.html";
+                    window.location.href = "dentist/home.html";
                 } else if (data.nextPage == "homeAdmin") {
                     window.location.href = "../dashboard.html";
                 } else if (xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
-                    window.location.href = "doctor/wait.html";
+                    window.location.href = "dentist/wait.html";
                 } else if (xhr.responseJSON.nextPage == 'verifyDentist') {
-                    window.location.href = "doctor/docverfiy.html";
+                    window.location.href = "dentist/docverfiy.html";
                 }
             },
             error: function(xhr, status, err) {

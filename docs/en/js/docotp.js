@@ -66,7 +66,7 @@
             },
             "data": jsonData,
             success: function(data, st, xhr) {
-                window.location.href = "docverfiy.html"
+                window.location.href = "verify.html"
             },
             error: function(xhr, status, err) {
                 if (xhr.status == 401) {

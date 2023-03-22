@@ -10,8 +10,8 @@
        var radioValue = $("input[name='case']:checked").val();
        console.log(radioValue);
        if (radioValue == "patient") {
-           window.location.href = "patient/patreg.html";
+           window.location.href = "patient/register.html";
        } else {
-           window.location.href = "doctor/docreg.html";
+           window.location.href = "dentist/register.html";
        }
    })
