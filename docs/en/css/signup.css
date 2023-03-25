@@ -131,9 +131,10 @@ a {
     -moz-appearance: none;
     -webkit-appearance: none;
     border-radius: 10px;
-    padding: 10px 30px 10px 10px;
+    padding: 10px;
     background-color: #2e81df70;
     color: black;
+    border: none;
 }
 
 .moreinfo .phonenum,

@@ -70,6 +70,14 @@
     padding: 30px;
 }
 
+.p-40 {
+    padding: 40px;
+}
+
+.p-50 {
+    padding: 50px;
+}
+
 .pt-10 {
     padding-top: 10px;
 }
@@ -170,7 +178,7 @@
     margin-right: 20px;
 }
 
-.mb-5 {
+.mbf-5 {
     margin-bottom: 5px;
 }
 
@@ -196,6 +204,10 @@
 
 .mb-40 {
     margin-bottom: 40px;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
 }
 
 .mb-60 {
@@ -290,7 +302,7 @@
 }
 
 .bg-background-main {
-    background-color: #A6E3E9;
+    background-color: #2E4F4F;
 }
 
 
@@ -335,6 +347,30 @@
 
 .fs-25 {
     font-size: 25px;
+}
+
+.fs-35 {
+    font-size: 35px;
+}
+
+.fs-45 {
+    font-size: 45px;
+}
+
+.fs-50 {
+    font-size: 50px;
+}
+
+.fs-60 {
+    font-size: 60px;
+}
+
+.fs-70 {
+    font-size: 70px;
+}
+
+.fs-80 {
+    font-size: 80px;
 }
 
 .fw-bold {

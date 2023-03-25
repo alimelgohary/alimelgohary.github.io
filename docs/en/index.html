@@ -31,7 +31,7 @@
 
 
     <!-- start navbar -->
-    <nav class="navbar navbar-expand-lg   position-sticky fixed-top   ">
+    <nav class="navbar navbar-expand-lg   position-sticky fixed-top " style="background-color: #99B3B7;">
         <div class="container-fluid ">
             <a class="navbar-brand " href="index.html"><img style="width: 50px; height:auto" src="imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,23 +68,35 @@
 
     <!-- start landing -->
     <div class="landing " id="home">
-        <img src="imgs/landing.webp" class="background">
-        <p class="text-Landing "></p>
+        <img src="imgs/landing.svg" class="background">
+        <div class="text-Landing ">
+            <p class="fs-60 fw-bolder">Find the best dentist for any operation.</p>
+            <ul class="fs-20 mb-60">
+                <li>Dental students from all over Egypt</li>
+                <li>Any dental operation you can think of</li>
+                <li>All operations are for free</li>
+                <li>Operations done under supervision of university staff</li>
+            </ul>
+            <div class="d-flex">
+                <a href="patient/register.html" class="gotopatient hvr-bob">Find a dentist</a>
+                <a href="dentist/register.html" class="gotodentist hvr-bob">Cure Patients</a>
+            </div>
+        </div>
     </div>
     <!-- start landing -->
 
-    <h2 class="hvr-float-shadow s-heading mt-30 mb-30  ">Anything</h2>
+    <!-- <h2 class="hvr-float-shadow s-heading mt-30 mb-30  ">Anything</h2> -->
 
     <!-- start slider -->
-    <div class=" container  mt-10 mb-25">
-        <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
+    <div class=" container-fluid  mt-10 mb-25">
+        <div id="carouselExampleCaptions" class="carousel slide w-full" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item active ">
                     <img src="imgs/slider1.jpg" class="d-block w-100 slider-resizing" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>First slide label</h5>
@@ -120,21 +132,26 @@
     </div>
     <!-- end slider -->
 
-    <div class=" container">
-        <img src="imgs/verification.svg" style="max-width: 100%;margin:30px 0 ;">
+    <div class=" container-fluid">
+        <img src="imgs/verification.svg" style="width: 100%; max-width: 100%;margin:30px 0 ;">
     </div>
     <!-- Started services -->
-    <h2 class="  hvr-float-shadow s-heading mt-30 mb-30" id="services">Services</h2>
-    <div class=" container-md mt-25 mb-25 ">
+    <div class="container-fluid">
+        <div class="w-full d-flex justify-content-center">
+            <h2 class="txt-c s2-heading hvr-float-shadow " id="services"> Services</h2>
+        </div>
+    </div>
+    <p class="mb-40 txt-c fs-35">As a patient we got you all dental operations including</p>
+    <div class=" container-fluid mt-25 mb-25 ">
 
         <div class="d-flex  justify-content-between row  ">
 
             <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-6 mb-2 customize-mobile hvr-float-shadow">
                 <div class=" between-flex p-4 ">
                     <img src="imgs/tooth1.svg">
-                    <span class=" fs-20 c-black">Articles</span>
+                    <span class=" fs-20 c-white">Nerve Filling</span>
                 </div>
-                <div class="c-black p-4 ">
+                <div class="c-white p-4 ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
                 </div>
             </div>
@@ -142,9 +159,9 @@
             <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-10   mb-2 customize-mobile hvr-float-shadow ">
                 <div class=" between-flex p-4 ">
                     <img src="imgs/tooth2.svg">
-                    <span class=" fs-20 c-black">Dental Crown</span>
+                    <span class=" fs-20 c-white">Dental Crown</span>
                 </div>
-                <div class="c-black p-4 ">
+                <div class="c-white p-4 ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
                 </div>
             </div>
@@ -152,9 +169,9 @@
             <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-10 mb-2 customize-mobile hvr-float-shadow">
                 <div class=" between-flex p-4 ">
                     <img src="imgs/tooth3.svg">
-                    <span class=" fs-20 c-black">Tooth Implant</span>
+                    <span class=" fs-20 c-white">Tooth Implant</span>
                 </div>
-                <div class="c-black p-4 ">
+                <div class="c-white p-4 ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
                 </div>
             </div>
@@ -162,9 +179,58 @@
             <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-10  customize-mobile hvr-float-shadow" style="margin-bottom: 8px;">
                 <div class=" between-flex p-4 ">
                     <img src="imgs/tooth4.svg" class="">
-                    <span class=" fs-20 c-black m-lg-3 ">Periodic Checkup</span>
+                    <span class=" fs-20 c-white m-lg-3 ">Periodic Checkup</span>
                 </div>
-                <div class="c-blacke p-4 mt-4">
+                <div class="c-white p-4 mt-4">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <p class="mb-40 txt-c fs-35">As a dentist we got you the services you are looking for </p>
+    <div class=" container-fluid mt-25 mb-25 ">
+
+        <div class="d-flex  justify-content-between row  ">
+
+            <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-6 mb-2 customize-mobile hvr-float-shadow">
+                <div class=" between-flex p-4 mb-40">
+                    <img src="imgs/tooth5.svg">
+                    <span class=" fs-20 c-white">Find patient</span>
+                </div>
+                <div class="c-white p-4 ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
+                </div>
+            </div>
+
+            <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-10   mb-2 customize-mobile hvr-float-shadow ">
+                <div class=" between-flex p-4 mb-40">
+                    <img src="imgs/tooth6.svg">
+                    <span class=" fs-20 c-white">Share patient</span>
+                </div>
+                <div class="c-white p-4 ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
+                </div>
+            </div>
+
+            <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-10 mb-2 customize-mobile hvr-float-shadow">
+                <div class=" between-flex p-4 mb-40">
+                    <img src="imgs/tooth7.svg">
+                    <span class=" fs-20 c-white">Equipments</span>
+                </div>
+                <div class="c-white p-4 ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
+                </div>
+            </div>
+
+            <div class="row flex-column col-12 col-md-6 col-lg-3 bg-background-main rad-10  customize-mobile hvr-float-shadow" style="margin-bottom: 8px;">
+                <div class=" between-flex p-4 ">
+                    <img src="imgs/tooth8.svg" class="">
+                    <span class=" fs-20 c-white m-lg-3 ">Articles</span>
+                </div>
+                <div class="c-white p-4 mt-4">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ullam distinctio
                 </div>
             </div>
@@ -177,78 +243,33 @@
 
     <!-- start some opreations  -->
 
-    <h2 class="txt-c c-heading hvr-float-shadow mt-30 mb-30"> Sponsers</h2>
 
-    <div class=" container mt-25 mb-25">
+    <!-- start stats  -->
 
-        <div class=" row">
-            <div class=" d-flex between-flex col-flex-mob ">
-
-                <div class="  flex-column  col-md-6 mr-20 ">
-                    <div class=" d-flex flex-row ">
-                        <div class="hover-box">
-                            <img src="imgs/slider1.jpg" alt="" />
-                            <h3>Before</h3>
-                        </div>
-                        <div class="hover-box">
-                            <img src="imgs/slider1.jpg" alt="" />
-                            <h3>After</h3>
-                        </div>
-                    </div>
-
-                    <div class=" txt-c mt-30 mb-25 p-20 para-modifing">
-                        <p class=" fw-bold c-black">Made By Dr. Ahmed Ammar</p>
-                        <p class=" c-black">Mansoura university</p>
-                    </div>
-
-                </div>
-
-                <div class="  flex-column  col-md-6 mr-20 ">
-                    <div class=" d-flex flex-row ">
-                        <div class="hover-box">
-                            <img src="imgs/slider1.jpg" alt="" />
-                            <h3>Before</h3>
-                        </div>
-                        <div class="hover-box">
-                            <img src="imgs/slider1.jpg" alt="" />
-                            <h3>After</h3>
-                        </div>
-                    </div>
-
-                    <div class=" txt-c mt-30 mb-25 p-20 para-modifing">
-                        <p class=" fw-bold c-black">Made By Dr. Ahmed Ammar</p>
-                        <p class=" c-black">Mansoura university</p>
-                    </div>
-
-                </div>
-
-
-            </div>
+    <!-- <h2 class="txt-c s-heading hvr-float-shadow mt-30 mb-30" id="about"> Stats</h2> -->
+    <div class="container-fluid">
+        <div class="w-full d-flex justify-content-center">
+            <h2 class="txt-c s2-heading hvr-float-shadow " id="about"> Stats</h2>
         </div>
     </div>
-    <!-- End some opreations  -->
 
-    <!-- start About us  -->
-
-    <h2 class="txt-c s-heading hvr-float-shadow mt-30 mb-30" id="about"> About Us</h2>
-
-    <div class="container-fluid mb-150 pl-0 ">
+    <div class="container-fluid mb-40 pl-0 ">
         <div class=" d-flex p-30 bg-background-main justify-content-around flex-row rad-10 align-center">
 
             <div class=" d-flex flex-column">
                 <img src="imgs/about-3.svg" class=" mb-10 w-50-mob  " alt="">
-                <span class=" c-black fw-bold txt-c mt-10">1.5 M Post</span>
+                <span class=" c-black fw-bold txt-c mt-10"><span class="numOfPosts"></span> Post</span>
             </div>
 
             <div class=" d-flex flex-column">
                 <img src="imgs/about-1.svg" class=" mb-10 w-50-mob  " alt="">
-                <span class=" c-black fw-bold txt-c mt-10">100K Dentist</span>
+                <span class=" c-black fw-bold txt-c mt-10"><span class="numOfDentist"></span> Dentist</span>
             </div>
 
 
             <div class=" d-flex flex-column">
                 <img src="imgs/about-2.svg" class=" mb-10 w-50-mob   " alt="">
-                <span class=" c-black fw-bold txt-c mt-10">2.05 M Cases</span>
+                <span class=" c-black fw-bold txt-c mt-10"><span class="numOfPatient"></span> Cases</span>
             </div>
 
 
@@ -258,8 +279,103 @@
 
     </div>
 
-    <!-- End About us  -->
+    <!-- End  stats  -->
+    <!-- Start Reviews  -->
+    <div class="container-fluid ">
+        <div class="w-full d-flex justify-content-center">
+            <h2 class="txt-c s2-heading hvr-float-shadow "> Reviews</h2>
+        </div>
+    </div>
 
+    <div class="container-fluid   review-section ">
+        <div class="d-flex flex-column">
+            <div class="d-flex justify-content-center mb-40">
+                <div class="d-flex justify-content-center flex-column w-75 reviews p-10 rad-10">
+                    <div class="averge-rate txt-c fs-25 d-block  stats-review">
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="txt-c fs-35 d-block mbf-5">Based on <span class="reviewNumber"></span> reviews</p>
+                    <div class="w-full d-flex justify-content-center mb-60">
+                        <hr class="w-80 bg-white" style="height: 2px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-content w-full p-40 d-flex flex-column">
+                <div class="reviews-info d-flex flex-column mb-30">
+                    <p class="fw-bold fs-25 mb-15 reviewer">Fouad Mohamed </p>
+                    <div class="averge-rate fs-25 d-block mb-40">
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="fs-15 mb-40 review-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <hr class="breaker">
+                </div>
+                <div class="reviews-info d-flex flex-column mb-30">
+                    <p class="fw-bold fs-25 mb-15 reviewer">Mostafa No3man</p>
+                    <div class="averge-rate fs-25 d-block mb-40">
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                    </div>
+                    <p class="fs-15 mb-40 review-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <hr class="breaker">
+                </div>
+                <div class="reviews-info d-flex flex-column mb-30">
+                    <p class="fw-bold fs-25 mb-15 reviewer">Ali Essam</p>
+                    <div class="averge-rate fs-25 d-block mb-40">
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="fs-15 mb-40 review-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <hr class="breaker">
+                </div>
+                <div class="reviews-info d-flex flex-column mb-30">
+                    <p class="fw-bold fs-25 mb-15 reviewer">Ali Elgohary</p>
+                    <div class="averge-rate fs-25 d-block mb-40">
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="fs-15 mb-40 review-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <hr class="breaker">
+                </div>
+                <div class="reviews-info d-flex flex-column mb-30">
+                    <p class="fw-bold fs-25 mb-15 reviewer">Ali Elgohary</p>
+                    <div class="averge-rate fs-25 d-block mb-40">
+                        <i class="fa-solid fa-star" style="color: #0E8388;"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="fs-15 mb-40 review-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <hr class="breaker">
+                </div>
+            </div>
+
+            <div class=" d-flex justify-content-center">
+                <span class="pervious-review hvr-shrink " title="Previous">Previous</span>
+                <span class="next-review hvr-shrink" title="Next">Next</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Reviews  -->
     <!-- start footer   -->
 
     <div class=" container-fluid mt-80 pl-0 footer-back-color rad-10" id="contact">
@@ -271,51 +387,34 @@
                     <li class=" mb-10"> <i class="fa-solid fa-location-dot c-blue"></i> <span class=" ml-5"> lorem</span> </li>
                     <li class=" mb-10"> <i class="fa-solid fa-envelope c-blue"></i> <span class=" ml-5"> <a href="mailto:freesmilemans@gmail.com" class=" c-black" style="text-decoration:none ;"> Mail US</a> </span> </li>
                     <li class=" mb-10"> <i class="fa-solid fa-phone-volume c-blue"></i> <span class=" ml-5"> <a href="tel:+20101-621-8389" class=" c-black" style="text-decoration:none ;"> Call Us</a> </span> </li>
-
                 </ul>
-
             </div>
 
             <div class="col-6 col-lg-3 aroww">
-
                 <p class=" fw-bold mt-25 ">Services</p>
-
                 <ul class="">
-
                     <li class="mb-10 "> <a href="#">Find Patient</a> </li>
                     <li class=" mb-10 "> <a href="#">Articls</a> </li>
                     <li class=" mb-10"> <a href="#">Equipments</a> </li>
                     <li class=" "> <a href="#">Share Patient</a> </li>
-
                 </ul>
-
             </div>
 
-
             <div class="col-6 col-lg-3 aroww">
-
                 <p class=" fw-bold mt-25 ">Usuful Links</p>
-
                 <ul class="">
-
                     <li class="mb-10 "> <a href="#about">About Us</a> </li>
                     <li class=" mb-10 "> <a href="#">Careers</a> </li>
                     <li class=" mb-10"> <a href="login.html">Login</a> </li>
                     <li class=" "> <a href="Register.html">Register</a> </li>
-
                 </ul>
-
             </div>
 
-
             <div class="col-6 col-lg-3 ">
-
                 <p class=" fw-bold mt-25 ">Our Social Networks</p>
-
                 <ul class="">
-
                     <li class=" mb-10">
-                        <a href="#" id="Facebook"> <img src="imgs/Facebook.svg" alt=""> <label class=" ml-5" style="cursor: pointer;" for="Facebook">Facebook</label> </a>
+                        <a href="https://www.facebook.com/foaud.alalamey" id="Facebook"> <img src="imgs/Facebook.svg" alt=""> <label class=" ml-5" style="cursor: pointer;" for="Facebook">Facebook</label> </a>
                     </li>
                     <li class=" mb-10">
                         <a href="#" id="instagram"> <img src="imgs/instagram.svg" alt=""> <label class=" ml-5" style="cursor: pointer;" for="instagram">instagram</label> </a>
@@ -326,9 +425,7 @@
                     <li class="      ">
                         <a href="#" id="linkdin"> <img src="imgs/linkdin.svg" alt=""> <label class=" ml-5" style="cursor: pointer;" for="linkdin">linkdin</label> </a>
                     </li>
-
                 </ul>
-
             </div>
 
 
@@ -356,14 +453,12 @@
     <script src="js/all.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/jquery-3.6.1.min.js "></script>
+    <script src="js/helper.js"></script>
     <script src="js/main.js "></script>
 
 
-    <script>
-        // $(".w-50-mob").mouseleave(function() {
-        //     $(this).removeClass("animate__animated animate__backInUp")
-        // })
-    </script>
+
+
 </body>
 
 </html>

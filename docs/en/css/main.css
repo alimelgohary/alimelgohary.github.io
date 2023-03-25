@@ -22,6 +22,10 @@ body {
     transition-duration: .5s;
 }
 
+.collapse .navbar-nav a {
+    color: black;
+}
+
 
 /* start landing  */
 
@@ -45,14 +49,41 @@ body {
 
 .text-Landing {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 29px;
-    color: #522A08;
-    font-weight: bolder;
-    font-style: italic;
-    text-align: center;
+    left: 5%;
+    top: 5%;
+    color: white;
+    max-width: 40%;
+}
+
+.landing .text-Landing ul {
+    list-style-type: disc;
+}
+
+.gotopatient,
+.gotodentist {
+    padding: 25px 50px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.gotopatient {
+    background-color: #0E8388;
+    border: 2px solid #0E8388;
+    margin-right: 30px;
+}
+
+.gotodentist {
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.gotopatient:hover {
+    color: #eee;
+}
+
+.gotodentist:hover {
+    color: #eee;
 }
 
 .s-heading {
@@ -65,6 +96,15 @@ body {
     margin-bottom: 50px;
 }
 
+.s2-heading {
+    color: #4177ab;
+    font-size: 90px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin-bottom: 50px;
+}
+
 @media(max-width:300px) {
     .s-heading {
         font-size: 40px;
@@ -73,6 +113,51 @@ body {
     .c-heading {
         font-size: 40px !important;
         margin-left: 40px !important;
+    }
+}
+
+@media(max-width:1115px) {
+    .text-Landing p {
+        font-size: 30px;
+    }
+    .text-Landing ul {
+        font-size: 15px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 10px 20px;
+        font-size: 17px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@media(min-width:460px) and (max-width:805px) {
+    .text-Landing p {
+        font-size: 20px;
+    }
+    .text-Landing ul {
+        font-size: 12px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 7px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@media (max-width:690px) {
+    .text-Landing p {
+        font-size: 20px;
+    }
+    .text-Landing ul {
+        font-size: 12px;
+    }
+    .gotopatient,
+    .gotodentist {
+        display: none;
     }
 }
 
@@ -134,7 +219,7 @@ body {
 /* end landing  */
 
 .navbar .active:hover {
-    color: black;
+    color: white;
 }
 
 
@@ -257,8 +342,14 @@ body {
 }
 
 .slider-resizing {
-    width: 1427px;
-    height: 400px;
+    width: 1500px;
+    height: 450px;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
 }
 
 a {
@@ -304,4 +395,30 @@ a {
     margin-top: 20px;
     font-size: 30px;
     font-weight: bold;
+}
+
+.reviews {
+    background-color: #D2D2D2;
+}
+
+hr.breaker {
+    border: 1px solid black;
+    color: black;
+}
+
+.pervious-review,
+.next-review {
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #012f63;
+    cursor: pointer;
+}
+
+.pervious-review {
+    margin-right: 10px;
+    color: gray;
+    cursor: context-menu;
 }
