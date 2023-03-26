@@ -11,7 +11,7 @@
      $(".phonenum").keypress(function(event) {
          if (isNaN(event.key)) {
              event.preventDefault();
-         } else if (event.key == 0 && $(".phonenum").val().length == 0) {
+         } else if (event.key != 1 && $(".phonenum").val().length == 0) {
              event.preventDefault();
          }
      })

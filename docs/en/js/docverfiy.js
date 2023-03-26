@@ -61,7 +61,7 @@
             error: function(xhr, status, error) {
                 let errorobj = xhr.responseJSON.errors
 
-                if (xhr.responseJSON.error == "You have already requested verification") {
+                if (xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
                     window.location.href = "wait.html"
                 } else if (errorobj.hasOwnProperty('NatIdPhoto')) {
                     $(".idphotoerror").text(errorobj.NatIdPhoto[0]);
@@ -73,7 +73,7 @@
                     $(".universityiderror").text("You are not authorithed");
                     $(".universityiderror").css('display', 'block');
                     setTimeout(function() {
-                        window.location.replace(".../login.html");
+                        window.location.replace("../login.html");
                     }, 1000)
                 } else if (xhr.status == 500) {
                     $(".servererror").text(xhr.responseJSON.error);

@@ -7,35 +7,40 @@
         language = window.localStorage.getItem("language");
     }
 
-    $.ajax({
-        "method": "GET",
-        "url": apiUrl + "/api/Users/IsAllowedToHome",
-        "xhrFields": {
-            "withCredentials": true
-        },
-        "headers": {
-            "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "69420",
-            "Accept-Language": language
-        },
-        "data": {},
-        success: function(data, st, xhr) {
-            if (data.nextPage == "homePatient") {
-                window.location.href = "patient/home.html"
-            } else if (data.nextPage == "homeDentist") {
-                window.location.href = "dentist/home.html";
-            } else if (data.nextPage == "homeAdmin") {
-                window.location.href = "../dashboard.html";
+
+    $(window).on('beforeunload', function() {
+        $.ajax({
+            "method": "GET",
+            "url": apiUrl + "/api/Users/IsAllowedToHome",
+            "xhrFields": {
+                "withCredentials": true
+            },
+            "headers": {
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
+                "Accept-Language": language
+            },
+            "data": {},
+            success: function(data, st, xhr) {
+                if (data.nextPage == "homePatient") {
+                    window.location.href = "patient/home.html"
+                } else if (data.nextPage == "homeDentist") {
+                    window.location.href = "dentist/home.html";
+                } else if (data.nextPage == "homeAdmin") {
+                    window.location.href = "../dashboard.html";
+                }
+            },
+            error: function(xhr, status, err) {
+                if (xhr.status == 400 && xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
+                    window.location.href = "dentist/wait.html";
+                } else if (xhr.status == 400 && xhr.responseJSON.nextPage == 'verifyDentist') {
+                    window.location.href = "dentist/verify.html";
+                }
             }
-        },
-        error: function(xhr, status, err) {
-            if (xhr.status == 400 && xhr.responseJSON.nextPage == "pendingVerificationAcceptance") {
-                window.location.href = "dentist/wait.html";
-            } else if (xhr.status == 400 && xhr.responseJSON.nextPage == 'verifyDentist') {
-                window.location.href = "dentist/verify.html";
-            }
-        }
-    })
+        })
+    });
+
+
 
     $("form").submit(function(event) {
         event.preventDefault();
