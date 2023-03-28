@@ -118,15 +118,15 @@ body {
 
 @media(max-width:1115px) {
     .text-Landing p {
-        font-size: 30px;
+        font-size: 40px;
     }
     .text-Landing ul {
-        font-size: 15px;
+        font-size: 20px;
     }
     .gotopatient,
     .gotodentist {
-        padding: 10px 20px;
-        font-size: 17px;
+        padding: 15px 30px;
+        font-size: 20px;
         font-weight: bold;
         color: white;
     }
@@ -148,6 +148,22 @@ body {
     }
 }
 
+@media(min-width:805px) and (max-width:1002px) {
+    .text-Landing p {
+        font-size: 22px;
+    }
+    .text-Landing ul {
+        font-size: 16px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
 @media (max-width:690px) {
     .text-Landing p {
         font-size: 20px;
@@ -157,7 +173,80 @@ body {
     }
     .gotopatient,
     .gotodentist {
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@media (max-width:500px) {
+    .text-Landing p {
+        font-size: 10px;
+    }
+    .text-Landing ul {
+        font-size: 7px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 4px 8px;
+        font-size: 8px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@media (max-width:360px) {
+    .text-Landing p {
+        font-size: 10px;
+    }
+    .text-Landing ul {
         display: none;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 4px 8px;
+        font-size: 8px;
+        font-weight: bold;
+        color: white;
+    }
+}
+
+@media(min-width:360px) and (max-width:460px) {
+    .text-Landing p {
+        font-size: 10px;
+    }
+    .text-Landing ul {
+        font-size: 6px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 4px 8px;
+        font-size: 7px;
+        font-weight: bold;
+        color: white;
+    }
+    .landing ul {
+        margin-bottom: 20px;
+    }
+}
+
+@media(min-width:501px) and (max-width:636px) {
+    .text-Landing p {
+        font-size: 15px;
+    }
+    .text-Landing ul {
+        font-size: 8px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 4px 8px;
+        font-size: 7px;
+        font-weight: bold;
+        color: white;
+    }
+    .landing ul {
+        margin-bottom: 20px;
     }
 }
 

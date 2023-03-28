@@ -12,10 +12,10 @@
     let navbarc = document.querySelector(".navbar");
     $(document).scroll(function() {
         if (navbarc.offsetTop > 0) {
-            navbarc.style.backgroundColor = "#99B3B7";
+            navbarc.style.backgroundColor = "#CBE4DE";
             navbarc.style.opacity = ".5";
         } else {
-            navbarc.style.backgroundColor = "#99B3B7";
+            navbarc.style.backgroundColor = "#CBE4DE";
             navbarc.style.opacity = "1";
         }
     })
@@ -119,9 +119,9 @@
             $(".numOfPatient").text(data.numberOfPatients);
         },
         error: function(xhr, status, err) {
-            $(".numOfPosts").text("error");
-            $(".numOfDentist").text("error");
-            $(".numOfPatient").text("error");
+            $(".numOfPosts").text("0");
+            $(".numOfDentist").text("0");
+            $(".numOfPatient").text("0");
         }
     })
 
