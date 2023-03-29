@@ -38,7 +38,7 @@
                 <img src="imgs/logo.svg" class="" alt="logo">
             </div>
 
-            <h3 class=" mt-40 fw-bold fs-25 txt-c ">Forget Password</h3>
+            <h3 class=" mt-40 fw-bold fs-25 txt-c ">Reset Password</h3>
 
 
             <div class="confirmpass bg-white mt-30 p-30 mb-3">
@@ -59,14 +59,17 @@
 
                     <div class="mb-5">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input placeholder="must contain 1 lowercase letter , Upper , special , number" required name="password" minlength="8" maxlength="50" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-+=:\[\]?\._;])[A-Za-z\d\s!@#$%^&*()\-+=:\[\]?\._;~`']{4,}$"
-                            autocomplete="off" style="background-color:#9AE0FF;" type="password" class="form-control" id="password">
+
+
+                        <input placeholder="Enter your new password" required name="password" minlength="10" maxlength="50" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-+=:\[\]?\._;])[A-Za-z\d\s!@#$%^&*()\-+=:\[\]?\._;~`']{4,}$" autocomplete="off"
+                            style="background-color:#9AE0FF;" type="password" title="Password must contain at least one uppercase, one lowercase, one number and one special character " class="form-control" id="password">
+
                     </div>
 
                     <div class="mb-5">
                         <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                        <input required name="password" autocomplete="off" style="background-color:#9AE0FF;" type="password" class="form-control" id="vpassword">
-                        <p class=" c-red mt-2 fs-13 txt-c  confirm-pass">The password dos'nt match</p>
+                        <input required name="password" autocomplete="off" style="background-color:#9AE0FF;" type="password" placeholder="Enter your new password again" class="form-control" id="vpassword">
+                        <p class=" c-red mt-2 fs-13 txt-c  confirm-pass">The password doesn't match</p>
                     </div>
 
                     <div class="w-full d-flex justify-content-center">
@@ -81,7 +84,7 @@
                 <a href="#">Terms</a>
                 <a href="#">Privacy</a>
                 <a href="#">Security</a>
-                <a href="#">Contatcts</a>
+                <a href="mailto:freesmilemans@gmail.com" class=" ">Contact Us</a>
 
             </div>
         </div>
