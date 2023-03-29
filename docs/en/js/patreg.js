@@ -141,10 +141,9 @@
                  if (xhr.status == 500) {
                      $(".servererror").text(xhr.responseJSON.error);
                      $(".servererror").css('display', 'block');
-                 }
-                 if (errorMessages.hasOwnProperty('error')) {
-                     $(".emailerror").text(errorMessages.error);
-                     $(".emailerror").css('display', 'block');
+                 } else if (errorMessages.hasOwnProperty('error')) {
+                     $(".servererror").text(errorMessages.error);
+                     $(".servererror").css('display', 'block');
                  }
              }
          })

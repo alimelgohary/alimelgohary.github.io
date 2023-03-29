@@ -63,11 +63,25 @@
                     }, 1000)
                 },
                 error: function(xhr, status, err) {
-                    errorMessage = JSON.parse(xhr.responseText);
+                    errorMessages = xhr.responseJSON;
+
                     console.log(xhr)
-                    $(".confirm-pass").text(errorMessage.title);
-                    $(".confirm-pass").css("display", "block");
-                    console.log($("#otp1").val() + $("#otp2").val() + $("#otp3").val() + $("#otp4").val() + $("#otp5").val() + $("#otp6").val())
+                    if (errorMessages.hasOwnProperty('errors')) {
+                        if (errorMessages.hasOwnProperty('UsernameOrEmail')) {
+                            $(".confirm-pass").text(errorMessages.UsernameOrEmail);
+                            $(".confirm-pass").css("display", "block");
+                            setTimeout(function() {
+                                window.location.href = "forgot.html"
+                            }, 1000)
+
+                        }
+                    } else if (errorMessages.hasOwnProperty('error')) {
+                        $(".confirm-pass").text(errorMessages.error);
+                        $(".confirm-pass").css("display", "block");
+                    } else if (xhr.status == 500) {
+                        $(".confirm-pass").text("Something went wrong, please try again later.");
+                        $(".confirm-pass").css("display", "block");
+                    }
                 }
             })
         })
