@@ -30,7 +30,7 @@
                    window.sessionStorage.setItem("username", emailName);
                    setTimeout(function() {
                        window.location.href = "confirmpass.html"
-                   }, 1000)
+                   }, 2000)
                },
                error: function(xhr, status, err) {
                    errorMessage = JSON.parse(xhr.responseText);

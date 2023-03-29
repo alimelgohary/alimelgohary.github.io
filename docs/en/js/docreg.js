@@ -88,7 +88,7 @@
             delete obData.birthdate
         }
         if (phoneNumber.length == 0) {
-            delete obData.phoneNumber
+            delete obData.phone
         }
         let jsonData = JSON.stringify(obData);
 
@@ -156,7 +156,7 @@
                     $(".phonenumerror").css('display', 'none');
                 }
                 if (newobj.hasOwnProperty('birthdate')) {
-                    $(".emailerror").text(newobj.birthdate[0]);
+                    $(".birthdayerror").text(newobj.birthdate[0]);
                     $(".birthdayerror").css('display', 'block');
                 }
                 if (xhr.status == 500) {
@@ -164,8 +164,8 @@
                     $(".servererror").css('display', 'block');
                 }
                 if (errorMessages.hasOwnProperty('error')) {
-                    $(".emailerror").text(errorMessages.error);
-                    $(".emailerror").css('display', 'block');
+                    $(".servererror").text(errorMessages.error);
+                    $(".servererror").css('display', 'block');
                 }
             }
         })
