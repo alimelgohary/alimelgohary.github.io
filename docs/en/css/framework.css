@@ -54,6 +54,10 @@
 
 /* Start Padding + Margin */
 
+.fluied-pading-container {
+    padding: 0 27px !important;
+}
+
 .p-10 {
     padding: 10px;
 }
