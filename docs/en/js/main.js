@@ -15,7 +15,7 @@
         offset: 200, // Offset (in pixels) from the top of the element when animation starts
         delay: 50, // Delay (in milliseconds) before the animation starts
         easing: 'ease-in-out', // Easing function for the animation
-        once: false // Animation will only happen once
+        once: true // Animation will only happen once
 
     });
 
@@ -96,7 +96,7 @@
                             stars += '<i class="fa-regular fa-star"></i>';
                         }
                     }
-                    content += `<div class="reviews-info d-flex flex-column mb-30 " data-aos="fade-right" data-aos-mirror="false">
+                    content += `<div class="reviews-info d-flex flex-column mb-30 " data-aos="fade-right" data-aos-mirror="true">
                     <p class="fw-bold fs-25 mb-15 reviewer">${ data[i].reviewer} </p>
                     <div class="averge-rate fs-25 d-block mb-40">${stars}
                     </div>
@@ -104,6 +104,7 @@
                     <hr class="breaker">
                 </div>`;
                     stars = "";
+
                 }
                 $(".review-content").html(content)
                 console.log(data)
@@ -205,7 +206,7 @@
                                     stars += '<i class="fa-regular fa-star"></i>';
                                 }
                             }
-                            content += `<div class="reviews-info d-flex flex-column mb-30">
+                            content += `<div class="reviews-info d-flex flex-column mb-30"  data-aos="fade-right" data-aos-mirror="true">
                     <p class="fw-bold fs-25 mb-15 reviewer">${ data[i].reviewer} </p>
                     <div class="averge-rate fs-25 d-block mb-40">${stars}
                     </div>
@@ -215,6 +216,7 @@
                             stars = "";
                         }
                         $(".review-content").html(content)
+
                         console.log(data)
                     },
                     error: function(xhr, status, err) {}
@@ -251,7 +253,7 @@
                                 stars += '<i class="fa-regular fa-star"></i>';
                             }
                         }
-                        content += `<div class="reviews-info d-flex flex-column mb-30">
+                        content += `<div class="reviews-info d-flex flex-column mb-30"  data-aos="fade-right" data-aos-mirror="true">
                     <p class="fw-bold fs-25 mb-15 reviewer">${ data[i].reviewer} </p>
                     <div class="averge-rate fs-25 d-block mb-40">${stars}
                     </div>
