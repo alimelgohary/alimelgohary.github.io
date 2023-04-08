@@ -9,6 +9,16 @@
         $(this).toggleClass("animate__animated animate__flash")
     })
 
+    AOS.init();
+    AOS.init({
+        duration: 1200, // Animation duration in milliseconds
+        offset: 200, // Offset (in pixels) from the top of the element when animation starts
+        delay: 50, // Delay (in milliseconds) before the animation starts
+        easing: 'ease-in-out', // Easing function for the animation
+        once: false // Animation will only happen once
+
+    });
+
     let navbarc = document.querySelector(".navbar");
     $(document).scroll(function() {
         if (navbarc.offsetTop > 0) {
@@ -86,7 +96,7 @@
                             stars += '<i class="fa-regular fa-star"></i>';
                         }
                     }
-                    content += `<div class="reviews-info d-flex flex-column mb-30">
+                    content += `<div class="reviews-info d-flex flex-column mb-30 " data-aos="fade-right" data-aos-mirror="false">
                     <p class="fw-bold fs-25 mb-15 reviewer">${ data[i].reviewer} </p>
                     <div class="averge-rate fs-25 d-block mb-40">${stars}
                     </div>

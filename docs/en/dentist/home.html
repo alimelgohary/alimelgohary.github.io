@@ -22,40 +22,67 @@
     <title>Home</title>
     <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
 
-    <style>
-        .search::before {
-            font-family: var(--fa-style-family-classic);
-            content: "\f002";
-            font-weight: 900;
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            color: var(--grey-color);
-        }
-        
-        .search input {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin-left: 5px;
-            padding-left: 30px;
-            width: 160px;
-            transition: width 0.3s;
-        }
-        
-        .search input:focus {
-            width: 200px;
-        }
-    </style>
+
 </head>
 
 <body>
 
-    <div class="search p-relative">
-        <input type="search" placeholder="Type a Word" class="p-10 ">
+    <nav class="navbar navbar-expand-lg   position-sticky fixed-top overflow-hidden " style="background-color: #CBE4DE;">
+        <div class="container-fluid ">
+            <a class="navbar-brand " href="index.html"><img style="width: 50px; height:auto" src="../imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon bg-light mt-3"><i class="fa-solid fa-bars "></i></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex justify-content-between flex-row w-full col-mob">
+                    <div class="d-flex justify-content-center align-center">
+                        <li class="nav-item  fs-5 ml-220">
+                            <div class="search p-relative">
+                                <input type="search" placeholder="Type a Word" class="p-10 ">
 
-    </div>
+                            </div>
+                        </li>
+                    </div>
+                    <div class="d-flex col-mob">
+                        <li class="nav-item  fs-5 mr-10">
+                            <a href="" class="nav-link active en"><span class="c-black fs-25 mr-5" id="language">EN</span><i class="fa-solid fa-globe fs-25 c-black"></i> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 d-none d-lg-block  l-border">
+                            <a href="" class="nav-link active en"> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15  ">
+                            <a href="" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15 hvr-buzz ">
+                            <a href="" class="nav-link active en"><img src="../imgs/bell.svg" style="max-width:50px; width: 30px;"> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15">
+                            <a href="" class="nav-link active en"><img src="../imgs/profilepic.svg" style="max-width:50px; width: 30px;"> </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+    <!-- 
+
+    -->
+
+
+
+
 
 
 
@@ -68,9 +95,11 @@
     <script src="../js/helper.js"></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
 
-
-
     <script>
+        $("a.nav-link").click(function(e) {
+            e.preventDefault();
+
+        })
     </script>
 </body>
 
