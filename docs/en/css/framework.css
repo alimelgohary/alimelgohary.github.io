@@ -6,6 +6,11 @@
     --red-color: #f44336;
     --grey-color: #888;
     --fa-style-family-classic: "Font Awesome 6 Free";
+    --heading-color: #012f63;
+    /* --backgroung--color: #012F63; */
+    --text--clolor: #FE667B;
+    --footer-color: #0E8388;
+    --backgroung--color: #A6E3E9;
 }
 
 
@@ -33,6 +38,10 @@
 
 .gap-20 {
     gap: 20px;
+}
+
+.over-hide {
+    overflow: hidden;
 }
 
 .d-block {
@@ -170,6 +179,10 @@
     margin-top: 80px;
 }
 
+.mr-5 {
+    margin-right: 5px;
+}
+
 .mr-10 {
     margin-right: 10px;
 }
@@ -180,6 +193,42 @@
 
 .mr-20 {
     margin-right: 20px;
+}
+
+.mr-30 {
+    margin-right: 30px;
+}
+
+.mr-40 {
+    margin-right: 40px;
+}
+
+.mr-35 {
+    margin-right: 35px;
+}
+
+.mr-45 {
+    margin-right: 45px;
+}
+
+.mr-55 {
+    margin-right: 55px;
+}
+
+.mr-65 {
+    margin-right: 65px;
+}
+
+.mr-75 {
+    margin-right: 75px;
+}
+
+.mr-85 {
+    margin-right: 85px;
+}
+
+.mr-95 {
+    margin-right: 95px;
 }
 
 .mbf-5 {
@@ -240,6 +289,18 @@
 
 .ml-30 {
     margin-left: 30px;
+}
+
+.ml-200 {
+    margin-left: 200px;
+}
+
+.ml-220 {
+    margin-left: 220px;
+}
+
+.ml-250 {
+    margin-left: 250px;
 }
 
 
@@ -479,4 +540,12 @@
 .btn-shape {
     padding: 4px 10px;
     border-radius: 6px;
+}
+
+.r-border {
+    border-right: 2px solid #eee;
+}
+
+.l-border {
+    border-left: 2px solid #eee;
 }
