@@ -518,3 +518,41 @@ hr.breaker {
     color: gray;
     cursor: context-menu;
 }
+
+@media (min-width: 1120px) and (min-height: 720px) {
+    .text-Landing p {
+        font-size: 50px;
+    }
+    .text-Landing ul {
+        font-size: 20px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 15px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+    }
+    .landing ul {
+        margin-bottom: 30px;
+    }
+}
+
+@media (min-width: 1250px) and (min-height: 720px) {
+    .text-Landing p {
+        font-size: 60px;
+    }
+    .text-Landing ul {
+        font-size: 25px;
+    }
+    .gotopatient,
+    .gotodentist {
+        padding: 20px 28px;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+    }
+    .landing ul {
+        margin-bottom: 40px;
+    }
+}
