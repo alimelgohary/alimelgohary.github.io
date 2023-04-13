@@ -67,7 +67,10 @@
                             <p class=" fw-bold mt-20">National ID Photo <span class="c-grey fs-13">( Face )</span>*</p>
                             <input accept="image/*" required type="file" name="file[]" id="nationalphoto" class="idphoto d-none">
                             <div class="d-flex align-center justify-content-between">
-                                <p class="mt-20 txt-c rad-10  p-10  fidphoto" style="display: inline-block;background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+                                <div class="d-flex flex-column">
+                                    <p class="mt-20 txt-c rad-10  p-10  fidphoto" style="display: inline-block;background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+                                    <span class="idphotoname txt-c"></span>
+                                </div>
                                 <span class="c-red fs-15 idphotoerror ">error message </span>
                             </div>
                         </div>
@@ -78,7 +81,10 @@
 
                             <input accept="image/*" required type="file" name="file[]" id="universityid" class="idphoto2 d-none">
                             <div class="d-flex align-center justify-content-between">
-                                <p class="mt-20 txt-c rad-10 p-10 babyblue-background-color2 fidphoto2" style="background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+                                <div class="d-flex flex-column">
+                                    <p class="mt-20 txt-c rad-10 p-10 babyblue-background-color2 fidphoto2" style="background-color: #71C9CE; cursor: pointer;"> Upload Photo</p>
+                                    <span class="universityidname txt-c"></span>
+                                </div>
                                 <span class="c-red fs-15 universityiderror ">error message </span>
                             </div>
                         </div>
@@ -90,7 +96,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn  w-50 rad-10" style="background-color: #71C9CE;">Submit</button>
+                    <button type="submit" class="btn  w-50 rad-10 mt-20 mb-20" style="background-color: #71C9CE;">Submit</button>
 
                 </div>
                 <p class="servererror c-red fs-13 txt-c"></p>
