@@ -6,37 +6,37 @@
         language = "en";
     }
     // checking for user state when page load and redirect him
-    // $.ajax({
-    //     "method": "PUT",
-    //     "url": apiUrl + "/api/Users/RequestOtp",
-    //     "xhrFields": {
-    //         "withCredentials": true
-    //     },
-    //     "headers": {
-    //         "Content-Type": "application/json",
-    //         "ngrok-skip-browser-warning": "69420",
-    //         "Accept-Language": language
-    //     },
-    //     "data": "{}",
-    //     success: function(data, st, xhr) {
+    $.ajax({
+        "method": "PUT",
+        "url": apiUrl + "/api/Users/RequestOtp",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "headers": {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+            "Accept-Language": language
+        },
+        "data": "{}",
+        success: function(data, st, xhr) {
 
-    //     },
-    //     error: function(xhr, status, err) {
-    //         if (xhr.status == 401) {
-    //             $(".servererror").text("you are  Unauthorized ");
-    //             $(".servererror").css("display", "block");
-    //             setTimeout(function() {
-    //                 window.location.href = "../login.html"
-    //             }, 2000)
-    //         } else if (xhr.status == 500) {
-    //             $(".servererror").text(xhr.responseJSON.error);
-    //             $(".servererror").css("display", "block");
-    //         } else {
-    //             $(".servererror").text(xhr.responseJSON.error);
-    //             $(".servererror").css("display", "block");
-    //         }
-    //     }
-    // })
+        },
+        error: function(xhr, status, err) {
+            if (xhr.status == 401) {
+                $(".servererror").text("you are  Unauthorized ");
+                $(".servererror").css("display", "block");
+                setTimeout(function() {
+                    window.location.href = "../login.html"
+                }, 2000)
+            } else if (xhr.status == 500) {
+                $(".servererror").text(xhr.responseJSON.error);
+                $(".servererror").css("display", "block");
+            } else {
+                $(".servererror").text(xhr.responseJSON.error);
+                $(".servererror").css("display", "block");
+            }
+        }
+    })
 
 
     // Load Universities from server
