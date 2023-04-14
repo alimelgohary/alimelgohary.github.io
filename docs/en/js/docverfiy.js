@@ -19,9 +19,10 @@
         },
         "data": "{}",
         success: function(data, st, xhr) {
-
+            console.log(data);
         },
         error: function(xhr, status, err) {
+            console.log(xhr)
             if (xhr.status == 401) {
                 $(".servererror").text("you are  Unauthorized ");
                 $(".servererror").css("display", "block");
@@ -29,9 +30,6 @@
                     window.location.href = "../login.html"
                 }, 2000)
             } else if (xhr.status == 500) {
-                $(".servererror").text(xhr.responseJSON.error);
-                $(".servererror").css("display", "block");
-            } else {
                 $(".servererror").text(xhr.responseJSON.error);
                 $(".servererror").css("display", "block");
             }
@@ -81,8 +79,28 @@
 
     // send data to API 
 
+
+    $(".send").click(function() {
+        if ($("#nationalphoto").val() == "") {
+            $(".idphotoerror").text("this feild is required");
+            $(".idphotoerror").css("display", "block");
+        } else {
+            $(".idphotoerror").text("");
+            $(".idphotoerror").css("display", "none");
+        }
+        if ($("#universityid").val() == "") {
+            $(".universityiderror").text("this feild is required");
+            $(".universityiderror").css("display", "block");
+        } else {
+            $(".universityiderror").text("");
+            $(".universityiderror").css("display", "none");
+        }
+    })
+
     $("form").submit(function(event) {
         event.preventDefault();
+
+
         let academicDegree = $("#acadimic-deg").val();
         let nationalId = $("#nationalphoto").prop('files')[0];
         let universityId = $("#universityid").prop('files')[0];

@@ -8,7 +8,8 @@
     }
 
 
-    $(window).on('beforeunload', function() {
+    $(document).ready(function() {
+
         $.ajax({
             "method": "GET",
             "url": apiUrl + "/api/Users/IsAllowedToHome",
