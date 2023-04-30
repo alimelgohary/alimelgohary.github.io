@@ -112,7 +112,7 @@
         formData.append('proofOfDegreePhoto', universityId);
 
         $.ajax({
-            url: apiUrl + "/api/Dentists/RequestVerification",
+            url: apiUrl + "/api/Users/RequestVerification",
             method: 'POST',
             data: formData,
             "xhrFields": {
