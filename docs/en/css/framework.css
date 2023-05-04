@@ -67,6 +67,10 @@
     padding: 0 27px !important;
 }
 
+.p-px-5 {
+    padding: 5px;
+}
+
 .p-10 {
     padding: 10px;
 }
@@ -143,6 +147,10 @@
     margin-top: 0;
 }
 
+.mt-px-5 {
+    margin-top: 5px;
+}
+
 .mt-5 {
     margin-top: 5px;
 }
@@ -157,6 +165,10 @@
 
 .mt-20 {
     margin-top: 20px;
+}
+
+.mt-rem-20 {
+    margin-top: 1.25rem;
 }
 
 .mt-25 {
@@ -180,6 +192,10 @@
 }
 
 .mr-5 {
+    margin-right: 5px;
+}
+
+.mr-px-5 {
     margin-right: 5px;
 }
 
@@ -231,6 +247,10 @@
     margin-right: 95px;
 }
 
+.mr-100 {
+    margin-right: 100px;
+}
+
 .mbf-5 {
     margin-bottom: 5px;
 }
@@ -263,6 +283,10 @@
     margin-bottom: 50px;
 }
 
+.mb-rem-50 {
+    margin-bottom: 3.125rem;
+}
+
 .mb-60 {
     margin-bottom: 60px;
 }
@@ -289,6 +313,14 @@
 
 .ml-30 {
     margin-left: 30px;
+}
+
+.ml-100 {
+    margin-left: 100px;
+}
+
+.ml-130 {
+    margin-left: 130px;
 }
 
 .ml-200 {
@@ -394,16 +426,52 @@
     text-align: center;
 }
 
+.fs-rem-10 {
+    font-size: 0.625rem;
+}
+
+.fs-rem-11 {
+    font-size: 0.688rem;
+}
+
+.fs-rem-12 {
+    font-size: 0.75rem;
+}
+
 .fs-13 {
     font-size: 13px;
+}
+
+.fs-rem-13 {
+    font-size: 0.813rem;
 }
 
 .fs-14 {
     font-size: 14px;
 }
 
+.fs-rem-14 {
+    font-size: 0.875rem;
+}
+
 .fs-15 {
     font-size: 15px;
+}
+
+.fs-rem-20 {
+    font-size: 1.25rem;
+}
+
+.fs-rem-25 {
+    font-size: 1.563rem;
+}
+
+.fs-rem-30 {
+    font-size: 1.875rem;
+}
+
+.fs-rem-35 {
+    font-size: 2.188rem;
 }
 
 .fs-20 {
@@ -473,6 +541,14 @@
     border-radius: 10px;
 }
 
+.rad-20 {
+    border-radius: 20px;
+}
+
+.rad-25 {
+    border-radius: 25px;
+}
+
 .rad-half {
     border-radius: 50%;
 }
@@ -503,8 +579,32 @@
     width: 100px;
 }
 
+.w-30 {
+    width: 30%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
 .w-80 {
     width: 80%;
+}
+
+.w-90 {
+    width: 90%;
 }
 
 .w-fit {
@@ -548,4 +648,23 @@
 
 .l-border {
     border-left: 2px solid #eee;
+}
+
+
+/* line heights */
+
+.l-1-1 {
+    line-height: 1.1;
+}
+
+.l-1-2 {
+    line-height: 1.2;
+}
+
+.l-1-32 {
+    line-height: 1.32;
+}
+
+.l-1-4 {
+    line-height: 1.4;
 }

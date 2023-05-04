@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
 
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../css/Normalize.css">
     <link rel="stylesheet" href="../css/imagehover.min.css">
     <link rel="stylesheet" href="../css/imagehover.css">
@@ -19,7 +24,7 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/hover.css">
     <link rel="stylesheet" href="../css/home.css">
-    <title>Home</title>
+    <title>Articles</title>
     <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
 
 
@@ -40,7 +45,7 @@
                             <!-- make it margin right instead of left in arabic -->
                             <div class="search p-relative">
                                 <span class="search-icon"></span>
-                                <input type="search" placeholder="Type a Word" id="search" class="p-10 ">
+                                <input type="search" placeholder="Type a Word" class="p-10 ">
 
                             </div>
                         </li>
@@ -81,25 +86,60 @@
                     <li class="mb-30 mt-20 w-full p-10 rad-20">
                         <a href="profile.html"><img src="../imgs/profilepic.svg" style="width: 35px;" id="userphoto"><span class="txt-c ml-5 nameofapge" id="username"> Fouad Mohamed </span></a>
                     </li>
-                    <li class="mb-30 nav-bg w-full  p-10  home-bg">
+                    <li class="mb-30  w-full  p-10 ">
                         <div class="dropdown">
                             <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/findperson.svg"  style="width: 43px;"> <span class="nameofapge" id="findpatient">Find patient</span>
                             </button>
                             <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#" id="findpatientselect1">Action</a></li>
+                                <li><a class="dropdown-item" href="home.html" id="findpatientselect1">Action</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#" id="findpatientselect2">Another action</a></li>
+                                <li><a class="dropdown-item" href="home.html" id="findpatientselect2">Another action</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#" id="findpatientselect3">Something else </a></li>
+                                <li><a class="dropdown-item" href="home.html" id="findpatientselect3">Something else </a></li>
                             </ul>
                         </div>
                     </li>
-
+                    <li class="mb-30 w-full p-10 rad-20">
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../imgs/marketplace.svg"  style="width: 43px;"> <span class="nameofapge" id="marketplace">Marketplace</span>
+                            </button>
+                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect1">Action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect2">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect3">Something else </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-30 w-full p-10  home-bg">
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../imgs/homearticles.svg"  style="width: 43px;"> <span class="nameofapge" id="articles">Articles</span>
+                            </button>
+                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton3">
+                                <li><a class="dropdown-item" href="#" id="articlesselect1">Action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="articlesselect2">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="articlesselect3">Something else </a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
 
             </div>
@@ -163,15 +203,11 @@
                             </div>
                             <div class="post-call mt-40">
                                 <div class="w-full d-flex justify-content-between align-center">
-                                    <div class="call">
-                                        <button type="button" class="btn btn-secondary button-bg disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="01016218389">
-                                           <i class="fa-solid fa-phone-volume hvr-buzz mr-px-5"></i> <span>Call</span>
-                                        </button>
+                                    <div class="likes">
+                                        <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">100</span>
                                     </div>
-                                    <div class="chat">
-                                        <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
-                                           <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
-                                        </button>
+                                    <div class="comments">
+                                        <i class="fa-regular fa-comment fa-flip-horizontal fs-rem-30" style="color: #0e8388;"></i><span class="numofcomments fw-bold fs-rem-25 ml-10">15</span>
                                     </div>
                                 </div>
                             </div>
@@ -332,15 +368,11 @@
                             </div>
                             <div class="post-call mt-40">
                                 <div class="w-full d-flex justify-content-between align-center">
-                                    <div class="call">
-                                        <button type="button" class="btn btn-secondary button-bg " data-bs-toggle="tooltip" data-bs-placement="top" title="01016218389">
-                                           <i class="fa-solid fa-phone-volume hvr-buzz mr-px-5"></i> <span>Call</span>
-                                        </button>
+                                    <div class="likes">
+                                        <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">100</span>
                                     </div>
-                                    <div class="chat">
-                                        <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
-                                           <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
-                                        </button>
+                                    <div class="comments">
+                                        <i class="fa-regular fa-comment fa-flip-horizontal fs-rem-30" style="color: #0e8388;"></i><span class="numofcomments fw-bold fs-rem-25 ml-10">15</span>
                                     </div>
                                 </div>
                             </div>
@@ -389,6 +421,7 @@
         </div>
 
     </div>
+
 
 
 
@@ -497,6 +530,7 @@
 
 
 
+
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary  modal2-button d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
@@ -513,20 +547,13 @@
                 <div class="modal-body">
                     <div class="modalbody ">
 
-                        <div class="choosecase d-flex justify-content-evenly">
-                            <div>
-                                <input type="radio" id="Requestapatient" value="requestapatient" name="case"><label for="Requestapatient" id="requestapatient" class="ml-10 fw-bold">Request a patient</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="Sharecase" value="sharecase" name="case"><label for="Sharecase" id="sharecase" class="ml-10 fw-bold">Share case with other dentists</label>
-                            </div>
-                        </div>
 
-                        <div class="Requestapatient">
+
+                        <div class="Requestapatient d-block">
                             <div class="sendcase w-full d-flex justify-content-center mt-30">
                                 <form class="bg-white w-80 d-flex flex-column p-30 mb-60">
                                     <div class="img-of-case">
-                                        <img src="../imgs/addcase.svg" alt="" style="width: 40px;"><span id="addcase" class="fw-bold fs-15 ml-10">Add Case</span>
+                                        <img src="../imgs/addcase.svg" alt="" style="width: 40px;"><span id="addlisting" class="fw-bold fs-15 ml-10">Add Listing</span>
                                     </div>
 
 
@@ -538,9 +565,9 @@
                                     </div>
                                     <span class="titleerror c-red fs-14 ml-20"> </span>
                                     <div class="w-90 d-flex justify-content-between align-center">
-                                        <div class="w-40 mt-30 p-20 casetype loction">
+                                        <div class="w-40 mt-30 p-20 casetype loction d-block">
                                             <p class="fw-bold fs-15">Location*</p>
-                                            <input required list="locations" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
+                                            <input required list="locations" autocomplete="off" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
                                             <datalist id="locations">
                                                     <option value="location1">location1</option>
                                                     <option value="location2">location2</option>
@@ -550,19 +577,19 @@
                                         </div>
 
                                         <div class="w-40 mt-30 p-20 casetype">
-                                            <p class="fw-bold fs-15 ">Case type*</p>
-                                            <input required list="casetypes" placeholder="Search for type" id="casetype" name="casetype" class="w-full p-10 form-control ">
-                                            <datalist id="casetypes">
-                                                    <option value="case1">case1</option>
-                                                    <option value="case2">case2</option>
-                                                    <option value="case3">case3</option>
+                                            <p class="fw-bold fs-15 ">Category*</p>
+                                            <input required list="categorys" autocomplete="off" placeholder="Search for Category" id="category" name="casetype" class="w-full p-10 form-control ">
+                                            <datalist id="categorys">
+                                                    <option value="caregory1">caregory1</option>
+                                                    <option value="caregory2">caregory2</option>
+                                                    <option value="caregory3">caregory3</option>
                                                 </datalist>
 
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-evenly">
-                                        <span class="casetypeerror c-red fs-14 ml-20"> </span>
                                         <span class="locationerror c-red fs-14 ml-20"> </span>
+                                        <span class="casetypeerror c-red fs-14 ml-20"> </span>
                                     </div>
 
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
@@ -617,24 +644,6 @@
     <script src="../js/popper.min.js "></script>
     <script src="../js/helper.js "></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
-
-
-    <script>
-        $(".search").keypress(function(event) {
-            if ((event.key).toLowerCase() == "enter") {
-                window.location.href = "search.html";
-            }
-        })
-
-        $('.search-icon').on('click', function() {
-            window.location.href = "search.html";
-        });
-    </script>
-
-
-
-
-
 
 
     <!-- take copy from text -->
@@ -692,13 +701,15 @@
             e.preventDefault();
         })
 
+
+
         $(".notificationmark").click(function() {
             $(".notification-content ").toggleClass("d-none");
         })
-
         $(".addcase").click(function() {
             $(".modal2-button").trigger("click");
         })
+
 
         $(".selectcaseimages").click(function() {
             $(".selectcaseimage").trigger("click");
@@ -710,23 +721,7 @@
 
         var locationDisplay = false;
 
-        $('input[name="case"]').change(function() {
-            if ($('input[name="case"]:checked').val() == "requestapatient") {
-                $(".Requestapatient").css('display', 'block');
-                $(".loction").css('display', 'none');
-                $(".img-of-case img").attr("src", "../imgs/addcase.svg");
-                $(".img-of-case span").text("Add Case")
-                $("#location").removeAttr("required");
-                locationDisplay = false;
-            } else {
-                $(".Requestapatient").css('display', 'block');
-                $(".loction").css('display', 'block');
-                $(".img-of-case img").attr("src", "../imgs/sharecase.svg");
-                $(".img-of-case span").text("Share Case")
-                $("#location").attr("required", "true");
-                locationDisplay = true;
-            }
-        })
+
 
         $(".moreimg").click(function() {
             $(this).toggleClass("rotate-90");
@@ -746,16 +741,23 @@
         })
 
         $("#share-link").val(window.location.href)
+
+        $("#price").keypress(function(event) {
+            if (isNaN(event.key)) {
+                event.preventDefault();
+            }
+        })
     </script>
 
 
     <!-- check if the value exisr in options or not -->
     <script>
         // Get the input field and the datalist
-        var inputField = document.getElementById("casetype");
-        var datalist = document.getElementById("casetypes");
+        var inputField = document.getElementById("category");
+        var datalist = document.getElementById("categorys");
         var locationField = document.getElementById("location");
         var locationDatalist = document.getElementById("locations");
+
 
         // Listen for form submission
         var sendcasebutton = document.querySelector('.sendcasebutton');
@@ -778,10 +780,11 @@
             }
 
 
+
             // If the selected option is not in the datalist, prevent form submission
             if (!optionSelected) {
                 event.preventDefault();
-                $(".casetypeerror").text(" Please select a valid case type.");
+                $(".casetypeerror").text(" Please select a valid Category.");
                 $(".casetypeerror").css("display", "block");
 
             } else {
@@ -789,7 +792,7 @@
                 $(".casetypeerror").css("display", "none");
             }
 
-            if (!optionSelected2 && locationDisplay) {
+            if (!optionSelected2) {
                 event.preventDefault();
                 $(".locationerror").text(" Please select a valid location.");
                 $(".locationerror").css("display", "block");
@@ -798,6 +801,8 @@
                 $(".locationerror").text("");
                 $(".locationerror").css("display", "none");
             }
+
+
         });
     </script>
 
@@ -843,7 +848,7 @@
                                     return i !== index;
                                 }));
                             }
-                            console.log('Input files:', input.files); // log input files to console
+                            console.log('Input files after delete: ', input.files); // log input files to console
                         }
                     }
                     reader.readAsDataURL(input.files[i]);
@@ -890,6 +895,20 @@
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     </script>
+
+
+    <script>
+        $(".search").keypress(function(event) {
+            if ((event.key).toLowerCase() == "enter") {
+                window.location.href = "search.html";
+            }
+        })
+
+        $('.search-icon').on('click', function() {
+            window.location.href = "search.html";
+        });
+    </script>
+
 
 
 

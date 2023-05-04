@@ -125,10 +125,11 @@
             contentType: false,
             processData: false,
             success: function(response) {
+                console.log(response);
                 window.location.replace("wait.html");
             },
             error: function(xhr, status, error) {
-
+                console.log(xhr)
                 if (xhr.status == 401) {
                     $(".servererror").text("You are Unauthorized");
                     $(".servererror").css('display', 'block');

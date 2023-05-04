@@ -85,67 +85,79 @@
                  window.location.href = "otp.html"
              },
              error: function(xhr, status, err) {
-                 console.log(jsonData)
-                 errorMessages = xhr.responseJSON;
-                 objofmessage = errorMessages.errors
-                 var key, keys = Object.keys(objofmessage);
-                 var n = keys.length;
-                 var newobj = {}
-                 while (n--) {
-                     key = keys[n];
-                     newobj[key.toLowerCase()] = objofmessage[key];
-                 }
-                 console.log(newobj);
-                 if (newobj.hasOwnProperty('email')) {
-                     $(".emailerror").text(newobj.email[0]);
-                     $(".emailerror").css('display', 'block');
+                 console.log(xhr)
+
+                 var errorMessages = xhr.responseJSON;
+                 if (errorMessages) {
+                     var objofmessage = errorMessages.errors;
+                     if (objofmessage) {
+                         var keys = Object.keys(objofmessage);
+                         var n = keys.length;
+                         var newobj = {};
+                         while (n--) {
+                             var key = keys[n];
+                             newobj[key.toLowerCase()] = objofmessage[key];
+                         }
+                         console.log(newobj);
+                         if (newobj.hasOwnProperty('email')) {
+                             $(".emailerror").text(newobj.email[0]);
+                             $(".emailerror").css('display', 'block');
+                         } else {
+                             $(".emailerror").text(" ");
+                             $(".emailerror").css('display', 'none');
+                         }
+                         if (newobj.hasOwnProperty('birthdate')) {
+                             $(".birthdayerror").text(newobj.birthdate[0]);
+                             $(".birthdayerror").css('display', 'block');
+                         } else {
+                             $(".birthdayerror").text(" ");
+                             $(".birthdayerror").css('display', 'none');
+                         }
+                         if (newobj.hasOwnProperty('fullname')) {
+                             $(".fullnameerror").text(newobj.fullname[0]);
+                             $(".fullnameerror").css('display', 'block');
+                         } else {
+                             $(".fullnameerror").text(" ");
+                             $(".fullnameerror").css('display', 'none');
+                         }
+                         if (newobj.hasOwnProperty('username')) {
+                             $(".usernameerror").text(newobj.username[0]);
+                             $(".usernameerror").css('display', 'block');
+                         } else {
+                             $(".usernameerror").text(" ");
+                             $(".usernameerror").css('display', 'none');
+                         }
+                         if (newobj.hasOwnProperty('password')) {
+                             $(".passworderror").text(newobj.password[0]);
+                             $(".passworderror").css('display', 'block');
+                         } else {
+                             $(".passworderror").text(" ");
+                             $(".passworderror").css('display', 'none');
+                         }
+                         if (newobj.hasOwnProperty('phone')) {
+                             $(".phonenumerror").text(newobj.phone[0]);
+                             $(".phonenumerror").css('display', 'block');
+                         } else {
+                             $(".phonenumerror").text(" ");
+                             $(".phonenumerror").css('display', 'none');
+                         }
+                     } else {
+                         console.log("Error messages object is null or undefined.");
+                     }
                  } else {
-                     $(".emailerror").text(" ");
-                     $(".emailerror").css('display', 'none');
-                 }
-                 if (newobj.hasOwnProperty('birthdate')) {
-                     $(".birthdayerror").text(newobj.birthdate[0]);
-                     $(".birthdayerror").css('display', 'block');
-                 } else {
-                     $(".birthdayerror").text(" ");
-                     $(".birthdayerror").css('display', 'none');
-                 }
-                 if (newobj.hasOwnProperty('fullname')) {
-                     $(".fullnameerror").text(newobj.fullname[0]);
-                     $(".fullnameerror").css('display', 'block');
-                 } else {
-                     $(".fullnameerror").text(" ");
-                     $(".fullnameerror").css('display', 'none');
-                 }
-                 if (newobj.hasOwnProperty('username')) {
-                     $(".usernameerror").text(newobj.username[0]);
-                     $(".usernameerror").css('display', 'block');
-                 } else {
-                     $(".usernameerror").text(" ");
-                     $(".usernameerror").css('display', 'none');
-                 }
-                 if (newobj.hasOwnProperty('password')) {
-                     $(".passworderror").text(newobj.password[0]);
-                     $(".passworderror").css('display', 'block');
-                 } else {
-                     $(".passworderror").text(" ");
-                     $(".passworderror").css('display', 'none');
-                 }
-                 if (newobj.hasOwnProperty('phone')) {
-                     $(".phonenumerror").text(newobj.phone[0]);
-                     $(".phonenumerror").css('display', 'block');
-                 } else {
-                     $(".phonenumerror").text(" ");
-                     $(".phonenumerror").css('display', 'none');
+                     console.log("Response JSON is null or undefined.");
                  }
                  if (xhr.status == 500) {
                      $(".servererror").text(xhr.responseJSON.error);
                      $(".servererror").css('display', 'block');
-                 } else if (errorMessages.hasOwnProperty('error')) {
+                 } else if (errorMessages && errorMessages.hasOwnProperty('error')) {
                      $(".servererror").text(errorMessages.error);
                      $(".servererror").css('display', 'block');
+                 } else {
+
+                     $(".servererror").css('display', 'none');
                  }
              }
-         })
-     })
+         });
+     });
  })();
