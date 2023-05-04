@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/Normalize.css">
+    <link rel="stylesheet" href="../css/imagehover.min.css">
+    <link rel="stylesheet" href="../css/imagehover.css">
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/framework.css">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/hover.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <title>Search results</title>
+    <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
+
+
+</head>
+
+<body class="home-bg">
+
+    <nav class="navbar navbar-expand-lg    position-sticky fixed-top  " style="background-color: #CBE4DE;">
+        <div class="container-fluid ">
+            <a class="navbar-brand " href="index.html"><img style="width: 50px; height:auto" src="../imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon bg-light mt-3"><i class="fa-solid fa-bars "></i></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex justify-content-between flex-row w-full col-mob">
+                    <div class="d-flex justify-content-center align-center ">
+                        <li class="nav-item  fs-5 ml-130">
+                            <!-- make it margin right instead of left in arabic -->
+                            <div class="search p-relative">
+                                <span class="search-icon"></span>
+                                <input type="search" placeholder="Type a Word" id="search" class="p-10 ">
+
+                            </div>
+                        </li>
+                    </div>
+                    <div class="d-flex col-mob">
+                        <li class="nav-item  fs-5 mr-10">
+                            <a href="" class="nav-link active en"><span class="c-black fs-25 mr-5" id="language">EN</span><i class="fa-solid fa-globe fs-25 c-black"></i> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 d-none d-lg-block  l-border">
+                            <a href="" class="nav-link active en"> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15  ">
+                            <a href="" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15 hvr-buzz ">
+                            <a href="" class="nav-link active en notificationmark "><img src="../imgs/bell.svg" style="max-width:50px; width: 30px;"> </a>
+
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15">
+                            <a href="" class="nav-link active en"><img src="../imgs/profilepic.svg" style="max-width:50px; width: 30px;"> </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid mt-30">
+        <div class="w-full d-flex gap-5">
+
+            <div class="home-pages bg-white position-sticky rad-10">
+                <div class="">
+                    <h2 class="p-px-5 mb-10 fs-rem-25 search-title p-relative mt-10 fw-bolder">Search results</h2>
+                    <span class="p-10 mt-15 fw-bold fs-rem-14">Filters</span>
+                </div>
+                <ul class="fs-rem-14 d-flex flex-column w-full h-full ">
+                    <li class="mb-20 mt-20 w-full p-10 cur-point  home-bg">
+                        <a href="#"><img src="../imgs/all.svg" style="width: 35px;"><span class="txt-c ml-10 fw-bold fs-rem-20 nameofapge" id="username"> All </span></a>
+                    </li>
+                    <li class="mb-20  w-full fw-bold  p-10 cur-point">
+                        <img src="../imgs/people.svg" style="width: 43px;"> <span class="nameofapge fw-bold" id="people ">People</span>
+                    </li>
+                    <li class="mb-20  w-full p-10 ">
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../imgs/category.svg"  style="width: 43px;"> <span class="nameofapge fw-bold " id="Category">Category</span>
+                            </button>
+                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item" href="#" id="marketplaceselect1">Action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="marketplaceselect2">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="marketplaceselect3">Something else </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-50 fw-bold  w-full p-10">
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../imgs/category.svg"  style="width: 43px;"> <span class="nameofapge fw-bold" id="type ">Type</span>
+                            </button>
+                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton3">
+                                <li><a class="dropdown-item" href="#" id="articlesselect1">Action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="articlesselect2">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="articlesselect3">Something else </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="home-content ">
+                <div class="search-results ">
+                    <div class="w-full p-px-5 people-search-result rad-10 d-flex flex-column bg-white p-20 rad-10">
+                        <div class="w-full d-flex flex-column mb-30">
+                            <h3>People</h3>
+                        </div>
+
+                        <div class="results-of-people-search d-flex flex-column">
+                            <div class="person d-flex align-center mb-20">
+                                <div class="person-photo mr-10 cur-point" style="width: 50px;">
+                                    <img src="../imgs/profilepic.svg" class="w-full" style="max-width: 100%;">
+                                </div>
+                                <div class="person-info l-1-1">
+                                    <div>
+                                        <span class="name fw-bold cur-point">Fouad Mohamed</span><span class="username fs-rem-14 c-grey cur-point">@fouadmo20</span>
+                                    </div>
+                                    <div>
+                                        <span class="case-type c-blue fw-bold fs-rem-13">patient</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="person d-flex align-center mb-20">
+                                <div class="person-photo mr-10 cur-point" style="width: 50px;">
+                                    <img src="../imgs/profilepic.svg" class="w-full" style="max-width: 100%;">
+                                </div>
+                                <div class="person-info l-1-1">
+                                    <div>
+                                        <span class="name fw-bold cur-point">Fouad Mohamed</span><span class="username fs-rem-14 c-grey cur-point">@fouadmo20</span>
+                                    </div>
+                                    <div>
+                                        <span class="case-type c-blue fw-bold fs-rem-13">patient</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="person d-flex align-center mb-20">
+                                <div class="person-photo mr-10 cur-point" style="width: 50px;">
+                                    <img src="../imgs/profilepic.svg" class="w-full" style="max-width: 100%;">
+                                </div>
+                                <div class="person-info l-1-1">
+                                    <div>
+                                        <span class="name fw-bold cur-point">Fouad Mohamed</span><span class="username fs-rem-14 c-grey cur-point">@fouadmo20</span>
+                                    </div>
+                                    <div>
+                                        <span class="case-type c-blue fw-bold fs-rem-13">patient</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="person d-flex align-center mb-20">
+                                <div class="person-photo mr-10 cur-point" style="width: 50px;">
+                                    <img src="../imgs/profilepic.svg" class="w-full" style="max-width: 100%;">
+                                </div>
+                                <div class="person-info l-1-1">
+                                    <div>
+                                        <span class="name fw-bold cur-point">Fouad Mohamed</span><span class="username fs-rem-14 c-grey cur-point">@fouadmo20</span>
+                                    </div>
+                                    <div>
+                                        <span class="case-type c-blue fw-bold fs-rem-13">patient</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="w-full d-flex justify-content-center mt-40">
+                            <button class="w-full see-all-button"><span>See all</span> </button>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="home-posts posts-search-result mt-25">
+
+                        <!-- the main one  -->
+                        <div class="home-post">
+                            <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
+                                <div class="post-head d-flex justify-content-between">
+                                    <div class="post-user-info d-flex flex-row">
+                                        <div class="user-image rad-half mr-10">
+                                            <img src="../imgs/profilepic.svg" alt="" style="max-width: 100%;">
+                                        </div>
+                                        <div class="post-info d-flex flex-column">
+                                            <div class="d-flex usernames">
+                                                <span class="fs-rem-14 fw-bold name">Fouad Mohamed</span><span class="username fs-rem-12 c-grey">@fouadmo20</span></div>
+                                            <span class="user-case fw-bold c-blue fs-rem-12">pateint</span>
+                                            <span class="user-mohafza c-grey fs-rem-10">Dakahlia</span>
+                                            <div>
+                                                <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5">Edited at</span><span class="editedtime fs-rem-10 c-grey">8</span></div>
+                                            <div class="casetype-bg p-1 txt-c w-40 case-type-rad"><span class="case-type c-white casetype-bg fs-rem-13">Filling</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="more-about-post d-flex flex-column align-center">
+                                        <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
+                                        <ul class="p-10 dropbutton-bg mt-px-5 d-none">
+                                            <li class="p-10 share-links" id="forpost1">Share via</li>
+                                            <!-- share moadale -->
+
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary d-none sharemodal" data-bs-toggle="modal" data-bs-target="#exampleModal10">
+                                                Launch demo modal
+                                        </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel10" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content sharemodal-bg">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title c-white" id="exampleModalLabel2">Share</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="social-media-icons row flex-row p-20">
+                                                                <div class="col-6 col-md-3 p-0 p-1 cur-point share-icon post1" style="width: fit-content;">
+                                                                    <a class="whatsapp"> <img src="../imgs/what's-share.svg" alt="" style="max-width: 100%;"></a>
+                                                                </div>
+                                                                <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                    <a class="facebook-share"> <img src="../imgs/facebook-share.svg" alt="" style="max-width: 100%;"></a>
+                                                                </div>
+                                                                <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                    <a class="twitter-share"> <img src="../imgs/twitter-share.svg" alt="" style="max-width: 100%;"></a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="social-link cur-point mt-20 w-100 p-px-5 d-flex align-center justify-content-between">
+
+                                                                <input class="overflow-hidden cur-point w-80 copied-link " readonly id="share-link">
+
+
+                                                                <span class="copy cur-point">Copy</span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <li class="p-10 report">report</li>
+
+                                            <!-- report moadale -->
+
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary d-none reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal100">
+                                            Launch demo modal
+                                        </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal100" tabindex="-1" aria-labelledby="exampleModalLabel100" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
+
+                                                        <div class="modal-body reportmodaldiv w-70 case-bg">
+                                                            <div class="d-flex ">
+                                                                <p>Report <span class="reporteduser c-grey">@username’s post</span></p>
+                                                            </div>
+                                                            <div>
+                                                                <form>
+
+
+                                                                    <div class="mb-3 w-100">
+
+                                                                        <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea2" rows="10"></textarea>
+
+                                                                    </div>
+
+                                                                    <div class="modal-footer d-flex justify-content-evenly">
+                                                                        <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow">
+                                                                        <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <li class="p-10 block lastli">block</li>
+                                            <!-- block moadale -->
+
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary d-none blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1000">
+                                            Launch demo modal
+                                        </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal1000" tabindex="-1" aria-labelledby="exampleModalLabel1000" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered blockmodaldiv">
+                                                    <div class="modal-content rad-20">
+
+                                                        <div class="modal-body">
+                                                            <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@username</span> ?</p>
+                                                        </div>
+                                                        <div class="modal-footer d-flex justify-content-evenly">
+                                                            <button type="button" class="btn btn-primary blockbutton rad-25 p-30 shadow">Yes</button>
+                                                            <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="post-text">
+                                    <h3 class="post-title">Some title of the case</h3>
+                                    <p class="m-0 d-inline post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, est voluptatum temporibus necessitatibus saepe recusandae ipsum minima commodi ipsa? Quo aspernatur qui voluptatibus aliquam minus officia magnam
+                                        quod, sed minima? </p><span class="cur-point seemore">... See more</span>
+                                </div>
+                                <div class="post-images">
+                                    <div class="images d-flex w-100 mt-40 justify-content-center">
+                                        <div class="image h-75 mr-15">
+                                            <img src="../imgs/postphoto.svg" alt="">
+                                        </div>
+                                        <div class="image h-75 mr-15">
+                                            <img src="../imgs/postphoto.svg" alt="">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="post-call mt-40">
+                                    <div class="w-full d-flex justify-content-between align-center">
+                                        <div class="call">
+                                            <button type="button" class="btn btn-secondary button-bg " data-bs-toggle="tooltip" data-bs-placement="top" title="01016218389">
+                                           <i class="fa-solid fa-phone-volume hvr-buzz mr-px-5"></i> <span>Call</span>
+                                        </button>
+                                        </div>
+                                        <div class="chat">
+                                            <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
+                                           <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
+                                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="nav-bg d-none notification-content rad-10 " style="width: 350px; height: 450px; ">
+        <p class="fs-25 fw-bold p-10 mb-20 ">Notifications</p>
+        <ul class="w-full">
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div>
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not ">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-like.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div>
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not ">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-verfiey.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div class="discription-content">
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not d-none">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div>
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not d-none">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+
+
+        </ul>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../js/bootstrap.bundle.min.js "></script>
+    <script src="../js/all.min.js "></script>
+    <script src="../js/popper.min.js "></script>
+    <script src="../js/helper.js "></script>
+    <script src="../js/jquery-3.6.1.min.js "></script>
+
+
+    <script>
+        $(".search").keypress(function(event) {
+            if ((event.key).toLowerCase() == "enter") {
+                window.location.href = "search.html";
+            }
+        })
+
+        $('.search-icon').on('click', function() {
+            window.location.href = "search.html";
+        });
+    </script>
+
+
+
+    <script>
+        let allLi = document.querySelectorAll(".home-pages ul li");
+        allLi.forEach(function(li) {
+            $(li).click(function() {
+                allLi.forEach(function(li) {
+                    $(li).removeClass("home-bg")
+                })
+                $(this).addClass("home-bg");
+            })
+
+        })
+    </script>
+
+
+
+
+
+    <!-- thisssssssssssssssssssss -->
+
+
+
+    <script>
+        $("a.nav-link").click(function(e) {
+            e.preventDefault();
+        })
+
+        $(".notificationmark").click(function() {
+            $(".notification-content ").toggleClass("d-none");
+        })
+
+        $(".addcase").click(function() {
+            $(".modal2-button").trigger("click");
+        })
+
+        $(".selectcaseimages").click(function() {
+            $(".selectcaseimage").trigger("click");
+        })
+
+        $(".selectcaseimages2").click(function() {
+            $(".selectcaseimage2").trigger("click");
+        })
+
+        var locationDisplay = false;
+
+        $('input[name="case"]').change(function() {
+            if ($('input[name="case"]:checked').val() == "requestapatient") {
+                $(".Requestapatient").css('display', 'block');
+                $(".loction").css('display', 'none');
+                $(".img-of-case img").attr("src", "../imgs/addcase.svg");
+                $(".img-of-case span").text("Add Case")
+                $("#location").removeAttr("required");
+                locationDisplay = false;
+            } else {
+                $(".Requestapatient").css('display', 'block');
+                $(".loction").css('display', 'block');
+                $(".img-of-case img").attr("src", "../imgs/sharecase.svg");
+                $(".img-of-case span").text("Share Case")
+                $("#location").attr("required", "true");
+                locationDisplay = true;
+            }
+        })
+
+        $(".moreimg").click(function() {
+            $(this).toggleClass("rotate-90");
+            $(this).next("ul").toggleClass("d-none");
+
+        })
+
+        $(".share-links").click(function() {
+            $(".sharemodal").trigger("click");
+        })
+        $(".block").click(function() {
+            $(".blockmodal").trigger("click");
+        })
+
+        $(".report").click(function() {
+            $(".reportmodal").trigger("click");
+        })
+
+        $("#share-link").val(window.location.href)
+    </script>
+
+
+
+
+    <!-- make see more sacebook effect -->
+    <script>
+        const showMoreLinks = document.querySelectorAll('.seemore');
+
+        const maxChars = 150;
+
+        showMoreLinks.forEach(link => {
+            const postText = link.closest('.post-text');
+            const postDescription = postText.querySelector('.post-description');
+            const descriptionText = postDescription.textContent.trim();
+            const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+
+            if (descriptionText.length <= maxChars) {
+                link.style.display = 'none';
+            } else {
+                postDescription.textContent = truncatedText;
+            }
+
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (postDescription.textContent === truncatedText) {
+                    postDescription.textContent = descriptionText;
+                    link.textContent = 'Show less';
+                } else {
+                    postDescription.textContent = truncatedText;
+                    link.textContent = 'See more';
+                }
+            });
+        });
+    </script>
+
+    <!-- enable tooltip of bootstrap -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+
+
+
+    <!-- take copy from text -->
+    <script>
+        // Get the "Copy" element and the share link element
+        const copyLink = document.querySelector('.social-link');
+        const shareLink = document.querySelector('#share-link');
+
+        // Add click event listener to the "Copy" element
+        copyLink.addEventListener('click', () => {
+            // Create a temporary input element to hold the share link text
+
+            shareLink.select();
+            document.execCommand("copy");
+            shareLink.blur();
+
+
+
+
+
+        });
+    </script>
+
+
+    <!-- thisssssssssssssssssssss -->
+    <!-- share page for social media  -->
+    <script>
+        const link = encodeURI(window.location.href);
+        const msg = encodeURIComponent('Hey, I found this article');
+        const title = encodeURIComponent('Article or Post Title Here');
+
+        const fb = document.querySelector('.facebook-share');
+        fb.href = `https://www.facebook.com/share.php?u=${link}`;
+
+        const twitter = document.querySelector('.twitter-share');
+        twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
+
+        const whatsapp = document.querySelector('.whatsapp');
+        whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
+
+        // const linkedIn = document.querySelector('.linkedin');
+        // linkedIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${link}`;
+
+        // const reddit = document.querySelector('.reddit');
+        // reddit.href = `http://www.reddit.com/submit?url=${link}&title=${title}`;
+
+
+        // const telegram = document.querySelector('.telegram');
+        // telegram.href = `https://telegram.me/share/url?url=${link}&text=${msg}`;
+    </script>
+
+
+
+
+</body>
+
+</html>

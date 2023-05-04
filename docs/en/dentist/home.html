@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
 
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../css/Normalize.css">
     <link rel="stylesheet" href="../css/imagehover.min.css">
     <link rel="stylesheet" href="../css/imagehover.css">
@@ -25,9 +30,9 @@
 
 </head>
 
-<body>
+<body class="home-bg">
 
-    <nav class="navbar navbar-expand-lg   position-sticky fixed-top overflow-hidden " style="background-color: #CBE4DE;">
+    <nav class="navbar navbar-expand-lg    position-sticky fixed-top  " style="background-color: #CBE4DE;">
         <div class="container-fluid ">
             <a class="navbar-brand " href="index.html"><img style="width: 50px; height:auto" src="../imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,10 +41,11 @@
             <div class="collapse navbar-collapse " id="navbarNav">
                 <ul class="navbar-nav ms-auto d-flex justify-content-between flex-row w-full col-mob">
                     <div class="d-flex justify-content-center align-center ">
-                        <li class="nav-item  fs-5 ml-220">
+                        <li class="nav-item  fs-5 ml-130">
                             <!-- make it margin right instead of left in arabic -->
                             <div class="search p-relative">
-                                <input type="search" placeholder="Type a Word" class="p-10 ">
+                                <span class="search-icon"></span>
+                                <input type="search" placeholder="Type a Word" id="search" class="p-10 ">
 
                             </div>
                         </li>
@@ -58,7 +64,8 @@
                         </li>
 
                         <li class="nav-item  fs-5 mr-15 hvr-buzz ">
-                            <a href="" class="nav-link active en"><img src="../imgs/bell.svg" style="max-width:50px; width: 30px;"> </a>
+                            <a href="" class="nav-link active en notificationmark "><img src="../imgs/bell.svg" style="max-width:50px; width: 30px;"> </a>
+
                         </li>
 
                         <li class="nav-item  fs-5 mr-15">
@@ -71,15 +78,586 @@
     </nav>
 
 
+    <div class="container-fluid mt-30">
+        <div class="w-full d-flex justify-content-between">
+
+            <div class="home-pages bg-white position-sticky rad-10">
+                <ul class="fs-rem-14 d-flex flex-column w-full h-full ">
+                    <li class="mb-30 mt-20 w-full p-10 rad-20">
+                        <a href="profile.html"><img src="../imgs/profilepic.svg" style="width: 35px;" id="userphoto"><span class="txt-c ml-5 nameofapge" id="username"> Fouad Mohamed </span></a>
+                    </li>
+                    <li class="mb-30 nav-bg w-full  p-10  home-bg">
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../imgs/findperson.svg"  style="width: 43px;"> <span class="nameofapge" id="findpatient">Find patient</span>
+                            </button>
+                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#" id="findpatientselect1">Action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="findpatientselect2">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="findpatientselect3">Something else </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-30 w-full p-10 rad-20">
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../imgs/marketplace.svg"  style="width: 43px;"> <span class="nameofapge" id="marketplace">Marketplace</span>
+                            </button>
+                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect1">Action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect2">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect3">Something else </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-30 w-full p-10 rad-20">
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../imgs/homearticles.svg"  style="width: 43px;"> <span class="nameofapge" id="articles">Articles</span>
+                            </button>
+                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton3">
+                                <li><a class="dropdown-item" href="article.html" id="articlesselect1">Action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="article.html" id="articlesselect2">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="article.html" id="articlesselect3">Something else </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="home-content ">
+
+                <div class="w-full p-px-5 addcase rad-10 nav-bg d-flex justify-content-around">
+                    <div class="statephoto ml-10 mt-px-5 d-none d-sm-block">
+                        <img src="../imgs/profilepic.svg" style="max-height: 50px; height: 48px;">
+                    </div>
+                    <div class="inputstate w-80 ">
+                        <input type="text" disabled class="w-full rad-10 bg-white" placeholder="Click anywhere to add case">
+                    </div>
+
+                </div>
+
+
+                <div class="home-posts mt-25">
+                    <div class="home-post">
+                        <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
+                            <div class="post-head d-flex justify-content-between">
+                                <div class="post-user-info d-flex flex-row">
+                                    <div class="user-image rad-half mr-10">
+                                        <img src="../imgs/profilepic.svg" alt="" style="max-width: 100%;">
+                                    </div>
+                                    <div class="post-info d-flex flex-column">
+                                        <div class="d-flex usernames">
+                                            <span class="fs-rem-14 fw-bold name">Fouad Mohamed</span><span class="username fs-rem-12 c-grey">@fouadmo20</span></div>
+                                        <span class="user-case fw-bold c-blue fs-rem-12">pateint</span>
+                                        <span class="user-mohafza c-grey fs-rem-10">Dakahlia</span>
+                                        <div>
+                                            <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5">Edited at</span><span class="editedtime fs-rem-10 c-grey">8</span></div>
+                                        <div class="casetype-bg p-1 txt-c w-40 case-type-rad"><span class="case-type c-white casetype-bg fs-rem-13">Filling</span></div>
+                                    </div>
+                                </div>
+                                <div class="more-about-post d-flex flex-column align-center">
+                                    <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
+                                    <ul class="p-10 dropbutton-bg mt-px-5 d-none">
+                                        <li class="p-10 share-links">Share via</li>
+                                        <li class="p-10 report">report</li>
+                                        <li class="p-10 block lastli">block</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                <h3 class="post-title">Some title of the case</h3>
+                                <p class="m-0 d-inline post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, est voluptatum temporibus necessitatibus saepe recusandae ipsum minima commodi ipsa? Quo aspernatur qui voluptatibus aliquam minus officia magnam quod,
+                                    sed minima? </p><span class="cur-point seemore">... See more</span>
+                            </div>
+                            <div class="post-images">
+                                <div class="images d-flex w-100 mt-40 justify-content-center">
+                                    <div class="image h-75 mr-15">
+                                        <img src="../imgs/postphoto.svg" alt="">
+                                    </div>
+                                    <div class="image h-75 mr-15">
+                                        <img src="../imgs/postphoto.svg" alt="">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="post-call mt-40">
+                                <div class="w-full d-flex justify-content-between align-center">
+                                    <div class="call">
+                                        <button type="button" class="btn btn-secondary button-bg disabled" data-bs-toggle="tooltip" data-bs-placement="top" title="01016218389">
+                                           <i class="fa-solid fa-phone-volume hvr-buzz mr-px-5"></i> <span>Call</span>
+                                        </button>
+                                    </div>
+                                    <div class="chat">
+                                        <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
+                                           <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- the main one  -->
+                    <div class="home-post">
+                        <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
+                            <div class="post-head d-flex justify-content-between">
+                                <div class="post-user-info d-flex flex-row">
+                                    <div class="user-image rad-half mr-10">
+                                        <img src="../imgs/profilepic.svg" alt="" style="max-width: 100%;">
+                                    </div>
+                                    <div class="post-info d-flex flex-column">
+                                        <div class="d-flex usernames">
+                                            <span class="fs-rem-14 fw-bold name">Fouad Mohamed</span><span class="username fs-rem-12 c-grey">@fouadmo20</span></div>
+                                        <span class="user-case fw-bold c-blue fs-rem-12">pateint</span>
+                                        <span class="user-mohafza c-grey fs-rem-10">Dakahlia</span>
+                                        <div>
+                                            <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5">Edited at</span><span class="editedtime fs-rem-10 c-grey">8</span></div>
+                                        <div class="casetype-bg p-1 txt-c w-40 case-type-rad"><span class="case-type c-white casetype-bg fs-rem-13">Filling</span></div>
+                                    </div>
+                                </div>
+                                <div class="more-about-post d-flex flex-column align-center">
+                                    <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
+                                    <ul class="p-10 dropbutton-bg mt-px-5 d-none">
+                                        <li class="p-10 share-links" id="forpost1">Share via</li>
+                                        <!-- share moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none sharemodal" data-bs-toggle="modal" data-bs-target="#exampleModal10">
+                                                Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel10" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content sharemodal-bg">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title c-white" id="exampleModalLabel2">Share</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="social-media-icons row flex-row p-20">
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point share-icon post1" style="width: fit-content;">
+                                                                <a class="whatsapp"> <img src="../imgs/what's-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                <a class="facebook-share"> <img src="../imgs/facebook-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                <a class="twitter-share"> <img src="../imgs/twitter-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="social-link cur-point mt-20 w-100 p-px-5 d-flex align-center justify-content-between">
+
+                                                            <input class="overflow-hidden cur-point w-80 copied-link " readonly id="share-link">
+
+
+                                                            <span class="copy cur-point">Copy</span>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <li class="p-10 report">report</li>
+
+                                        <!-- report moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal100">
+                                            Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal100" tabindex="-1" aria-labelledby="exampleModalLabel100" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
+
+                                                    <div class="modal-body reportmodaldiv w-70 case-bg">
+                                                        <div class="d-flex ">
+                                                            <p>Report <span class="reporteduser c-grey">@username’s post</span></p>
+                                                        </div>
+                                                        <div>
+                                                            <form>
+
+
+                                                                <div class="mb-3 w-100">
+
+                                                                    <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea2" rows="10"></textarea>
+
+                                                                </div>
+
+                                                                <div class="modal-footer d-flex justify-content-evenly">
+                                                                    <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow">
+                                                                    <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <li class="p-10 block lastli">block</li>
+                                        <!-- block moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1000">
+                                            Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal1000" tabindex="-1" aria-labelledby="exampleModalLabel1000" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered blockmodaldiv">
+                                                <div class="modal-content rad-20">
+
+                                                    <div class="modal-body">
+                                                        <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@username</span> ?</p>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-evenly">
+                                                        <button type="button" class="btn btn-primary blockbutton rad-25 p-30 shadow">Yes</button>
+                                                        <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                <h3 class="post-title">Some title of the case</h3>
+                                <p class="m-0 d-inline post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, est voluptatum temporibus necessitatibus saepe recusandae ipsum minima commodi ipsa? Quo aspernatur qui voluptatibus aliquam minus officia magnam quod,
+                                    sed minima? </p><span class="cur-point seemore">... See more</span>
+                            </div>
+                            <div class="post-images">
+                                <div class="images d-flex w-100 mt-40 justify-content-center">
+                                    <div class="image h-75 mr-15">
+                                        <img src="../imgs/postphoto.svg" alt="">
+                                    </div>
+                                    <div class="image h-75 mr-15">
+                                        <img src="../imgs/postphoto.svg" alt="">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="post-call mt-40">
+                                <div class="w-full d-flex justify-content-between align-center">
+                                    <div class="call">
+                                        <button type="button" class="btn btn-secondary button-bg " data-bs-toggle="tooltip" data-bs-placement="top" title="01016218389">
+                                           <i class="fa-solid fa-phone-volume hvr-buzz mr-px-5"></i> <span>Call</span>
+                                        </button>
+                                    </div>
+                                    <div class="chat">
+                                        <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
+                                           <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-chats bg-white rad-10">
+                <div class="chat-content d-flex flex-column w-100 p-10">
+                    <div class="chat-header d-flex justify-content-between">
+                        <div>
+                            <span class="fw-bold fs-rem-20">Chats</span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-magnifying-glass fs-rem-20 cur-point"></i>
+                        </div>
+                    </div>
+                    <div class="chat-users mt-20 w-full d-flex">
+                        <ul class="overflow-auto w-full">
+                            <li class="cur-point mb-20 p-px-5">
+                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Fouad Mohamed</span>
+                            </li>
+                            <li class="cur-point mb-20 p-px-5">
+                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Essam</span>
+                            </li>
+                            <li class="cur-point mb-20 p-px-5">
+                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Mostafa No3man</span>
+                            </li>
+                            <li class="cur-point mb-20 p-px-5">
+                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Elgohary</span>
+                            </li>
+                            <li class="cur-point mb-20 p-px-5">
+                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Samir</span>
+                            </li>
+                            <li class="cur-point mb-20 p-px-5">
+                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Fathlla</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
 
 
 
 
 
 
-    <!-- 
 
-    -->
+
+
+
+
+
+
+    <div class="nav-bg d-none notification-content rad-10 " style="width: 350px; height: 450px; ">
+        <p class="fs-25 fw-bold p-10 mb-20 ">Notifications</p>
+        <ul class="w-full">
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div>
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not ">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-like.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div>
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not ">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-verfiey.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div class="discription-content">
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not d-none">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div>
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not d-none">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+            <li style="max-height: 93px;" class="w-full ">
+                <div class="notification-div w-full d-flex justify-content-start p-10">
+                    <div class="d-flex justify-content-start align-items-start">
+                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
+                        <div class="d-flex flex-column w-70">
+                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
+                            <div>
+                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seen-or-not d-none">
+
+                    </div>
+
+                </div>
+
+            </li>
+
+
+
+        </ul>
+
+    </div>
+
+
+
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary  modal2-button d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content dropbutton-bg ">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modalbody ">
+
+                        <div class="choosecase d-flex justify-content-evenly">
+                            <div>
+                                <input type="radio" id="Requestapatient" value="requestapatient" name="case"><label for="Requestapatient" id="requestapatient" class="ml-10 fw-bold">Request a patient</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="Sharecase" value="sharecase" name="case"><label for="Sharecase" id="sharecase" class="ml-10 fw-bold">Share case with other dentists</label>
+                            </div>
+                        </div>
+
+                        <div class="Requestapatient">
+                            <div class="sendcase w-full d-flex justify-content-center mt-30">
+                                <form class="bg-white w-80 d-flex flex-column p-30 mb-60">
+                                    <div class="img-of-case">
+                                        <img src="../imgs/addcase.svg" alt="" style="width: 40px;"><span id="addcase" class="fw-bold fs-15 ml-10">Add Case</span>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center mt-80">
+                                        <div class="mb-3 w-90 Casetitle">
+                                            <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
+                                            <input type="text" class="form-control casetitle " required id="formGroupExampleInput" placeholder="Enter title">
+                                        </div>
+                                    </div>
+                                    <span class="titleerror c-red fs-14 ml-20"> </span>
+                                    <div class="w-90 d-flex justify-content-between align-center">
+                                        <div class="w-40 mt-30 p-20 casetype loction">
+                                            <p class="fw-bold fs-15">Location*</p>
+                                            <input required list="locations" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
+                                            <datalist id="locations">
+                                                    <option value="location1">location1</option>
+                                                    <option value="location2">location2</option>
+                                                    <option value="location3">location3</option>
+                                                </datalist>
+
+                                        </div>
+
+                                        <div class="w-40 mt-30 p-20 casetype">
+                                            <p class="fw-bold fs-15 ">Case type*</p>
+                                            <input required list="casetypes" placeholder="Search for type" id="casetype" name="casetype" class="w-full p-10 form-control ">
+                                            <datalist id="casetypes">
+                                                    <option value="case1">case1</option>
+                                                    <option value="case2">case2</option>
+                                                    <option value="case3">case3</option>
+                                                </datalist>
+
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-evenly">
+                                        <span class="casetypeerror c-red fs-14 ml-20"> </span>
+                                        <span class="locationerror c-red fs-14 ml-20"> </span>
+                                    </div>
+
+                                    <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
+                                        <div class="mb-3 w-90">
+                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
+                                            <textarea required placeholder="Enter description" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class=" w-full mt-30 d-flex justify-content-center mb-60 cur-point ">
+                                        <div class="w-90 ">
+                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Add photo / videos <span class="c-grey fs-15">(optional)</span></label>
+                                            <div class="caseimages image-preview w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                                <div class=" d-flex  flex-column justify-content-center align-center selectcaseimages">
+                                                    <img src="../imgs/uploadimage.svg " style="width: 30px;">
+                                                    <span>Click here to add or to readd</span>
+                                                </div>
+                                            </div>
+                                            <p class="c-grey fs-14 mt-10">(hint: you can't delete choossen image if you want to delete, chosoe from first again)</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer w-full d-flex justify-content-evenly">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <input type="submit" value="Add" class="btn btn-primary sendcasebutton">
+                                        <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -93,15 +671,289 @@
     <script src="../js/bootstrap.bundle.min.js "></script>
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
-    <script src="../js/helper.js"></script>
+    <script src="../js/helper.js "></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
+
+
+    <script>
+        $(".search").keypress(function(event) {
+            if ((event.key).toLowerCase() == "enter") {
+                window.location.href = "search.html";
+            }
+        })
+
+        $('.search-icon').on('click', function() {
+            window.location.href = "search.html";
+        });
+    </script>
+
+
+
+
+
+
+
+    <!-- take copy from text -->
+    <script>
+        // Get the "Copy" element and the share link element
+        const copyLink = document.querySelector('.social-link');
+        const shareLink = document.querySelector('#share-link');
+
+        // Add click event listener to the "Copy" element
+        copyLink.addEventListener('click', () => {
+            // Create a temporary input element to hold the share link text
+
+            shareLink.select();
+            document.execCommand("copy");
+            shareLink.blur();
+
+
+
+
+
+        });
+    </script>
+
+
+    <!-- thisssssssssssssssssssss -->
+    <!-- share page for social media  -->
+    <script>
+        const link = encodeURI(window.location.href);
+        const msg = encodeURIComponent('Hey, I found this article');
+        const title = encodeURIComponent('Article or Post Title Here');
+
+        const fb = document.querySelector('.facebook-share');
+        fb.href = `https://www.facebook.com/share.php?u=${link}`;
+
+        const twitter = document.querySelector('.twitter-share');
+        twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
+
+        const whatsapp = document.querySelector('.whatsapp');
+        whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
+
+        // const linkedIn = document.querySelector('.linkedin');
+        // linkedIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${link}`;
+
+        // const reddit = document.querySelector('.reddit');
+        // reddit.href = `http://www.reddit.com/submit?url=${link}&title=${title}`;
+
+
+        // const telegram = document.querySelector('.telegram');
+        // telegram.href = `https://telegram.me/share/url?url=${link}&text=${msg}`;
+    </script>
+
 
     <script>
         $("a.nav-link").click(function(e) {
             e.preventDefault();
+        })
+
+        $(".notificationmark").click(function() {
+            $(".notification-content ").toggleClass("d-none");
+        })
+
+        $(".addcase").click(function() {
+            $(".modal2-button").trigger("click");
+        })
+
+        $(".selectcaseimages").click(function() {
+            $(".selectcaseimage").trigger("click");
+        })
+
+        $(".selectcaseimages2").click(function() {
+            $(".selectcaseimage2").trigger("click");
+        })
+
+        var locationDisplay = false;
+
+        $('input[name="case"]').change(function() {
+            if ($('input[name="case"]:checked').val() == "requestapatient") {
+                $(".Requestapatient").css('display', 'block');
+                $(".loction").css('display', 'none');
+                $(".img-of-case img").attr("src", "../imgs/addcase.svg");
+                $(".img-of-case span").text("Add Case")
+                $("#location").removeAttr("required");
+                locationDisplay = false;
+            } else {
+                $(".Requestapatient").css('display', 'block');
+                $(".loction").css('display', 'block');
+                $(".img-of-case img").attr("src", "../imgs/sharecase.svg");
+                $(".img-of-case span").text("Share Case")
+                $("#location").attr("required", "true");
+                locationDisplay = true;
+            }
+        })
+
+        $(".moreimg").click(function() {
+            $(this).toggleClass("rotate-90");
+            $(this).next("ul").toggleClass("d-none");
 
         })
+
+        $(".share-links").click(function() {
+            $(".sharemodal").trigger("click");
+        })
+        $(".block").click(function() {
+            $(".blockmodal").trigger("click");
+        })
+
+        $(".report").click(function() {
+            $(".reportmodal").trigger("click");
+        })
+
+        $("#share-link").val(window.location.href)
     </script>
+
+
+    <!-- check if the value exisr in options or not -->
+    <script>
+        // Get the input field and the datalist
+        var inputField = document.getElementById("casetype");
+        var datalist = document.getElementById("casetypes");
+        var locationField = document.getElementById("location");
+        var locationDatalist = document.getElementById("locations");
+
+        // Listen for form submission
+        var sendcasebutton = document.querySelector('.sendcasebutton');
+        sendcasebutton.addEventListener('click', function(event) {
+            // Get the selected option from the datalist
+            var optionSelected = false;
+            for (var i = 0; i < datalist.options.length; i++) {
+                if (inputField.value == datalist.options[i].value) {
+                    optionSelected = true;
+                    break;
+                }
+            }
+
+            var optionSelected2 = false;
+            for (var i = 0; i < locationDatalist.options.length; i++) {
+                if (locationField.value == locationDatalist.options[i].value) {
+                    optionSelected2 = true;
+                    break;
+                }
+            }
+
+
+            // If the selected option is not in the datalist, prevent form submission
+            if (!optionSelected) {
+                event.preventDefault();
+                $(".casetypeerror").text(" Please select a valid case type.");
+                $(".casetypeerror").css("display", "block");
+
+            } else {
+                $(".casetypeerror").text("");
+                $(".casetypeerror").css("display", "none");
+            }
+
+            if (!optionSelected2 && locationDisplay) {
+                event.preventDefault();
+                $(".locationerror").text(" Please select a valid location.");
+                $(".locationerror").css("display", "block");
+
+            } else {
+                $(".locationerror").text("");
+                $(".locationerror").css("display", "none");
+            }
+        });
+    </script>
+
+    <!-- thisssssssssssssssssssss -->
+    <!-- display selected images in container -->
+    <script>
+        function displayImages(input) {
+            if (input.files && input.files.length > 0) {
+                var previewContainer = document.querySelector('.image-preview');
+
+                var imagesToDelete = [];
+
+                for (var i = 0; i < input.files.length; i++) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var image = new Image();
+                        var deleteMark = document.createElement('div');
+                        deleteMark.innerHTML = 'x';
+                        deleteMark.style.position = "absolute";
+                        deleteMark.style.left = "2px";
+                        deleteMark.style.top = "0px";
+                        deleteMark.classList.add('delete-mark');
+                        var imageWrapper = document.createElement('div');
+                        imageWrapper.style.position = "relative";
+                        $(imageWrapper).addClass("mr-px-5")
+                        imageWrapper.classList.add('image-wrapper');
+                        imageWrapper.appendChild(image);
+                        imageWrapper.appendChild(deleteMark);
+                        image.src = e.target.result;
+                        $(imageWrapper).css('max-width', '80px');
+                        $(imageWrapper).css('max-height', '90%');
+                        $(image).css('max-width', '100%');
+                        $(image).css('max-height', '100%');
+                        previewContainer.prepend(imageWrapper);
+
+                        console.log('Input files:', input.files); // log input files to console
+                        deleteMark.onclick = function() {
+                            imagesToDelete.push(imageWrapper);
+                            imageWrapper.remove();
+                            var index = Array.from(previewContainer.children).indexOf(imageWrapper);
+                            if (index !== -1) {
+                                $(input).val(Array.from(input.files).filter(function(file, i) {
+                                    return i !== index;
+                                }));
+                            }
+                            console.log('Input files:', input.files); // log input files to console
+                        }
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        }
+    </script>
+
+    <!-- make see more sacebook effect -->
+    <script>
+        const showMoreLinks = document.querySelectorAll('.seemore');
+
+        const maxChars = 150;
+
+        showMoreLinks.forEach(link => {
+            const postText = link.closest('.post-text');
+            const postDescription = postText.querySelector('.post-description');
+            const descriptionText = postDescription.textContent.trim();
+            const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+
+            if (descriptionText.length <= maxChars) {
+                link.style.display = 'none';
+            } else {
+                postDescription.textContent = truncatedText;
+            }
+
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (postDescription.textContent === truncatedText) {
+                    postDescription.textContent = descriptionText;
+                    link.textContent = 'Show less';
+                } else {
+                    postDescription.textContent = truncatedText;
+                    link.textContent = 'See more';
+                }
+            });
+        });
+    </script>
+
+    <!-- enable tooltip of bootstrap -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+
+    <script>
+        $(".notification-content").blur(function() {
+            $(".notification-content").css("display", "none !important");
+        })
+    </script>
+
+
 </body>
 
 </html>
