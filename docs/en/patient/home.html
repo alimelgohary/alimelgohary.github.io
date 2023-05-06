@@ -771,11 +771,11 @@
                                                                 </div>
 
                                                                 <div class="modal-footer d-flex justify-content-evenly">
-                                                                    <input type="submit" class="btn btn-primary reportbuton${data[counter].postId} rad-25 p-30 shadow">
-                                                                    <button type="button" class="btn btn-secondary rad-25 reportbutoncancel${data[counter].postId} shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                    <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow" data-post-id="${data[counter].postId}">
+                                                                    <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
                                                                 </div>
-                                                                <div class = "mt-30">
-                                                                <span class="reporterror${data[counter].postId} reporterror txt-c  fs-rem-14"></span>    
+                                                                <div class = "mt-30 ">
+                                                                <span class="reporterror  txt-c  fs-rem-14 d-block"></span>    
                                                                 </div>
 
                                                                 
@@ -806,12 +806,12 @@
                                                         <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@${data[counter].userInfo.username}</span> ?</p>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-evenly">
-                                                        <button type="button" class="btn btn-primary blockbutton${data[counter].postId} blockbutton  rad-25 p-30 shadow">Yes</button>
-                                                        <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel${data[counter].postId} blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
+                                                        <button type="button" class="btn btn-primary blockbutton   rad-25 p-30 shadow " data-user-id="${data[counter].userInfo.userId}">Yes</button>
+                                                        <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
 
                                                     </div>
                                                     <div class = "mt-30 mb-20">
-                                                    <span class = "blockerror${data[counter].postId} blockerror c-red txt-c fs-rem-14">Something went wrong , please try again later</span>    
+                                                    <span class = "blockerror blockerror c-red txt-c fs-rem-14 d-block"></span>    
                                                     </div>
                                                 </div>
                                             </div>
@@ -875,8 +875,8 @@
                         } else {
                             for (var i = 0; i < data[counter].images.length; i++) {
                                 console.log(i)
-                                $(`.images${data[counter].postId}`).append(`<div class="image h-75 mr-15" style="width:200px; height:200px">
-                                                                    <img src="data:image/png;base64,${data[counter].images[i]}" alt="" style="max-width:100%; max-height:100%;width:200px; height:200px">
+                                $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
+                                                                    <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full" alt="" style="max-width:100%; max-height:100%;">
                                                                     </div>`)
                             }
                         }
@@ -919,104 +919,11 @@
                         whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
 
 
-                        //request of report button
-                        $(`.reportbuton${data[counter].postId}`).click(function(e) {
-                            e.preventDefault();
-                            postId = data[counter].postId;
-                            reason = $(`.reportarea${data[counter].postId}`).val();
-
-                            let reportObj = {
-                                "reported_post_id": postId,
-                                "reason": reason
-                            }
-
-                            let jsonData = JSON.stringify(reportObj);
-
-                            if (reason.length == 0 || reason == null) {
-                                delete reportObj.reason
-                            }
-                            $.ajax({
-                                "method": "POST",
-                                "url": apiUrl + "/api/Common/ReportPost",
-                                "xhrFields": {
-                                    "withCredentials": true
-                                },
-                                "headers": {
-                                    "Content-Type": "application/json",
-                                    "ngrok-skip-browser-warning": "69420",
-                                    "Accept-Language": language
-                                },
-                                "data": jsonData,
-
-                                success: function(data, st, xhr) {
-                                    console.log(data);
-                                    $(`.reporterror${data[counter].postId}`).text("Report sent successfully");
-                                    $(`.reporterror${data[counter].postId}`).css('color', 'green');
-                                    $(`.reporterror${data[counter].postId}`).css('display', 'block');
-                                    setTimeout(function() {
-                                        $(`.reportbutoncancel${data[counter].postId}`).trigger('click');
-                                    }, 2000)
-
-
-                                },
-                                error: function(xhr, status, err) {
-                                    $(`.reporterror${data[counter].postId}`).text(xhr.responseJSON.error);
-                                    $(`.reporterror${data[counter].postId}`).css('color', 'red');
-                                    $(`.reporterror${data[counter].postId}`).css('display', 'block');
-
-                                    setTimeout(function() {
-                                        $(`.reportbutoncancel${data[counter].postId}`).trigger('click');
-                                    }, 2000)
-
-                                }
-                            })
-                        });
-
-                        //request of block button
-                        $(`.blockbutton${data[counter].postId}`).click(function(e) {
-                            e.preventDefault();
-                            userId = data[counter].userInfo.userId;
-                            let blockObj = {
-                                "blocked_user_id": userId
-                            }
-                            let jsonData = JSON.stringify(blockObj);
-
-                            $.ajax({
-                                "method": "POST",
-                                "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
-                                "xhrFields": {
-                                    "withCredentials": true
-                                },
-                                "headers": {
-                                    "Content-Type": "application/json",
-                                    "ngrok-skip-browser-warning": "69420",
-                                    "Accept-Language": language
-                                },
-
-
-                                success: function(data, st, xhr) {
-                                    console.log(data);
-                                    $(`.blockerror${data[counter].postId}`).css('display', 'none');
-                                    $(`.blockbuttoncancel${data[counter].postId}`).trigger('click');
 
 
 
-                                },
-                                error: function(xhr, status, err) {
-                                    if (xhr.status == 400) {
-
-                                        $(`.blockerror${data[counter].postId}`).text(xhr.responseJSON.error);
-                                        $(`.blockerror${data[counter].postId}`).css('display', 'block');
-                                    } else {
-                                        $(`.blockerror${data[counter].postId}`).text("Something went wrong, please try again");
-                                        $(`.blockerror${data[counter].postId}`).css('display', 'block');
-                                    }
 
 
-                                }
-                            })
-
-                        });
 
                     }
                     // end of for loop
@@ -1071,6 +978,134 @@
                         $(this).next(`button`).trigger("click");
                     })
 
+
+                    //request of report button
+                    $(`.reportbuton`).click(function(e) {
+                        e.preventDefault();
+                        let postId = $(this).attr("data-post-id");
+                        let parentofButton = $(this).parent();
+                        let perviosDiv = parentofButton.prev()[0];
+                        let textarea = $(perviosDiv).find('textarea')[0];
+                        let reason = $(textarea).val();
+
+                        let button = $(this);
+
+                        console.log(reason);
+                        console.log(postId);
+                        let reportObj = {
+                            "reported_post_id": postId,
+                            "reason": reason
+                        }
+
+                        let jsonData = JSON.stringify(reportObj);
+
+                        if (reason.length == 0 || reason == null) {
+                            delete reportObj.reason
+                        }
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/ReportPost",
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            "data": jsonData,
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("Report Sent Sucssfully")
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+
+                            },
+                            error: function(xhr, status, err) {
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "red")
+                                $(errorspan).text(xhr.responseJSON.error)
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            }
+                        })
+                    });
+
+
+                    //request of block button
+                    $(`.blockbutton`).click(function(e) {
+                        e.preventDefault();
+                        userId = $(this).attr("data-user-id");
+                        let blockbutton = $(this)
+                        let blockObj = {
+                            "blocked_user_id": userId
+                        }
+                        let jsonData = JSON.stringify(blockObj);
+
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(blockbutton).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("User is blocked")
+                                setTimeout(function() {
+                                    let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            },
+                            error: function(xhr, status, err) {
+                                if (xhr.status == 400) {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text(xhr.responseJSON.error)
+
+
+                                } else {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text("Something went wrong, please try again")
+
+                                }
+
+
+                            }
+                        })
+
+                    });
 
                 },
                 error: function(xhr, status, err) {
