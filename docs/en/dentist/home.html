@@ -953,6 +953,56 @@
         })
     </script>
 
+    <!-- API requesta -->
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();;
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+
+            $(document).ready(function() {
+
+                $.ajax({
+                    "method": "GET",
+                    "url": apiUrl + "/api/Users/IsAllowedToHome",
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    "data": {},
+                    success: function(data, st, xhr) {
+                        console.log(data)
+                        if (data.nextPage == "homePatient") {
+                            window.location.href = "patient/home.html";
+                        } else if (data.nextPage == "homeDentist") {
+                            console.log("hello doctor");
+                        } else if (data.nextPage == "homeAdmin") {
+                            window.location.href = "../dashboard.html";
+                        }
+                    },
+                    error: function(xhr, status, err) {
+                        console.log(xhr);
+                        window.location.href = "../login.html";
+                    }
+                })
+            });
+
+
+
+
+        })();
+    </script>
+
+
 
 </body>
 

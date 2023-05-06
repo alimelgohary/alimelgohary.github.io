@@ -23,6 +23,7 @@
             },
             "data": {},
             success: function(data, st, xhr) {
+                console.log(data)
                 if (data.nextPage == "homePatient") {
                     window.location.href = "patient/home.html"
                 } else if (data.nextPage == "homeDentist") {
