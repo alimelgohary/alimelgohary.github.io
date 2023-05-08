@@ -173,11 +173,6 @@ nav .notificationmark::before {
     padding: 0 !important;
 }
 
-.dropdown-menu li:hover a {
-    padding-left: 25px;
-    transition-duration: .3s;
-}
-
 .home-content {
     width: 50%;
     margin-top: 12px;
@@ -753,4 +748,22 @@ input[type="radio"] {
 
 .skeleton-loading__text {
     width: 20%;
+}
+
+.select-Optmize {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.text-grident {
+    background: -webkit-linear-gradient(var(--post-button-color), white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-grident:hover {
+    text-shadow: 9px 7px 6px BLACK;
+    transition-duration: .3s;
 }
