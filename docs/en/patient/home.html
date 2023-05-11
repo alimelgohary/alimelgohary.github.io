@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
 
+    <script src="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/Normalize.css">
     <link rel="stylesheet" href="../css/imagehover.min.css">
     <link rel="stylesheet" href="../css/imagehover.css">
@@ -47,7 +49,7 @@
                     </div>
                     <div class="d-flex col-mob">
                         <li class="nav-item  fs-5 mr-10">
-                            <a href="" class="nav-link active en"><span class="c-black fs-25 mr-5" id="language">EN</span><i class="fa-solid fa-globe fs-25 c-black"></i> </a>
+                            <a href="" class="nav-link active en"><span class="c-black fs-25 mr-5" id="language">EN</span><i class="fa-solid fa-globe fs-25 c-black "></i> </a>
                         </li>
 
                         <li class="nav-item  fs-5 d-none d-lg-block  l-border">
@@ -66,6 +68,12 @@
                         <li class="nav-item  fs-5 mr-15">
                             <a href="" class="nav-link active en"><img src="../imgs/profilepic.svg" style="max-width:50px; width: 30px;"> </a>
                         </li>
+
+                        <li class="nav-item  fs-5 mr-10 logout">
+                            <a href="" class="nav-link active en log-out  "><i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
+                        </li>
+
+
                     </div>
                 </ul>
             </div>
@@ -314,7 +322,7 @@
 
 
 
-
+    <!-- add csee modal  -->
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary  modal2-button d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -416,6 +424,35 @@
 
 
 
+    <!-- log out modal  -->
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger logoutreq p-10 hvr-float-shadow">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20">
+                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -442,6 +479,41 @@
         });
     </script>
 
+    <!-- log out  -->
+    <script>
+        $(".logoutreq").click(function() {
+
+
+            (async() => {
+
+                let apiUrl = await GetServerDomain();;
+
+                $.ajax({
+                    "method": "GET",
+                    "url": apiUrl + "/api/Users/Logout",
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    success: function(data, st, xhr) {
+
+                        window.location.href = "../login.html"
+                        console.log(data);
+                    },
+                    error: function(xhr, status, err) {
+                        $(".logouterror").css("display", "block");
+                    }
+                })
+
+
+
+            })();
+        })
+    </script>
 
 
     <!-- //get governate and case Types -->
@@ -563,7 +635,7 @@
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId}" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -742,7 +814,7 @@
 
                                 // check if user have profile pic or not
                                 if (data[counter].userInfo.profilePicture == null) {} else {
-                                    $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64${data[counter].userInfo.profilePicture}`);
+                                    $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base,64${data[counter].userInfo.profilePicture}`);
                                 }
 
                                 //check if user have images and display it
@@ -1024,7 +1096,7 @@
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId}" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -1203,7 +1275,7 @@
 
                                 // check if user have profile pic or not
                                 if (data[counter].userInfo.profilePicture == null) {} else {
-                                    $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64${data[counter].userInfo.profilePicture}`);
+                                    $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64,${data[counter].userInfo.profilePicture}`);
                                 }
 
                                 //check if user have images and display it
@@ -1475,6 +1547,12 @@
             $(".selectcaseimage2").trigger("click");
         })
 
+
+        $(".logout").click(function() {
+            $(".logoutbutton").trigger("click");
+
+        })
+
         var locationDisplay = false;
 
         $('input[name="case"]').change(function() {
@@ -1696,7 +1774,7 @@
                     if (data.nextPage == "homePatient") {
                         console.log("hello patient");
                     } else if (data.nextPage == "homeDentist") {
-                        window.location.href = "dentist/home.html";
+                        window.location.href = "../login.html";
                     } else if (data.nextPage == "homeAdmin") {
                         window.location.href = "../dashboard.html";
                     }
@@ -1736,7 +1814,7 @@
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId}" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -1915,7 +1993,7 @@
 
                         // check if user have profile pic or not
                         if (data[counter].userInfo.profilePicture == null) {} else {
-                            $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64${data[counter].userInfo.profilePicture}`);
+                            $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64,${data[counter].userInfo.profilePicture}`);
                         }
 
                         //check if user have images and display it
@@ -2217,7 +2295,7 @@
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId}" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -2396,7 +2474,7 @@
 
                                     // check if user have profile pic or not
                                     if (data[counter].userInfo.profilePicture == null) {} else {
-                                        $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64${data[counter].userInfo.profilePicture}`);
+                                        $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64,${data[counter].userInfo.profilePicture}`);
                                     }
 
                                     //check if user have images and display it

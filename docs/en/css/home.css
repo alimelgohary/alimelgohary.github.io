@@ -767,3 +767,33 @@ input[type="radio"] {
     text-shadow: 9px 7px 6px BLACK;
     transition-duration: .3s;
 }
+
+@media (min-width:992px) and (max-width:1067px) {
+    .navbar .navbar-nav .col-mob li {
+        margin-right: 0 !important;
+    }
+    .fa-globe {
+        display: none;
+    }
+}
+
+.logout {
+    margin-top: 5px;
+}
+
+.logoutmodal .modal-footer {
+    border-top: none;
+}
+
+.logoutmodal .btn {
+    border: none;
+    padding: 7px 20px;
+}
+
+.logoutmodal .modal-body p {
+    text-shadow: 7px 11px 4px BLACK;
+}
+
+.logouterror {
+    display: none;
+}
