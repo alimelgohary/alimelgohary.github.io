@@ -57,7 +57,7 @@
                         </li>
 
                         <li class="nav-item  fs-5 mr-15  ">
-                            <a href="" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
+                            <a href="chat.html" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
                         </li>
 
                         <li class="nav-item  fs-5 mr-15 hvr-buzz ">
@@ -481,13 +481,10 @@
 
     <!-- log out  -->
     <script>
-        $(".logoutreq").click(function() {
+        (async() => {
 
-
-            (async() => {
-
-                let apiUrl = await GetServerDomain();;
-
+            let apiUrl = await GetServerDomain();;
+            $(".logoutreq").click(function() {
                 $.ajax({
                     "method": "GET",
                     "url": apiUrl + "/api/Users/Logout",
@@ -508,8 +505,6 @@
                         $(".logouterror").css("display", "block");
                     }
                 })
-
-
 
             })();
         })
