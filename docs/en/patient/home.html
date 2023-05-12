@@ -56,7 +56,7 @@
                             <a href="" class="nav-link active en"> </a>
                         </li>
 
-                        <li class="nav-item  fs-5 mr-15  ">
+                        <li class="nav-item  fs-5 mr-15  chatpage">
                             <a href="chat.html" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
                         </li>
 
@@ -477,14 +477,18 @@
         $('.search-icon').on('click', function() {
             window.location.href = "search.html";
         });
+
+        $(".chatpage").click(function() {
+            window.location.href = "chat.html";
+        })
     </script>
 
     <!-- log out  -->
     <script>
         (async() => {
-
-            let apiUrl = await GetServerDomain();;
+            let apiUrl = await GetServerDomain();
             $(".logoutreq").click(function() {
+
                 $.ajax({
                     "method": "GET",
                     "url": apiUrl + "/api/Users/Logout",
@@ -499,12 +503,13 @@
                     success: function(data, st, xhr) {
 
                         window.location.href = "../login.html"
-                        console.log(data);
                     },
                     error: function(xhr, status, err) {
                         $(".logouterror").css("display", "block");
                     }
                 })
+
+
 
             })();
         })
@@ -794,10 +799,10 @@
 
 
                                 // check if there is phone or not 
-                                if (data.phone == null) {
+                                if (data[counter].phone == null) {
                                     $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                                 } else {
-                                    $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                                    $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                                 }
 
                                 // check if Post is edited or not
@@ -1255,10 +1260,10 @@
 
 
                                 // check if there is phone or not 
-                                if (data.phone == null) {
+                                if (data[counter].phone == null) {
                                     $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                                 } else {
-                                    $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                                    $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                                 }
 
                                 // check if Post is edited or not
@@ -1973,10 +1978,10 @@
 
 
                         // check if there is phone or not 
-                        if (data.phone == null) {
+                        if (data[counter].phone == null) {
                             $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                         } else {
-                            $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                            $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                         }
 
                         // check if Post is edited or not
@@ -2454,10 +2459,10 @@
 
 
                                     // check if there is phone or not 
-                                    if (data.phone == null) {
+                                    if (data[counter].phone == null) {
                                         $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                                     } else {
-                                        $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                                        $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                                     }
 
                                     // check if Post is edited or not
