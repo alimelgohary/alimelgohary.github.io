@@ -548,6 +548,7 @@
                         "Accept-Language": language
                     },
                     success: function(data, st, xhr) {
+                        console.log(data);
 
                         window.location.href = "../login.html"
                     },
@@ -687,7 +688,7 @@
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
                                             <span class="fs-rem-14 fw-bold name">${data[counter].userInfo.fullName}</span><span class="username fs-rem-12 c-grey">@${data[counter].userInfo.username}</span></div>
-                                        <span class="user-case fw-bold c-blue fs-rem-12">${data[counter].dentistInfo.academicDegree}</span>
+                                       
                                         <span class="user-mohafza c-grey fs-rem-10">${data[counter].governorate}</span>
                                         <div>
                                             <span class="post-time c-grey fs-rem-10 mr-px-5">${data[counter].timeWritten}</span><span class="fs-rem-10 c-grey mr-px-5 edited">Edited at</span><span class="editedtime${data[counter].postId} edited fs-rem-10 c-grey">8</span></div>
@@ -846,10 +847,10 @@
 
 
                                 // check if there is phone or not 
-                                if (data.phone == null) {
+                                if (data[counter].phone == null) {
                                     $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                                 } else {
-                                    $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                                    $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                                 }
 
                                 // check if Post is edited or not
@@ -1148,7 +1149,7 @@
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
                                             <span class="fs-rem-14 fw-bold name">${data[counter].userInfo.fullName}</span><span class="username fs-rem-12 c-grey">@${data[counter].userInfo.username}</span></div>
-                                        <span class="user-case fw-bold c-blue fs-rem-12">${data[counter].dentistInfo.academicDegree}</span>
+                                        
                                         <span class="user-mohafza c-grey fs-rem-10">${data[counter].governorate}</span>
                                         <div>
                                             <span class="post-time c-grey fs-rem-10 mr-px-5">${data[counter].timeWritten}</span><span class="fs-rem-10 c-grey mr-px-5 edited">Edited at</span><span class="editedtime${data[counter].postId} edited fs-rem-10 c-grey">8</span></div>
@@ -1307,10 +1308,10 @@
 
 
                                 // check if there is phone or not 
-                                if (data.phone == null) {
+                                if (data[counter].phone == null) {
                                     $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                                 } else {
-                                    $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                                    $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                                 }
 
                                 // check if Post is edited or not
@@ -2027,10 +2028,10 @@
 
 
                         // check if there is phone or not 
-                        if (data.phone == null) {
+                        if (data[counter].phone == null) {
                             $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                         } else {
-                            $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                            $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                         }
 
                         // check if Post is edited or not
@@ -2509,10 +2510,10 @@
 
 
                                     // check if there is phone or not 
-                                    if (data.phone == null) {
+                                    if (data[counter].phone == null) {
                                         $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
                                     } else {
-                                        $(`.call${data[counter].postId} button`).attr('title', data.phone);
+                                        $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
                                     }
 
                                     // check if Post is edited or not

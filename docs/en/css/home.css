@@ -790,10 +790,6 @@ input[type="radio"] {
     padding: 7px 20px;
 }
 
-.logoutmodal .modal-body p {
-    text-shadow: 7px 11px 4px BLACK;
-}
-
 .logouterror {
     display: none;
 }
