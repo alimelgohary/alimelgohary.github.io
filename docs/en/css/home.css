@@ -793,3 +793,8 @@ input[type="radio"] {
 .logouterror {
     display: none;
 }
+
+.button-bg a {
+    color: white;
+    text-decoration: none;
+}

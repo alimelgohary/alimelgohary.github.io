@@ -16,6 +16,9 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
 
+    <script src="../js/helper.js "></script>
+    <script src="../js/jquery-3.6.1.min.js "></script>
+
     <link rel="stylesheet" href="../css/Normalize.css">
     <link rel="stylesheet" href="../css/imagehover.min.css">
     <link rel="stylesheet" href="../css/imagehover.css">
@@ -28,6 +31,50 @@
     <link rel="stylesheet" href="../css/home.css">
     <title>Home</title>
     <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
+
+    <!-- check if checked in or not  -->
+    <script>
+        (async() => {
+            let pageIndex = 1;
+            let apiUrl = await GetServerDomain();
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+
+            // check if theuser is loged in or not 
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Users/IsAllowedToHome",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                "data": {},
+                success: function(data, st, xhr) {
+                    console.log(data)
+                    if (data.nextPage == "homePatient") {
+                        window.location.href = "../login.html";
+                    } else if (data.nextPage == "homeDentist") {
+
+                    } else if (data.nextPage == "homeAdmin") {
+                        window.location.href = "../dashboard.html";
+                    }
+                },
+                error: function(xhr, status, err) {
+                    console.log(xhr);
+                    window.location.href = "../login.html";
+                }
+            })
+        })();
+    </script>
 
 
 </head>
@@ -470,6 +517,33 @@
 
 
 
+    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger p-10 hvr-float-shadow" id="log-out">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20">
+                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -479,8 +553,7 @@
     <script src="../js/bootstrap.bundle.min.js "></script>
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
-    <script src="../js/helper.js "></script>
-    <script src="../js/jquery-3.6.1.min.js "></script>
+
 
 
     <script>
@@ -499,33 +572,6 @@
     <!-- log out modal  -->
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
-                        Launch demo modal
-                        </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered logoutmodal">
-            <div class="modal-content rad-10">
-                <div class="modal-header">
-
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex justify-content-center">
-                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
-                </div>
-                <div class="modal-footer d-flex w-full justify-content-around mb-25">
-                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-primary bg-danger logoutreq p-10 hvr-float-shadow">Yes</button>
-
-                </div>
-                <div class="d-flex justify-content-center mt-10 mb-20">
-                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
 
 
@@ -534,8 +580,14 @@
     <script>
         (async() => {
             let apiUrl = await GetServerDomain();
-            $(".logoutreq").click(function() {
-
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+            $("#log-out").click(function() {
+                console.log("logedout")
                 $.ajax({
                     "method": "GET",
                     "url": apiUrl + "/api/Users/Logout",
@@ -549,7 +601,6 @@
                     },
                     success: function(data, st, xhr) {
                         console.log(data);
-
                         window.location.href = "../login.html"
                     },
                     error: function(xhr, status, err) {
@@ -557,12 +608,9 @@
                     }
                 })
 
-
-
-            })();
-        })
+            })
+        })();
     </script>
-
 
     <!-- //get governate and case Types -->
 
@@ -695,7 +743,7 @@
                                         <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].caseType}" >${data[counter].caseType}</span></div>
                                     </div>
                                 </div>
-                                <div class="more-about-post d-flex flex-column align-center">
+                                <div class="more-about-post d-flex flex-column align-center align-items-end">
                                     <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
                                     <ul class="p-10 dropbutton-bg mt-px-5 d-none">
                                         <li class="p-10 share-links${data[counter].postId} share-links">Share via</li>
@@ -836,9 +884,11 @@
                                         </button>
                                     </div>
                                     <div class="chat">
+                                        <a href = "../chat.html?id=${data[counter].userInfo.userId}">
                                         <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
                                            <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
                                         </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1156,7 +1206,7 @@
                                         <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].caseType}" >${data[counter].caseType}</span></div>
                                     </div>
                                 </div>
-                                <div class="more-about-post d-flex flex-column align-center">
+                                <div class="more-about-post d-flex flex-column align-center align-items-end">
                                     <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
                                     <ul class="p-10 dropbutton-bg mt-px-5 d-none">
                                         <li class="p-10 share-links${data[counter].postId} share-links">Share via</li>
@@ -1297,9 +1347,11 @@
                                         </button>
                                     </div>
                                     <div class="chat">
+                                        <a href = "../chat.html?id=${data[counter].userInfo.userId}">
                                         <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
                                            <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
                                         </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1806,34 +1858,6 @@
             }
 
 
-            // check if theuser is loged in or not 
-            $.ajax({
-                "method": "GET",
-                "url": apiUrl + "/api/Users/IsAllowedToHome",
-                "xhrFields": {
-                    "withCredentials": true
-                },
-                "headers": {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "69420",
-                    "Accept-Language": language
-                },
-                "data": {},
-                success: function(data, st, xhr) {
-                    console.log(data)
-                    if (data.nextPage == "homePatient") {
-                        window.location.href = "../login.html";
-                    } else if (data.nextPage == "homeDentist") {
-
-                    } else if (data.nextPage == "homeAdmin") {
-                        window.location.href = "../dashboard.html";
-                    }
-                },
-                error: function(xhr, status, err) {
-                    console.log(xhr);
-                    window.location.href = "../login.html";
-                }
-            })
 
 
 
@@ -1876,7 +1900,7 @@
                                         <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].caseType}" >${data[counter].caseType}</span></div>
                                     </div>
                                 </div>
-                                <div class="more-about-post d-flex flex-column align-center">
+                                <div class="more-about-post d-flex flex-column align-items-end">
                                     <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
                                     <ul class="p-10 dropbutton-bg mt-px-5 d-none">
                                         <li class="p-10 share-links${data[counter].postId} share-links">Share via</li>
@@ -2017,9 +2041,11 @@
                                         </button>
                                     </div>
                                     <div class="chat">
+                                        <a href = "../chat.html?id=${data[counter].userInfo.userId}">
                                         <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
                                            <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
                                         </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -2358,7 +2384,7 @@
                                         <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].caseType}" >${data[counter].caseType}</span></div>
                                     </div>
                                 </div>
-                                <div class="more-about-post d-flex flex-column align-center">
+                                <div class="more-about-post d-flex flex-column align-items-end">
                                     <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
                                     <ul class="p-10 dropbutton-bg mt-px-5 d-none">
                                         <li class="p-10 share-links${data[counter].postId} share-links">Share via</li>
@@ -2499,9 +2525,11 @@
                                         </button>
                                     </div>
                                     <div class="chat">
+                                        <a href = "../chat.html?id=${data[counter].userInfo.userId}">
                                         <button type="button" class="btn btn-secondary button-bg " data-bs-placement="top">
                                            <i class="fa-regular fa-comment mr-px-5"></i> <span>Chat</span>
                                         </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
