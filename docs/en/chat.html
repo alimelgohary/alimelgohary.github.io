@@ -26,6 +26,54 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/hover.css">
 
+    <script src="js/helper.js "></script>
+    <script src="js/jquery-3.6.1.min.js "></script>
+
+    <!-- check if loged in or not  -->
+    <script>
+        (async() => {
+            let pageIndex = 1;
+            let apiUrl = await GetServerDomain();;
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+
+            // check if theuser is loged in or not 
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Users/IsAllowedToHome",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                "data": {},
+                success: function(data, st, xhr) {
+                    console.log(data)
+                    if (data.nextPage == "homePatient") {
+
+                    } else if (data.nextPage == "homeDentist") {
+
+                    } else if (data.nextPage == "homeAdmin") {
+
+                    }
+                },
+                error: function(xhr, status, err) {
+                    console.log(xhr);
+                    window.location.href = "../login.html";
+                }
+            })
+        })();
+    </script>
+
+
     <link rel="stylesheet" href="css/chat.css">
     <title>Chat</title>
     <link rel="icon" type=" image/svg+xml" href="imgs/logo.svg" />
@@ -75,7 +123,7 @@
                             <a href="" class="nav-link active en"><img src="imgs/profilepic.svg" style="max-width:50px; width: 30px;"> </a>
                         </li>
 
-                        <li class="nav-item  fs-5 mr-10 logout">
+                        <li class="nav-item  fs-5 mr-10 logout" id="log-out">
                             <a href="" class="nav-link active en log-out"><i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
                         </li>
                     </div>
@@ -104,34 +152,8 @@
                         </div>
                     </div>
                     <div class="chat-users mt-20 w-full d-flex">
-                        <ul class=" w-full">
-                            <li class="cur-point mb-20 p-px-5 d-flex flex-row">
-                                <div>
-                                    <img src="imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline">
-                                </div>
-                                <div class="d-flex flex-column chat-user-text">
-                                    <span class="chat-user fw-bold">Fouad Mohamed</span>
-                                    <div class="d-flex c-grey fs-rem-12 ">
-                                        <span class="w-70 chat-tetx">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat excepturi vel ratione distinctio ullam eos maiores numquam autem iusto at, nihil a. Vitae accusantium deserunt ea ad nostrum. Perferendis, ab.</span>
-                                        <span class="chat-time">.3h</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Essam</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Mostafa No3man</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Elgohary</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Samir</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Fathlla</span>
-                            </li>
+                        <ul class=" w-full chat-users-ul">
+
                         </ul>
                     </div>
                 </div>
@@ -162,75 +184,10 @@
 
                         <!-- make ul has all width and put dives inside li and make float left  -->
                         <ul class="w-full p-0 m-0 d-flex flex-column chat-ul">
-                            <li class="mb-10 w-full">
-                                <div class="chated-person-info w-60 d-flex fs-rem-14 l-1-2">
-                                    <div style="width: 35px;" class="mr-10">
-                                        <img src="imgs/profilepic.svg" alt="" class="rad-half" style="max-width: 100%;">
-                                    </div>
-                                    <div class="w-fit rad-10 bg-white p-10">
-                                        <span class="chated-message">Lorem ipsum dolor sit  elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati amet doloremque sit iusto rem quisquam nemo quos corporis distinctio recusandae quod incidunt esse laborum, beatae consequuntur tempora aliquam itaque saepe.  </span>
-                                    </div>
 
-                                </div>
-
-                            </li>
-                            <li class="w-full c-white mb-10 be-end ">
-                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
-                                    <div class="w-fit rad-10 bg-white p-10 button-bg">
-                                        <span class="chated-message">Lorem ipsum dolor sit  elit. Lorem ips </span>
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="w-full c-white mb-10 be-end ">
-                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5">
-                                    <div class="w-fit rad-10 bg-white p-10 button-bg">
-                                        <span class="chated-message">Lorem ipsum dolor sit  elit. Lorem ips </span>
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="w-full c-white mb-10 be-end ">
-                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5">
-                                    <div class="w-fit rad-10 bg-white p-10 button-bg">
-                                        <span class="chated-message">Lorem ipsum dolor sit  elit. Lorem ips </span>
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="mb-10 w-full">
-                                <div class="chated-person-info w-60 d-flex fs-rem-14 l-1-2">
-                                    <div style="width: 35px;" class="mr-10">
-                                        <img src="imgs/profilepic.svg" alt="" class="rad-half" style="max-width: 100%;">
-                                    </div>
-                                    <div class="w-fit rad-10 bg-white p-10">
-                                        <span class="chated-message">Lorem ipsum dolor sit  elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati amet doloremque sit iusto rem quisquam nemo quos corporis distinctio recusandae quod incidunt esse laborum, beatae consequuntur tempora aliquam itaque saepe.  </span>
-                                    </div>
-
-                                </div>
-
-                            </li>
-                            <li class="w-full c-white mb-10 be-end ">
-                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5">
-                                    <div class="w-fit rad-10 bg-white p-10 button-bg">
-                                        <span class="chated-message">Lorem ipsum dolor sit  elit. Lorem ips Lorem ipsum dolor sit  elit. Lorem ipsLorem ipsum dolor sit  elit. Lorem ips </span>
-                                    </div>
-
-                                </div>
-                            </li>
-                            <li class="mb-10 w-full">
-                                <div class="chated-person-info w-60 d-flex fs-rem-14 l-1-2">
-                                    <div style="width: 35px;" class="mr-10">
-                                        <img src="imgs/profilepic.svg" alt="" class="rad-half" style="max-width: 100%;">
-                                    </div>
-                                    <div class="w-fit rad-10 bg-white p-10">
-                                        <span class="chated-message">Lorem ipsum dolor sit  elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati amet doloremque sit iusto rem quisquam nemo quos corporis distinctio recusandae quod incidunt esse laborum, beatae consequuntur tempora aliquam itaque saepe.  </span>
-                                    </div>
-
-                                </div>
-
-                            </li>
+                            <li class="message-skeleton d-none"></li>
                         </ul>
+
 
 
                     </div>
@@ -520,8 +477,7 @@
     <script src="js/bootstrap.bundle.min.js "></script>
     <script src="js/all.min.js "></script>
     <script src="js/popper.min.js "></script>
-    <script src="js/helper.js "></script>
-    <script src="js/jquery-3.6.1.min.js "></script>
+
 
 
     <script>
@@ -534,8 +490,10 @@
         $('.search-icon').on('click', function() {
             window.location.href = "search.html ";
         });
+        $(".chat-mess").click(function() {
+            $(this).next(".mesagetime").toggleClass("d-none")
+        })
     </script>
-
 
 
 
@@ -545,34 +503,41 @@
     <!-- log out  -->
     <script>
         (async() => {
-            let apiUrl = await GetServerDomain();;
-            $(".logoutreq").click(function() {
+            let apiUrl = await GetServerDomain();
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+            $("#log-out").click(function() {
+                console.log("logedout")
                 $.ajax({
-                    "method ": "GET ",
-                    "url ": apiUrl + "/api/Users/Logout ",
-                    "xhrFields ": {
-                        "withCredentials ": true
+                    "method": "GET",
+                    "url": apiUrl + "/api/Users/Logout",
+                    "xhrFields": {
+                        "withCredentials": true
                     },
-                    "headers ": {
-                        "Content-Type ": "application/json ",
-                        "ngrok-skip-browser-warning ": "69420 ",
-                        "Accept-Language ": language
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
                     },
                     success: function(data, st, xhr) {
-
-                        window.location.href = "../login.html "
+                        console.log(data);
+                        window.location.href = "login.html"
                     },
                     error: function(xhr, status, err) {
-                        $(".logouterror ").css("display ", "block ");
+                        $(".logouterror").css("display", "block");
                     }
                 })
 
 
 
-            })();
-        })
-    </script>
 
+            })
+        })();
+    </script>
     <script>
         $("a.nav-link ").click(function(e) {
             e.preventDefault();
@@ -653,6 +618,10 @@
                                 </div>
                             </li>`)
             $(".chat-message-input").val("");
+            $(document).ready(function() {
+                $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+            });
+
         })
 
         $(".chat-message-input").keypress(function(e) {
@@ -668,6 +637,10 @@
                                 </div>
                             </li>`)
                 $(".chat-message-input").val("");
+                $(document).ready(function() {
+                    $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                });
+
             }
 
         })
@@ -677,11 +650,20 @@
     <!-- get chat messages  -->
     <script>
         (async() => {
-            let apiUrl = await GetServerDomain();;
+            let apiUrl = await GetServerDomain();
+            var lastMassegeId;
+            let pageIndex = 2;
+            let url = window.location.href
+            url = url.split("?")
+            let userId = url[1].split("=")
+            userId = userId[1]
+
+            var firstMassegeId;
+
 
             $.ajax({
                 "method": "GET",
-                "url": "https://135a-167-172-184-1.ngrok-free.app/api/Common/GetChatHistory?receiver_user_id=58",
+                "url": `https://135a-167-172-184-1.ngrok-free.app/api/Common/GetChatHistory?receiver_user_id=${userId}&Page=1&Size=10`,
                 "xhrFields": {
                     "withCredentials": true
                 },
@@ -690,8 +672,216 @@
                     "ngrok-skip-browser-warning": "69420",
                     "Accept-Language": language
                 },
+                beforeSend: function() {
+                    $(".message-skeleton").removeClass("d-none")
+                },
+                success: function(data, st, xhr) {
+                    $(".message-skeleton").addClass("d-none")
+                    console.log(data)
+                    lastMassegeId = data[data.length - 1].messageId
+                    firstMassegeId = data[0].messageId
+                    console.log(lastMassegeId)
+                    console.log(firstMassegeId)
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].isSender == true) {
+                            $(".chat-ul").prepend(`<li class="w-full c-white mb-10 be-end ">
+                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
+                                    <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
+                                        <span class="chated-message cur-point" id ="${data[i].messageId}">${data[i].message} </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data[i].sentAt}</span>
+                                    </div>
+
+                                </div>
+                            </li>`)
+                        } else {
+                            $(".chat-ul").prepend(`   <li class="mb-10 w-full">
+                                <div class="chated-person-info w-60 d-flex fs-rem-14 l-1-2">
+                                    <div style="width: 35px;" class="mr-10">
+                                        <img src="imgs/profilepic.svg" alt="" class="rad-half" style="max-width: 100%;">
+                                    </div>
+                                    <div class="w-fit rad-10 bg-white p-10 d-flex flex-column chat-mess">
+                                        <span class="chated-message cur-point" id ="${data[i].messageId}">${data[i].message}  </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data[i].sentAt}</span>
+                                    </div>
+                                </div>
+
+                            </li>`)
+                        }
+                    }
+
+                    $(".chat-mess").click(function() {
+                        $(this).next(".mesagetime").toggleClass("d-none")
+                    })
+
+
+                    $(document).ready(function() {
+                        $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                    });
+
+                },
+                error: function(xhr, status, err) {
+                    if (userId == 0) {
+                        $(".home-posts").addClass("d-none")
+                        $(".chat-body-messages").addClass("d-none")
+                    }
+                }
+            })
+
+
+
+            $(document).ready(function() {
+
+
+                $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+
+                $('.chat-body-messages').on('scroll', function() {
+                    if ($(this).scrollTop() === 0) {
+                        let messgeid2 = lastMassegeId;
+
+
+
+                        $.ajax({
+                            "method": "GET",
+                            "url": `https://135a-167-172-184-1.ngrok-free.app/api/Common/GetChatHistory?receiver_user_id=${userId}&Page=${pageIndex}&Size=10`,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            beforeSend: function() {
+
+                                $(".chat-ul").prepend(`<li class="message-skeleton "></li>`)
+                            },
+                            success: function(data, st, xhr) {
+                                $(".message-skeleton").addClass("d-none")
+
+                                console.log(data)
+                                messgeid2 = data[data.length - 1].messageId
+
+                                console.log(messgeid2)
+                                console.log(pageIndex)
+                                if (!(data.length == 0)) {
+
+
+                                    for (var i = 0; i < data.length; i++) {
+                                        if (data[i].isSender == true) {
+                                            $(".chat-ul").prepend(`<li class="w-full c-white mb-10 be-end ">
+                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
+                                    <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
+                                        <span class="chated-message cur-point" id ="${data[i].messageId}">${data[i].message} </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data[i].sentAt}</span>
+                                    </div>
+
+                                </div>
+                            </li>`)
+                                        } else {
+                                            $(".chat-ul").prepend(`   <li class="mb-10 w-full">
+                                <div class="chated-person-info w-60 d-flex fs-rem-14 l-1-2">
+                                    <div style="width: 35px;" class="mr-10">
+                                        <img src="imgs/profilepic.svg" alt="" class="rad-half" style="max-width: 100%;">
+                                    </div>
+                                    <div class="w-fit rad-10 bg-white p-10 d-flex flex-column chat-mess">
+                                        <span class="chated-message cur-point" id ="${data[i].messageId}">${data[i].message}  </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data[i].sentAt}</span>
+                                    </div>
+                                </div>
+
+                            </li>`)
+                                        }
+                                    }
+
+
+                                    pageIndex++;
+                                }
+                                $(".chat-mess").click(function() {
+                                    $(this).next(".mesagetime").toggleClass("d-none")
+                                })
+
+                            },
+                            error: function(xhr, status, err) {
+                                if (userId == 0) {
+                                    $(".home-posts").addClass("d-none")
+                                    $(".chat-body-messages").addClass("d-none")
+                                }
+                            }
+                        })
+
+
+
+
+                    }
+                });
+            });
+
+
+        })();
+    </script>
+
+
+
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+            var lastMassegeId;
+            let pageIndex = 2;
+            let url = window.location.href
+            url = url.split("?")
+            let userId = url[1].split("=")
+            userId = userId[1]
+
+            var firstMassegeId;
+
+
+            $.ajax({
+                "method": "GET",
+                "url": `https://135a-167-172-184-1.ngrok-free.app/api/Common/GetRecentMessages?Page=1&Size=5`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                beforeSend: function() {
+
+                },
                 success: function(data, st, xhr) {
                     console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        let profilesrc;
+                        if (data[i].profilePicture == null) {
+                            profilesrc = "imgs/profilepic.svg"
+                        } else {
+                            profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                        }
+                        $(".chat-users-ul").append(` <a href="?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold">${data[i].fullName}</span>
+                                    <div class="d-flex c-grey fs-rem-12 ">
+                                        <span class="w-70 chat-tetx">${data[i].lastMessage}</span>
+                                        <span class="chat-time">.3h</span>
+                                    </div>
+                                </div>
+                              
+                            </li>  </a>`)
+
+                    }
 
                 },
                 error: function(xhr, status, err) {
@@ -701,12 +891,9 @@
 
 
 
+
         })();
     </script>
-
-
-
-
 
 
 
