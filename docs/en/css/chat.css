@@ -142,6 +142,7 @@ nav .notificationmark::before {
     left: 1px;
     width: 24%;
     height: calc(100vh - 108px);
+    overflow-y: auto;
 }
 
 .home-content {
@@ -208,6 +209,10 @@ input[type="radio"] {
     .home-chats {
         display: none;
     }
+}
+
+.chat-users {
+    overflow: auto;
 }
 
 .chat-users ul {
@@ -426,4 +431,31 @@ input[type="radio"] {
 .message-send:hover {
     rotate: -90deg;
     transition-duration: .5s;
+}
+
+.message-skeleton {
+    background-color: #92a7b6;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    height: 20px;
+    width: 15%;
+    /* Adjust the height as needed */
+    animation: loadingAnimation 1.5s infinite ease-in-out;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.chat-users-ul a {
+    text-decoration: none;
+    color: black;
 }
