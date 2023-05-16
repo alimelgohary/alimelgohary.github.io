@@ -2278,7 +2278,7 @@
                 var scrollPosition = $(window).scrollTop();
 
                 // Check if we have scrolled to the bottom of the page
-                if (documentHeight - viewportHeight === scrollPosition) {
+                if (scrollPosition >= 0.9 * (documentHeight - viewportHeight)) {
                     pageIndex++
                     governateValue = $(".getgevernate").val();
                     caseTypeValue = $(".casetype").val();
