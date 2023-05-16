@@ -740,14 +740,16 @@
                                     $(this).next(".mesagetime").toggleClass("d-none")
                                 })
                                 console.log(data)
-                                messgeid2 = data[data.length - 1].messageId
 
                                 console.log(messgeid2)
                                 console.log(pageIndex)
-                                if (!(data.length == 0)) {
-
+                                if (data.length == 0) {
+                                    console.log("engh")
+                                } else {
+                                    messgeid2 = data[data.length - 1].messageId
 
                                     for (var i = 0; i < data.length; i++) {
+
                                         if (data[i].isSender == true) {
                                             $(".chat-ul").prepend(`<li class="w-full c-white mb-10 be-end ">
                                 <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
@@ -777,10 +779,9 @@
                             </li>`)
                                         }
                                     }
-
-
                                     pageIndex++;
                                 }
+
                                 $(".chat-mess").click(function() {
                                     $(this).next(".mesagetime").toggleClass("d-none")
                                 })
@@ -934,7 +935,7 @@
                                 <div class="d-flex flex-column chat-user-text">
                                     <span class="chat-user fw-bold">${data[i].fullName}</span>
                                     <div class="d-flex c-grey fs-rem-12 ">
-                                        <span class="w-70 chat-tetx">${data[i].lastMessage}</span>
+                                        <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
                                         <span class="chat-time">${data[i].lastMessageTime}</span>
                                     </div>
                                 </div>
@@ -1000,7 +1001,7 @@
                                 <div class="d-flex flex-column chat-user-text">
                                     <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
                                     <div class="d-flex c-grey fs-rem-12 ">
-                                        <span class="w-70 chat-tetx">${data[i].lastMessage}</span>
+                                        <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
                                         <span class="chat-time">${data[i].lastMessageTime}</span>
                                     </div>
                                 </div>
