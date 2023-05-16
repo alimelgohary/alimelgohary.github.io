@@ -67,7 +67,7 @@
                 },
                 error: function(xhr, status, err) {
                     console.log(xhr);
-                    window.location.href = "../login.html";
+                    window.location.href = "login.html";
                 }
             })
         })();
@@ -151,10 +151,14 @@
 
                         </div>
                     </div>
-                    <div class="chat-users mt-20 w-full d-flex">
+                    <div class="chat-users mt-20 w-full d-flex flex-column">
                         <ul class=" w-full chat-users-ul">
 
                         </ul>
+                        <div class="progress loadingchats d-none">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -167,8 +171,10 @@
 
                     <div class="chat-body-header w-full d-flex justify-content-between">
                         <div class="chat-head-info cur-point">
-                            <img src="imgs/profilepic.svg" class="rad-half mr-px-5" style="max-width: 50px;">
-                            <span class="chated-person-name c-black fw-bold fs-rem-15 ">Fouad Mohamed</span>
+                            <a href="">
+                                <img src="imgs/profilepic.svg" class="rad-half mr-px-5" style="max-width: 50px;">
+                                <span class="chated-person-name c-black fw-bold fs-rem-15 "></span>
+                            </a>
                         </div>
                         <div class="chat-call d-flex align-center mr-10">
 
@@ -193,8 +199,11 @@
                     </div>
 
                     <div class="chat-footer d-flex w-full justify-content-center align-center">
-                        <input type="text" class="chat-message-input mr-20 rad-10 mt-px-5 " placeholder="Write here to send message..." autofocus>
-                        <img src="imgs/send.svg" alt="" class="message-send mt-px-5 cur-point" style="width: 40px;">
+                        <input type="text" class="chat-message-input mr-10 rad-10 mt-px-5 " placeholder="Write here to send message..." autofocus>
+                        <img src="imgs/send.svg" alt="" class="message-send mt-px-5 cur-point " style="width: 40px;">
+                        <div class="spinner-border text-info ml-10 d-none" role="status">
+
+                        </div>
                     </div>
 
                 </div>
@@ -478,27 +487,22 @@
     <script src="js/all.min.js "></script>
     <script src="js/popper.min.js "></script>
 
-
-
     <script>
-        $(".search ").keypress(function(event) {
-            if ((event.key).toLowerCase() == "enter ") {
-                window.location.href = "search.html ";
+        var recentIdMessage;
+        var getChtedMessae = false;
+        $(".search").keypress(function(event) {
+            if ((event.key).toLowerCase() == "enter") {
+                window.location.href = "search.html";
             }
         })
 
         $('.search-icon').on('click', function() {
-            window.location.href = "search.html ";
+            window.location.href = "search.html";
         });
         $(".chat-mess").click(function() {
             $(this).next(".mesagetime").toggleClass("d-none")
         })
     </script>
-
-
-
-
-
 
     <!-- log out  -->
     <script>
@@ -538,114 +542,84 @@
             })
         })();
     </script>
+
     <script>
-        $("a.nav-link ").click(function(e) {
+        $("a.nav-link").click(function(e) {
             e.preventDefault();
         })
 
-        $(".notificationmark ").click(function() {
-            $(".notification-content ").toggleClass("d-none ");
-        })
-
-        $(".addcase ").click(function() {
-            $(".modal2-button ").trigger("click ");
-        })
-
-        $(".selectcaseimages ").click(function() {
-            $(".selectcaseimage ").trigger("click ");
-        })
-
-        $(".selectcaseimages2 ").click(function() {
-            $(".selectcaseimage2 ").trigger("click ");
+        $(".notificationmark").click(function() {
+            $(".notification-content").toggleClass("d-none");
         })
 
 
-        $(".logout ").click(function() {
+        $(".logout").click(function() {
             $(".logoutbutton ").trigger("click ");
 
         })
-        var locationDisplay = false;
-
-        $('input[name="case "]').change(function() {
-            if ($('input[name="case "]:checked').val() == "requestapatient ") {
-                $(".Requestapatient ").css('display', 'block');
-                $(".loction ").css('display', 'none');
-                $(".img-of-case img ").attr("src ", "../imgs/addcase.svg ");
-                $(".img-of-case span ").text("Add Case ")
-                $("#location ").removeAttr("required ");
-                locationDisplay = false;
-            } else {
-                $(".Requestapatient ").css('display', 'block');
-                $(".loction ").css('display', 'block');
-                $(".img-of-case img ").attr("src ", "../imgs/sharecase.svg ");
-                $(".img-of-case span ").text("Share Case ")
-                $("#location ").attr("required ", "true ");
-                locationDisplay = true;
-            }
-        })
-
-        $(".moreimg ").click(function() {
-            $(this).toggleClass("rotate-90 ");
-            $(this).next("ul ").toggleClass("d-none ");
-
-        })
-
-        $(".share-links ").click(function() {
-            $(".sharemodal ").trigger("click ");
-        })
-        $(".block ").click(function() {
-            $(".blockmodal ").trigger("click ");
-        })
-
-        $(".report ").click(function() {
-            $(".reportmodal ").trigger("click ");
-        })
-
-        $("#share-link ").val(window.location.href)
     </script>
 
+    <!-- get user info  -->
+
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+            var lastMassegeId;
+            let pageIndex = 2;
+            let url = window.location.href
+            url = url.split("?")
+            let userId = url[1].split("=")
+            userId = userId[1]
+
+            var firstMassegeId;
+
+
+
+            // make request to get chat messages when page load
+            $.ajax({
+                "method": "GET",
+                "url": `${apiUrl}/api/Users/GetBasicUserInfo?Id=${userId}`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+
+                success: function(data, st, xhr) {
+                    console.log(data);
+                    let newRole = data.role.toLowerCase();
+                    let imageSrc;
+                    if (data.profilePicture == null) {
+                        imageSrc = "imgs/profilepic.svg"
+                    } else {
+                        imageSrc = "data:image/png;base64," + data.profilePicture
+                    }
+                    $(".chat-head-info img").attr("src", imageSrc);
+                    $(".chated-person-name").text(data.fullName)
+                    $(".chat-head-info a").attr("href", `${newRole}/profile.html?id=${userId}`)
+
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+
+
+
+
+
+
+
+        })();
+    </script>
 
     <!-- display the sended message  -->
     <script>
-        $(".message-send").click(function() {
-            let message = $(".chat-message-input").val();
-            $(".chat-ul").append(`   <li class="w-full c-white mb-10 be-end ">
-                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
-                                    <div class="w-fit rad-10 bg-white p-10 button-bg">
-                                        <span class="chated-message">${message} </span>
-                                    </div>
-
-                                </div>
-                            </li>`)
-            $(".chat-message-input").val("");
-            $(document).ready(function() {
-                $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
-            });
-
-        })
-
-        $(".chat-message-input").keypress(function(e) {
-
-            if (e.key.toLowerCase() == "enter") {
-                let message = $(".chat-message-input").val();
-                $(".chat-ul").append(`   <li class="w-full c-white mb-10 be-end ">
-                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
-                                    <div class="w-fit rad-10 bg-white p-10 button-bg">
-                                        <span class="chated-message">${message} </span>
-                                    </div>
-
-                                </div>
-                            </li>`)
-                $(".chat-message-input").val("");
-                $(document).ready(function() {
-                    $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
-                });
-
-            }
-
-        })
     </script>
-
 
     <!-- get chat messages  -->
     <script>
@@ -661,9 +635,11 @@
             var firstMassegeId;
 
 
+
+            // make request to get chat messages when page load
             $.ajax({
                 "method": "GET",
-                "url": `https://135a-167-172-184-1.ngrok-free.app/api/Common/GetChatHistory?receiver_user_id=${userId}&Page=1&Size=10`,
+                "url": `${apiUrl}/api/Common/GetChatHistory?receiver_user_id=${userId}&Page=1&Size=10`,
                 "xhrFields": {
                     "withCredentials": true
                 },
@@ -677,11 +653,13 @@
                 },
                 success: function(data, st, xhr) {
                     $(".message-skeleton").addClass("d-none")
+                    getChtedMessae = true;
                     console.log(data)
+
                     lastMassegeId = data[data.length - 1].messageId
-                    firstMassegeId = data[0].messageId
-                    console.log(lastMassegeId)
-                    console.log(firstMassegeId)
+                    recentIdMessage = data[0].messageId
+                    console.log(recentIdMessage)
+                    console.log(getChtedMessae)
                     for (var i = 0; i < data.length; i++) {
                         if (data[i].isSender == true) {
                             $(".chat-ul").prepend(`<li class="w-full c-white mb-10 be-end ">
@@ -732,9 +710,8 @@
             })
 
 
-
+            // make request to get chat messages when scroll top
             $(document).ready(function() {
-
 
                 $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
 
@@ -742,11 +719,9 @@
                     if ($(this).scrollTop() === 0) {
                         let messgeid2 = lastMassegeId;
 
-
-
                         $.ajax({
                             "method": "GET",
-                            "url": `https://135a-167-172-184-1.ngrok-free.app/api/Common/GetChatHistory?receiver_user_id=${userId}&Page=${pageIndex}&Size=10`,
+                            "url": `${apiUrl}/api/Common/GetChatHistory?receiver_user_id=${userId}&Page=${pageIndex}&Size=10`,
                             "xhrFields": {
                                 "withCredentials": true
                             },
@@ -761,7 +736,9 @@
                             },
                             success: function(data, st, xhr) {
                                 $(".message-skeleton").addClass("d-none")
-
+                                $(".chat-mess").click(function() {
+                                    $(this).next(".mesagetime").toggleClass("d-none")
+                                })
                                 console.log(data)
                                 messgeid2 = data[data.length - 1].messageId
 
@@ -818,18 +795,101 @@
                         })
 
 
-
-
                     }
                 });
             });
 
 
+
+
+            // make request every 5 seconds to get new messages
+            setInterval(() => {
+
+                $.ajax({
+                    "method": "GET",
+                    "url": `${apiUrl}/api/Common/GetChatHistory?receiver_user_id=${userId}&Page=1&Size=64&after=${recentIdMessage}`,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    beforeSend: function() {
+
+                    },
+                    success: function(data, st, xhr) {
+                        if (!(data.length == 0)) {
+
+                            console.log(data)
+
+                            $(".chat-mess").click(function() {
+                                $(this).next(".mesagetime").toggleClass("d-none")
+                            })
+
+                            console.log(lastMassegeId)
+                            console.log("out of for")
+                            for (var i = 0; i < data.length; i++) {
+                                recentIdMessage = data[0].messageId
+                                console.log(" in for")
+                                if (data[i].isSender == true) {
+                                    $(".chat-ul").append(`<li class="w-full c-white mb-10 be-end ">
+                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
+                                    <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
+                                        <span class="chated-message cur-point" id ="${data[i].messageId}">${data[i].message} </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data[i].sentAt}</span>
+                                    </div>
+
+                                </div>
+                            </li>`)
+                                } else {
+                                    $(".chat-ul").append(`   <li class="mb-10 w-full">
+                                <div class="chated-person-info w-60 d-flex fs-rem-14 l-1-2">
+                                    <div style="width: 35px;" class="mr-10">
+                                        <img src="imgs/profilepic.svg" alt="" class="rad-half" style="max-width: 100%;">
+                                    </div>
+                                    <div class="w-fit rad-10 bg-white p-10 d-flex flex-column chat-mess">
+                                        <span class="chated-message cur-point" id ="${data[i].messageId}">${data[i].message}  </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data[i].sentAt}</span>
+                                    </div>
+                                </div>
+
+                            </li>`)
+                                }
+                            }
+
+                            $(".chat-mess").click(function() {
+                                $(this).next(".mesagetime").toggleClass("d-none")
+                            })
+
+
+                            $(document).ready(function() {
+                                $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                            });
+
+                        }
+                    },
+                    error: function(xhr, status, err) {
+                        if (userId == 0) {
+                            $(".home-posts").addClass("d-none")
+                            $(".chat-body-messages").addClass("d-none")
+                        }
+                    }
+                })
+
+
+            }, 5000);
+
+
         })();
     </script>
 
-
-
+    <!-- get chated people  -->
     <script>
         (async() => {
             let apiUrl = await GetServerDomain();
@@ -845,7 +905,7 @@
 
             $.ajax({
                 "method": "GET",
-                "url": `https://135a-167-172-184-1.ngrok-free.app/api/Common/GetRecentMessages?Page=1&Size=5`,
+                "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=4`,
                 "xhrFields": {
                     "withCredentials": true
                 },
@@ -875,7 +935,7 @@
                                     <span class="chat-user fw-bold">${data[i].fullName}</span>
                                     <div class="d-flex c-grey fs-rem-12 ">
                                         <span class="w-70 chat-tetx">${data[i].lastMessage}</span>
-                                        <span class="chat-time">.3h</span>
+                                        <span class="chat-time">${data[i].lastMessageTime}</span>
                                     </div>
                                 </div>
                               
@@ -887,6 +947,252 @@
                 error: function(xhr, status, err) {
 
                 }
+            })
+
+
+
+            let notRemanningPeople = 0
+            let pageIndex2 = 2;
+
+            // gwr recent poeple when scroll 
+            $('.home-chats').scroll(function() {
+                var element = $(this);
+                if (element.scrollTop() + element.innerHeight() >= element[0].scrollHeight) {
+
+                    $.ajax({
+                        "method": "GET",
+                        "url": `${apiUrl}/api/Common/GetRecentMessages?Page=${pageIndex2}&Size=4`,
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        beforeSend: function() {
+                            if (notRemanningPeople == 0) {
+                                $(".loadingchats").removeClass("d-none")
+                            }
+                        },
+                        success: function(data, st, xhr) {
+                            $(".loadingchats").addClass("d-none")
+                            console.log(data)
+                            if (data.length == 0 && notRemanningPeople == 0) {
+                                $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
+                                notRemanningPeople = 1;
+                            } else {
+
+                                pageIndex2++;
+
+                                for (var i = 0; i < data.length; i++) {
+                                    let profilesrc;
+                                    if (data[i].profilePicture == null) {
+                                        profilesrc = "imgs/profilepic.svg"
+                                    } else {
+                                        profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                    }
+                                    $(".chat-users-ul").append(` <a href="?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                    <div class="d-flex c-grey fs-rem-12 ">
+                                        <span class="w-70 chat-tetx">${data[i].lastMessage}</span>
+                                        <span class="chat-time">${data[i].lastMessageTime}</span>
+                                    </div>
+                                </div>
+                              
+                            </li>  </a>`)
+
+                                }
+                            }
+                        },
+                        error: function(xhr, status, err) {
+
+                        }
+                    })
+
+
+                }
+            });
+
+
+
+
+            // make requsr when send message 
+            $(".message-send").click(function() {
+
+                let messageFromInput = $(".chat-message-input").val();
+                let ajaxObj = {
+                    "receiver_Id": userId,
+                    "message": messageFromInput
+                }
+                let jsonOBJ = JSON.stringify(ajaxObj);
+                $.ajax({
+                    "method": "POST",
+                    "url": `${apiUrl}/api/Common/SendMessage`,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420"
+
+                    },
+                    "data": jsonOBJ,
+                    beforeSend: function() {
+
+                        $(".spinner-border").removeClass("d-none")
+
+                    },
+                    success: function(data, st, xhr) {
+                        recentIdMessage = data.messageId
+                        $(".spinner-border").addClass("d-none")
+                        $(".chat-mess").click(function() {
+                            $(this).next(".mesagetime").toggleClass("d-none")
+                        })
+
+                        console.log(data)
+                        $(".chat-ul").append(`<li class="w-full c-white mb-10 be-end ">
+                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
+                                    <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
+                                        <span class="chated-message cur-point" id ="${data.messageId}">${data.message} </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data.sentAt}</span>
+                                    </div>
+
+                                </div>
+                            </li>`)
+                        $(".chat-message-input").val("");
+                        $(document).ready(function() {
+                            $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                        });
+                        $(".chat-mess").click(function() {
+                            $(this).next(".mesagetime").toggleClass("d-none")
+                        })
+
+                    },
+                    error: function(xhr, status, err) {
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".chat-mess").click(function() {
+                            $(this).next(".mesagetime").toggleClass("d-none")
+                        })
+                        console.log(xhr)
+                        $(".chat-ul").append(`<li class="w-full c-white mb-10 be-end ">
+                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
+                                    <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
+                                        <span class="chated-message cur-point" id =""> ${messageFromInput}</span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end ">
+                                        <span class=" c-grey fs-rem-12 c-red">Failed</span>
+                                    </div>
+
+                                </div>
+                            </li>`)
+                        $(".chat-message-input").val("");
+                        $(document).ready(function() {
+                            $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                        });
+                        $(".chat-mess").click(function() {
+                            $(this).next(".mesagetime").toggleClass("d-none")
+                        })
+                    }
+                })
+
+            })
+
+
+
+
+            $(".chat-message-input").keypress(function(e) {
+
+                if (e.key.toLowerCase() == "enter") {
+
+                    let messageFromInput = $(".chat-message-input").val();
+                    let ajaxObj = {
+                        "receiver_Id": userId,
+                        "message": messageFromInput
+                    }
+                    let jsonOBJ = JSON.stringify(ajaxObj);
+                    $.ajax({
+                        "method": "POST",
+                        "url": `${apiUrl}/api/Common/SendMessage`,
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420"
+
+                        },
+                        "data": jsonOBJ,
+                        beforeSend: function() {
+
+                            $(".spinner-border").removeClass("d-none")
+
+                        },
+                        success: function(data, st, xhr) {
+                            recentIdMessage = data.messageId
+                            $(".spinner-border").addClass("d-none")
+                            $(".chat-mess").click(function() {
+                                $(this).next(".mesagetime").toggleClass("d-none")
+                            })
+
+                            console.log(data)
+                            $(".chat-ul").append(`<li class="w-full c-white mb-10 be-end ">
+                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
+                                    <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
+                                        <span class="chated-message cur-point" id ="${data.messageId}">${data.message} </span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end d-none">
+                                        <span class=" c-grey fs-rem-12">${data.sentAt}</span>
+                                    </div>
+
+                                </div>
+                            </li>`)
+                            $(".chat-message-input").val("");
+                            $(document).ready(function() {
+                                $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                            });
+                            $(".chat-mess").click(function() {
+                                $(this).next(".mesagetime").toggleClass("d-none")
+                            })
+
+                        },
+                        error: function(xhr, status, err) {
+                            $(".spinner-border").addClass("d-none")
+
+                            $(".chat-mess").click(function() {
+                                $(this).next(".mesagetime").toggleClass("d-none")
+                            })
+                            console.log(xhr)
+                            $(".chat-ul").append(`<li class="w-full c-white mb-10 be-end ">
+                                <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
+                                    <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
+                                        <span class="chated-message cur-point" id =""> ${messageFromInput}</span>
+                                    </div>
+                                    <div class="d-flex mesagetime align-items-end ">
+                                        <span class=" c-grey fs-rem-12 c-red">Failed</span>
+                                    </div>
+
+                                </div>
+                            </li>`)
+                            $(".chat-message-input").val("");
+                            $(document).ready(function() {
+                                $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                            });
+                            $(".chat-mess").click(function() {
+                                $(this).next(".mesagetime").toggleClass("d-none")
+                            })
+                        }
+                    })
+                }
+
             })
 
 

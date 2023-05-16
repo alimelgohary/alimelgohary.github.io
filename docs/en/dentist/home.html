@@ -109,7 +109,7 @@
                         </li>
 
                         <li class="nav-item  fs-5 mr-15 chatpage ">
-                            <a href="chat.html" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
+                            <a href="../chat.html" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
                         </li>
 
                         <li class="nav-item  fs-5 mr-15 hvr-buzz ">
@@ -932,17 +932,17 @@
                                 $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
 
 
-                                const link = encodeURI(window.location.href + `#${everyPostId}`);
-                                const msg = encodeURIComponent('Hey, I found this article');
-                                const title = encodeURIComponent('Article or Post Title Here');
+                                var link = encodeURI(window.location.href + `#${everyPostId}`);
+                                var msg = encodeURIComponent('Hey, I found this article');
+                                var title = encodeURIComponent('Article or Post Title Here');
 
-                                const fb = document.querySelector(`.facebook-share${data[counter].postId}`);
+                                var fb = document.querySelector(`.facebook-share${data[counter].postId}`);
                                 fb.href = `https://www.facebook.com/share.php?u=${link}`;
 
-                                const twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
+                                var twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
                                 twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
 
-                                const whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
+                                var whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
                                 whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
 
 
@@ -972,13 +972,13 @@
                             })
 
                             //   facebook seemore effect 
-                            const showMoreLinks = document.querySelectorAll('.seemore');
-                            const maxChars = 150;
+                            var showMoreLinks = document.querySelectorAll('.seemore');
+                            var maxChars = 150;
                             showMoreLinks.forEach(link => {
-                                const postText = link.closest('.post-text');
-                                const postDescription = postText.querySelector('.post-description');
-                                const descriptionText = postDescription.textContent.trim();
-                                const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                                var postText = link.closest('.post-text');
+                                var postDescription = postText.querySelector('.post-description');
+                                var descriptionText = postDescription.textContent.trim();
+                                var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
                                 if (descriptionText.length <= maxChars) {
                                     link.style.display = 'none';
                                 } else {
@@ -1395,17 +1395,17 @@
                                 $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
 
 
-                                const link = encodeURI(window.location.href + `#${everyPostId}`);
-                                const msg = encodeURIComponent('Hey, I found this article');
-                                const title = encodeURIComponent('Article or Post Title Here');
+                                var link = encodeURI(window.location.href + `#${everyPostId}`);
+                                var msg = encodeURIComponent('Hey, I found this article');
+                                var title = encodeURIComponent('Article or Post Title Here');
 
-                                const fb = document.querySelector(`.facebook-share${data[counter].postId}`);
+                                var fb = document.querySelector(`.facebook-share${data[counter].postId}`);
                                 fb.href = `https://www.facebook.com/share.php?u=${link}`;
 
-                                const twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
+                                var twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
                                 twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
 
-                                const whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
+                                var whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
                                 whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
 
 
@@ -1435,13 +1435,13 @@
                             })
 
                             //   facebook seemore effect 
-                            const showMoreLinks = document.querySelectorAll('.seemore');
-                            const maxChars = 150;
+                            var showMoreLinks = document.querySelectorAll('.seemore');
+                            var maxChars = 150;
                             showMoreLinks.forEach(link => {
-                                const postText = link.closest('.post-text');
-                                const postDescription = postText.querySelector('.post-description');
-                                const descriptionText = postDescription.textContent.trim();
-                                const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                                var postText = link.closest('.post-text');
+                                var postDescription = postText.querySelector('.post-description');
+                                var descriptionText = postDescription.textContent.trim();
+                                var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
                                 if (descriptionText.length <= maxChars) {
                                     link.style.display = 'none';
                                 } else {
@@ -1691,7 +1691,7 @@
 
         $("#share-link").val(window.location.href)
         $(".chatpage").click(function() {
-            window.location.href = "chat.html"
+            window.location.href = "../chat.html?id=0"
         })
     </script>
 
@@ -1804,15 +1804,15 @@
 
     <!-- make see more sacebook effect -->
     <script>
-        const showMoreLinks = document.querySelectorAll('.seemore');
+        var showMoreLinks = document.querySelectorAll('.seemore');
 
-        const maxChars = 150;
+        var maxChars = 150;
 
         showMoreLinks.forEach(link => {
-            const postText = link.closest('.post-text');
-            const postDescription = postText.querySelector('.post-description');
-            const descriptionText = postDescription.textContent.trim();
-            const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+            var postText = link.closest('.post-text');
+            var postDescription = postText.querySelector('.post-description');
+            var descriptionText = postDescription.textContent.trim();
+            var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
 
             if (descriptionText.length <= maxChars) {
                 link.style.display = 'none';
@@ -1880,7 +1880,188 @@
                 },
                 success: function(data, st, xhr) {
                     console.log(data);
+                    $(".social-link").click(function(e) {
+                        let copiedinput = $(this).find('input')[0];
+                        copiedinput.select();
+                        document.execCommand('copy');
+                        copiedinput.blur();
 
+                    })
+                    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                        return new bootstrap.Tooltip(tooltipTriggerEl)
+                    })
+
+                    //   facebook seemore effect 
+                    var showMoreLinks = document.querySelectorAll('.seemore');
+                    var maxChars = 150;
+                    showMoreLinks.forEach(link => {
+                        var postText = link.closest('.post-text');
+                        var postDescription = postText.querySelector('.post-description');
+                        var descriptionText = postDescription.textContent.trim();
+                        var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                        if (descriptionText.length <= maxChars) {
+                            link.style.display = 'none';
+                        } else {
+                            postDescription.textContent = truncatedText;
+                        }
+                        link.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            if (postDescription.textContent === truncatedText) {
+                                postDescription.textContent = descriptionText;
+                                link.textContent = 'Show less';
+                            } else {
+                                postDescription.textContent = truncatedText;
+                                link.textContent = 'See more';
+                            }
+                        });
+                    });
+
+                    $(".moreimg").click(function() {
+                        $(this).toggleClass("rotate-90");
+                        $(this).next("ul").toggleClass("d-none");
+                    })
+
+                    $(`.share-links`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+                    $(`.block`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+                    $(`.report`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+
+                    //request of report button
+                    $(`.reportbuton`).click(function(e) {
+                        e.preventDefault();
+                        let postId = $(this).attr("data-post-id");
+                        let parentofButton = $(this).parent();
+                        let perviosDiv = parentofButton.prev()[0];
+                        let textarea = $(perviosDiv).find('textarea')[0];
+                        let reason = $(textarea).val();
+
+                        let button = $(this);
+
+                        console.log(reason);
+                        console.log(postId);
+                        let reportObj = {
+                            "reported_post_id": postId,
+                            "reason": reason
+                        }
+
+                        let jsonData = JSON.stringify(reportObj);
+
+                        if (reason.length == 0 || reason == null) {
+                            delete reportObj.reason
+                        }
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/ReportPost",
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            "data": jsonData,
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("Report Sent Sucssfully")
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+
+                            },
+                            error: function(xhr, status, err) {
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "red")
+                                $(errorspan).text(xhr.responseJSON.error)
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            }
+                        })
+                    });
+
+
+                    //request of block button
+                    $(`.blockbutton`).click(function(e) {
+                        e.preventDefault();
+                        userId = $(this).attr("data-user-id");
+                        let blockbutton = $(this)
+                        let blockObj = {
+                            "blocked_user_id": userId
+                        }
+                        let jsonData = JSON.stringify(blockObj);
+
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(blockbutton).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("User is blocked")
+                                setTimeout(function() {
+                                    let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            },
+                            error: function(xhr, status, err) {
+                                if (xhr.status == 400) {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text(xhr.responseJSON.error)
+
+
+                                } else {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text("Something went wrong, please try again")
+
+                                }
+
+
+                            }
+                        })
+
+                    });
                     for (var counter = 0; counter < data.length; counter++) {
 
                         $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
@@ -2096,17 +2277,17 @@
                         $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
 
 
-                        const link = encodeURI(window.location.href + `#${everyPostId}`);
-                        const msg = encodeURIComponent('Hey, I found this article');
-                        const title = encodeURIComponent('Article or Post Title Here');
+                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                        var msg = encodeURIComponent('Hey, I found this article');
+                        var title = encodeURIComponent('Article or Post Title Here');
 
-                        const fb = document.querySelector(`.facebook-share${data[counter].postId}`);
+                        var fb = document.querySelector(`.facebook-share${data[counter].postId}`);
                         fb.href = `https://www.facebook.com/share.php?u=${link}`;
 
-                        const twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
+                        var twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
                         twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
 
-                        const whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
+                        var whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
                         whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
 
 
@@ -2136,13 +2317,13 @@
                     })
 
                     //   facebook seemore effect 
-                    const showMoreLinks = document.querySelectorAll('.seemore');
-                    const maxChars = 150;
+                    var showMoreLinks = document.querySelectorAll('.seemore');
+                    var maxChars = 150;
                     showMoreLinks.forEach(link => {
-                        const postText = link.closest('.post-text');
-                        const postDescription = postText.querySelector('.post-description');
-                        const descriptionText = postDescription.textContent.trim();
-                        const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                        var postText = link.closest('.post-text');
+                        var postDescription = postText.querySelector('.post-description');
+                        var descriptionText = postDescription.textContent.trim();
+                        var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
                         if (descriptionText.length <= maxChars) {
                             link.style.display = 'none';
                         } else {
@@ -2319,13 +2500,13 @@
                 // make request when scroll
             $(window).scroll(function() {
                 // Get the height of the document
-                const documentHeight = $(document).height();
+                var documentHeight = $(document).height();
 
                 // Get the height of the viewport
-                const viewportHeight = $(window).height();
+                var viewportHeight = $(window).height();
 
                 // Get the current scroll position
-                const scrollPosition = $(window).scrollTop();
+                var scrollPosition = $(window).scrollTop();
 
                 // Check if we have scrolled to the bottom of the page
                 if (documentHeight - viewportHeight === scrollPosition) {
@@ -2364,6 +2545,188 @@
                             } else {
 
 
+                                $(".social-link").click(function(e) {
+                                    let copiedinput = $(this).find('input')[0];
+                                    copiedinput.select();
+                                    document.execCommand('copy');
+                                    copiedinput.blur();
+
+                                })
+                                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                                var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                                    return new bootstrap.Tooltip(tooltipTriggerEl)
+                                })
+
+                                //   facebook seemore effect 
+                                var showMoreLinks = document.querySelectorAll('.seemore');
+                                var maxChars = 150;
+                                showMoreLinks.forEach(link => {
+                                    var postText = link.closest('.post-text');
+                                    var postDescription = postText.querySelector('.post-description');
+                                    var descriptionText = postDescription.textContent.trim();
+                                    var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                                    if (descriptionText.length <= maxChars) {
+                                        link.style.display = 'none';
+                                    } else {
+                                        postDescription.textContent = truncatedText;
+                                    }
+                                    link.addEventListener('click', (event) => {
+                                        event.preventDefault();
+                                        if (postDescription.textContent === truncatedText) {
+                                            postDescription.textContent = descriptionText;
+                                            link.textContent = 'Show less';
+                                        } else {
+                                            postDescription.textContent = truncatedText;
+                                            link.textContent = 'See more';
+                                        }
+                                    });
+                                });
+
+                                $(".moreimg").click(function() {
+                                    $(this).toggleClass("rotate-90");
+                                    $(this).next("ul").toggleClass("d-none");
+                                })
+
+                                $(`.share-links`).click(function() {
+                                    $(this).next(`button`).trigger("click");
+                                })
+
+                                $(`.block`).click(function() {
+                                    $(this).next(`button`).trigger("click");
+                                })
+
+                                $(`.report`).click(function() {
+                                    $(this).next(`button`).trigger("click");
+                                })
+
+
+                                //request of report button
+                                $(`.reportbuton`).click(function(e) {
+                                    e.preventDefault();
+                                    let postId = $(this).attr("data-post-id");
+                                    let parentofButton = $(this).parent();
+                                    let perviosDiv = parentofButton.prev()[0];
+                                    let textarea = $(perviosDiv).find('textarea')[0];
+                                    let reason = $(textarea).val();
+
+                                    let button = $(this);
+
+                                    console.log(reason);
+                                    console.log(postId);
+                                    let reportObj = {
+                                        "reported_post_id": postId,
+                                        "reason": reason
+                                    }
+
+                                    let jsonData = JSON.stringify(reportObj);
+
+                                    if (reason.length == 0 || reason == null) {
+                                        delete reportObj.reason
+                                    }
+                                    $.ajax({
+                                        "method": "POST",
+                                        "url": apiUrl + "/api/Common/ReportPost",
+                                        "xhrFields": {
+                                            "withCredentials": true
+                                        },
+                                        "headers": {
+                                            "Content-Type": "application/json",
+                                            "ngrok-skip-browser-warning": "69420",
+                                            "Accept-Language": language
+                                        },
+                                        "data": jsonData,
+
+                                        success: function(data, st, xhr) {
+                                            console.log(data);
+                                            let buttondiv = $(button).parent()[0];
+                                            let errordiv = $(buttondiv).next('div')[0]
+                                            let errorspan = $(errordiv).find('span')[0];
+                                            $(errorspan).css("color", "green")
+                                            $(errorspan).text("Report Sent Sucssfully")
+
+                                            setTimeout(function() {
+                                                let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                                $(Cancelbutton).trigger('click');
+                                            }, 2000)
+
+
+                                        },
+                                        error: function(xhr, status, err) {
+                                            let buttondiv = $(button).parent()[0];
+                                            let errordiv = $(buttondiv).next('div')[0]
+                                            let errorspan = $(errordiv).find('span')[0];
+                                            $(errorspan).css("color", "red")
+                                            $(errorspan).text(xhr.responseJSON.error)
+
+                                            setTimeout(function() {
+                                                let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                                $(Cancelbutton).trigger('click');
+                                            }, 2000)
+
+                                        }
+                                    })
+                                });
+
+
+                                //request of block button
+                                $(`.blockbutton`).click(function(e) {
+                                    e.preventDefault();
+                                    userId = $(this).attr("data-user-id");
+                                    let blockbutton = $(this)
+                                    let blockObj = {
+                                        "blocked_user_id": userId
+                                    }
+                                    let jsonData = JSON.stringify(blockObj);
+
+                                    $.ajax({
+                                        "method": "POST",
+                                        "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                                        "xhrFields": {
+                                            "withCredentials": true
+                                        },
+                                        "headers": {
+                                            "Content-Type": "application/json",
+                                            "ngrok-skip-browser-warning": "69420",
+                                            "Accept-Language": language
+                                        },
+
+
+                                        success: function(data, st, xhr) {
+                                            console.log(data);
+                                            let buttondiv = $(blockbutton).parent()[0];
+                                            let errordiv = $(buttondiv).next('div')[0]
+                                            let errorspan = $(errordiv).find('span')[0];
+                                            $(errorspan).css("color", "green")
+                                            $(errorspan).text("User is blocked")
+                                            setTimeout(function() {
+                                                let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
+                                                $(Cancelbutton).trigger('click');
+                                            }, 2000)
+
+                                        },
+                                        error: function(xhr, status, err) {
+                                            if (xhr.status == 400) {
+                                                let buttondiv = $(blockbutton).parent()[0];
+                                                let errordiv = $(buttondiv).next('div')[0]
+                                                let errorspan = $(errordiv).find('span')[0];
+                                                $(errorspan).css("color", "red")
+                                                $(errorspan).text(xhr.responseJSON.error)
+
+
+                                            } else {
+                                                let buttondiv = $(blockbutton).parent()[0];
+                                                let errordiv = $(buttondiv).next('div')[0]
+                                                let errorspan = $(errordiv).find('span')[0];
+                                                $(errorspan).css("color", "red")
+                                                $(errorspan).text("Something went wrong, please try again")
+
+                                            }
+
+
+                                        }
+                                    })
+
+                                });
 
                                 for (var counter = 0; counter < data.length; counter++) {
 
@@ -2580,17 +2943,17 @@
                                     $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
 
 
-                                    const link = encodeURI(window.location.href + `#${everyPostId}`);
-                                    const msg = encodeURIComponent('Hey, I found this article');
-                                    const title = encodeURIComponent('Article or Post Title Here');
+                                    var link = encodeURI(window.location.href + `#${everyPostId}`);
+                                    var msg = encodeURIComponent('Hey, I found this article');
+                                    var title = encodeURIComponent('Article or Post Title Here');
 
-                                    const fb = document.querySelector(`.facebook-share${data[counter].postId}`);
+                                    var fb = document.querySelector(`.facebook-share${data[counter].postId}`);
                                     fb.href = `https://www.facebook.com/share.php?u=${link}`;
 
-                                    const twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
+                                    var twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
                                     twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
 
-                                    const whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
+                                    var whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
                                     whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
 
 
@@ -2620,13 +2983,13 @@
                                 })
 
                                 //   facebook seemore effect 
-                                const showMoreLinks = document.querySelectorAll('.seemore');
-                                const maxChars = 150;
+                                var showMoreLinks = document.querySelectorAll('.seemore');
+                                var maxChars = 150;
                                 showMoreLinks.forEach(link => {
-                                    const postText = link.closest('.post-text');
-                                    const postDescription = postText.querySelector('.post-description');
-                                    const descriptionText = postDescription.textContent.trim();
-                                    const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                                    var postText = link.closest('.post-text');
+                                    var postDescription = postText.querySelector('.post-description');
+                                    var descriptionText = postDescription.textContent.trim();
+                                    var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
                                     if (descriptionText.length <= maxChars) {
                                         link.style.display = 'none';
                                     } else {
