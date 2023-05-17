@@ -666,10 +666,10 @@
 
                             $(".home-posts").html(`<h1 class = "txt-c mt-40 fs-20 c-grey">There is no posts with the condtions you chossed</h1>`);
                         } else {
-
-
                             for (var counter = 0; counter < data.length; counter++) {
                                 idList.push(data[counter].postId)
+                            }
+                            for (var counter = 0; counter < data.length; counter++) {
                                 $(".home-posts").html(``);
                                 $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
