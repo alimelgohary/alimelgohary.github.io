@@ -77,7 +77,7 @@
 
     <nav class="navbar navbar-expand-lg    position-sticky fixed-top  " style="background-color: #CBE4DE;">
         <div class="container-fluid ">
-            <a class="navbar-brand " href="index.html"><img style="width: 50px; height:auto" src="../imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
+            <a class="navbar-brand " href="home.html"><img style="width: 50px; height:auto" src="../imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon bg-light mt-3"><i class="fa-solid fa-bars "></i></span>
             </button>
@@ -2271,9 +2271,10 @@
             })
 
 
-
+            let isRequestInProgress = false
             let notRemanning = 0
-                // make request when scroll
+
+            // make request when scroll
             $(window).scroll(function() {
                 // Get the height of the document
                 var documentHeight = $(document).height();
@@ -2285,232 +2286,235 @@
                 var scrollPosition = $(window).scrollTop();
 
                 // Check if we have scrolled to the bottom of the page
-                if (documentHeight - viewportHeight === scrollPosition) {
+                if (documentHeight - viewportHeight == scrollPosition) {
                     pageIndex++
                     governateValue = $(".getgevernate").val();
                     caseTypeValue = $(".casetype").val();
-                    $.ajax({
-                        "method": "GET",
-                        "url": apiUrl + `/api/patients/GetDentistsCases?Size=2&previouslyFetched=${idList}&GovernorateId=${governateValue}&CaseTypeId=${caseTypeValue}`,
-                        "xhrFields": {
-                            "withCredentials": true
-                        },
-                        "headers": {
-                            "Content-Type": "application/json",
-                            "ngrok-skip-browser-warning": "69420",
-                            "Accept-Language": language
-                        },
-                        "data": {},
-                        beforeSend: function() {
-                            if (notRemanning == 0) {
-                                $(".skeleton-loading").removeClass("d-none")
-                            }
+                    if (!isRequestInProgress) {
+                        isRequestInProgress = true;
 
-                        },
-                        success: function(data, st, xhr) {
-
-                            $(".skeleton-loading").addClass("d-none")
-                            console.log(data);
-                            if (data.length == 0) {
+                        $.ajax({
+                            "method": "GET",
+                            "url": apiUrl + `/api/patients/GetDentistsCases?Size=2&previouslyFetched=${idList}&GovernorateId=${governateValue}&CaseTypeId=${caseTypeValue}`,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            "data": {},
+                            beforeSend: function() {
                                 if (notRemanning == 0) {
-                                    notRemanning = 1;
-                                    console.log(notRemanning)
-                                    $(".home-posts").append(`<h1 class = "txt-c mt-40 mb-20 text-grident">There is no remanning posts</h1>`);
+                                    $(".skeleton-loading").removeClass("d-none")
                                 }
 
-                            } else {
+                            },
+                            success: function(data, st, xhr) {
 
-                                $(".social-link").click(function(e) {
-                                    let copiedinput = $(this).find('input')[0];
-                                    copiedinput.select();
-                                    document.execCommand('copy');
-                                    copiedinput.blur();
-
-                                })
-                                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-                                var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-                                    return new bootstrap.Tooltip(tooltipTriggerEl)
-                                })
-
-                                //   facebook seemore effect 
-                                var showMoreLinks = document.querySelectorAll('.seemore');
-                                var maxChars = 150;
-
-                                showMoreLinks.forEach(function(showMoreLink) {
-                                    var postText = showMoreLink.closest('.post-text');
-                                    var postDescription = postText.querySelector('.post-description');
-                                    var descriptionText = postDescription.textContent.trim();
-                                    var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
-
-                                    if (descriptionText.length <= maxChars) {
-                                        showMoreLink.style.display = 'none';
-                                    } else {
-                                        postDescription.textContent = truncatedText;
+                                $(".skeleton-loading").addClass("d-none")
+                                console.log(data);
+                                if (data.length == 0) {
+                                    if (notRemanning == 0) {
+                                        notRemanning = 1;
+                                        console.log(notRemanning)
+                                        $(".home-posts").append(`<h1 class = "txt-c mt-40 mb-20 text-grident">There is no remanning posts</h1>`);
                                     }
 
-                                    showMoreLink.addEventListener('click', (event) => {
-                                        event.preventDefault();
-                                        if (postDescription.textContent === truncatedText) {
-                                            postDescription.textContent = descriptionText;
-                                            showMoreLink.textContent = 'Show less';
+                                } else {
+
+                                    $(".social-link").click(function(e) {
+                                        let copiedinput = $(this).find('input')[0];
+                                        copiedinput.select();
+                                        document.execCommand('copy');
+                                        copiedinput.blur();
+
+                                    })
+                                    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                                    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                                        return new bootstrap.Tooltip(tooltipTriggerEl)
+                                    })
+
+                                    //   facebook seemore effect 
+                                    var showMoreLinks = document.querySelectorAll('.seemore');
+                                    var maxChars = 150;
+
+                                    showMoreLinks.forEach(function(showMoreLink) {
+                                        var postText = showMoreLink.closest('.post-text');
+                                        var postDescription = postText.querySelector('.post-description');
+                                        var descriptionText = postDescription.textContent.trim();
+                                        var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+
+                                        if (descriptionText.length <= maxChars) {
+                                            showMoreLink.style.display = 'none';
                                         } else {
                                             postDescription.textContent = truncatedText;
-                                            showMoreLink.textContent = 'See more';
                                         }
+
+                                        showMoreLink.addEventListener('click', (event) => {
+                                            event.preventDefault();
+                                            if (postDescription.textContent === truncatedText) {
+                                                postDescription.textContent = descriptionText;
+                                                showMoreLink.textContent = 'Show less';
+                                            } else {
+                                                postDescription.textContent = truncatedText;
+                                                showMoreLink.textContent = 'See more';
+                                            }
+                                        });
                                     });
-                                });
-                                $(".moreimg").click(function() {
-                                    $(this).toggleClass("rotate-90");
-                                    $(this).next("ul").toggleClass("d-none");
-                                })
-
-                                $(`.share-links`).click(function() {
-                                    $(this).next(`button`).trigger("click");
-                                })
-
-                                $(`.block`).click(function() {
-                                    $(this).next(`button`).trigger("click");
-                                })
-
-                                $(`.report`).click(function() {
-                                    $(this).next(`button`).trigger("click");
-                                })
-
-
-                                //request of report button
-                                $(`.reportbuton`).click(function(e) {
-                                    e.preventDefault();
-                                    let postId = $(this).attr("data-post-id");
-                                    let parentofButton = $(this).parent();
-                                    let perviosDiv = parentofButton.prev()[0];
-                                    let textarea = $(perviosDiv).find('textarea')[0];
-                                    let reason = $(textarea).val();
-
-                                    let button = $(this);
-
-                                    console.log(reason);
-                                    console.log(postId);
-                                    let reportObj = {
-                                        "reported_post_id": postId,
-                                        "reason": reason
-                                    }
-
-                                    let jsonData = JSON.stringify(reportObj);
-
-                                    if (reason.length == 0 || reason == null) {
-                                        delete reportObj.reason
-                                    }
-                                    $.ajax({
-                                        "method": "POST",
-                                        "url": apiUrl + "/api/Common/ReportPost",
-                                        "xhrFields": {
-                                            "withCredentials": true
-                                        },
-                                        "headers": {
-                                            "Content-Type": "application/json",
-                                            "ngrok-skip-browser-warning": "69420",
-                                            "Accept-Language": language
-                                        },
-                                        "data": jsonData,
-
-                                        success: function(data, st, xhr) {
-                                            console.log(data);
-                                            let buttondiv = $(button).parent()[0];
-                                            let errordiv = $(buttondiv).next('div')[0]
-                                            let errorspan = $(errordiv).find('span')[0];
-                                            $(errorspan).css("color", "green")
-                                            $(errorspan).text("Report Sent Sucssfully")
-
-                                            setTimeout(function() {
-                                                let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
-                                                $(Cancelbutton).trigger('click');
-                                            }, 2000)
-
-
-                                        },
-                                        error: function(xhr, status, err) {
-                                            let buttondiv = $(button).parent()[0];
-                                            let errordiv = $(buttondiv).next('div')[0]
-                                            let errorspan = $(errordiv).find('span')[0];
-                                            $(errorspan).css("color", "red")
-                                            $(errorspan).text(xhr.responseJSON.error)
-
-                                            setTimeout(function() {
-                                                let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
-                                                $(Cancelbutton).trigger('click');
-                                            }, 2000)
-
-                                        }
+                                    $(".moreimg").click(function() {
+                                        $(this).toggleClass("rotate-90");
+                                        $(this).next("ul").toggleClass("d-none");
                                     })
-                                });
+
+                                    $(`.share-links`).click(function() {
+                                        $(this).next(`button`).trigger("click");
+                                    })
+
+                                    $(`.block`).click(function() {
+                                        $(this).next(`button`).trigger("click");
+                                    })
+
+                                    $(`.report`).click(function() {
+                                        $(this).next(`button`).trigger("click");
+                                    })
 
 
-                                //request of block button
-                                $(`.blockbutton`).click(function(e) {
-                                    e.preventDefault();
-                                    userId = $(this).attr("data-user-id");
-                                    let blockbutton = $(this)
-                                    let blockObj = {
-                                        "blocked_user_id": userId
-                                    }
-                                    let jsonData = JSON.stringify(blockObj);
+                                    //request of report button
+                                    $(`.reportbuton`).click(function(e) {
+                                        e.preventDefault();
+                                        let postId = $(this).attr("data-post-id");
+                                        let parentofButton = $(this).parent();
+                                        let perviosDiv = parentofButton.prev()[0];
+                                        let textarea = $(perviosDiv).find('textarea')[0];
+                                        let reason = $(textarea).val();
 
-                                    $.ajax({
-                                        "method": "POST",
-                                        "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
-                                        "xhrFields": {
-                                            "withCredentials": true
-                                        },
-                                        "headers": {
-                                            "Content-Type": "application/json",
-                                            "ngrok-skip-browser-warning": "69420",
-                                            "Accept-Language": language
-                                        },
+                                        let button = $(this);
+
+                                        console.log(reason);
+                                        console.log(postId);
+                                        let reportObj = {
+                                            "reported_post_id": postId,
+                                            "reason": reason
+                                        }
+
+                                        let jsonData = JSON.stringify(reportObj);
+
+                                        if (reason.length == 0 || reason == null) {
+                                            delete reportObj.reason
+                                        }
+                                        $.ajax({
+                                            "method": "POST",
+                                            "url": apiUrl + "/api/Common/ReportPost",
+                                            "xhrFields": {
+                                                "withCredentials": true
+                                            },
+                                            "headers": {
+                                                "Content-Type": "application/json",
+                                                "ngrok-skip-browser-warning": "69420",
+                                                "Accept-Language": language
+                                            },
+                                            "data": jsonData,
+
+                                            success: function(data, st, xhr) {
+                                                console.log(data);
+                                                let buttondiv = $(button).parent()[0];
+                                                let errordiv = $(buttondiv).next('div')[0]
+                                                let errorspan = $(errordiv).find('span')[0];
+                                                $(errorspan).css("color", "green")
+                                                $(errorspan).text("Report Sent Sucssfully")
+
+                                                setTimeout(function() {
+                                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                                    $(Cancelbutton).trigger('click');
+                                                }, 2000)
 
 
-                                        success: function(data, st, xhr) {
-                                            console.log(data);
-                                            let buttondiv = $(blockbutton).parent()[0];
-                                            let errordiv = $(buttondiv).next('div')[0]
-                                            let errorspan = $(errordiv).find('span')[0];
-                                            $(errorspan).css("color", "green")
-                                            $(errorspan).text("User is blocked")
-                                            setTimeout(function() {
-                                                let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
-                                                $(Cancelbutton).trigger('click');
-                                            }, 2000)
-
-                                        },
-                                        error: function(xhr, status, err) {
-                                            if (xhr.status == 400) {
-                                                let buttondiv = $(blockbutton).parent()[0];
+                                            },
+                                            error: function(xhr, status, err) {
+                                                let buttondiv = $(button).parent()[0];
                                                 let errordiv = $(buttondiv).next('div')[0]
                                                 let errorspan = $(errordiv).find('span')[0];
                                                 $(errorspan).css("color", "red")
                                                 $(errorspan).text(xhr.responseJSON.error)
 
+                                                setTimeout(function() {
+                                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                                    $(Cancelbutton).trigger('click');
+                                                }, 2000)
 
-                                            } else {
+                                            }
+                                        })
+                                    });
+
+
+                                    //request of block button
+                                    $(`.blockbutton`).click(function(e) {
+                                        e.preventDefault();
+                                        userId = $(this).attr("data-user-id");
+                                        let blockbutton = $(this)
+                                        let blockObj = {
+                                            "blocked_user_id": userId
+                                        }
+                                        let jsonData = JSON.stringify(blockObj);
+
+                                        $.ajax({
+                                            "method": "POST",
+                                            "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                                            "xhrFields": {
+                                                "withCredentials": true
+                                            },
+                                            "headers": {
+                                                "Content-Type": "application/json",
+                                                "ngrok-skip-browser-warning": "69420",
+                                                "Accept-Language": language
+                                            },
+
+
+                                            success: function(data, st, xhr) {
+                                                console.log(data);
                                                 let buttondiv = $(blockbutton).parent()[0];
                                                 let errordiv = $(buttondiv).next('div')[0]
                                                 let errorspan = $(errordiv).find('span')[0];
-                                                $(errorspan).css("color", "red")
-                                                $(errorspan).text("Something went wrong, please try again")
+                                                $(errorspan).css("color", "green")
+                                                $(errorspan).text("User is blocked")
+                                                setTimeout(function() {
+                                                    let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
+                                                    $(Cancelbutton).trigger('click');
+                                                }, 2000)
+
+                                            },
+                                            error: function(xhr, status, err) {
+                                                if (xhr.status == 400) {
+                                                    let buttondiv = $(blockbutton).parent()[0];
+                                                    let errordiv = $(buttondiv).next('div')[0]
+                                                    let errorspan = $(errordiv).find('span')[0];
+                                                    $(errorspan).css("color", "red")
+                                                    $(errorspan).text(xhr.responseJSON.error)
+
+
+                                                } else {
+                                                    let buttondiv = $(blockbutton).parent()[0];
+                                                    let errordiv = $(buttondiv).next('div')[0]
+                                                    let errorspan = $(errordiv).find('span')[0];
+                                                    $(errorspan).css("color", "red")
+                                                    $(errorspan).text("Something went wrong, please try again")
+
+                                                }
+
 
                                             }
+                                        })
 
+                                    });
 
-                                        }
-                                    })
+                                    for (var counter = 0; counter < data.length; counter++) {
 
-                                });
+                                        idList.push(data[counter].postId);
+                                        console.log(idList)
 
-                                for (var counter = 0; counter < data.length; counter++) {
-
-                                    idList.push(data[counter].postId);
-                                    console.log(idList)
-
-                                    $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
+                                        $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
@@ -2679,264 +2683,270 @@
                         </div>
                     </div>`)
 
-                                    // check if there is phone or not 
-                                    if (data[counter].phone == null) {
-                                        $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
-                                    } else {
-                                        $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
-                                    }
+                                        // check if there is phone or not 
+                                        if (data[counter].phone == null) {
+                                            $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
+                                        } else {
+                                            $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
+                                        }
 
-                                    // check if Post is edited or not
-                                    if (data[counter].timeUpdated == null) {
-                                        $(".edited").css("display", "none");
-                                    } else {
-                                        $(`editedtime${data[counter].postId}`).text(data[counter].timeUpdated)
-                                    }
+                                        // check if Post is edited or not
+                                        if (data[counter].timeUpdated == null) {
+                                            $(".edited").css("display", "none");
+                                        } else {
+                                            $(`editedtime${data[counter].postId}`).text(data[counter].timeUpdated)
+                                        }
 
-                                    // check if user have profile pic or not
-                                    if (data[counter].userInfo.profilePicture == null) {} else {
-                                        $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64,${data[counter].userInfo.profilePicture}`);
-                                    }
+                                        // check if user have profile pic or not
+                                        if (data[counter].userInfo.profilePicture == null) {} else {
+                                            $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64,${data[counter].userInfo.profilePicture}`);
+                                        }
 
-                                    //check if user have images and display it
-                                    if (data[counter].images == null || data[counter].length == 0) {
-                                        $(`.images${data[counter].postId}`).css("display", "none");
-                                    } else {
-                                        for (var i = 0; i < data[counter].images.length; i++) {
-                                            console.log(i)
-                                            $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
+                                        //check if user have images and display it
+                                        if (data[counter].images == null || data[counter].length == 0) {
+                                            $(`.images${data[counter].postId}`).css("display", "none");
+                                        } else {
+                                            for (var i = 0; i < data[counter].images.length; i++) {
+                                                console.log(i)
+                                                $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
                                                                     <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full" alt="" style="max-width:100%; max-height:100%;">
                                                                     </div>`)
+                                            }
                                         }
+
+
+                                        let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
+                                        $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+
+
+                                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                                        var msg = encodeURIComponent('Hey, I found this article');
+                                        var title = encodeURIComponent('Article or Post Title Here');
+
+                                        var fb = document.querySelector(`.facebook-share${data[counter].postId}`);
+                                        fb.href = `https://www.facebook.com/share.php?u=${link}`;
+
+                                        var twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
+                                        twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
+
+                                        var whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
+                                        whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
+
+
+
+
                                     }
-
-
-                                    let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                                    $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
-
-
-                                    var link = encodeURI(window.location.href + `#${everyPostId}`);
-                                    var msg = encodeURIComponent('Hey, I found this article');
-                                    var title = encodeURIComponent('Article or Post Title Here');
-
-                                    var fb = document.querySelector(`.facebook-share${data[counter].postId}`);
-                                    fb.href = `https://www.facebook.com/share.php?u=${link}`;
-
-                                    var twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
-                                    twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
-
-                                    var whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
-                                    whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
-
-
-                                }
-                                // end of for loop
+                                    // end of for loop
 
 
 
 
 
 
-                                $(".social-link").click(function(e) {
-                                    let copiedinput = $(this).find('input')[0];
-                                    copiedinput.select();
-                                    document.execCommand('copy');
-                                    copiedinput.blur();
 
-                                })
+                                    $(".social-link").click(function(e) {
+                                        let copiedinput = $(this).find('input')[0];
+                                        copiedinput.select();
+                                        document.execCommand('copy');
+                                        copiedinput.blur();
+
+                                    })
 
 
 
 
-                                //enable tolltip of bootstrap
-                                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-                                var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-                                    return new bootstrap.Tooltip(tooltipTriggerEl)
-                                })
+                                    //enable tolltip of bootstrap
+                                    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                                    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                                        return new bootstrap.Tooltip(tooltipTriggerEl)
+                                    })
 
-                                //   facebook seemore effect 
-                                var showMoreLinks = document.querySelectorAll('.seemore');
-                                var maxChars = 150;
+                                    //   facebook seemore effect 
+                                    var showMoreLinks = document.querySelectorAll('.seemore');
+                                    var maxChars = 150;
 
-                                showMoreLinks.forEach(function(showMoreLink) {
-                                    var postText = showMoreLink.closest('.post-text');
-                                    var postDescription = postText.querySelector('.post-description');
-                                    var descriptionText = postDescription.textContent.trim();
-                                    var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                                    showMoreLinks.forEach(function(showMoreLink) {
+                                        var postText = showMoreLink.closest('.post-text');
+                                        var postDescription = postText.querySelector('.post-description');
+                                        var descriptionText = postDescription.textContent.trim();
+                                        var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
 
-                                    if (descriptionText.length <= maxChars) {
-                                        showMoreLink.style.display = 'none';
-                                    } else {
-                                        postDescription.textContent = truncatedText;
-                                    }
-
-                                    showMoreLink.addEventListener('click', (event) => {
-                                        event.preventDefault();
-                                        if (postDescription.textContent === truncatedText) {
-                                            postDescription.textContent = descriptionText;
-                                            showMoreLink.textContent = 'Show less';
+                                        if (descriptionText.length <= maxChars) {
+                                            showMoreLink.style.display = 'none';
                                         } else {
                                             postDescription.textContent = truncatedText;
-                                            showMoreLink.textContent = 'See more';
                                         }
+
+                                        showMoreLink.addEventListener('click', (event) => {
+                                            event.preventDefault();
+                                            if (postDescription.textContent === truncatedText) {
+                                                postDescription.textContent = descriptionText;
+                                                showMoreLink.textContent = 'Show less';
+                                            } else {
+                                                postDescription.textContent = truncatedText;
+                                                showMoreLink.textContent = 'See more';
+                                            }
+                                        });
                                     });
-                                });
 
-                                $(".moreimg").click(function() {
-                                    $(this).toggleClass("rotate-90");
-                                    $(this).next("ul").toggleClass("d-none");
-                                })
-
-                                $(`.share-links`).click(function() {
-                                    $(this).next(`button`).trigger("click");
-                                })
-
-                                $(`.block`).click(function() {
-                                    $(this).next(`button`).trigger("click");
-                                })
-
-                                $(`.report`).click(function() {
-                                    $(this).next(`button`).trigger("click");
-                                })
-
-
-                                //request of report button
-                                $(`.reportbuton`).click(function(e) {
-                                    e.preventDefault();
-                                    let postId = $(this).attr("data-post-id");
-                                    let parentofButton = $(this).parent();
-                                    let perviosDiv = parentofButton.prev()[0];
-                                    let textarea = $(perviosDiv).find('textarea')[0];
-                                    let reason = $(textarea).val();
-
-                                    let button = $(this);
-
-                                    console.log(reason);
-                                    console.log(postId);
-                                    let reportObj = {
-                                        "reported_post_id": postId,
-                                        "reason": reason
-                                    }
-
-                                    let jsonData = JSON.stringify(reportObj);
-
-                                    if (reason.length == 0 || reason == null) {
-                                        delete reportObj.reason
-                                    }
-                                    $.ajax({
-                                        "method": "POST",
-                                        "url": apiUrl + "/api/Common/ReportPost",
-                                        "xhrFields": {
-                                            "withCredentials": true
-                                        },
-                                        "headers": {
-                                            "Content-Type": "application/json",
-                                            "ngrok-skip-browser-warning": "69420",
-                                            "Accept-Language": language
-                                        },
-                                        "data": jsonData,
-
-                                        success: function(data, st, xhr) {
-                                            console.log(data);
-                                            let buttondiv = $(button).parent()[0];
-                                            let errordiv = $(buttondiv).next('div')[0]
-                                            let errorspan = $(errordiv).find('span')[0];
-                                            $(errorspan).css("color", "green")
-                                            $(errorspan).text("Report Sent Sucssfully")
-
-                                            setTimeout(function() {
-                                                let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
-                                                $(Cancelbutton).trigger('click');
-                                            }, 2000)
-
-
-                                        },
-                                        error: function(xhr, status, err) {
-                                            let buttondiv = $(button).parent()[0];
-                                            let errordiv = $(buttondiv).next('div')[0]
-                                            let errorspan = $(errordiv).find('span')[0];
-                                            $(errorspan).css("color", "red")
-                                            $(errorspan).text(xhr.responseJSON.error)
-
-                                            setTimeout(function() {
-                                                let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
-                                                $(Cancelbutton).trigger('click');
-                                            }, 2000)
-
-                                        }
+                                    $(".moreimg").click(function() {
+                                        $(this).toggleClass("rotate-90");
+                                        $(this).next("ul").toggleClass("d-none");
                                     })
-                                });
+
+                                    $(`.share-links`).click(function() {
+                                        $(this).next(`button`).trigger("click");
+                                    })
+
+                                    $(`.block`).click(function() {
+                                        $(this).next(`button`).trigger("click");
+                                    })
+
+                                    $(`.report`).click(function() {
+                                        $(this).next(`button`).trigger("click");
+                                    })
 
 
-                                //request of block button
-                                $(`.blockbutton`).click(function(e) {
-                                    e.preventDefault();
-                                    userId = $(this).attr("data-user-id");
-                                    let blockbutton = $(this)
-                                    let blockObj = {
-                                        "blocked_user_id": userId
-                                    }
-                                    let jsonData = JSON.stringify(blockObj);
+                                    //request of report button
+                                    $(`.reportbuton`).click(function(e) {
+                                        e.preventDefault();
+                                        let postId = $(this).attr("data-post-id");
+                                        let parentofButton = $(this).parent();
+                                        let perviosDiv = parentofButton.prev()[0];
+                                        let textarea = $(perviosDiv).find('textarea')[0];
+                                        let reason = $(textarea).val();
 
-                                    $.ajax({
-                                        "method": "POST",
-                                        "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
-                                        "xhrFields": {
-                                            "withCredentials": true
-                                        },
-                                        "headers": {
-                                            "Content-Type": "application/json",
-                                            "ngrok-skip-browser-warning": "69420",
-                                            "Accept-Language": language
-                                        },
+                                        let button = $(this);
+
+                                        console.log(reason);
+                                        console.log(postId);
+                                        let reportObj = {
+                                            "reported_post_id": postId,
+                                            "reason": reason
+                                        }
+
+                                        let jsonData = JSON.stringify(reportObj);
+
+                                        if (reason.length == 0 || reason == null) {
+                                            delete reportObj.reason
+                                        }
+                                        $.ajax({
+                                            "method": "POST",
+                                            "url": apiUrl + "/api/Common/ReportPost",
+                                            "xhrFields": {
+                                                "withCredentials": true
+                                            },
+                                            "headers": {
+                                                "Content-Type": "application/json",
+                                                "ngrok-skip-browser-warning": "69420",
+                                                "Accept-Language": language
+                                            },
+                                            "data": jsonData,
+
+                                            success: function(data, st, xhr) {
+                                                console.log(data);
+                                                let buttondiv = $(button).parent()[0];
+                                                let errordiv = $(buttondiv).next('div')[0]
+                                                let errorspan = $(errordiv).find('span')[0];
+                                                $(errorspan).css("color", "green")
+                                                $(errorspan).text("Report Sent Sucssfully")
+
+                                                setTimeout(function() {
+                                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                                    $(Cancelbutton).trigger('click');
+                                                }, 2000)
 
 
-                                        success: function(data, st, xhr) {
-                                            console.log(data);
-                                            let buttondiv = $(blockbutton).parent()[0];
-                                            let errordiv = $(buttondiv).next('div')[0]
-                                            let errorspan = $(errordiv).find('span')[0];
-                                            $(errorspan).css("color", "green")
-                                            $(errorspan).text("User is blocked")
-                                            setTimeout(function() {
-                                                let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
-                                                $(Cancelbutton).trigger('click');
-                                            }, 2000)
-
-                                        },
-                                        error: function(xhr, status, err) {
-                                            if (xhr.status == 400) {
-                                                let buttondiv = $(blockbutton).parent()[0];
+                                            },
+                                            error: function(xhr, status, err) {
+                                                let buttondiv = $(button).parent()[0];
                                                 let errordiv = $(buttondiv).next('div')[0]
                                                 let errorspan = $(errordiv).find('span')[0];
                                                 $(errorspan).css("color", "red")
                                                 $(errorspan).text(xhr.responseJSON.error)
 
+                                                setTimeout(function() {
+                                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                                    $(Cancelbutton).trigger('click');
+                                                }, 2000)
 
-                                            } else {
+                                            }
+                                        })
+                                    });
+
+
+                                    //request of block button
+                                    $(`.blockbutton`).click(function(e) {
+                                        e.preventDefault();
+                                        userId = $(this).attr("data-user-id");
+                                        let blockbutton = $(this)
+                                        let blockObj = {
+                                            "blocked_user_id": userId
+                                        }
+                                        let jsonData = JSON.stringify(blockObj);
+
+                                        $.ajax({
+                                            "method": "POST",
+                                            "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                                            "xhrFields": {
+                                                "withCredentials": true
+                                            },
+                                            "headers": {
+                                                "Content-Type": "application/json",
+                                                "ngrok-skip-browser-warning": "69420",
+                                                "Accept-Language": language
+                                            },
+
+
+                                            success: function(data, st, xhr) {
+                                                console.log(data);
                                                 let buttondiv = $(blockbutton).parent()[0];
                                                 let errordiv = $(buttondiv).next('div')[0]
                                                 let errorspan = $(errordiv).find('span')[0];
-                                                $(errorspan).css("color", "red")
-                                                $(errorspan).text("Something went wrong, please try again")
+                                                $(errorspan).css("color", "green")
+                                                $(errorspan).text("User is blocked")
+                                                setTimeout(function() {
+                                                    let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
+                                                    $(Cancelbutton).trigger('click');
+                                                }, 2000)
+
+                                            },
+                                            error: function(xhr, status, err) {
+                                                if (xhr.status == 400) {
+                                                    let buttondiv = $(blockbutton).parent()[0];
+                                                    let errordiv = $(buttondiv).next('div')[0]
+                                                    let errorspan = $(errordiv).find('span')[0];
+                                                    $(errorspan).css("color", "red")
+                                                    $(errorspan).text(xhr.responseJSON.error)
+
+
+                                                } else {
+                                                    let buttondiv = $(blockbutton).parent()[0];
+                                                    let errordiv = $(buttondiv).next('div')[0]
+                                                    let errorspan = $(errordiv).find('span')[0];
+                                                    $(errorspan).css("color", "red")
+                                                    $(errorspan).text("Something went wrong, please try again")
+
+                                                }
+
 
                                             }
+                                        })
 
-
-                                        }
-                                    })
-
-                                });
+                                    });
+                                    isRequestInProgress = false;
+                                    $(window).scrollTop(scrollPosition - 100);
+                                }
+                            },
+                            error: function(xhr, status, err) {
+                                $(".home-posts").append("<h2>Some thing went wrong please try again later</h2>")
+                                isRequestInProgress = false;
                             }
-                        },
-                        error: function(xhr, status, err) {
-                            $(".home-posts").append("<h2>Some thing went wrong please try again later</h2>")
-                        }
-                    })
+                        })
 
 
 
-
+                    }
                 }
             });
 

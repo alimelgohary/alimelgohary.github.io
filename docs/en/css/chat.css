@@ -346,10 +346,6 @@ input[type="radio"] {
     padding: 7px 20px;
 }
 
-.logoutmodal .modal-body p {
-    text-shadow: 7px 11px 4px BLACK;
-}
-
 .logouterror {
     display: none;
 }
@@ -470,4 +466,22 @@ input[type="radio"] {
 
 .chat-body-header a {
     text-decoration: none;
+}
+
+.info-ul {
+    position: absolute;
+    left: -455%;
+    top: 65%;
+    padding: 10px 20px;
+    background-color: #92a7b6;
+    border-radius: 10px;
+    color: black;
+    z-index: 1000000;
+    width: 150px;
+    transition: display 0.5s;
+}
+
+.info-ul li:hover {
+    padding-left: 20px;
+    transition-duration: .5s;
 }

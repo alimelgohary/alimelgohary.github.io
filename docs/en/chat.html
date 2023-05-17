@@ -85,7 +85,7 @@
 
     <nav class="navbar navbar-expand-lg    position-sticky fixed-top  " style="background-color: #CBE4DE;">
         <div class="container-fluid ">
-            <a class="navbar-brand " href="index.html"><img style="width: 50px; height:auto" src="imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
+            <a class="navbar-brand " href="login.html"><img style="width: 50px; height:auto" src="imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon bg-light mt-3"><i class="fa-solid fa-bars "></i></span>
             </button>
@@ -176,11 +176,16 @@
                                 <span class="chated-person-name c-black fw-bold fs-rem-15 "></span>
                             </a>
                         </div>
-                        <div class="chat-call d-flex align-center mr-10">
+                        <div class="chat-call d-flex flex-column p-relative mr-10 " style="width: 25px;">
+                            <img src="imgs/callinfo.svg" alt="" class="cur-point w-full more-chat" style="max-width: 25px;">
+                            <ul class="info-ul d-none">
+                                <li class="clear-chat cur-point mt-10">Clear</li>
+                                <hr>
+                                <li class="report-chat cur-point ">Report</li>
+                                <hr>
+                                <li class="block-chat cur-point">Block</li>
+                            </ul>
 
-                            <a href="">
-                                <img src="imgs/callinfo.svg" alt="" style="max-width: 25px;">
-                            </a>
                         </div>
                     </div>
 
@@ -449,24 +454,24 @@
     <!-- log out modal  -->
 
     <!-- Button trigger modal -->
-    <button type="button " class="btn btn-primary logoutbutton d-none " data-bs-toggle="modal " data-bs-target="#exampleModal100000000000000000000 ">
+    <button type="button " class="btn btn-primary logoutbutton d-none " data-bs-toggle="modal" data-bs-target="#exampleModal10">
                         Launch demo modal
                         </button>
 
     <!-- Modal -->
-    <div class="modal fade " id="exampleModal100000000000000000000 " tabindex="-1 " aria-labelledby="exampleModal100000000000000000000 " aria-hidden="true ">
-        <div class="modal-dialog modal-dialog-centered logoutmodal ">
+    <div class="modal fade " id="exampleModal10" tabindex="-1 " aria-labelledby="exampleModal10" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
             <div class="modal-content rad-10 ">
                 <div class="modal-header ">
 
-                    <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close "></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex justify-content-center ">
                     <p class="fs-20 c-red fw-bold txt-c ">Are you sure you want to log out ?</p>
                 </div>
                 <div class="modal-footer d-flex w-full justify-content-around mb-25 ">
-                    <button type="button " class="btn btn-secondary p-10 hvr-float-shadow " data-bs-dismiss="modal ">No</button>
-                    <button type="button " class="btn btn-primary bg-danger logoutreq p-10 hvr-float-shadow ">Yes</button>
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger logoutreq p-10 hvr-float-shadow">Yes</button>
 
                 </div>
                 <div class="d-flex justify-content-center mt-10 mb-20 ">
@@ -476,6 +481,96 @@
         </div>
     </div>
 
+    <!-- Clear modal  -->
+
+    <!-- Button trigger modal -->
+    <button type="button " class="btn btn-primary clearbutton d-none " data-bs-toggle="modal" data-bs-target="#exampleModal11">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal11" tabindex="-1" aria-labelledby="exampleModal11" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10 ">
+                <div class="modal-header ">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center ">
+                    <p class="fs-20 c-red fw-bold txt-c ">Are you sure you want to clear the chat ?</p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25 ">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger clearreq p-10 hvr-float-shadow">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20 ">
+                    <span class="txt-c logouterror c-red ">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- report modal  -->
+
+    <!-- Button trigger modal -->
+    <button type="button " class="btn btn-primary reportbuton d-none " data-bs-toggle="modal" data-bs-target="#exampleModal12">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal12" tabindex="-1 " aria-labelledby="exampleModal12" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10 ">
+                <div class="modal-header ">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center ">
+                    <p class="fs-20 c-black fw-bold txt-c ">Are you sure you want to report<span class="user-name c-grey"></span></p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25 ">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger reportreq p-10 hvr-float-shadow">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20 ">
+                    <span class="txt-c logouterror c-red ">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- block modal  -->
+
+    <!-- Button trigger modal -->
+    <button type="button " class="btn btn-primary blockbutton2 d-none " data-bs-toggle="modal" data-bs-target="#exampleModal13">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModal13" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-black fw-bold txt-c ">Are you sure you want to block<span class="user-name c-grey"></span></p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25 ">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow blockbuttoncancel" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger blockreq p-10 hvr-float-shadow">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20 ">
+                    <span class="txt-c blockerror2 c-red "></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -502,6 +597,18 @@
         $(".chat-mess").click(function() {
             $(this).next(".mesagetime").toggleClass("d-none")
         })
+        $(".more-chat").click(function() {
+            $(".info-ul").toggleClass("d-none");
+        })
+        $(".clear-chat").click(function() {
+            $(".clearbutton").trigger("click")
+        })
+        $(".report-chat").click(function() {
+            $(".reportbuton").trigger("click")
+        })
+        $(".block-chat").click(function() {
+            $(".blockbutton2").trigger("click")
+        })
     </script>
 
     <!-- log out  -->
@@ -514,7 +621,14 @@
             } else {
                 language = window.localStorage.getItem("language");
             }
+
+
             $("#log-out").click(function() {
+                $(".logoutbutton").trigger("click");
+                console.log("hello")
+            })
+
+            $(".logoutreq").click(function() {
                 console.log("logedout")
                 $.ajax({
                     "method": "GET",
@@ -575,7 +689,7 @@
 
 
 
-            // make request to get chat messages when page load
+            // make request to get user info
             $.ajax({
                 "method": "GET",
                 "url": `${apiUrl}/api/Users/GetBasicUserInfo?Id=${userId}`,
@@ -600,6 +714,7 @@
                     $(".chat-head-info img").attr("src", imageSrc);
                     $(".chated-person-name").text(data.fullName)
                     $(".chat-head-info a").attr("href", `${newRole}/profile.html?id=${userId}`)
+                    $(".user-name").text("@" + data.username)
 
                 },
                 error: function(xhr, status, err) {
@@ -617,9 +732,7 @@
         })();
     </script>
 
-    <!-- display the sended message  -->
-    <script>
-    </script>
+
 
     <!-- get chat messages  -->
     <script>
@@ -1202,6 +1315,129 @@
         })();
     </script>
 
+    <script>
+        let url = window.location.href
+        url = url.split("?")
+        let userId = url[1].split("=")
+        userId = userId[1]
+
+        // //request of report button
+        // $(`.reportbuton`).click(function(e) {
+        //     e.preventDefault();
+        //     let postId = $(this).attr("data-post-id");
+        //     let parentofButton = $(this).parent();
+        //     let perviosDiv = parentofButton.prev()[0];
+        //     let textarea = $(perviosDiv).find('textarea')[0];
+        //     let reason = $(textarea).val();
+
+        //     let button = $(this);
+
+        //     console.log(reason);
+        //     console.log(postId);
+        //     let reportObj = {
+        //         "reported_post_id": postId,
+        //         "reason": reason
+        //     }
+
+        //     let jsonData = JSON.stringify(reportObj);
+
+        //     if (reason.length == 0 || reason == null) {
+        //         delete reportObj.reason
+        //     }
+        //     $.ajax({
+        //         "method": "POST",
+        //         "url": apiUrl + "/api/Common/ReportPost",
+        //         "xhrFields": {
+        //             "withCredentials": true
+        //         },
+        //         "headers": {
+        //             "Content-Type": "application/json",
+        //             "ngrok-skip-browser-warning": "69420",
+        //             "Accept-Language": language
+        //         },
+        //         "data": jsonData,
+
+        //         success: function(data, st, xhr) {
+        //             console.log(data);
+        //             let buttondiv = $(button).parent()[0];
+        //             let errordiv = $(buttondiv).next('div')[0]
+        //             let errorspan = $(errordiv).find('span')[0];
+        //             $(errorspan).css("color", "green")
+        //             $(errorspan).text("Report Sent Sucssfully")
+
+        //             setTimeout(function() {
+        //                 let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+        //                 $(Cancelbutton).trigger('click');
+        //             }, 2000)
+
+
+        //         },
+        //         error: function(xhr, status, err) {
+        //             let buttondiv = $(button).parent()[0];
+        //             let errordiv = $(buttondiv).next('div')[0]
+        //             let errorspan = $(errordiv).find('span')[0];
+        //             $(errorspan).css("color", "red")
+        //             $(errorspan).text(xhr.responseJSON.error)
+
+        //             setTimeout(function() {
+        //                 let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+        //                 $(Cancelbutton).trigger('click');
+        //             }, 2000)
+
+        //         }
+        //     })
+        // });
+
+
+        //request of block button
+        $(`.blockbutton`).click(function(e) {
+            e.preventDefault();
+
+            let blockbutton = $(this)
+            let blockObj = {
+                "blocked_user_id": userId
+            }
+            let jsonData = JSON.stringify(blockObj);
+
+            $.ajax({
+                "method": "POST",
+                "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+
+
+                success: function(data, st, xhr) {
+
+
+                    $(blockerror2).css("color", "green")
+                    $(blockerror2).text("User is blocked")
+                    setTimeout(function() {
+                        $(".blockbuttoncancel").trigger('click');
+                    }, 2000)
+
+                },
+                error: function(xhr, status, err) {
+                    if (xhr.status == 400) {
+
+
+
+                    } else {
+
+
+                    }
+
+
+                }
+            })
+
+        });
+    </script>
 
 
 </body>
