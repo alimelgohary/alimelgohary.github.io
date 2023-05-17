@@ -499,6 +499,7 @@
 
 
     <script>
+        var idList = []
         $(".search").keypress(function(event) {
             if ((event.key).toLowerCase() == "enter") {
                 window.location.href = "search.html";
@@ -637,6 +638,7 @@
 
             // request when university changes
             $(".getgevernate").change(function() {
+                idList = [];
                 $(".home-posts").html(" ");
                 governateValue = $(".getgevernate").val();
                 caseTypeValue = $(".casetype").val();
@@ -667,6 +669,7 @@
 
 
                             for (var counter = 0; counter < data.length; counter++) {
+                                idList.push(data[counter].postId)
                                 $(".home-posts").html(``);
                                 $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
@@ -1104,6 +1107,7 @@
             // request when case changes
             $(".casetype").change(function() {
                 $(".home-posts").html(" ");
+                idList = [];
                 governateValue = $(".getgevernate").val();
                 caseTypeValue = $(".casetype").val();
 
@@ -1133,6 +1137,7 @@
 
 
                             for (var counter = 0; counter < data.length; counter++) {
+                                idList.push(data[counter].postId)
                                 $(".home-posts").html(``);
                                 $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
@@ -1826,9 +1831,11 @@
                 },
                 success: function(data, st, xhr) {
                     console.log(data);
+                    idList = [];
 
                     for (var counter = 0; counter < data.length; counter++) {
-
+                        idList.push(data[counter].postId)
+                        console.log(idList)
                         $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -2284,7 +2291,7 @@
                     caseTypeValue = $(".casetype").val();
                     $.ajax({
                         "method": "GET",
-                        "url": apiUrl + `/api/patients/GetDentistsCases?Page=${pageIndex}&Size=2&GovernorateId=${governateValue}&CaseTypeId=${caseTypeValue}`,
+                        "url": apiUrl + `/api/patients/GetDentistsCases?Size=2&previouslyFetched=${idList}&GovernorateId=${governateValue}&CaseTypeId=${caseTypeValue}`,
                         "xhrFields": {
                             "withCredentials": true
                         },
@@ -2500,7 +2507,8 @@
 
                                 for (var counter = 0; counter < data.length; counter++) {
 
-
+                                    idList.push(data[counter].postId);
+                                    console.log(idList)
 
                                     $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
@@ -2933,10 +2941,7 @@
             });
 
 
-            // add this fun at first and end of request
-            // $(".chat-mess").click(function() {
-            //     $(this).next(".mesagetime").toggleClass("d-none")
-            // })
+
 
         })();
     </script>
