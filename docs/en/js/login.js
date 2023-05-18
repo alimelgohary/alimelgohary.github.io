@@ -12,7 +12,7 @@
 
         $.ajax({
             "method": "GET",
-            "url": apiUrl + "/api/Users/IsAllowedToHome",
+            "url": apiUrl + "/api/Users/IsAllowedToHomeTurbo",
             "xhrFields": {
                 "withCredentials": true
             },
