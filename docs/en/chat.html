@@ -45,7 +45,7 @@
             // check if theuser is loged in or not 
             $.ajax({
                 "method": "GET",
-                "url": apiUrl + "/api/Users/IsAllowedToHome",
+                "url": apiUrl + "/api/Users/IsAllowedToHomeTurbo",
                 "xhrFields": {
                     "withCredentials": true
                 },
@@ -147,6 +147,7 @@
                     <div class="w-full d-flex justify-content-start mb-10">
                         <div class="search p-relative w-80">
                             <span class="search-icon"></span>
+                            <span class="remove-search">x</span>
                             <input type="search" placeholder="Type a Word" id="search2" class="p-10 ">
 
                         </div>
@@ -583,9 +584,10 @@
     <script src="js/popper.min.js "></script>
 
     <script>
+        var searchBool = false;
         var recentIdMessage;
         var getChtedMessae = false;
-        $(".search").keypress(function(event) {
+        $("#search").keypress(function(event) {
             if ((event.key).toLowerCase() == "enter") {
                 window.location.href = "search.html";
             }
@@ -765,17 +767,18 @@
                     $(".message-skeleton").removeClass("d-none")
                 },
                 success: function(data, st, xhr) {
-                    $(".message-skeleton").addClass("d-none")
-                    getChtedMessae = true;
-                    console.log(data)
+                    if (data.length > 0) {
+                        $(".message-skeleton").addClass("d-none")
+                        getChtedMessae = true;
+                        console.log(data)
 
-                    lastMassegeId = data[data.length - 1].messageId
-                    recentIdMessage = data[0].messageId
-                    console.log(recentIdMessage)
-                    console.log(getChtedMessae)
-                    for (var i = 0; i < data.length; i++) {
-                        if (data[i].isSender == true) {
-                            $(".chat-ul").prepend(`<li class="w-full c-white mb-10 be-end ">
+                        lastMassegeId = data[data.length - 1].messageId
+                        recentIdMessage = data[0].messageId
+                        console.log(recentIdMessage)
+                        console.log(getChtedMessae)
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].isSender == true) {
+                                $(".chat-ul").prepend(`<li class="w-full c-white mb-10 be-end ">
                                 <div class="d-flex fs-rem-14 l-1-2 personal-message mr-px-5 ">
                                     <div class="w-fit rad-10 bg-white p-10 button-bg chat-mess">
                                         <span class="chated-message cur-point" id ="${data[i].messageId}">${data[i].message} </span>
@@ -786,8 +789,8 @@
 
                                 </div>
                             </li>`)
-                        } else {
-                            $(".chat-ul").prepend(`   <li class="mb-10 w-full">
+                            } else {
+                                $(".chat-ul").prepend(`   <li class="mb-10 w-full">
                                 <div class="chated-person-info w-60 d-flex fs-rem-14 l-1-2">
                                     <div style="width: 35px;" class="mr-10">
                                         <img src="imgs/profilepic.svg" alt="" class="rad-half" style="max-width: 100%;">
@@ -801,18 +804,18 @@
                                 </div>
 
                             </li>`)
+                            }
                         }
+
+                        $(".chat-mess").click(function() {
+                            $(this).next(".mesagetime").toggleClass("d-none")
+                        })
+
+
+                        $(document).ready(function() {
+                            $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
+                        });
                     }
-
-                    $(".chat-mess").click(function() {
-                        $(this).next(".mesagetime").toggleClass("d-none")
-                    })
-
-
-                    $(document).ready(function() {
-                        $('.chat-body-messages').scrollTop($('.chat-body-messages')[0].scrollHeight);
-                    });
-
                 },
                 error: function(xhr, status, err) {
                     if (userId == 0) {
@@ -1066,53 +1069,53 @@
 
 
             let notRemanningPeople = 0
-            let pageIndex2 = 2;
+            let pageIndex2, pageIndex3 = 2;
 
-            // gwr recent poeple when scroll 
+            // gwr serach  poeple when scroll 
             $('.home-chats').scroll(function() {
+
+                let notRemanningPeople2 = 0;
                 var element = $(this);
                 if (element.scrollTop() + element.innerHeight() >= element[0].scrollHeight) {
+                    let seachValue = $("#search2").val();
+                    if (searchBool) {
+                        $.ajax({
+                            "method": "GET",
+                            "url": `${apiUrl}/api/Common/GetRecentMessages?Page=${pageIndex3}&Size=6&q=${seachValue}`,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            beforeSend: function() {
+                                if (notRemanningPeople2 == 0) {
+                                    $(".loadingchats").removeClass("d-none")
+                                }
+                            },
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                if (data.length == 0 && notRemanningPeople2 == 0) {
+                                    $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
+                                    notRemanningPeople2 = 1;
+                                } else {
 
-                    $.ajax({
-                        "method": "GET",
-                        "url": `${apiUrl}/api/Common/GetRecentMessages?Page=${pageIndex2}&Size=4`,
-                        "xhrFields": {
-                            "withCredentials": true
-                        },
-                        "headers": {
-                            "Content-Type": "application/json",
-                            "ngrok-skip-browser-warning": "69420",
-                            "Accept-Language": language
-                        },
-                        beforeSend: function() {
-                            if (notRemanningPeople == 0) {
-                                $(".loadingchats").removeClass("d-none")
-                            }
-                        },
-                        success: function(data, st, xhr) {
-                            $(".loadingchats").addClass("d-none")
-                            console.log(data)
-                            if (data.length == 0 && notRemanningPeople == 0) {
-                                $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
-                                notRemanningPeople = 1;
-                            } else {
-
-                                pageIndex2++;
-
-                                for (var i = 0; i < data.length; i++) {
-                                    let profilesrc;
-                                    if (data[i].profilePicture == null) {
-                                        profilesrc = "imgs/profilepic.svg"
-                                    } else {
-                                        profilesrc = "data:image/png;base64," + data[i].profilePicture;
-                                    }
-                                    $(".chat-users-ul").append(` <a href="?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                                    for (var i = 0; i < data.length; i++) {
+                                        let profilesrc;
+                                        if (data[i].profilePicture == null) {
+                                            profilesrc = "imgs/profilepic.svg"
+                                        } else {
+                                            profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                        }
+                                        $(".chat-users-ul").append(` <a href="?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
                             
                                 <div>
                                     <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
                                 </div>
                                 <div class="d-flex flex-column chat-user-text">
-                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                    <span class="chat-user fw-bold">${data[i].fullName}</span>
                                     <div class="d-flex c-grey fs-rem-12 ">
                                         <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
                                         <span class="chat-time">${data[i].lastMessageTime}</span>
@@ -1121,15 +1124,18 @@
                               
                             </li>  </a>`)
 
+                                    }
+
                                 }
+                                pageIndex3++;
+                            },
+                            error: function(xhr, status, err) {
+
                             }
-                        },
-                        error: function(xhr, status, err) {
-
-                        }
-                    })
+                        })
 
 
+                    }
                 }
             });
 
@@ -1310,7 +1316,153 @@
             })
 
 
+            $("#search2").keypress(function(e) {
+                let notRemanningPeople2 = 0;
+                if (e.key.toLowerCase() == "enter" && $(this).val().length > 0) {
+                    let seachValue = $("#search2").val();
+                    $.ajax({
+                        "method": "GET",
+                        "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=6&q=${seachValue}`,
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        beforeSend: function() {
+                            if (notRemanningPeople2 == 0) {
+                                $(".loadingchats").removeClass("d-none")
+                            }
+                        },
+                        success: function(data, st, xhr) {
+                            console.log(data);
+                            if (data.length == 0 && notRemanningPeople2 == 0) {
+                                $(".chat-users-ul").html(``);
+                                $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
+                                notRemanningPeople2 = 1;
+                                if ((!$(".progress-bar").hasClass("d-none"))) {
+                                    $(".progress-bar").addClass("d-none");
+                                }
+                                if ((!$(".loadingchats").hasClass("d-none"))) {
+                                    $(".loadingchats").addClass("d-none");
+                                }
+                            } else {
+                                $(".chat-users-ul").html(``);
+                                for (var i = 0; i < data.length; i++) {
+                                    let profilesrc;
+                                    if (data[i].profilePicture == null) {
+                                        profilesrc = "imgs/profilepic.svg"
+                                    } else {
+                                        profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                    }
+                                    $(".chat-users-ul").append(` <a href="?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold">${data[i].fullName}</span>
+                                    <div class="d-flex c-grey fs-rem-12 ">
+                                        <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
+                                        <span class="chat-time">${data[i].lastMessageTime}</span>
+                                    </div>
+                                </div>
+                              
+                            </li>  </a>`)
 
+                                }
+                                searchBool = true;
+                                if ((!$(".progress-bar").hasClass("d-none"))) {
+                                    $(".progress-bar").addClass("d-none");
+                                }
+                                if ((!$(".loadingchats").hasClass("d-none"))) {
+                                    $(".loadingchats").addClass("d-none");
+                                }
+                            }
+                        },
+                        error: function(xhr, status, err) {
+
+                        }
+                    })
+
+
+
+                }
+            })
+
+
+
+
+
+
+
+
+            // return recent chated people when clear search 
+            $(".remove-search").click(function() {
+
+                $.ajax({
+                    "method": "GET",
+                    "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=4`,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    beforeSend: function() {
+
+                    },
+                    success: function(data, st, xhr) {
+                        console.log(data);
+                        if (data.length > 0) {
+                            $("#search2").val("");
+                            $(".chat-users-ul").html(``);
+                            for (var i = 0; i < data.length; i++) {
+                                let profilesrc;
+                                if (data[i].profilePicture == null) {
+                                    profilesrc = "imgs/profilepic.svg"
+                                } else {
+                                    profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                }
+                                $(".chat-users-ul").append(` <a href="?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold">${data[i].fullName}</span>
+                                    <div class="d-flex c-grey fs-rem-12 ">
+                                        <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
+                                        <span class="chat-time">${data[i].lastMessageTime}</span>
+                                    </div>
+                                </div>
+                              
+                            </li>  </a>`)
+
+                            }
+                        }
+                        searchBool = false;
+                        if ((!$(".progress-bar").hasClass("d-none"))) {
+                            $(".progress-bar").addClass("d-none");
+                        }
+                        if ((!$(".loadingchats").hasClass("d-none"))) {
+                            $(".loadingchats").addClass("d-none");
+                        }
+
+
+                    },
+                    error: function(xhr, status, err) {
+
+                    }
+                })
+
+
+
+            })
 
         })();
     </script>
@@ -1439,6 +1591,9 @@
         });
     </script>
 
+
+    <script>
+    </script>
 
 </body>
 

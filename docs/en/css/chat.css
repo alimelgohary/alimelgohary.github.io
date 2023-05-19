@@ -485,3 +485,15 @@ input[type="radio"] {
     padding-left: 20px;
     transition-duration: .5s;
 }
+
+.remove-search {
+    position: absolute;
+    right: 2%;
+    width: 13px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    cursor: pointer;
+    opacity: 0;
+}
