@@ -246,27 +246,14 @@
                             <i class="fa-solid fa-magnifying-glass fs-rem-20 cur-point"></i>
                         </div>
                     </div>
-                    <div class="chat-users mt-20 w-full d-flex">
-                        <ul class="overflow-auto w-full">
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Fouad Mohamed</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Essam</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Mostafa No3man</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Elgohary</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Samir</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Fathlla</span>
-                            </li>
+                    <div class="chat-users mt-20 w-full d-flex flex-column">
+                        <ul class=" w-full chat-users-ul">
+
                         </ul>
+                        <div class="progress loadingchats d-none">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -679,6 +666,133 @@
 
 
 
+    <!-- get chated people  -->
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+
+
+            var firstMassegeId;
+
+
+            $.ajax({
+                "method": "GET",
+                "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=7`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                beforeSend: function() {
+
+                },
+                success: function(data, st, xhr) {
+                    console.log(data);
+                    if (!(data.length == 0)) {
+                        for (var i = 0; i < data.length; i++) {
+                            let profilesrc;
+                            if (data[i].profilePicture == null) {
+                                profilesrc = "../imgs/profilepic.svg"
+                            } else {
+                                profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                            }
+                            $(".chat-users-ul").append(` <a href="../chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div class = "d-flex ">
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                  
+                                </div>
+                              
+                            </li>  </a>`)
+
+                        }
+                    }
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+
+
+            let notRemanningPeople = 0
+            let pageIndex2 = 2;
+
+            // gwr recent poeple when scroll 
+            $('.home-chats').scroll(function() {
+                var element = $(this);
+                if (element.scrollTop() + element.innerHeight() >= element[0].scrollHeight) {
+
+                    $.ajax({
+                        "method": "GET",
+                        "url": `${apiUrl}/api/Common/GetRecentMessages?Page=${pageIndex2}&Size=4`,
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        beforeSend: function() {
+                            if (notRemanningPeople == 0) {
+                                $(".loadingchats").removeClass("d-none")
+                            }
+                        },
+                        success: function(data, st, xhr) {
+                            $(".loadingchats").addClass("d-none")
+                            console.log(data)
+                            if (data.length == 0 && notRemanningPeople == 0) {
+                                $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
+                                notRemanningPeople = 1;
+                            } else {
+
+                                pageIndex2++;
+
+                                for (var i = 0; i < data.length; i++) {
+                                    let profilesrc;
+                                    if (data[i].profilePicture == null) {
+                                        profilesrc = "../imgs/profilepic.svg"
+                                    } else {
+                                        profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                    }
+                                    $(".chat-users-ul").append(` <a href="../chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                    
+                                </div>
+                              
+                            </li>  </a>`)
+
+                                }
+                            }
+                        },
+                        error: function(xhr, status, err) {
+
+                        }
+                    })
+
+
+                }
+            });
+
+
+
+
+
+        })();
+    </script>
+
 
 
 
@@ -925,10 +1039,10 @@
                             $(".home-posts").html(`<h1 class = "txt-c mt-40 fs-20 c-grey">There is no posts with the condtions you chossed</h1>`);
                         } else {
 
-
+                            $(".home-posts").html(``);
                             for (var counter = 0; counter < data.length; counter++) {
                                 idlist.push(data[counter].postId)
-                                $(".home-posts").html(``);
+
                                 $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -1396,10 +1510,10 @@
                             $(".home-posts").html(`<h1 class = "txt-c mt-40 fs-20 c-grey">There is no posts with the condtions you chossed</h1>`);
                         } else {
 
-
+                            $(".home-posts").html(``);
                             for (var counter = 0; counter < data.length; counter++) {
                                 idlist.push(data[counter].postId);
-                                $(".home-posts").html(``);
+
                                 $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -1411,10 +1525,10 @@
                                         <div class="d-flex usernames align-center">
                                             <span class="fs-rem-14 fw-bold name">${data[counter].userInfo.fullName}</span><span class="username fs-rem-12 c-grey">@${data[counter].userInfo.username}</span></div>
                                         
-                                        <span class="user-mohafza c-grey fs-rem-10">${data[counter].productCategory}</span>
+                                        <span class="user-mohafza c-grey fs-rem-10">${data[counter].governorate}</span>
                                         <div>
                                             <span class="post-time c-grey fs-rem-10 mr-px-5">${data[counter].timeWritten}</span><span class="fs-rem-10 c-grey mr-px-5 edited">Edited at</span><span class="editedtime${data[counter].postId} edited fs-rem-10 c-grey">8</span></div>
-                                        <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].caseType}" >${data[counter].caseType}</span></div>
+                                        <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].productCategory}" >${data[counter].productCategory}</span></div>
                                     </div>
                                 </div>
                                 <div class="more-about-post d-flex flex-column align-center align-items-end">
@@ -1866,10 +1980,10 @@
                             $(".home-posts").html(`<h1 class = "txt-c mt-40 fs-20 c-grey">There is no posts with the condtions you chossed</h1>`);
                         } else {
 
-
+                            $(".home-posts").html(``);
                             for (var counter = 0; counter < data.length; counter++) {
                                 idlist.push(data[counter].postId)
-                                $(".home-posts").html(``);
+
                                 $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -1881,7 +1995,7 @@
                                         <div class="d-flex usernames align-center">
                                             <span class="fs-rem-14 fw-bold name">${data[counter].userInfo.fullName}</span><span class="username fs-rem-12 c-grey">@${data[counter].userInfo.username}</span></div>
                                        
-                                        <span class="user-mohafza c-grey fs-rem-10">${data[counter].productCategory}</span>
+                                        <span class="user-mohafza c-grey fs-rem-10">${data[counter].governorate}</span>
                                         <div>
                                             <span class="post-time c-grey fs-rem-10 mr-px-5">${data[counter].timeWritten}</span><span class="fs-rem-10 c-grey mr-px-5 edited">Edited at</span><span class="editedtime${data[counter].postId} edited fs-rem-10 c-grey">8</span></div>
                                         <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].productCategory}" >${data[counter].productCategory}</span></div>
