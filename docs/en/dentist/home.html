@@ -65,7 +65,7 @@
                     } else if (data.nextPage == "homeDentist") {
 
                     } else if (data.nextPage == "homeAdmin") {
-                        window.location.href = "../dashboard.html";
+                        window.location.href = "../login.html";
                     }
                 },
                 error: function(xhr, status, err) {
@@ -145,7 +145,7 @@
                                <img src="../imgs/findperson.svg"  style="width: 43px;"> <span class="nameofapge" id="findpatient">Find patient</span>
                             </button>
                             <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton1">
-                                <li>
+                                <li class="mt-10">
                                     <a class="dropdown-item" href="#" id="findpatientselect1"> <select class="getgevernate select-Optmize">
                                         <option value="0" selected>governorate</option>
                                        
@@ -154,53 +154,31 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li>
+                                <li class="mb-10">
                                     <a class="dropdown-item" href="#" id="findpatientselect2"> <select class="casetype select-Optmize">
                                         <option value="0" selected>Case Type</option>
                                        
                                     </select></a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="findpatientselect3">Something else </a></li>
+
                             </ul>
                         </div>
                     </li>
-                    <li class="mb-30 w-full p-10 rad-20">
-                        <div class="dropdown">
-                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="mb-30 w-full p-10 rad-20 marketplace cur-point">
+                        <a href="marketplace.html" class="w-full">
+                            <div class="dropdown ">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/marketplace.svg"  style="width: 43px;"> <span class="nameofapge" id="marketplace">Marketplace</span>
                             </button>
-                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton2">
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect1">Action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect3">Something else </a></li>
-                            </ul>
-                        </div>
+                            </div>
+                        </a>
                     </li>
-                    <li class="mb-30 w-full p-10 rad-20">
+                    <li class="mb-30 w-full p-10 rad-20 articles cur-point">
                         <div class="dropdown">
                             <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/homearticles.svg"  style="width: 43px;"> <span class="nameofapge" id="articles">Articles</span>
                             </button>
-                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton3">
-                                <li><a class="dropdown-item" href="article.html" id="articlesselect1">Action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="article.html" id="articlesselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="article.html" id="articlesselect3">Something else </a></li>
-                            </ul>
+
                         </div>
                     </li>
                 </ul>
@@ -502,7 +480,7 @@
     </div>
 
 
-
+    <!-- log out modal  -->
 
     <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
                         Launch demo modal
@@ -553,6 +531,15 @@
 
         $('.search-icon').on('click', function() {
             window.location.href = "search.html";
+        });
+
+
+        $('.articles').on('click', function() {
+            window.location.href = "article.html";
+        });
+
+        $('.marketplace').on('click', function() {
+            window.location.href = "marketplace.html";
         });
     </script>
 

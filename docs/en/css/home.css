@@ -560,6 +560,8 @@ input[type="radio"] {
 .pricing {
     padding: 2px 15px;
     cursor: pointer;
+    max-height: 50px;
+    height: 40px;
 }
 
 #price {
@@ -845,4 +847,8 @@ input[type="radio"] {
 
 .chat-user-text {
     max-width: 70%;
+}
+
+.case-type-rad {
+    min-width: 60px;
 }

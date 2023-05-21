@@ -95,7 +95,7 @@
                         <li class="nav-item  fs-5 ml-130">
                             <!-- make it margin right instead of left in arabic -->
                             <div class="search p-relative">
-                                <span class="search-icon"></span>
+                                <span class="search-icon" id="search-icon"></span>
                                 <input type="search" placeholder="Type a Word" id="search" class="p-10 ">
 
                             </div>
@@ -145,8 +145,8 @@
 
                     </div>
                     <div class="w-full d-flex justify-content-start mb-10">
-                        <div class="search p-relative w-80">
-                            <span class="search-icon"></span>
+                        <div class="search  p-relative w-80">
+                            <span class="search-icon " id="search-icon2"></span>
                             <span class="remove-search">x</span>
                             <input type="search" placeholder="Type a Word" id="search2" class="p-10 ">
 
@@ -180,11 +180,11 @@
                         <div class="chat-call d-flex flex-column p-relative mr-10 " style="width: 25px;">
                             <img src="imgs/callinfo.svg" alt="" class="cur-point w-full more-chat" style="max-width: 25px;">
                             <ul class="info-ul d-none">
-                                <li class="clear-chat cur-point mt-10">Clear</li>
-                                <hr>
-                                <li class="report-chat cur-point ">Report</li>
-                                <hr>
-                                <li class="block-chat cur-point">Block</li>
+                                <li class="clear-chat cur-point mt-10 ">Clear</li>
+
+                                <li class="report-chat cur-point mt-10 ">Report</li>
+
+                                <li class="block-chat cur-point mt-10">Block</li>
                             </ul>
 
                         </div>
@@ -593,7 +593,7 @@
             }
         })
 
-        $('.search-icon').on('click', function() {
+        $('#search-icon').on('click', function() {
             window.location.href = "search.html";
         });
         $(".chat-mess").click(function() {
@@ -611,6 +611,23 @@
         $(".block-chat").click(function() {
             $(".blockbutton2").trigger("click")
         })
+        $("#search2").focus(function() {
+            $(".remove-search").css("opacity", "0");
+        })
+        $("#search2").blur(function() {
+            $(".remove-search").css("opacity", "1");
+        })
+
+
+
+        $(document).on('click', function(event) {
+            var infoUl = $('.info-ul');
+            var moreChat = $('.more-chat');
+
+            if (!$(event.target).hasClass('more-chat') && !infoUl.hasClass('d-none')) {
+                infoUl.addClass('d-none');
+            }
+        });
     </script>
 
     <!-- log out  -->
@@ -1103,6 +1120,7 @@
                                 } else {
 
                                     for (var i = 0; i < data.length; i++) {
+
                                         let profilesrc;
                                         if (data[i].profilePicture == null) {
                                             profilesrc = "imgs/profilepic.svg"
@@ -1116,7 +1134,7 @@
                                 </div>
                                 <div class="d-flex flex-column chat-user-text">
                                     <span class="chat-user fw-bold">${data[i].fullName}</span>
-                                    <div class="d-flex c-grey fs-rem-12 ">
+                                    <div class="d-flex c-grey fs-rem-12 message-contain${data[i].userId}">
                                         <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
                                         <span class="chat-time">${data[i].lastMessageTime}</span>
                                     </div>
@@ -1124,6 +1142,9 @@
                               
                             </li>  </a>`)
 
+                                        if (data[i].lastMessage == null) {
+                                            $(`.message-contain${data[i].userId}`).addClass("d-none");
+                                        }
                                     }
 
                                 }
@@ -1364,7 +1385,7 @@
                                 </div>
                                 <div class="d-flex flex-column chat-user-text">
                                     <span class="chat-user fw-bold">${data[i].fullName}</span>
-                                    <div class="d-flex c-grey fs-rem-12 ">
+                                    <div class="d-flex c-grey fs-rem-12 message-contain${data[i].userId}">
                                         <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
                                         <span class="chat-time">${data[i].lastMessageTime}</span>
                                     </div>
@@ -1372,6 +1393,9 @@
                               
                             </li>  </a>`)
 
+                                    if (data[i].lastMessage == null) {
+                                        $(`.message-contain${data[i].userId}`).addClass("d-none");
+                                    }
                                 }
                                 searchBool = true;
                                 if ((!$(".progress-bar").hasClass("d-none"))) {
@@ -1391,6 +1415,89 @@
 
                 }
             })
+
+
+
+
+            $("#search-icon2").click(function(e) {
+                let notRemanningPeople2 = 0;
+                if ($("#search2").val().length > 0) {
+                    let seachValue = $("#search2").val();
+                    $.ajax({
+                        "method": "GET",
+                        "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=6&q=${seachValue}`,
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        beforeSend: function() {
+                            if (notRemanningPeople2 == 0) {
+                                $(".loadingchats").removeClass("d-none")
+                            }
+                        },
+                        success: function(data, st, xhr) {
+                            console.log(data);
+                            if (data.length == 0 && notRemanningPeople2 == 0) {
+                                $(".chat-users-ul").html(``);
+                                $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
+                                notRemanningPeople2 = 1;
+                                if ((!$(".progress-bar").hasClass("d-none"))) {
+                                    $(".progress-bar").addClass("d-none");
+                                }
+                                if ((!$(".loadingchats").hasClass("d-none"))) {
+                                    $(".loadingchats").addClass("d-none");
+                                }
+                            } else {
+                                $(".chat-users-ul").html(``);
+                                for (var i = 0; i < data.length; i++) {
+                                    let profilesrc;
+                                    if (data[i].profilePicture == null) {
+                                        profilesrc = "imgs/profilepic.svg"
+                                    } else {
+                                        profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                    }
+                                    $(".chat-users-ul").append(` <a href="?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold">${data[i].fullName}</span>
+                                    <div class="d-flex c-grey fs-rem-12 message-contain${data[i].userId}">
+                                        <span class="mr-px-5 chat-tetx c-black">${data[i].lastMessage}</span>
+                                        <span class="chat-time">${data[i].lastMessageTime}</span>
+                                    </div>
+                                </div>
+                              
+                            </li>  </a>`)
+
+                                    if (data[i].lastMessage == null) {
+                                        $(`.message-contain${data[i].userId}`).addClass("d-none");
+                                    }
+                                }
+                                searchBool = true;
+                                if ((!$(".progress-bar").hasClass("d-none"))) {
+                                    $(".progress-bar").addClass("d-none");
+                                }
+                                if ((!$(".loadingchats").hasClass("d-none"))) {
+                                    $(".loadingchats").addClass("d-none");
+                                }
+                            }
+                        },
+                        error: function(xhr, status, err) {
+
+                        }
+                    })
+
+
+
+                }
+            })
+
 
 
 

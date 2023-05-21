@@ -470,15 +470,16 @@ input[type="radio"] {
 
 .info-ul {
     position: absolute;
-    left: -455%;
+    left: -330%;
     top: 65%;
-    padding: 10px 20px;
-    background-color: #92a7b6;
+    padding: 10px;
+    background-color: white;
     border-radius: 10px;
     color: black;
     z-index: 1000000;
-    width: 150px;
+    width: 100px;
     transition: display 0.5s;
+    color: #0E8388;
 }
 
 .info-ul li:hover {
@@ -495,5 +496,5 @@ input[type="radio"] {
     transform: translateY(-50%);
     font-size: 15px;
     cursor: pointer;
-    opacity: 0;
+    opacity: 1;
 }
