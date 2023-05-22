@@ -482,6 +482,10 @@ input[type="radio"] {
     color: #0E8388;
 }
 
+.bg-light {
+    background-color: transparent !important;
+}
+
 .info-ul li:hover {
     padding-left: 20px;
     transition-duration: .5s;

@@ -370,6 +370,10 @@ input[type="radio"] {
     max-height: 70px;
 }
 
+.bg-light {
+    background-color: transparent !important;
+}
+
 .case-type-rad {
     border-radius: 0 12.2px 0 12.2px;
 }
