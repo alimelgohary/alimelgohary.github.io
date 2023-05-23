@@ -409,29 +409,25 @@
                                     <div class="d-flex justify-content-center mt-80">
                                         <div class="mb-3 w-90 Casetitle">
                                             <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
-                                            <input type="text" class="form-control casetitle " required id="formGroupExampleInput" placeholder="Enter title">
+                                            <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" placeholder="Enter title">
                                         </div>
                                     </div>
                                     <span class="titleerror c-red fs-14 ml-20"> </span>
                                     <div class="w-90 d-flex justify-content-between align-center">
                                         <div class="w-40 mt-30 p-20 casetype loction">
                                             <p class="fw-bold fs-15">Location*</p>
-                                            <input required list="locations" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
+                                            <input required list="locations" autocomplete="off" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
                                             <datalist id="locations">
-                                                    <option value="location1">location1</option>
-                                                    <option value="location2">location2</option>
-                                                    <option value="location3">location3</option>
+                                                    
                                                 </datalist>
 
                                         </div>
 
                                         <div class="w-40 mt-30 p-20 casetype">
                                             <p class="fw-bold fs-15 ">Case type*</p>
-                                            <input required list="casetypes" placeholder="Search for type" id="casetype" name="casetype" class="w-full p-10 form-control ">
+                                            <input required list="casetypes" autocomplete="off" placeholder="Search for type" id="casetype" name="casetype" class="w-full p-10 form-control addcasetype">
                                             <datalist id="casetypes">
-                                                    <option value="case1">case1</option>
-                                                    <option value="case2">case2</option>
-                                                    <option value="case3">case3</option>
+                                             
                                                 </datalist>
 
                                         </div>
@@ -444,14 +440,15 @@
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
                                         <div class="mb-3 w-90">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
-                                            <textarea required placeholder="Enter description" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            <textarea required placeholder="Enter description" class="form-control casedescribtion" id="exampleFormControlTextarea1" rows="5"></textarea>
                                         </div>
                                     </div>
 
                                     <div class=" w-full mt-30 d-flex justify-content-center mb-60 cur-point ">
                                         <div class="w-90 ">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Add photo / videos <span class="c-grey fs-15">(optional)</span></label>
-                                            <div class="caseimages image-preview w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                            <div class="caseimages w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                                <div class="image-preview d-flex flex-row "></div>
                                                 <div class=" d-flex  flex-column justify-content-center align-center selectcaseimages">
                                                     <img src="../imgs/uploadimage.svg " style="width: 30px;">
                                                     <span>Click here to add or to readd</span>
@@ -463,7 +460,7 @@
                                     </div>
 
                                     <div class="modal-footer w-full d-flex justify-content-evenly">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-secondary addcasecancell" data-bs-dismiss="modal">Cancel</button>
                                         <input type="submit" value="Add" class="btn btn-primary sendcasebutton">
                                         <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
                                     </div>
@@ -523,6 +520,8 @@
 
     <script>
         var idlist = [];
+        let imageInputSize, selectedCase;
+
         $(".search").keypress(function(event) {
             if ((event.key).toLowerCase() == "enter") {
                 window.location.href = "search.html";
@@ -599,7 +598,7 @@
             }
 
 
-            // Load Universities from server
+            // Load goverorarte from server
             $.ajax({
                 "method": "GET",
                 "url": apiUrl + "/api/Generic/GetGovernorates",
@@ -620,6 +619,31 @@
                     selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
                 }
             })
+
+
+
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Generic/GetGovernorates",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+                    for (let i = 0; i < data.length; i++) {
+                        let selectElem = document.querySelector("#locations");
+                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
+                    }
+
+                },
+                error: function(xhr, status, err) {
+                    let selectElem = document.querySelector("#CurrentUni");
+                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
+                }
+            })
+
+
 
 
             // Load caseTypes from server
@@ -644,6 +668,31 @@
                     selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
                 }
             })
+
+
+            // Load caseTypes from server
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Generic/GetCaseTypes",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+                    for (let i = 0; i < data.length; i++) {
+                        let selectElem = document.querySelector("#casetypes");
+                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
+                    }
+                    console.log(data)
+
+                },
+                error: function(xhr, status, err) {
+                    let selectElem = document.querySelector("#CurrentUni");
+                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
+                }
+            })
+
 
 
 
@@ -1132,7 +1181,7 @@
 
 
             // request when case changes
-            $(".casetype").change(function() {
+            $("#findpatientselect2").change(function() {
                 $(".home-posts").html(" ");
                 idlist = [];
                 governateValue = $(".getgevernate").val();
@@ -1618,6 +1667,7 @@
 
         $(".selectcaseimages").click(function() {
             $(".selectcaseimage").trigger("click");
+            $(".image-preview").html(``)
         })
 
         $(".selectcaseimages2").click(function() {
@@ -1639,6 +1689,7 @@
                 $(".img-of-case span").text("Add Case")
                 $("#location").removeAttr("required");
                 locationDisplay = false;
+                selectedCase = "Common/AddCase";
             } else {
                 $(".Requestapatient").css('display', 'block');
                 $(".loction").css('display', 'block');
@@ -1646,6 +1697,7 @@
                 $(".img-of-case span").text("Share Case")
                 $("#location").attr("required", "true");
                 locationDisplay = true;
+                selectedCase = "Dentists/AddSharing"
             }
         })
 
@@ -1757,7 +1809,9 @@
                         $(image).css('max-height', '100%');
                         previewContainer.prepend(imageWrapper);
 
-                        console.log('Input files:', input.files); // log input files to console
+                        console.log('Input files:', input.files);
+                        imageInputSize = input.files.length;
+
                         deleteMark.onclick = function() {
                             imagesToDelete.push(imageWrapper);
                             imageWrapper.remove();
@@ -3284,6 +3338,80 @@
         })();
     </script>
 
+
+    <!-- add case requerst -->
+
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();;
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+            $("form").submit(function(event) {
+                event.preventDefault();
+
+
+
+                let caseTitle = $(".casetitle").val();
+                let caseLocation = $("#location").val();
+                let caseType = $("#casetype").val();
+                let caseDescribtion = $(".casedescribtion").val();
+
+
+                const formData = new FormData(this);
+                if (selectedCase == "Dentists/AddSharing") {
+                    formData.append('GovernorateId', caseLocation);
+                }
+                formData.append('CaseTypeId', caseType);
+                formData.append('Title', caseTitle);
+                formData.append('Body', caseDescribtion);
+                for (let i = 0; i < imageInputSize; i++) {
+                    let selectedImage = $(".selectcaseimage").prop('files')[i]
+                    formData.append('Images', selectedImage);
+
+                }
+
+
+                $.ajax({
+                    url: apiUrl + `/api/${selectedCase}`,
+                    method: 'POST',
+                    data: formData,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+
+                        let caseTitle = $(".casetitle").val("");
+                        let caseLocation = $("#location").val("");
+                        let caseType = $("#casetype").val("");
+                        let caseDescribtion = $(".casedescribtion").val("");
+                        $(".selectcaseimage").val("")
+                        $(".image-preview").html(``)
+                        $(".addcasecancell").trigger("click");
+                        console.log(data)
+
+
+                    },
+                    error: function(xhr, status, error) {
+
+                        console.log(xhr)
+                        console.log(caseImage)
+
+                    }
+                });
+            })
+        })();
+    </script>
 
 
 

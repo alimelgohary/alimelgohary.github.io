@@ -784,8 +784,9 @@
                     $(".message-skeleton").removeClass("d-none")
                 },
                 success: function(data, st, xhr) {
+                    $(".message-skeleton").addClass("d-none")
                     if (data.length > 0) {
-                        $(".message-skeleton").addClass("d-none")
+
                         getChtedMessae = true;
                         console.log(data)
 

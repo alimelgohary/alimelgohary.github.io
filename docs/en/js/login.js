@@ -46,6 +46,7 @@
 
     $("form").submit(function(event) {
         event.preventDefault();
+        $("button[type=submit]").prop("disabled", true);
         let userName = $("input[type=text]").val();
         let inPassword = $("input[type=password]").val();
         if ($("input[type=email]").val() == "admin@admin.com" && $("input[type=password]").val() == "admin") {
@@ -69,6 +70,7 @@
             },
             "data": jsonData,
             success: function(data, st, xhr) {
+                $("button[type=submit]").prop("disabled", false);
                 console.log(data)
                 console.log(xhr)
                 if (data['nextPage'] == 'homePatient') {
@@ -84,6 +86,7 @@
                 }
             },
             error: function(xhr, status, err) {
+                $("button[type=submit]").prop("disabled", false);
                 console.log(xhr)
                 if (xhr.status == 400) {
                     $(".passoruser").text(xhr.responseJSON.error);
