@@ -1819,7 +1819,7 @@
                             imageWrapper.remove();
 							
                             if (index !== -1) {
-								files.splice(index, 1);
+								files.splice(files.length - 1 - index, 1);
                                 dataTransfer = new DataTransfer();
 								files.forEach((file) => {
 									dataTransfer.items.add(file);
