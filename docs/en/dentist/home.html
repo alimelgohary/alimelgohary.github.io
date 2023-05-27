@@ -540,6 +540,9 @@
         $('.marketplace').on('click', function() {
             window.location.href = "marketplace.html";
         });
+        $("ul.dropdown-menu li a").click(function(e) {
+            e.preventDefault();
+        })
     </script>
 
 
@@ -550,38 +553,10 @@
 
     <!-- log out  -->
     <script>
-        (async() => {
-            let apiUrl = await GetServerDomain();
-            let language;
-            if (window.localStorage.getItem("language") == null) {
-                language = "en";
-            } else {
-                language = window.localStorage.getItem("language");
-            }
-            $("#log-out").click(function() {
-                console.log("logedout")
-                $.ajax({
-                    "method": "GET",
-                    "url": apiUrl + "/api/Users/Logout",
-                    "xhrFields": {
-                        "withCredentials": true
-                    },
-                    "headers": {
-                        "Content-Type": "application/json",
-                        "ngrok-skip-browser-warning": "69420",
-                        "Accept-Language": language
-                    },
-                    success: function(data, st, xhr) {
-                        console.log(data);
-                        window.location.href = "../login.html"
-                    },
-                    error: function(xhr, status, err) {
-                        $(".logouterror").css("display", "block");
-                    }
-                })
+        $("#log-out").click(function() {
 
-            })
-        })();
+            logOut()
+        })
     </script>
 
     <!-- //get governate and case Types -->
