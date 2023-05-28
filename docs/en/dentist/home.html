@@ -880,18 +880,20 @@
                         imageInputSize = input.files.length;
 
                         deleteMark.onclick = function() {
-                            imagesToDelete.push(imageWrapper);
-                            imageWrapper.remove();
-
-                            // make array.form for input.files
-
                             var index = Array.from(previewContainer.children).indexOf(imageWrapper);
+							files = Array.from(input.files);
+							imagesToDelete.push(imageWrapper);
+                            imageWrapper.remove();
+							
                             if (index !== -1) {
-                                $(input).val(Array.from(input.files).filter(function(file, i) {
-                                    return i !== index;
-                                }));
+								files.splice(files.length - 1 - index, 1);
+                                dataTransfer = new DataTransfer();
+								files.forEach((file) => {
+									dataTransfer.items.add(file);
+								});
+								input.files = dataTransfer.files;
                             }
-                            console.log('Input files:', input.files); // log input files to console
+                            console.log('Input files:', input.files);
                         }
                     }
                     reader.readAsDataURL(input.files[i]);
