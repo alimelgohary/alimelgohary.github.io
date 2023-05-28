@@ -977,6 +977,7 @@
         // request when university changes
         $(".getgevernate").change(function() {
             isRequestInProgress = false
+            notRemanning = 0
             getMarketPlacePostsOnChange();
 
         })
@@ -987,6 +988,7 @@
         // request when cat changes
         $(".casetype").change(function() {
             isRequestInProgress = false;
+            notRemanning = 0
             getMarketPlacePostsOnChange();
 
         })
@@ -996,6 +998,7 @@
         // request when sort changes
         $("#sorting").change(function() {
             isRequestInProgress = false
+            notRemanning = 0
             getMarketPlacePostsOnChange()
 
         })
@@ -1660,8 +1663,7 @@
             })
 
 
-
-            let notRemanning = 0
+            notRemanning = 0
             isRequestInProgress = false;
             // make request when scroll
             $(window).scroll(function() {
