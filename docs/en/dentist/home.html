@@ -515,52 +515,17 @@
     <script src="../js/bootstrap.bundle.min.js "></script>
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
-
-
-
-    <script>
-        var idlist = [];
-        let imageInputSize, selectedCase;
-
-        $(".search").keypress(function(event) {
-            if ((event.key).toLowerCase() == "enter") {
-                window.location.href = "search.html";
-            }
-        })
-
-        $('.search-icon').on('click', function() {
-            window.location.href = "search.html";
-        });
-
-
-        $('.articles').on('click', function() {
-            window.location.href = "article.html";
-        });
-
-        $('.marketplace').on('click', function() {
-            window.location.href = "marketplace.html";
-        });
-        $("ul.dropdown-menu li a").click(function(e) {
-            e.preventDefault();
-        })
-    </script>
-
-
-
-
+    <script src="../js/homeStaticEvents.js"></script>
 
 
 
     <!-- log out  -->
     <script>
         $("#log-out").click(function() {
-
             logOut()
         })
     </script>
 
-    <!-- //get governate and case Types -->
-
     <script>
         (async() => {
             let pageIndex = 1;
@@ -571,134 +536,13 @@
             } else {
                 language = window.localStorage.getItem("language");
             }
-
-
-            // Load goverorarte from server
-            $.ajax({
-                "method": "GET",
-                "url": apiUrl + "/api/Generic/GetGovernorates",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "69420",
-                    "Accept-Language": language
-                },
-                success: function(data, st, xhr) {
-                    for (let i = 0; i < data.length; i++) {
-                        let selectElem = document.querySelector(".getgevernate");
-                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
-                    }
-
-                },
-                error: function(xhr, status, err) {
-                    let selectElem = document.querySelector("#CurrentUni");
-                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-                }
-            })
-
-
-
-            $.ajax({
-                "method": "GET",
-                "url": apiUrl + "/api/Generic/GetGovernorates",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "69420",
-                    "Accept-Language": language
-                },
-                success: function(data, st, xhr) {
-                    for (let i = 0; i < data.length; i++) {
-                        let selectElem = document.querySelector("#locations");
-                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
-                    }
-
-                },
-                error: function(xhr, status, err) {
-                    let selectElem = document.querySelector("#CurrentUni");
-                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-                }
-            })
-
-
-
-
-            // Load caseTypes from server
-            $.ajax({
-                "method": "GET",
-                "url": apiUrl + "/api/Generic/GetCaseTypes",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "69420",
-                    "Accept-Language": language
-                },
-                success: function(data, st, xhr) {
-                    for (let i = 0; i < data.length; i++) {
-                        let selectElem = document.querySelector(".casetype");
-                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
-                    }
-                    console.log(data)
-
-                },
-                error: function(xhr, status, err) {
-                    let selectElem = document.querySelector("#CurrentUni");
-                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-                }
-            })
-
-
-            // Load caseTypes from server
-            $.ajax({
-                "method": "GET",
-                "url": apiUrl + "/api/Generic/GetCaseTypes",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "69420",
-                    "Accept-Language": language
-                },
-                success: function(data, st, xhr) {
-                    for (let i = 0; i < data.length; i++) {
-                        let selectElem = document.querySelector("#casetypes");
-                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
-                    }
-                    console.log(data)
-
-                },
-                error: function(xhr, status, err) {
-                    let selectElem = document.querySelector("#CurrentUni");
-                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-                }
-            })
-
-
-
-
-
-
-        })();
-    </script>
-
-
-    <script>
-        (async() => {
-            let pageIndex = 1;
-            let apiUrl = await GetServerDomain();;
-            let language;
-            if (window.localStorage.getItem("language") == null) {
-                language = "en";
-            } else {
-                language = window.localStorage.getItem("language");
-            }
-
-
 
             // request when university changes
             $(".getgevernate").change(function() {
                 notRemanning = 0
                 isRequestInProgress = false;
                 getHomePostsOnChange("Dentists/GetPatientsCases");
-
             })
-
-
 
 
             // request when case changes
@@ -706,244 +550,12 @@
                 notRemanning = 0
                 isRequestInProgress = false;
                 getHomePostsOnChange("Dentists/GetPatientsCases");
-
             })
 
 
 
         })();
     </script>
-
-
-
-
-
-
-    <script>
-        $("a.nav-link").click(function(e) {
-            e.preventDefault();
-        })
-
-        $(".notificationmark").click(function() {
-            $(".notification-content ").toggleClass("d-none");
-        })
-
-        $(".addcase").click(function() {
-            $(".modal2-button").trigger("click");
-        })
-
-        $(".selectcaseimages").click(function() {
-            $(".selectcaseimage").trigger("click");
-            $(".image-preview").html(``)
-        })
-
-        $(".selectcaseimages2").click(function() {
-            $(".selectcaseimage2").trigger("click");
-        })
-
-
-        $(".logout").click(function() {
-            $(".logoutbutton").trigger("click");
-
-        })
-        var locationDisplay = false;
-
-        $('input[name="case"]').change(function() {
-            if ($('input[name="case"]:checked').val() == "requestapatient") {
-                $(".Requestapatient").css('display', 'block');
-                $(".loction").css('display', 'none');
-                $(".img-of-case img").attr("src", "../imgs/addcase.svg");
-                $(".img-of-case span").text("Add Case")
-                $("#location").removeAttr("required");
-                locationDisplay = false;
-                selectedCase = "Common/AddCase";
-            } else {
-                $(".Requestapatient").css('display', 'block');
-                $(".loction").css('display', 'block');
-                $(".img-of-case img").attr("src", "../imgs/sharecase.svg");
-                $(".img-of-case span").text("Share Case")
-                $("#location").attr("required", "true");
-                locationDisplay = true;
-                selectedCase = "Dentists/AddSharing"
-            }
-        })
-
-        $(".moreimg").click(function() {
-            $(this).toggleClass("rotate-90");
-            $(this).next("ul").toggleClass("d-none");
-
-        })
-
-        $(".share-links").click(function() {
-            $(".sharemodal").trigger("click");
-        })
-        $(".block").click(function() {
-            $(".blockmodal").trigger("click");
-        })
-
-        $(".report").click(function() {
-            $(".reportmodal").trigger("click");
-        })
-
-        $("#share-link").val(window.location.href)
-        $(".chatpage").click(function() {
-            window.location.href = "../chat.html?id=0"
-        })
-    </script>
-
-
-    <!-- check if the value exisr in options or not -->
-    <script>
-        // Get the input field and the datalist
-        var inputField = document.getElementById("casetype");
-        var datalist = document.getElementById("casetypes");
-        var locationField = document.getElementById("location");
-        var locationDatalist = document.getElementById("locations");
-
-        // Listen for form submission
-        var sendcasebutton = document.querySelector('.sendcasebutton');
-        sendcasebutton.addEventListener('click', function(event) {
-            // Get the selected option from the datalist
-            var optionSelected = false;
-            for (var i = 0; i < datalist.options.length; i++) {
-                if (inputField.value == datalist.options[i].value) {
-                    optionSelected = true;
-                    break;
-                }
-            }
-
-            var optionSelected2 = false;
-            for (var i = 0; i < locationDatalist.options.length; i++) {
-                if (locationField.value == locationDatalist.options[i].value) {
-                    optionSelected2 = true;
-                    break;
-                }
-            }
-
-
-            // If the selected option is not in the datalist, prevent form submission
-            if (!optionSelected) {
-                event.preventDefault();
-                $(".casetypeerror").text(" Please select a valid case type.");
-                $(".casetypeerror").css("display", "block");
-
-            } else {
-                $(".casetypeerror").text("");
-                $(".casetypeerror").css("display", "none");
-            }
-
-            if (!optionSelected2 && locationDisplay) {
-                event.preventDefault();
-                $(".locationerror").text(" Please select a valid location.");
-                $(".locationerror").css("display", "block");
-
-            } else {
-                $(".locationerror").text("");
-                $(".locationerror").css("display", "none");
-            }
-        });
-    </script>
-
-    <!-- thisssssssssssssssssssss -->
-    <!-- display selected images in container -->
-    <script>
-        function displayImages(input) {
-            if (input.files && input.files.length > 0) {
-                var previewContainer = document.querySelector('.image-preview');
-
-                var imagesToDelete = [];
-
-                for (var i = 0; i < input.files.length; i++) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var image = new Image();
-                        var deleteMark = document.createElement('div');
-                        deleteMark.innerHTML = 'x';
-                        deleteMark.style.position = "absolute";
-                        deleteMark.style.left = "2px";
-                        deleteMark.style.top = "0px";
-                        deleteMark.classList.add('delete-mark');
-                        var imageWrapper = document.createElement('div');
-                        imageWrapper.style.position = "relative";
-                        $(imageWrapper).addClass("mr-px-5")
-                        imageWrapper.classList.add('image-wrapper');
-                        imageWrapper.appendChild(image);
-                        imageWrapper.appendChild(deleteMark);
-                        image.src = e.target.result;
-                        $(imageWrapper).css('max-width', '80px');
-                        $(imageWrapper).css('max-height', '90%');
-                        $(image).css('max-width', '100%');
-                        $(image).css('max-height', '100%');
-                        previewContainer.prepend(imageWrapper);
-
-                        console.log('Input files:', input.files);
-                        imageInputSize = input.files.length;
-
-                        deleteMark.onclick = function() {
-                            var index = Array.from(previewContainer.children).indexOf(imageWrapper);
-							files = Array.from(input.files);
-							imagesToDelete.push(imageWrapper);
-                            imageWrapper.remove();
-							
-                            if (index !== -1) {
-								files.splice(files.length - 1 - index, 1);
-                                dataTransfer = new DataTransfer();
-								files.forEach((file) => {
-									dataTransfer.items.add(file);
-								});
-								input.files = dataTransfer.files;
-                            }
-                            console.log('Input files:', input.files);
-                        }
-                    }
-                    reader.readAsDataURL(input.files[i]);
-                }
-            }
-        }
-    </script>
-
-    <!-- make see more sacebook effect -->
-    <script>
-        var showMoreLinks = document.querySelectorAll('.seemore');
-
-        var maxChars = 150;
-
-        showMoreLinks.forEach(link => {
-            var postText = link.closest('.post-text');
-            var postDescription = postText.querySelector('.post-description');
-            var descriptionText = postDescription.textContent.trim();
-            var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
-
-            if (descriptionText.length <= maxChars) {
-                link.style.display = 'none';
-            } else {
-                postDescription.textContent = truncatedText;
-            }
-
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                if (postDescription.textContent === truncatedText) {
-                    postDescription.textContent = descriptionText;
-                    link.textContent = 'Show less';
-                } else {
-                    postDescription.textContent = truncatedText;
-                    link.textContent = 'See more';
-                }
-            });
-        });
-    </script>
-
-    <!-- enable tooltip of bootstrap -->
-    <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-    </script>
-
-    <!-- API request for cases -->
-
-
 
     <!-- API request for posts -->
     <script>
@@ -957,12 +569,7 @@
                 language = window.localStorage.getItem("language");
             }
 
-
-
-
-
             //make request when page open to load data
-
             $.ajax({
                 "method": "GET",
                 "url": apiUrl + `/api/Dentists/GetPatientsCases?Page=${pageIndex}&Size=2`,
@@ -980,6 +587,7 @@
                 },
                 success: function(data, st, xhr) {
                     console.log(data);
+                    // idList = [];
                     $(".social-link").click(function(e) {
                         let copiedinput = $(this).find('input')[0];
                         copiedinput.select();
@@ -1163,7 +771,8 @@
 
                     });
                     for (var counter = 0; counter < data.length; counter++) {
-                        idlist.push(data[counter].postId)
+
+                        idList.push(data[counter].postId)
                         $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -1618,7 +1227,7 @@
                         isRequestInProgress = true;
                         $.ajax({
                             "method": "GET",
-                            "url": apiUrl + `/api/Dentists/GetPatientsCases?previouslyFetched=${idlist}&Size=2&GovernorateId=${governateValue}&CaseTypeId=${caseTypeValue}`,
+                            "url": apiUrl + `/api/Dentists/GetPatientsCases?previouslyFetched=${idList}&Size=2&GovernorateId=${governateValue}&CaseTypeId=${caseTypeValue}`,
                             "xhrFields": {
                                 "withCredentials": true
                             },
@@ -1832,8 +1441,8 @@
                                     });
 
                                     for (var counter = 0; counter < data.length; counter++) {
-                                        idlist.push(data[counter].postId);
-                                        console.log(idlist);
+                                        idList.push(data[counter].postId);
+                                        console.log(idList);
                                         $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -2279,15 +1888,11 @@
         })();
     </script>
 
-
     <!-- get chated people  -->
     <script>
         (async() => {
             let apiUrl = await GetServerDomain();
-
-
             var firstMassegeId;
-
 
             $.ajax({
                 "method": "GET",
@@ -2400,16 +2005,10 @@
                 }
             });
 
-
-
-
-
         })();
     </script>
 
-
     <!-- add case requerst -->
-
     <script>
         (async() => {
             let apiUrl = await GetServerDomain();;
@@ -2419,11 +2018,8 @@
             } else {
                 language = window.localStorage.getItem("language");
             }
-
             $("form").submit(function(event) {
                 event.preventDefault();
-
-
 
                 let caseTitle = $(".casetitle").val();
                 let caseLocation = $("#location").val();
@@ -2441,9 +2037,7 @@
                 for (let i = 0; i < imageInputSize; i++) {
                     let selectedImage = $(".selectcaseimage").prop('files')[i]
                     formData.append('Images', selectedImage);
-
                 }
-
 
                 $.ajax({
                     url: apiUrl + `/api/${selectedCase}`,
@@ -2472,10 +2066,7 @@
 
                     },
                     error: function(xhr, status, error) {
-
                         console.log(xhr)
-                        console.log(caseImage)
-
                     }
                 });
             })
