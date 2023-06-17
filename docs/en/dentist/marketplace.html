@@ -173,7 +173,7 @@
                                 </li>
                                 <li class="mb-10">
 
-                                  <a class="dropdown-item" href="#" id="findpatientselect3"> <select class="sort select-Optmize" id="sorting">
+                                    <a class="dropdown-item" href="#" id="findpatientselect3"> <select class="sort select-Optmize" id="sorting">
                                         <option value="0" disabled >sorted by</option>
 
                                         <option value="0" selected>Date descending<span class="fs-rem-13 c-grey">(default)</span></option>
@@ -526,13 +526,14 @@
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
 
-
-
-
     <script>
         var idlist = [];
-    </script>
 
+        GetUserInfo("Dentists");
+        $("#log-out").click(function() {
+            logOut()
+        })
+    </script>
 
 
 

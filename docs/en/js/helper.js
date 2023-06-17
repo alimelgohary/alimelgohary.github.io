@@ -1760,3 +1760,47 @@ function getHomePostsOnChange(detiestOrPatient) {
 
 
 }
+
+// load user info
+
+function GetUserInfo(chooseDenistOrUser) {
+
+    (async() => {
+        let apiUrl = await GetServerDomain();
+        let language;
+        if (window.localStorage.getItem("language") == null) {
+            language = "en";
+        } else {
+            language = window.localStorage.getItem("language");
+        }
+
+
+
+        $.ajax({
+            "method": "GET",
+            "url": apiUrl + `/api/${chooseDenistOrUser}/GetSettings`,
+            "xhrFields": {
+                "withCredentials": true
+            },
+            "headers": {
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
+                "Accept-Language": language
+            },
+            success: function(data, st, xhr) {
+                if (data.profilePicture != null) {
+                    $("#userphoto").attr("src", `data:image/png;base64,${data.profilePicture}`)
+                }
+                $('#username').text(data.fullName);
+
+            },
+
+        })
+
+
+
+    })();
+
+
+
+}
