@@ -277,16 +277,22 @@ function displayImages(input) {
                 deleteMark.classList.add('delete-mark');
                 var imageWrapper = document.createElement('div');
                 imageWrapper.style.position = "relative";
-                $(imageWrapper).addClass("mr-px-5")
+                $(imageWrapper).addClass("mr-10")
+                $(imageWrapper).addClass("mb-10")
                 imageWrapper.classList.add('image-wrapper');
                 imageWrapper.appendChild(image);
                 imageWrapper.appendChild(deleteMark);
                 image.src = e.target.result;
-                $(imageWrapper).css('max-width', '80px');
-                $(imageWrapper).css('max-height', '90%');
+                $(imageWrapper).css('max-width', '100px');
+                $(imageWrapper).css('max-height', '100px');
+                $(imageWrapper).css('width', '100px');
+                $(imageWrapper).css('height', '100px');
                 $(image).css('max-width', '100%');
                 $(image).css('max-height', '100%');
+                $(image).css('width', '100px');
+                $(image).css('height', '100px');
                 previewContainer.prepend(imageWrapper);
+                $(imageWrapper).addClass('col-12 col-md-6');
 
                 console.log('Input files:', input.files);
                 imageInputSize = input.files.length;
