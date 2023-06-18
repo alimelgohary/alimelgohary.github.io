@@ -10,6 +10,11 @@
     --sharemodal-bg-color: #212121;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .nav-bg {
     background-color: var(--nav-color) !important;
 }
@@ -651,14 +656,6 @@ input[type="radio"] {
     scrollbar-color: light;
 }
 
-.notification-content::-webkit-scrollbar {
-    width: 10px;
-}
-
-.notification-content::-webkit-scrollbar-thumb {
-    background-color: transparent;
-}
-
 .notification-content .seen-or-not {
     width: 10px;
     height: 10px;
@@ -855,4 +852,22 @@ input[type="radio"] {
 
 .case-type-rad {
     min-width: 60px;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 70px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }

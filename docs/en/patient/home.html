@@ -263,85 +263,8 @@
 
     <div class="nav-bg d-none notification-content rad-10 " style="width: 350px; height: 450px; ">
         <p class="fs-25 fw-bold p-10 mb-20 ">Notifications</p>
-        <ul class="w-full">
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
+        <ul class="w-full notification-ul">
 
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-like.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-verfiey.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div class="discription-content">
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
 
 
 
@@ -384,7 +307,7 @@
                                     <div class="d-flex justify-content-center mt-80">
                                         <div class="mb-3 w-90 Casetitle">
                                             <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
-                                            <input type="text" class="form-control casetitle " required id="formGroupExampleInput" placeholder="Enter title">
+                                            <input type="text" class="form-control casetitle " maxlength="50" required id="formGroupExampleInput" placeholder="Enter title">
                                         </div>
                                     </div>
                                     <span class="titleerror c-red fs-14 ml-20"> </span>
@@ -419,7 +342,7 @@
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
                                         <div class="mb-3 w-90">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
-                                            <textarea required placeholder="Enter description" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            <textarea required placeholder="Enter description" maxlength="500" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
                                         </div>
                                     </div>
 
@@ -496,6 +419,10 @@
     <script src="../js/all.min.js "></script>
     <script src="../js/popper.min.js "></script>
     <script src="../js/homeStaticEvents.js"></script>
+
+    <script>
+        GetUserInfo("Patients");
+    </script>
 
     <!-- log out  -->
     <script>
@@ -712,8 +639,22 @@
                                 <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                             <div class="post-images post-images${data[counter].postId}">
-                                <div class="images${data[counter].postId} d-flex w-100 mt-40 justify-content-center">
+                                <div class="d-flex w-100 mt-40 justify-content-center">
                                   
+                                    <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                                            <div class="carousel-inner images${data[counter].postId} ">
+                                              
+                                               
+                                            </div>
+                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
 
                                 </div>
 
@@ -759,18 +700,25 @@
                             $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64,${data[counter].userInfo.profilePicture}`);
                         }
 
-                        //check if user have images and display it
+                        // check if user have images and display it
                         if (data[counter].images == null || data[counter].length == 0) {
                             $(`.images${data[counter].postId}`).css("display", "none");
                         } else {
                             for (var i = 0; i < data[counter].images.length; i++) {
+                                let activeClass = i == 0 ? "active" : " ";
                                 console.log(i)
-                                $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
-                                                                    <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full" alt="" style="max-width:100%; max-height:100%;">
-                                                                    </div>`)
+                                $(`.images${data[counter].postId}`).append(`<div class="carousel-item  ${activeClass}">
+                                                <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full control-slider-img-width" alt="" style="max-width:100%; max-height:300px;">
+                                                </div>`)
                             }
                         }
 
+
+                        if (data[counter].images.length == 1) {
+
+                            $(`.carousel-control-prev${data[counter].postId}`).addClass('d-none');
+                            $(`.carousel-control-next${data[counter].postId}`).addClass('d-none');
+                        }
 
 
 
@@ -1391,9 +1339,23 @@
                                 <h3 class="post-title">${data[counter].title}</h3>
                                 <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
-                            <div class="post-images post-images${data[counter].postId}">
-                                <div class="images${data[counter].postId} d-flex w-100 mt-40 justify-content-center">
-
+                           <div class="post-images post-images${data[counter].postId}">
+                                <div class="d-flex w-100 mt-40 justify-content-center">
+                                  
+                                    <div id="carouselExampleControls${data[counter].postId}" class="carousel slide w-100" data-bs-ride="carousel">
+                                            <div class="carousel-inner images${data[counter].postId} ">
+                                              
+                                               
+                                            </div>
+                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
 
                                 </div>
 
@@ -1440,13 +1402,24 @@
                                         if (data[counter].images == null || data[counter].length == 0) {
                                             $(`.images${data[counter].postId}`).css("display", "none");
                                         } else {
+
+
                                             for (var i = 0; i < data[counter].images.length; i++) {
+                                                let activeClass2 = i == 0 ? "active" : " ";
                                                 console.log(i)
-                                                $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
-                                                                    <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full" alt="" style="max-width:100%; max-height:100%;">
-                                                                    </div>`)
+                                                $(`.images${data[counter].postId}`).append(`<div class="carousel-item  ${activeClass2}">
+                                                <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full control-slider-img-width" alt="" style="max-width:100%; max-height:300px; height:300px">
+                                                </div>`)
+                                            }
+                                            if (data[counter].images.length == 1) {
+                                                console.log("num" + data[counter].images.length)
+                                                $(`.carousel-control-prev${data[counter].postId}`).addClass('d-none')
+                                                $(`.carousel-control-next${data[counter].postId}`).addClass('d-none');
                                             }
                                         }
+
+
+
 
 
                                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
@@ -1808,6 +1781,70 @@
 
         })();
     </script>
+
+    <!-- add case requerst -->
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();;
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+            $("form").submit(function(event) {
+                event.preventDefault();
+
+                let caseTitle = $(".casetitle").val();
+                let caseType = $("#casetype").val();
+                let caseDescribtion = $(".casedescribtion").val();
+
+
+                const formData = new FormData(this);
+
+                formData.append('CaseTypeId', caseType);
+                formData.append('Title', caseTitle);
+                formData.append('Body', caseDescribtion);
+                for (let i = 0; i < imageInputSize; i++) {
+                    let selectedImage = $(".selectcaseimage").prop('files')[i]
+                    formData.append('Images', selectedImage);
+                }
+
+                $.ajax({
+                    url: apiUrl + `/api/${selectedCase}`,
+                    method: 'POST',
+                    data: formData,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+
+                        let caseTitle = $(".casetitle").val("");
+                        let caseLocation = $("#location").val("");
+                        let caseType = $("#casetype").val("");
+                        let caseDescribtion = $(".casedescribtion").val("");
+                        $(".selectcaseimage").val("")
+                        $(".image-preview").html(``)
+                        $(".addcasecancell").trigger("click");
+                        console.log(data)
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr)
+                    }
+                });
+            })
+        })();
+    </script>
+
+
 
 
 </body>

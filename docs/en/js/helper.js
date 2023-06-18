@@ -285,9 +285,23 @@ function getMarketPlacePostsOnChange() {
                                 </div>
                                 <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
-                            <div class="post-images post-images${data[counter].postId}">
-                                <div class="images${data[counter].postId} d-flex w-100 mt-40 justify-content-center">
+                              <div class="post-images post-images${data[counter].postId}">
+                                <div class="d-flex w-100 mt-40 justify-content-center">
                                   
+                                    <div id="carouselExampleControls${data[counter].postId}" class="carousel slide w-100" data-bs-ride="carousel">
+                                            <div class="carousel-inner images${data[counter].postId} ">
+                                              
+                                               
+                                            </div>
+                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
 
                                 </div>
 
@@ -336,12 +350,20 @@ function getMarketPlacePostsOnChange() {
                             $(`.images${data[counter].postId}`).css("display", "none");
                         } else {
                             for (var i = 0; i < data[counter].images.length; i++) {
+                                let activeClass2 = i == 0 ? "active" : " ";
                                 console.log(i)
-                                $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
-                                                                    <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full" alt="" style="max-width:100%; max-height:100%;">
-                                                                    </div>`)
+                                $(`.images${data[counter].postId}`).append(`<div class="carousel-item  ${activeClass2}">
+                                                <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full control-slider-img-width" alt="" style="max-width:100%; max-height:300px; height:300px">
+                                                </div>`)
                             }
                         }
+
+                        if (data[counter].images.length == 1) {
+
+                            $(`.carousel-control-prev${data[counter].postId}`).addClass('d-none');
+                            $(`.carousel-control-next${data[counter].postId}`).addClass('d-none');
+                        }
+
 
 
                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
@@ -974,9 +996,23 @@ function getPostOnLoad() {
                              
                             </div>
                                <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
-                            <div class="post-images post-images${data[counter].postId}">
-                                <div class="images${data[counter].postId} d-flex w-100 mt-40 justify-content-center">
-
+                             <div class="post-images post-images${data[counter].postId}">
+                                <div class="d-flex w-100 mt-40 justify-content-center">
+                                  
+                                    <div id="carouselExampleControls${data[counter].postId}" class="carousel slide w-100" data-bs-ride="carousel">
+                                            <div class="carousel-inner images${data[counter].postId} ">
+                                              
+                                               
+                                            </div>
+                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
 
                                 </div>
 
@@ -1025,14 +1061,20 @@ function getPostOnLoad() {
                                     $(`.images${data[counter].postId}`).css("display", "none");
                                 } else {
                                     for (var i = 0; i < data[counter].images.length; i++) {
+                                        let activeClass2 = i == 0 ? "active" : " ";
                                         console.log(i)
-                                        $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
-                                                                    <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full" alt="" style="max-width:100%; max-height:100%;">
-                                                                    </div>`)
+                                        $(`.images${data[counter].postId}`).append(`<div class="carousel-item  ${activeClass2}">
+                                                <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full control-slider-img-width" alt="" style="max-width:100%; max-height:300px; height:300px">
+                                                </div>`)
                                     }
                                 }
 
 
+                                if (data[counter].images.length == 1) {
+
+                                    $(`.carousel-control-prev${data[counter].postId}`).addClass('d-none');
+                                    $(`.carousel-control-next${data[counter].postId}`).addClass('d-none');
+                                }
 
 
 
@@ -1467,9 +1509,23 @@ function getHomePostsOnChange(detiestOrPatient) {
                                 <h3 class="post-title">${data[counter].title}</h3>
                                 <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
-                            <div class="post-images post-images${data[counter].postId}">
-                                <div class="images${data[counter].postId} d-flex w-100 mt-40 justify-content-center">
+                             <div class="post-images post-images${data[counter].postId}">
+                                <div class="d-flex w-100 mt-40 justify-content-center">
                                   
+                                    <div id="carouselExampleControls${data[counter].postId}" class="carousel slide w-100" data-bs-ride="carousel">
+                                            <div class="carousel-inner images${data[counter].postId} ">
+                                              
+                                               
+                                            </div>
+                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
 
                                 </div>
 
@@ -1518,12 +1574,21 @@ function getHomePostsOnChange(detiestOrPatient) {
                             $(`.images${data[counter].postId}`).css("display", "none");
                         } else {
                             for (var i = 0; i < data[counter].images.length; i++) {
+                                let activeClass2 = i == 0 ? "active" : " ";
                                 console.log(i)
-                                $(`.images${data[counter].postId}`).append(`<div class="image  mr-15"style = "height:300px" >
-                                                                    <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full" alt="" style="max-width:100%; max-height:100%;">
-                                                                    </div>`)
+                                $(`.images${data[counter].postId}`).append(`<div class="carousel-item  ${activeClass2}">
+                                                <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full control-slider-img-width" alt="" style="max-width:100%; max-height:300px; height:300px">
+                                                </div>`)
                             }
                         }
+
+
+                        if (data[counter].images.length == 1) {
+
+                            $(`.carousel-control-prev${data[counter].postId}`).addClass('d-none');
+                            $(`.carousel-control-next${data[counter].postId}`).addClass('d-none');
+                        }
+
 
 
                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
@@ -1757,6 +1822,50 @@ function getHomePostsOnChange(detiestOrPatient) {
 
 
     })();
+
+
+}
+
+// load user info
+
+function GetUserInfo(chooseDenistOrUser) {
+
+    (async() => {
+        let apiUrl = await GetServerDomain();
+        let language;
+        if (window.localStorage.getItem("language") == null) {
+            language = "en";
+        } else {
+            language = window.localStorage.getItem("language");
+        }
+
+
+
+        $.ajax({
+            "method": "GET",
+            "url": apiUrl + `/api/${chooseDenistOrUser}/GetSettings`,
+            "xhrFields": {
+                "withCredentials": true
+            },
+            "headers": {
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
+                "Accept-Language": language
+            },
+            success: function(data, st, xhr) {
+                if (data.profilePicture != null) {
+                    $("#userphoto").attr("src", `data:image/png;base64,${data.profilePicture}`)
+                }
+                $('#username').text(data.fullName);
+
+            },
+
+        })
+
+
+
+    })();
+
 
 
 }
