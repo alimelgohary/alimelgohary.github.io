@@ -314,7 +314,7 @@
                                     <div class="w-90 d-flex justify-content-between align-center">
                                         <div class="w-40 mt-30 p-20 casetype loction">
                                             <p class="fw-bold fs-15">Location*</p>
-                                            <input required list="locations" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
+                                            <input required list="locations" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control " style="display: block !important;">
                                             <datalist id="locations">
                                                     <option value="location1">location1</option>
                                                     <option value="location2">location2</option>
@@ -346,10 +346,11 @@
                                         </div>
                                     </div>
 
-                                    <div class=" w-full mt-30 d-flex justify-content-center mb-60 cur-point ">
+                                    <div class=" w-full mt-30 d-flex justify-content-center mb-15 cur-point ">
                                         <div class="w-90 ">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Add photo / videos <span class="c-grey fs-15">(optional)</span></label>
-                                            <div class="caseimages image-preview w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                            <div class="caseimages w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                                <div class="d-flex flex-row "></div>
                                                 <div class=" d-flex  flex-column justify-content-center align-center selectcaseimages">
                                                     <img src="../imgs/uploadimage.svg " style="width: 30px;">
                                                     <span>Click here to add or to readd</span>
@@ -360,9 +361,20 @@
 
                                     </div>
 
+                                    <div class="d-flex justify-content-center">
+                                        <div class="image-preview mb-40  w-90 rad-10 row justify-content-center align-center p-10 nav-bg " style="min-height: 150px; height: auto;">
+
+                                        </div>
+                                    </div>
+
                                     <div class="modal-footer w-full d-flex justify-content-evenly">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <input type="submit" value="Add" class="btn btn-primary sendcasebutton">
+                                        <button type="button" class="btn btn-secondary addcasecancell" data-bs-dismiss="modal">Cancel</button>
+                                        <div class="d-flex">
+                                            <input type="submit" value="Add" class="btn btn-primary sendcasebutton ">
+                                            <div class="spinner-border text-info d-none ml-10" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
                                         <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
                                     </div>
                                 </form>
@@ -429,6 +441,10 @@
         $("#log-out").click(function() {
             logOut()
         })
+        if (true) {
+            $(".loction").css('display', 'block');
+            $("#location").attr("required", "true");
+        }
     </script>
 
     <script>
@@ -641,16 +657,16 @@
                             <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
                                   
-                                    <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                                    <div id="carouselExampleControls${data[counter].postId}"" class="carousel slide w-100" data-bs-ride="carousel">
                                             <div class="carousel-inner images${data[counter].postId} ">
                                               
                                                
                                             </div>
-                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}"" data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon " aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
                                             </button>
-                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls${data[counter].postId}"" data-bs-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Next</span>
                                             </button>
@@ -1798,10 +1814,11 @@
                 let caseTitle = $(".casetitle").val();
                 let caseType = $("#casetype").val();
                 let caseDescribtion = $(".casedescribtion").val();
+                let caseLocation = $("#location").val();
 
 
                 const formData = new FormData(this);
-
+                formData.append('GovernorateId', caseLocation);
                 formData.append('CaseTypeId', caseType);
                 formData.append('Title', caseTitle);
                 formData.append('Body', caseDescribtion);
@@ -1811,7 +1828,7 @@
                 }
 
                 $.ajax({
-                    url: apiUrl + `/api/${selectedCase}`,
+                    url: apiUrl + `/api/Common/AddCase`,
                     method: 'POST',
                     data: formData,
                     "xhrFields": {
@@ -1823,8 +1840,16 @@
                     },
                     contentType: false,
                     processData: false,
-                    success: function(data) {
+                    beforeSend: function() {
+                        $(".spinner-border").removeClass("d-none")
 
+                        $(".sendcasebutton").attr("disabled", "true");
+
+                    },
+                    success: function(data) {
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").attr("disabled", "false");
                         let caseTitle = $(".casetitle").val("");
                         let caseLocation = $("#location").val("");
                         let caseType = $("#casetype").val("");
