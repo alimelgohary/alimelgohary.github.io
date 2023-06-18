@@ -264,104 +264,7 @@
 
     <div class="nav-bg d-none notification-content rad-10 " style="width: 350px; height: 450px; ">
         <p class="fs-25 fw-bold p-10 mb-20 ">Notifications</p>
-        <ul class="w-full">
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-like.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-verfiey.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div class="discription-content">
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
+        <ul class="w-full notification-ul">
 
 
 
@@ -409,7 +312,7 @@
                                     <div class="d-flex justify-content-center mt-80">
                                         <div class="mb-3 w-90 Casetitle">
                                             <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
-                                            <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" placeholder="Enter title">
+                                            <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" maxlength="50" placeholder="Enter title">
                                         </div>
                                     </div>
                                     <span class="titleerror c-red fs-14 ml-20"> </span>
@@ -440,7 +343,7 @@
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
                                         <div class="mb-3 w-90">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
-                                            <textarea required placeholder="Enter description" class="form-control casedescribtion" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            <textarea required placeholder="Enter description" maxlength="500" class="form-control casedescribtion" id="exampleFormControlTextarea1" rows="5"></textarea>
                                         </div>
                                     </div>
 
@@ -461,7 +364,13 @@
 
                                     <div class="modal-footer w-full d-flex justify-content-evenly">
                                         <button type="button" class="btn btn-secondary addcasecancell" data-bs-dismiss="modal">Cancel</button>
-                                        <input type="submit" value="Add" class="btn btn-primary sendcasebutton">
+                                        <div class="d-flex">
+                                            <input type="submit" value="Add" class="btn btn-primary sendcasebutton ">
+                                            <div class="spinner-border text-info d-none ml-10" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+
                                         <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
                                     </div>
                                 </form>
@@ -2096,7 +2005,16 @@
                     },
                     contentType: false,
                     processData: false,
+                    beforeSend: function() {
+                        $(".spinner-border").removeClass("d-none")
+
+                        $(".sendcasebutton").attr("disabled", "true");
+
+                    },
                     success: function(data) {
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").attr("disabled", "false");
 
                         let caseTitle = $(".casetitle").val("");
                         let caseLocation = $("#location").val("");
