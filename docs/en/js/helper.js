@@ -283,7 +283,7 @@ function getMarketPlacePostsOnChange() {
                                         <span class="mr-px-5">EGP</span> <span class="post-price">${data[counter].price}</span>
                                     </div>
                                 </div>
-                                <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                               <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
@@ -995,7 +995,7 @@ function getPostOnLoad() {
                                     </div>
                              
                             </div>
-                               <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                               <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                              <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
                                   
@@ -1507,7 +1507,7 @@ function getHomePostsOnChange(detiestOrPatient) {
                             </div>
                             <div class="post-text">
                                 <h3 class="post-title">${data[counter].title}</h3>
-                                <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                              <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">

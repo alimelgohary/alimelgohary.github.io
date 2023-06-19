@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Members</title>
+    <link rel="stylesheet" href="en/css/bootstrap.min.css">
+    <link rel="stylesheet" href="en/css/all.min.css" />
+    <link rel="stylesheet" href="en/css/animate.min.css">
+    <link rel="stylesheet" href="en/css/animate.min.css">
+    <link rel="stylesheet" href="en/css/framework.css" />
+    <link rel="stylesheet" href="en/css/master.css" />
+    <link rel="stylesheet" href="en/css/hover.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="page d-flex">
+        <div class="sidebar bg-white p-20 p-relative">
+            <h3 class="p-relative txt-c mt-0">Free Smile</h3>
+            <ul>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="dashboard.html">
+                        <i class="fa-regular fa-chart-bar fa-fw"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class=" d-flex align-center fs-14 c-black rad-6 p-10" href="settingPage.html">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="profile.html">
+                        <i class="fa-regular fa-user fa-fw"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a class="  d-flex align-center fs-14 c-black rad-6 p-10" href="Members.html">
+                        <i class="fa-solid fa-people-roof fa-fw"></i>
+                        <span>Members</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10 active" href="verficationRequests.html">
+                        <i class="fa-solid fa-file fa-fw"></i>
+                        <span>Verfication Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.html">
+                        <i class="fa-solid fa-lightbulb fa-fw"></i>
+                        <span>Plans</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content w-full">
+            <!-- Start Head -->
+            <div class="head bg-white p-15 between-flex">
+                <div class="search p-relative">
+                    <input class="p-10" type="search" placeholder="Type A Keyword" />
+                </div>
+                <div class="icons d-flex align-center">
+                    <span class="notification p-relative">
+              <i class="fa-regular fa-bell fa-lg"></i>
+            </span>
+                    <img decoding="async" src="en/imgs/avatar.png" alt="" />
+                </div>
+            </div>
+            <!-- End Head -->
+            <h1 class="p-relative"> verfication Requests </h1>
+
+            <div class=" p-20  row requests-body">
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="en/js/helper.js"></script>
+    <script src="en/js/jquery-3.6.1.min.js"></script>
+    <script src="en/js/bootstrap.bundle.min.js "></script>
+    <script src="en/js/all.min.js "></script>
+    <script src="en/js/popper.min.js "></script>
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+            let language;
+            let getRequestsNumber = false;
+            let requestsNumber = 0;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+
+
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Admins/GetNumberOfVerificationRequests",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+                    requestsNumber = data
+                    getRequestsNumber = true
+
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+
+            setTimeout(function() {
+
+                $.ajax({
+                    "method": "GET",
+                    "url": apiUrl + `/api/Admins/GetVerificationRequest?number=${requestsNumber}`,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    success: function(data, st, xhr) {
+                        console.log(typeof data);
+                        // if (data.length > 1) {
+                        //     for (var i = 0; i < data.length; i++) {
+                        $(".requests-body").append(`
+                <div class="card-container col-12 col-md-6 d-inline-block">
+
+                    <div class="card mb-3">
+                        <div class="d-flex request images">
+                            <!-- <img src="en/imgs/avatar.png" class="card-img-top w-full mr-10" style="height: 200px; max-width: 100%; max-height: 200px;" alt="...">
+                          > -->
+                            <div id="carouselExampleControls" class="carousel slide w-full" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="en/imgs/avatar.png" class="d-block w-100" style="height: 200px; max-width: 100%; max-height: 200px;" alt="...">
+                                    </div>
+
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- <h5 class="card-title txt-c">Acadimic Degree</h5>
+                            <p class="card-text txt-c">Current Univercity</p> -->
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class ="fs-13">ID</th>
+                                        <th scope="col" class ="fs-13">Full Name</th>
+                                        <th scope="col" class ="fs-13">Requested Degree</th>
+                                        <th scope="col" class ="fs-13">Requested University</th>
+                                        <th scope="col" class ="fs-13">User Name</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>@mdo</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="card-footer text-muted d-flex justify-content-evenly p-20">
+                            <button type="button" class="btn btn-success hvr-bob accecptRequest" data-id ="">Accept</button>
+                            <button type="button" class="btn btn-danger hvr-bob refuseRequest" data-id= "">Reject</button>
+                        </div>
+                    </div>
+                </div>
+`)
+                        console.log(data)
+                            //     }
+                            // }
+                    },
+                    error: function(xhr, status, err) {
+                        console.log(xhr)
+                    }
+                })
+
+
+            }, 1000)
+
+
+
+
+        })();
+    </script>
+</body>
+
+</html>

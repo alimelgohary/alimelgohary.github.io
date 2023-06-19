@@ -309,8 +309,10 @@
                                             <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
                                             <input type="text" class="form-control casetitle " maxlength="50" required id="formGroupExampleInput" placeholder="Enter title">
                                         </div>
+
                                     </div>
-                                    <span class="titleerror c-red fs-14 ml-20"> </span>
+                                    <p class="titleError c-red fs-15 txt-c titleError"> </p>
+
                                     <div class="w-90 d-flex justify-content-between align-center">
                                         <div class="w-40 mt-30 p-20 casetype loction">
                                             <p class="fw-bold fs-15">Location*</p>
@@ -342,9 +344,11 @@
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
                                         <div class="mb-3 w-90">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
-                                            <textarea required placeholder="Enter description" maxlength="500" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            <textarea required placeholder="Enter description" maxlength="500" class="form-control casedescribtion" id="exampleFormControlTextarea1" rows="5"></textarea>
                                         </div>
                                     </div>
+
+                                    <p class="bodyerror c-red fs-15 txt-c"> </p>
 
                                     <div class=" w-full mt-30 d-flex justify-content-center mb-15 cur-point ">
                                         <div class="w-90 ">
@@ -357,6 +361,7 @@
                                                 </div>
                                             </div>
                                             <p class="c-grey fs-14 mt-10">(hint: you can't delete choossen image if you want to delete, chosoe from first again)</p>
+                                            <p class="imageerror fs-15 c-red txt-c "></p>
                                         </div>
 
                                     </div>
@@ -511,6 +516,7 @@
                     for (var counter = 0; counter < data.length; counter++) {
                         idList.push(data[counter].postId)
                         console.log(idList)
+                        console.log(data[counter].body)
                         $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -652,7 +658,7 @@
                             </div>
                             <div class="post-text">
                                 <h3 class="post-title">${data[counter].title}</h3>
-                                <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                             <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
@@ -1353,7 +1359,7 @@
                             </div>
                             <div class="post-text">
                                 <h3 class="post-title">${data[counter].title}</h3>
-                                <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                            <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
@@ -1849,7 +1855,7 @@
                     success: function(data) {
                         $(".spinner-border").addClass("d-none")
 
-                        $(".sendcasebutton").attr("disabled", "false");
+                        $(".sendcasebutton").removeAttr("disabled");
                         let caseTitle = $(".casetitle").val("");
                         let caseLocation = $("#location").val("");
                         let caseType = $("#casetype").val("");
@@ -1863,6 +1869,43 @@
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr)
+                        if (xhr.responseJSON.errors.hasOwnProperty("Title")) {
+                            $(".titleError").text(xhr.responseJSON.errors.Title[0])
+                            $(".titleError").css("display", "block");
+                        } else {
+                            $(".titleError").text("")
+                            $(".titleError").css("display", "none");
+                        }
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("GovernorateId")) {
+                            $(".locationerror").text(xhr.responseJSON.errors.GovernorateId[0])
+                            $(".locationerror").css("display", "block");
+                        } else {
+                            $(".locationerror").text("")
+                            $(".locationerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Body")) {
+                            $(".bodyerror").text(xhr.responseJSON.errors.Body[0])
+                            $(".bodyerror").css("display", "block");
+                        } else {
+                            $(".bodyerror").text("")
+                            $(".bodyerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Images")) {
+                            $(".imageerror").text(xhr.responseJSON.errors.Images[0])
+                            $(".imageerror").css("display", "block");
+                        } else {
+                            $(".imageerror").text("")
+                            $(".imageerror").css("display", "none");
+                        }
+
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").removeAttr("disabled");
                     }
                 });
             })
