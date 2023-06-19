@@ -315,7 +315,7 @@
                                             <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" maxlength="50" placeholder="Enter title">
                                         </div>
                                     </div>
-                                    <span class="titleerror c-red fs-14 ml-20"> </span>
+                                    <p class="titleError c-red fs-15 txt-c titleError"> </p>
                                     <div class="w-90 d-flex justify-content-between align-center">
                                         <div class="w-40 mt-30 p-20 casetype loction">
                                             <p class="fw-bold fs-15">Location*</p>
@@ -344,22 +344,30 @@
                                         <div class="mb-3 w-90">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
                                             <textarea required placeholder="Enter description" maxlength="500" class="form-control casedescribtion" id="exampleFormControlTextarea1" rows="5"></textarea>
+
                                         </div>
                                     </div>
+                                    <p class="bodyerror c-red fs-15 txt-c"> </p>
 
-                                    <div class=" w-full mt-30 d-flex justify-content-center mb-60 cur-point ">
+                                    <div class=" w-full mt-30 d-flex justify-content-center mb-15 cur-point ">
                                         <div class="w-90 ">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Add photo / videos <span class="c-grey fs-15">(optional)</span></label>
                                             <div class="caseimages w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
-                                                <div class="image-preview d-flex flex-row "></div>
+                                                <div class="d-flex flex-row "></div>
                                                 <div class=" d-flex  flex-column justify-content-center align-center selectcaseimages">
                                                     <img src="../imgs/uploadimage.svg " style="width: 30px;">
                                                     <span>Click here to add or to readd</span>
                                                 </div>
                                             </div>
                                             <p class="c-grey fs-14 mt-10">(hint: you can't delete choossen image if you want to delete, chosoe from first again)</p>
+                                            <p class="imageerror fs-15 c-red txt-c "></p>
                                         </div>
 
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="image-preview mb-40  w-90 rad-10 row justify-content-center align-center p-10 nav-bg " style="min-height: 150px; height: auto;">
+
+                                        </div>
                                     </div>
 
                                     <div class="modal-footer w-full d-flex justify-content-evenly">
@@ -2014,7 +2022,7 @@
                     success: function(data) {
                         $(".spinner-border").addClass("d-none")
 
-                        $(".sendcasebutton").attr("disabled", "false");
+                        $(".sendcasebutton").removeAttr("disabled");
 
                         let caseTitle = $(".casetitle").val("");
                         let caseLocation = $("#location").val("");
@@ -2029,6 +2037,43 @@
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr)
+                        if (xhr.responseJSON.errors.hasOwnProperty("Title")) {
+                            $(".titleError").text(xhr.responseJSON.errors.Title[0])
+                            $(".titleError").css("display", "block");
+                        } else {
+                            $(".titleError").text("")
+                            $(".titleError").css("display", "none");
+                        }
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("GovernorateId")) {
+                            $(".locationerror").text(xhr.responseJSON.errors.GovernorateId[0])
+                            $(".locationerror").css("display", "block");
+                        } else {
+                            $(".locationerror").text("")
+                            $(".locationerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Body")) {
+                            $(".bodyerror").text(xhr.responseJSON.errors.Body[0])
+                            $(".bodyerror").css("display", "block");
+                        } else {
+                            $(".bodyerror").text("")
+                            $(".bodyerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Images")) {
+                            $(".imageerror").text(xhr.responseJSON.errors.Images[0])
+                            $(".imageerror").css("display", "block");
+                        } else {
+                            $(".imageerror").text("")
+                            $(".imageerror").css("display", "none");
+                        }
+
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").removeAttr("disabled");
                     }
                 });
             })
