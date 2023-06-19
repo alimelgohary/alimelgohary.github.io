@@ -516,6 +516,7 @@
                     for (var counter = 0; counter < data.length; counter++) {
                         idList.push(data[counter].postId)
                         console.log(idList)
+                        console.log(data[counter].body)
                         $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
@@ -657,7 +658,7 @@
                             </div>
                             <div class="post-text">
                                 <h3 class="post-title">${data[counter].title}</h3>
-                                <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                             <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
@@ -1358,7 +1359,7 @@
                             </div>
                             <div class="post-text">
                                 <h3 class="post-title">${data[counter].title}</h3>
-                                <p class="m-0 d-inline post-description">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                            <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
