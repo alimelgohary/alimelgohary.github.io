@@ -92,11 +92,18 @@
         </div>
     </div>
 
+
+
+
+
     <script src="en/js/helper.js"></script>
     <script src="en/js/jquery-3.6.1.min.js"></script>
     <script src="en/js/bootstrap.bundle.min.js "></script>
     <script src="en/js/all.min.js "></script>
     <script src="en/js/popper.min.js "></script>
+    <script src="en/js/verfiyRequest.js"></script>
+    <script>
+    </script>
     <script>
         (async() => {
             let apiUrl = await GetServerDomain();
@@ -125,6 +132,7 @@
                 success: function(data, st, xhr) {
                     requestsNumber = data
                     getRequestsNumber = true
+                    console.log(data)
 
                 },
                 error: function(xhr, status, err) {
@@ -134,96 +142,14 @@
 
 
             setTimeout(function() {
-
-                $.ajax({
-                    "method": "GET",
-                    "url": apiUrl + `/api/Admins/GetVerificationRequest?number=${requestsNumber}`,
-                    "xhrFields": {
-                        "withCredentials": true
-                    },
-                    "headers": {
-                        "Content-Type": "application/json",
-                        "ngrok-skip-browser-warning": "69420",
-                        "Accept-Language": language
-                    },
-                    success: function(data, st, xhr) {
-                        console.log(typeof data);
-                        // if (data.length > 1) {
-                        //     for (var i = 0; i < data.length; i++) {
-                        $(".requests-body").append(`
-                <div class="card-container col-12 col-md-6 d-inline-block">
-
-                    <div class="card mb-3">
-                        <div class="d-flex request images">
-                            <!-- <img src="en/imgs/avatar.png" class="card-img-top w-full mr-10" style="height: 200px; max-width: 100%; max-height: 200px;" alt="...">
-                          > -->
-                            <div id="carouselExampleControls" class="carousel slide w-full" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="en/imgs/avatar.png" class="d-block w-100" style="height: 200px; max-width: 100%; max-height: 200px;" alt="...">
-                                    </div>
-
-                                </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <!-- <h5 class="card-title txt-c">Acadimic Degree</h5>
-                            <p class="card-text txt-c">Current Univercity</p> -->
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" class ="fs-13">ID</th>
-                                        <th scope="col" class ="fs-13">Full Name</th>
-                                        <th scope="col" class ="fs-13">Requested Degree</th>
-                                        <th scope="col" class ="fs-13">Requested University</th>
-                                        <th scope="col" class ="fs-13">User Name</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                        <div class="card-footer text-muted d-flex justify-content-evenly p-20">
-                            <button type="button" class="btn btn-success hvr-bob accecptRequest" data-id ="">Accept</button>
-                            <button type="button" class="btn btn-danger hvr-bob refuseRequest" data-id= "">Reject</button>
-                        </div>
-                    </div>
-                </div>
-`)
-                        console.log(data)
-                            //     }
-                            // }
-                    },
-                    error: function(xhr, status, err) {
-                        console.log(xhr)
-                    }
-                })
+                getVeficationReques();
 
 
             }, 1000)
 
-
-
-
         })();
+    </script>
+    <script>
     </script>
 </body>
 
