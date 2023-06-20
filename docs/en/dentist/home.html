@@ -309,12 +309,20 @@
                                     </div>
 
 
-                                    <div class="d-flex justify-content-center mt-80">
+                                    <div class="d-flex justify-content-center mt-80 mb-30">
                                         <div class="mb-3 w-90 Casetitle">
                                             <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
                                             <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" maxlength="50" placeholder="Enter title">
                                         </div>
                                     </div>
+
+                                    <div class="d-flex justify-content-center Casephone">
+                                        <div class="mb-3 w-90 Casetitle Casephone">
+                                            <label for="formGroupExampleInput2" class="form-label fw-bold fs-20">Phone</label>
+                                            <input type="text" class="form-control casephone " autocomplete="off" required id="formGroupExampleInput2" min="11" maxlength="11" placeholder="Enter The phone">
+                                        </div>
+                                    </div>
+
                                     <p class="titleError c-red fs-15 txt-c titleError"> </p>
                                     <div class="w-90 d-flex justify-content-between align-center">
                                         <div class="w-40 mt-30 p-20 casetype loction">
@@ -438,6 +446,11 @@
 
     <script>
         GetUserInfo("Dentists");
+        $(".casephone").keypress(function(e) {
+            if (isNaN(event.key)) {
+                e.preventDefault();
+            }
+        })
     </script>
 
     <!-- log out  -->
@@ -835,7 +848,7 @@
                             </div>
                             <div class="post-text">
                                 <h3 class="post-title">${data[counter].title}</h3>
-                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description d-flex" style="white-space: pre; max-width:100%; text-wrap: wrap;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                            <div class="post-images post-images${data[counter].postId}">
                                 <div class="d-flex w-100 mt-40 justify-content-center">
@@ -1525,7 +1538,7 @@
                             </div>
                             <div class="post-text">
                                 <h3 class="post-title">${data[counter].title}</h3>
-                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description d-flex" style="white-space: pre; text-wrap: wrap; max-width:100%">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                             <div class="post-images post-images${data[counter].postId}">
                                 <div class=" d-flex w-100 mt-40 justify-content-center">
@@ -1983,12 +1996,14 @@
                 event.preventDefault();
 
                 let caseTitle = $(".casetitle").val();
-                let caseLocation = $("#location").val();
-                let caseType = $("#casetype").val();
+                let preCaseLocation = $("#location").val();
+                let caseLocation = locationObj[preCaseLocation];
+                let preCaseType = $("#casetype").val();
+                let caseType = CaseObj[preCaseType];
                 let caseDescribtion = $(".casedescribtion").val();
 
 
-                const formData = new FormData(this);
+                const formData = new FormData();
                 if (selectedCase == "Dentists/AddSharing") {
                     formData.append('GovernorateId', caseLocation);
                 }

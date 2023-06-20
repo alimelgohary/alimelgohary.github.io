@@ -1,5 +1,8 @@
 var idList = [];
 let imageInputSize, selectedCase;
+locationObj = {};
+CaseObj = {};
+
 $(".search").keypress(function(event) {
     if ((event.key).toLowerCase() == "enter") {
         window.location.href = "search.html";
@@ -50,6 +53,8 @@ $('input[name="case"]').change(function() {
         $(".Requestapatient").css('display', 'block');
         $(".loction").css('display', 'none');
         $(".img-of-case img").attr("src", "../imgs/addcase.svg");
+        $(".Casephone").css('display', 'none');
+        $(".Casephone").css('margin-top', '0 !important');
         $(".img-of-case span").text("Add Case")
         $("#location").removeAttr("required");
         locationDisplay = false;
@@ -58,6 +63,7 @@ $('input[name="case"]').change(function() {
         $(".Requestapatient").css('display', 'block');
         $(".loction").css('display', 'block');
         $(".img-of-case img").attr("src", "../imgs/sharecase.svg");
+        $(".Casephone").css('display', 'block');
         $(".img-of-case span").text("Share Case")
         $("#location").attr("required", "true");
         locationDisplay = true;
@@ -144,6 +150,7 @@ sendcasebutton.addEventListener('click', function(event) {
 //get governate and case Types 
 (async() => {
     let pageIndex = 1;
+
     let apiUrl = await GetServerDomain();;
     let language;
     if (window.localStorage.getItem("language") == null) {
@@ -188,7 +195,9 @@ sendcasebutton.addEventListener('click', function(event) {
         success: function(data, st, xhr) {
             for (let i = 0; i < data.length; i++) {
                 let selectElem = document.querySelector("#locations");
-                selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
+                selectElem.innerHTML += (`<option value="${data[i]["name"]}"></option>`);
+                locationObj[data[i].name] = data[i]["id"]
+
             }
 
         },
@@ -237,9 +246,10 @@ sendcasebutton.addEventListener('click', function(event) {
         success: function(data, st, xhr) {
             for (let i = 0; i < data.length; i++) {
                 let selectElem = document.querySelector("#casetypes");
-                selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
+                selectElem.innerHTML += (`<option value="${data[i]['name']}"></option>`);
+                CaseObj[data[i].name] = data[i]["id"]
             }
-            console.log(data)
+            console.log(CaseObj)
 
         },
         error: function(xhr, status, err) {
