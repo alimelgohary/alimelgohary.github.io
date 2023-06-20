@@ -309,17 +309,17 @@
                                     </div>
 
 
-                                    <div class="d-flex justify-content-center mt-80 mb-30">
+                                    <div class="d-flex justify-content-center mt-80 ">
                                         <div class="mb-3 w-90 Casetitle">
                                             <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
                                             <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" maxlength="50" placeholder="Enter title">
                                         </div>
                                     </div>
 
-                                    <div class="d-flex justify-content-center Casephone">
+                                    <div class="d-flex justify-content-center Casephone mt-30">
                                         <div class="mb-3 w-90 Casetitle Casephone">
                                             <label for="formGroupExampleInput2" class="form-label fw-bold fs-20">Phone</label>
-                                            <input type="text" class="form-control casephone " autocomplete="off" required id="formGroupExampleInput2" min="11" maxlength="11" placeholder="Enter The phone">
+                                            <input type="text" class="form-control casephone " autocomplete="off" required id="formGroupExampleInput2" min="10" maxlength="10" placeholder="Enter The phone">
                                         </div>
                                     </div>
 
@@ -2006,6 +2006,10 @@
                 const formData = new FormData();
                 if (selectedCase == "Dentists/AddSharing") {
                     formData.append('GovernorateId', caseLocation);
+                }
+                if ($(".casephone").length > 0) {
+                    let phone = $(".casephone").val();
+                    formData.append('PatientPhone', parseInt(phone));
                 }
                 formData.append('CaseTypeId', caseType);
                 formData.append('Title', caseTitle);

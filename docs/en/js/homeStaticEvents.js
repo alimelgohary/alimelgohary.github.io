@@ -53,8 +53,8 @@ $('input[name="case"]').change(function() {
         $(".Requestapatient").css('display', 'block');
         $(".loction").css('display', 'none');
         $(".img-of-case img").attr("src", "../imgs/addcase.svg");
-        $(".Casephone").css('display', 'none');
-        $(".Casephone").css('margin-top', '0 !important');
+        $(".Casephone").addClass("d-none");
+
         $(".img-of-case span").text("Add Case")
         $("#location").removeAttr("required");
         locationDisplay = false;
@@ -63,7 +63,7 @@ $('input[name="case"]').change(function() {
         $(".Requestapatient").css('display', 'block');
         $(".loction").css('display', 'block');
         $(".img-of-case img").attr("src", "../imgs/sharecase.svg");
-        $(".Casephone").css('display', 'block');
+        $(".Casephone").removeClass("d-none");
         $(".img-of-case span").text("Share Case")
         $("#location").attr("required", "true");
         locationDisplay = true;
