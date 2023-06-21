@@ -25,7 +25,7 @@ $("a.nav-link").click(function(e) {
 })
 
 $(".notificationmark").click(function() {
-    $(".notification-content ").toggleClass("d-none");
+    $(".notification-content").toggleClass("d-none");
 })
 
 $(".addcase").click(function() {
