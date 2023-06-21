@@ -25,7 +25,7 @@ $("a.nav-link").click(function(e) {
 })
 
 $(".notificationmark").click(function() {
-    $(".notification-content ").toggleClass("d-none");
+    $(".notification-content").toggleClass("d-none");
 })
 
 $(".addcase").click(function() {
@@ -397,7 +397,7 @@ function getNotification() {
                 <li style="max-height: 93px;" class="w-full ">
                     <div class="notification-div w-full d-flex justify-content-start p-10">
                         <div class="d-flex justify-content-start align-items-start">
-                            <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
+                            <img src="../imgs/notifacations/notifaction-${data[i].icon}.svg" alt="" class="mr-px-5">
                             <div class="d-flex flex-column w-70">
                                 <span class="notifaction-user fw-bold">Fouad Mohame</span>
                                 <div>
@@ -418,6 +418,7 @@ function getNotification() {
                             $(".seen-or-not").addClass("d-none");
                         }
 
+                        console.log(data)
                     }
                 }
             },

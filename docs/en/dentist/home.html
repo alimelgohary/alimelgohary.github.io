@@ -315,7 +315,7 @@
                                             <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" maxlength="50" placeholder="Enter title">
                                         </div>
                                     </div>
-
+                                    <p class="titleError c-red fs-15 txt-c "> </p>
                                     <div class="d-flex justify-content-center Casephone mt-30">
                                         <div class="mb-3 w-90 Casetitle Casephone">
                                             <label for="formGroupExampleInput2" class="form-label fw-bold fs-20">Phone</label>
@@ -323,7 +323,7 @@
                                         </div>
                                     </div>
 
-                                    <p class="titleError c-red fs-15 txt-c titleError"> </p>
+
                                     <div class="w-90 d-flex justify-content-between align-center">
                                         <div class="w-40 mt-30 p-20 casetype loction">
                                             <p class="fw-bold fs-15">Location*</p>
@@ -451,6 +451,13 @@
                 e.preventDefault();
             }
         })
+        $('.marketplace').on('click', function() {
+            window.location.href = "marketplace.html";
+        });
+
+        $('.articles').on('click', function() {
+            window.location.href = "article.html";
+        });
     </script>
 
     <!-- log out  -->

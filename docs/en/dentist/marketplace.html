@@ -356,26 +356,22 @@
                                             <input type="text" class="form-control casetitle " required id="formGroupExampleInput" placeholder="Enter title">
                                         </div>
                                     </div>
-                                    <span class="titleerror c-red fs-14 ml-20"> </span>
+                                    <p class="titleError c-red fs-15 txt-c titleError"> </p>
                                     <div class="w-90 d-flex justify-content-between align-center">
                                         <div class="w-40 mt-30 p-20 casetype loction d-block">
                                             <p class="fw-bold fs-15">Location*</p>
                                             <input required list="locations" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
                                             <datalist id="locations">
-                                                    <option value="location1">location1</option>
-                                                    <option value="location2">location2</option>
-                                                    <option value="location3">location3</option>
+                                                 
                                                 </datalist>
 
                                         </div>
 
                                         <div class="w-40 mt-30 p-20 casetype">
                                             <p class="fw-bold fs-15 ">Category*</p>
-                                            <input required list="categorys" placeholder="Search for category" id="category" name="categorys" class="w-full p-10 form-control ">
-                                            <datalist id="categorys">
-                                                    <option value="category1">category1</option>
-                                                    <option value="category2">category2</option>
-                                                    <option value="category3">category3</option>
+                                            <input required list="casetypes" placeholder="Search for category" id="casetype" name="categorys" class="w-full p-10 form-control ">
+                                            <datalist id="casetypes">
+                                                   
                                                 </datalist>
 
                                         </div>
@@ -388,9 +384,7 @@
                                     <div class="w-90 d-flex justify-content-between align-center enter-price">
                                         <div class="w-40 mt-30 p-20 casetype loction d-block">
                                             <p class="fw-bold fs-15">Prices*</p>
-                                            <input required type="text" placeholder="Enter price" id="price" name="price" class="w-full p-10 form-control ">
-
-
+                                            <input minlength="1" required type="text" placeholder="Enter price" id="price" name="price" class="w-full p-10 form-control ">
                                         </div>
 
                                     </div>
@@ -404,6 +398,7 @@
                                             <textarea required placeholder="Enter description" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
                                         </div>
                                     </div>
+                                    <p class="bodyerror c-red fs-15 txt-c"> </p>
 
                                     <div class=" w-full mt-30 d-flex justify-content-center mb-15 cur-point ">
                                         <div class="w-90 ">
@@ -416,6 +411,7 @@
                                                 </div>
                                             </div>
                                             <p class="c-grey fs-14 mt-10">(hint: you can't delete choossen image if you want to delete, chosoe from first again)</p>
+                                            <p class="imageerror fs-15 c-red txt-c "></p>
                                         </div>
 
                                     </div>
@@ -461,63 +457,15 @@
         $("#log-out").click(function() {
             logOut()
         })
-    </script>
-
-
-
-    <script>
-        $("a.nav-link").click(function(e) {
-            e.preventDefault();
-        })
-
-        $(".notificationmark").click(function() {
-            $(".notification-content ").toggleClass("d-none");
-        })
-        $(".addcase").click(function() {
-            $(".modal2-button").trigger("click");
-        })
-
-
-        $(".selectcaseimages").click(function() {
-            $(".selectcaseimage").trigger("click");
-        })
-
-        $(".selectcaseimages2").click(function() {
-            $(".selectcaseimage2").trigger("click");
-        })
-        $(".logout").click(function() {
-            $(".logoutbutton").trigger("click");
-
-        })
-
-        var locationDisplay = false;
-
-
-
-        $(".moreimg").click(function() {
-            $(this).toggleClass("rotate-90");
-            $(this).next("ul").toggleClass("d-none");
-
-        })
-
-        $(".share-links").click(function() {
-            $(".sharemodal").trigger("click");
-        })
-        $(".block").click(function() {
-            $(".blockmodal").trigger("click");
-        })
-
-        $(".report").click(function() {
-            $(".reportmodal").trigger("click");
-        })
-
-        $("#share-link").val(window.location.href)
-
         $("#price").keypress(function(event) {
             if (isNaN(event.key)) {
                 event.preventDefault();
             }
         })
+    </script>
+
+    <script>
+        var locationDisplay = false;
 
         $('.articles').on('click', function() {
             window.location.href = "article.html";
@@ -526,76 +474,10 @@
         $('.findpatient').on('click', function() {
             window.location.href = "home.html";
         });
+        $("ul.dropdown-menu li a").click(function(e) {
+            e.preventDefault();
+        })
     </script>
-
-
-
-    <script>
-        (async() => {
-            let pageIndex = 1;
-            let apiUrl = await GetServerDomain();;
-            let language;
-            if (window.localStorage.getItem("language") == null) {
-                language = "en";
-            } else {
-                language = window.localStorage.getItem("language");
-            }
-
-
-            // Load Universities from server
-            $.ajax({
-                "method": "GET",
-                "url": apiUrl + "/api/Generic/GetGovernorates",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "69420",
-                    "Accept-Language": language
-                },
-                success: function(data, st, xhr) {
-                    for (let i = 0; i < data.length; i++) {
-                        let selectElem = document.querySelector(".getgevernate");
-                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
-                    }
-
-                },
-                error: function(xhr, status, err) {
-                    let selectElem = document.querySelector("#CurrentUni");
-                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-                }
-            })
-
-
-            // Load category from server
-            $.ajax({
-                "method": "GET",
-                "url": apiUrl + "/api/Generic/GetListingCats",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "69420",
-                    "Accept-Language": language
-                },
-                success: function(data, st, xhr) {
-                    for (let i = 0; i < data.length; i++) {
-                        let selectElem = document.querySelector(".casetype");
-                        selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
-                    }
-                    console.log(data)
-
-                },
-                error: function(xhr, status, err) {
-                    let selectElem = document.querySelector("#CurrentUni");
-                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
-                }
-            })
-
-
-
-
-
-        })();
-    </script>
-
-
 
     <!-- get chated people  -->
     <script>
@@ -724,173 +606,6 @@
         })();
     </script>
 
-
-
-
-    <!-- check if the value exisr in options or not -->
-    <script>
-        // Get the input field and the datalist
-        var inputField = document.getElementById("category");
-        var datalist = document.getElementById("categorys");
-        var locationField = document.getElementById("location");
-        var locationDatalist = document.getElementById("locations");
-
-
-        // Listen for form submission
-        var sendcasebutton = document.querySelector('.sendcasebutton');
-        sendcasebutton.addEventListener('click', function(event) {
-            // Get the selected option from the datalist
-            var optionSelected = false;
-            for (var i = 0; i < datalist.options.length; i++) {
-                if (inputField.value == datalist.options[i].value) {
-                    optionSelected = true;
-                    break;
-                }
-            }
-
-            var optionSelected2 = false;
-            for (var i = 0; i < locationDatalist.options.length; i++) {
-                if (locationField.value == locationDatalist.options[i].value) {
-                    optionSelected2 = true;
-                    break;
-                }
-            }
-
-
-
-            // If the selected option is not in the datalist, prevent form submission
-            if (!optionSelected) {
-                event.preventDefault();
-                $(".casetypeerror").text(" Please select a valid Category.");
-                $(".casetypeerror").css("display", "block");
-
-            } else {
-                $(".casetypeerror").text("");
-                $(".casetypeerror").css("display", "none");
-            }
-
-            if (!optionSelected2) {
-                event.preventDefault();
-                $(".locationerror").text(" Please select a valid location.");
-                $(".locationerror").css("display", "block");
-
-            } else {
-                $(".locationerror").text("");
-                $(".locationerror").css("display", "none");
-            }
-
-
-        });
-    </script>
-
-    <!-- thisssssssssssssssssssss -->
-    <!-- display selected images in container -->
-    <script>
-        function displayImages(input) {
-            if (input.files && input.files.length > 0) {
-                var previewContainer = document.querySelector('.image-preview');
-
-                var imagesToDelete = [];
-
-                for (var i = 0; i < input.files.length; i++) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var image = new Image();
-                        var deleteMark = document.createElement('div');
-                        deleteMark.innerHTML = 'x';
-                        deleteMark.style.position = "absolute";
-                        deleteMark.style.left = "2px";
-                        deleteMark.style.top = "0px";
-                        deleteMark.classList.add('delete-mark');
-                        var imageWrapper = document.createElement('div');
-                        imageWrapper.style.position = "relative";
-                        $(imageWrapper).addClass("mr-px-5")
-                        imageWrapper.classList.add('image-wrapper');
-                        imageWrapper.appendChild(image);
-                        imageWrapper.appendChild(deleteMark);
-                        image.src = e.target.result;
-                        $(imageWrapper).css('max-width', '80px');
-                        $(imageWrapper).css('max-height', '90%');
-                        $(image).css('max-width', '100%');
-                        $(image).css('max-height', '100%');
-                        previewContainer.prepend(imageWrapper);
-
-                        console.log('Input files:', input.files); // log input files to console
-                        deleteMark.onclick = function() {
-                            imagesToDelete.push(imageWrapper);
-                            imageWrapper.remove();
-                            var index = Array.from(previewContainer.children).indexOf(imageWrapper);
-                            if (index !== -1) {
-                                $(input).val(Array.from(input.files).filter(function(file, i) {
-                                    return i !== index;
-                                }));
-                            }
-                            console.log('Input files after delete: ', input.files); // log input files to console
-                        }
-                    }
-                    reader.readAsDataURL(input.files[i]);
-                }
-            }
-        }
-    </script>
-
-    <!-- make see more sacebook effect -->
-    <script>
-        const showMoreLinks = document.querySelectorAll('.seemore');
-
-        const maxChars = 150;
-
-        showMoreLinks.forEach(link => {
-            const postText = link.closest('.post-text');
-            const postDescription = postText.querySelector('.post-description');
-            const descriptionText = postDescription.textContent.trim();
-            const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
-
-            if (descriptionText.length <= maxChars) {
-                link.style.display = 'none';
-            } else {
-                postDescription.textContent = truncatedText;
-            }
-
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                if (postDescription.textContent === truncatedText) {
-                    postDescription.textContent = descriptionText;
-                    link.textContent = 'Show less';
-                } else {
-                    postDescription.textContent = truncatedText;
-                    link.textContent = 'See more';
-                }
-            });
-        });
-    </script>
-
-    <!-- enable tooltip of bootstrap -->
-    <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-    </script>
-
-
-    <script>
-        $(".search").keypress(function(event) {
-            if ((event.key).toLowerCase() == "enter") {
-                window.location.href = "search.html";
-            }
-        })
-
-        $('.search-icon').on('click', function() {
-            window.location.href = "search.html";
-        });
-
-        $("ul.dropdown-menu li a").click(function(e) {
-            e.preventDefault();
-        })
-    </script>
-
-
     <!-- log out  -->
     <script>
         $("#log-out").click(function() {
@@ -900,11 +615,10 @@
         })
     </script>
 
-
     <!-- on change get posts  -->
     <script>
         // request when university changes
-        $(".getgevernate").change(function() {
+        $("#findpatientselect1").change(function() {
             isRequestInProgress = false
             notRemanning = 0
             getMarketPlacePostsOnChange();
@@ -915,7 +629,7 @@
 
 
         // request when cat changes
-        $(".casetype").change(function() {
+        $("#findpatientselect2").change(function() {
             isRequestInProgress = false;
             notRemanning = 0
             getMarketPlacePostsOnChange();
@@ -925,17 +639,13 @@
 
 
         // request when sort changes
-        $("#sorting").change(function() {
+        $("#findpatientselect3").change(function() {
             isRequestInProgress = false
             notRemanning = 0
             getMarketPlacePostsOnChange()
 
         })
     </script>
-
-
-
-
 
     <!-- API request for posts -->
     <script>
@@ -1302,7 +1012,7 @@
                                         <span class="mr-px-5">EGP</span> <span class="post-price">${data[counter].price}</span>
                                     </div>
                                 </div>
-                                <p class="m-0 d-inline post-description" style="white-space: pre;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                                <p class="m-0 d-inline post-description" style="white-space: pre;text-wrap: wrap;">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
                             </div>
                             <div class="post-images post-images${data[counter].postId}">
                                 <div class=" d-flex w-100 mt-40 justify-content-center">
@@ -1632,6 +1342,123 @@
 
         })();
     </script>
+
+    <!-- add case requerst -->
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();;
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+            $("form").submit(function(event) {
+                event.preventDefault();
+
+                let caseTitle = $(".casetitle").val();
+                let casePrice = $("#price").val();
+                let preCaseLocation = $("#location").val();
+                let caseLocation = locationObj[preCaseLocation];
+                let preCaseType = $("#casetype").val();
+                let caseType = CaseObj[preCaseType];
+                let caseDescribtion = $(".casedescribtion").val();
+
+
+                const formData = new FormData();
+                if (selectedCase == "Dentists/AddSharing") {
+                    formData.append('GovernorateId', caseLocation);
+                }
+
+                formData.append('CaseTypeId', caseType);
+                formData.append('Price', casePrice);
+                formData.append('Title', caseTitle);
+                formData.append('Body', caseDescribtion);
+                for (let i = 0; i < imageInputSize; i++) {
+                    let selectedImage = $(".selectcaseimage").prop('files')[i]
+                    formData.append('Images', selectedImage);
+                }
+
+                $.ajax({
+                    url: apiUrl + `/api/${selectedCase}`,
+                    method: 'POST',
+                    data: formData,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $(".spinner-border").removeClass("d-none")
+
+                        $(".sendcasebutton").attr("disabled", "true");
+
+                    },
+                    success: function(data) {
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").removeAttr("disabled");
+
+                        let caseTitle = $(".casetitle").val("");
+                        let caseLocation = $("#location").val("");
+                        let caseType = $("#casetype").val("");
+                        let caseDescribtion = $(".casedescribtion").val("");
+                        $(".selectcaseimage").val("")
+                        $(".image-preview").html(``)
+                        $(".addcasecancell").trigger("click");
+                        console.log(data)
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr)
+                        if (xhr.responseJSON.errors.hasOwnProperty("Title")) {
+                            $(".titleError").text(xhr.responseJSON.errors.Title[0])
+                            $(".titleError").css("display", "block");
+                        } else {
+                            $(".titleError").text("")
+                            $(".titleError").css("display", "none");
+                        }
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("GovernorateId")) {
+                            $(".locationerror").text(xhr.responseJSON.errors.GovernorateId[0])
+                            $(".locationerror").css("display", "block");
+                        } else {
+                            $(".locationerror").text("")
+                            $(".locationerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Body")) {
+                            $(".bodyerror").text(xhr.responseJSON.errors.Body[0])
+                            $(".bodyerror").css("display", "block");
+                        } else {
+                            $(".bodyerror").text("")
+                            $(".bodyerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Images")) {
+                            $(".imageerror").text(xhr.responseJSON.errors.Images[0])
+                            $(".imageerror").css("display", "block");
+                        } else {
+                            $(".imageerror").text("")
+                            $(".imageerror").css("display", "none");
+                        }
+
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").removeAttr("disabled");
+                    }
+                });
+            })
+        })();
+    </script>
+
 
 
 

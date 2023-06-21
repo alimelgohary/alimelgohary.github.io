@@ -71,6 +71,10 @@
                         <li class="nav-item  fs-5 mr-15">
                             <a href="" class="nav-link active en"><img src="../imgs/profilepic.svg" style="max-width:50px; width: 30px;"> </a>
                         </li>
+
+                        <li class="nav-item  fs-5 mr-10 logout">
+                            <a href="" class="nav-link active en log-out"><i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
+                        </li>
                     </div>
                 </ul>
             </div>
@@ -86,41 +90,24 @@
                     <li class="mb-30 mt-20 w-full p-10 rad-20">
                         <a href="profile.html"><img src="../imgs/profilepic.svg" style="width: 35px;" id="userphoto"><span class="txt-c ml-5 nameofapge" id="username"> Fouad Mohamed </span></a>
                     </li>
-                    <li class="mb-30  w-full  p-10 ">
-                        <div class="dropdown">
-                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="mb-30  w-full  p-10 findpatient">
+                        <a href="home.html">
+                            <div class="dropdown">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/findperson.svg"  style="width: 43px;"> <span class="nameofapge" id="findpatient">Find patient</span>
                             </button>
-                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="home.html" id="findpatientselect1">Action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="home.html" id="findpatientselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="home.html" id="findpatientselect3">Something else </a></li>
-                            </ul>
-                        </div>
+                            </div>
+                        </a>
                     </li>
-                    <li class="mb-30 w-full p-10 rad-20">
-                        <div class="dropdown">
-                            <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="mb-30 w-full p-10 rad-20 marketplace">
+                        <a href="marketplace.html">
+                            <div class="dropdown">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/marketplace.svg"  style="width: 43px;"> <span class="nameofapge" id="marketplace">Marketplace</span>
                             </button>
-                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton2">
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect1">Action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect3">Something else </a></li>
-                            </ul>
-                        </div>
+
+                            </div>
+                        </a>
                     </li>
                     <li class="mb-30 w-full p-10  home-bg">
                         <div class="dropdown">
@@ -128,15 +115,38 @@
                                <img src="../imgs/homearticles.svg"  style="width: 43px;"> <span class="nameofapge" id="articles">Articles</span>
                             </button>
                             <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton3">
-                                <li><a class="dropdown-item" href="#" id="articlesselect1">Action</a></li>
+
+                                <li class="mt-10 mb-10">
+                                    <a class="dropdown-item" href="#" id="findpatientselect2"> <select class="casetype select-Optmize">
+                                        <option value="0" selected>category</option>
+                                       
+                                    </select></a>
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#" id="articlesselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
+
+                                <li class="mb-10 mt-10">
+
+                                    <a class="dropdown-item" href="#" id="findpatientselect3"> <select class="sort select-Optmize" id="sorting">
+                                        <option value="0" disabled >sorted by</option>
+
+                                        <option value="0" selected>Date descending<span class="fs-rem-13 c-grey">(default)</span></option>
+                                        <option value="1" >Date ascending</option>
+                                        <option value="3" >like descending</option>
+                                        <option value="2" >like ascending</option>
+                                       
+                                    </select></a>
                                 </li>
-                                <li><a class="dropdown-item" href="#" id="articlesselect3">Something else </a></li>
+
+
+                                <li class="mt-10 mb-10 d-none">
+                                    <a class="dropdown-item" href="#" id="findpatientselect5"> <select class="getgevernate select-Optmize">
+                                        <option value="0" selected>category</option>
+                                       
+                                    </select></a>
+                                </li>
+
                             </ul>
                         </div>
                     </li>
@@ -158,226 +168,30 @@
 
 
                 <div class="home-posts mt-25">
-                    <div class="home-post">
-                        <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
-                            <div class="post-head d-flex justify-content-between">
-                                <div class="post-user-info d-flex flex-row">
-                                    <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" alt="" style="max-width: 100%;">
-                                    </div>
-                                    <div class="post-info d-flex flex-column">
-                                        <div class="d-flex usernames">
-                                            <span class="fs-rem-14 fw-bold name">Fouad Mohamed</span><span class="username fs-rem-12 c-grey">@fouadmo20</span></div>
-                                        <span class="user-case fw-bold c-blue fs-rem-12">pateint</span>
-                                        <span class="user-mohafza c-grey fs-rem-10">Dakahlia</span>
-                                        <div>
-                                            <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5">Edited at</span><span class="editedtime fs-rem-10 c-grey">8</span></div>
-                                        <div class="casetype-bg p-1 txt-c w-40 case-type-rad"><span class="case-type c-white casetype-bg fs-rem-13">Filling</span></div>
-                                    </div>
-                                </div>
-                                <div class="more-about-post d-flex flex-column align-center">
-                                    <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
-                                    <ul class="p-10 dropbutton-bg mt-px-5 d-none">
-                                        <li class="p-10 share-links">Share via</li>
-                                        <li class="p-10 report">report</li>
-                                        <li class="p-10 block lastli">block</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="post-text">
-                                <h3 class="post-title">Some title of the case</h3>
-                                <p class="m-0 d-inline post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, est voluptatum temporibus necessitatibus saepe recusandae ipsum minima commodi ipsa? Quo aspernatur qui voluptatibus aliquam minus officia magnam quod,
-                                    sed minima? </p><span class="cur-point seemore">... See more</span>
-                            </div>
-                            <div class="post-images">
-                                <div class="images d-flex w-100 mt-40 justify-content-center">
-                                    <div class="image h-75 mr-15">
-                                        <img src="../imgs/postphoto.svg" alt="">
-                                    </div>
-                                    <div class="image h-75 mr-15">
-                                        <img src="../imgs/postphoto.svg" alt="">
-                                    </div>
 
-                                </div>
 
-                            </div>
-                            <div class="post-call mt-40">
-                                <div class="w-full d-flex justify-content-between align-center">
-                                    <div class="likes">
-                                        <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">100</span>
-                                    </div>
-                                    <div class="comments">
-                                        <i class="fa-regular fa-comment fa-flip-horizontal fs-rem-30" style="color: #0e8388;"></i><span class="numofcomments fw-bold fs-rem-25 ml-10">15</span>
-                                    </div>
+
+
+                </div>
+
+                <div class="loading-div mb-20">
+                    <div class="skeleton-loading bg-white rad-10 shadow-lg d-none">
+                        <div class="skeleton-loading__content">
+
+                            <div class="skeleton-loading__info">
+                                <div class="d-flex align-center mb-30">
+                                    <div class="skeleton-loading__image"></div>
+                                    <div class="skeleton-loading__name"></div>
                                 </div>
+                                <div class="skeleton-loading__title"></div>
+                                <div class="skeleton-loading__description"></div>
+                                <div class="skeleton-loading__text"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- the main one  -->
-                    <div class="home-post">
-                        <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
-                            <div class="post-head d-flex justify-content-between">
-                                <div class="post-user-info d-flex flex-row">
-                                    <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" alt="" style="max-width: 100%;">
-                                    </div>
-                                    <div class="post-info d-flex flex-column">
-                                        <div class="d-flex usernames">
-                                            <span class="fs-rem-14 fw-bold name">Fouad Mohamed</span><span class="username fs-rem-12 c-grey">@fouadmo20</span></div>
-                                        <span class="user-case fw-bold c-blue fs-rem-12">pateint</span>
-                                        <span class="user-mohafza c-grey fs-rem-10">Dakahlia</span>
-                                        <div>
-                                            <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5">Edited at</span><span class="editedtime fs-rem-10 c-grey">8</span></div>
-                                        <div class="casetype-bg p-1 txt-c w-40 case-type-rad"><span class="case-type c-white casetype-bg fs-rem-13">Filling</span></div>
-                                    </div>
-                                </div>
-                                <div class="more-about-post d-flex flex-column align-center">
-                                    <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
-                                    <ul class="p-10 dropbutton-bg mt-px-5 d-none">
-                                        <li class="p-10 share-links" id="forpost1">Share via</li>
-                                        <!-- share moadale -->
-
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary d-none sharemodal" data-bs-toggle="modal" data-bs-target="#exampleModal10">
-                                                Launch demo modal
-                                        </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel10" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content sharemodal-bg">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title c-white" id="exampleModalLabel2">Share</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="social-media-icons row flex-row p-20">
-                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point share-icon post1" style="width: fit-content;">
-                                                                <a class="whatsapp"> <img src="../imgs/what's-share.svg" alt="" style="max-width: 100%;"></a>
-                                                            </div>
-                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
-                                                                <a class="facebook-share"> <img src="../imgs/facebook-share.svg" alt="" style="max-width: 100%;"></a>
-                                                            </div>
-                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
-                                                                <a class="twitter-share"> <img src="../imgs/twitter-share.svg" alt="" style="max-width: 100%;"></a>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="social-link cur-point mt-20 w-100 p-px-5 d-flex align-center justify-content-between">
-
-                                                            <input class="overflow-hidden cur-point w-80 copied-link " readonly id="share-link">
 
 
-                                                            <span class="copy cur-point">Copy</span>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <li class="p-10 report">report</li>
-
-                                        <!-- report moadale -->
-
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary d-none reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal100">
-                                            Launch demo modal
-                                        </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal100" tabindex="-1" aria-labelledby="exampleModalLabel100" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
-
-                                                    <div class="modal-body reportmodaldiv w-70 case-bg">
-                                                        <div class="d-flex ">
-                                                            <p>Report <span class="reporteduser c-grey">@username’s post</span></p>
-                                                        </div>
-                                                        <div>
-                                                            <form>
-
-
-                                                                <div class="mb-3 w-100">
-
-                                                                    <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea2" rows="10"></textarea>
-
-                                                                </div>
-
-                                                                <div class="modal-footer d-flex justify-content-evenly">
-                                                                    <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow">
-                                                                    <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <li class="p-10 block lastli">block</li>
-                                        <!-- block moadale -->
-
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary d-none blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1000">
-                                            Launch demo modal
-                                        </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal1000" tabindex="-1" aria-labelledby="exampleModalLabel1000" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered blockmodaldiv">
-                                                <div class="modal-content rad-20">
-
-                                                    <div class="modal-body">
-                                                        <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@username</span> ?</p>
-                                                    </div>
-                                                    <div class="modal-footer d-flex justify-content-evenly">
-                                                        <button type="button" class="btn btn-primary blockbutton rad-25 p-30 shadow">Yes</button>
-                                                        <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="post-text">
-                                <h3 class="post-title">Some title of the case</h3>
-                                <p class="m-0 d-inline post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, est voluptatum temporibus necessitatibus saepe recusandae ipsum minima commodi ipsa? Quo aspernatur qui voluptatibus aliquam minus officia magnam quod,
-                                    sed minima? </p><span class="cur-point seemore">... See more</span>
-                            </div>
-                            <div class="post-images">
-                                <div class="images d-flex w-100 mt-40 justify-content-center">
-                                    <div class="image h-75 mr-15">
-                                        <img src="../imgs/postphoto.svg" alt="">
-                                    </div>
-                                    <div class="image h-75 mr-15">
-                                        <img src="../imgs/postphoto.svg" alt="">
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="post-call mt-40">
-                                <div class="w-full d-flex justify-content-between align-center">
-                                    <div class="likes">
-                                        <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">100</span>
-                                    </div>
-                                    <div class="comments">
-                                        <i class="fa-regular fa-comment fa-flip-horizontal fs-rem-30" style="color: #0e8388;"></i><span class="numofcomments fw-bold fs-rem-25 ml-10">15</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -391,31 +205,17 @@
                             <i class="fa-solid fa-magnifying-glass fs-rem-20 cur-point"></i>
                         </div>
                     </div>
-                    <div class="chat-users mt-20 w-full d-flex">
-                        <ul class="overflow-auto w-full">
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Fouad Mohamed</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Essam</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Mostafa No3man</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Elgohary</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Samir</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Fathlla</span>
-                            </li>
+                    <div class="chat-users mt-20 w-full d-flex flex-column">
+                        <ul class=" w-full chat-users-ul">
+
                         </ul>
+                        <div class="progress loadingchats d-none">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
 
 
         </div>
@@ -424,111 +224,15 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     <div class="nav-bg d-none notification-content rad-10 " style="width: 350px; height: 450px; ">
         <p class="fs-25 fw-bold p-10 mb-20 ">Notifications</p>
-        <ul class="w-full">
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-like.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-verfiey.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div class="discription-content">
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
+        <ul class="w-full notification-ul">
 
 
 
         </ul>
 
     </div>
-
-
-
-
-
 
 
     <!-- Button trigger modal -->
@@ -563,33 +267,29 @@
                                             <input type="text" class="form-control casetitle " required id="formGroupExampleInput" placeholder="Enter title">
                                         </div>
                                     </div>
-                                    <span class="titleerror c-red fs-14 ml-20"> </span>
+                                    <p class="titleError c-red fs-15 txt-c "> </p>
                                     <div class="w-90 d-flex justify-content-between align-center">
-                                        <div class="w-40 mt-30 p-20 casetype loction d-block">
+                                        <div class="w-40 mt-30 p-20 casetype loction d-none">
                                             <p class="fw-bold fs-15">Location*</p>
-                                            <input required list="locations" autocomplete="off" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
+                                            <input list="locations" autocomplete="off" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
                                             <datalist id="locations">
-                                                    <option value="location1">location1</option>
-                                                    <option value="location2">location2</option>
-                                                    <option value="location3">location3</option>
+                                                
                                                 </datalist>
 
                                         </div>
 
                                         <div class="w-40 mt-30 p-20 casetype">
                                             <p class="fw-bold fs-15 ">Category*</p>
-                                            <input required list="categorys" autocomplete="off" placeholder="Search for Category" id="category" name="casetype" class="w-full p-10 form-control ">
-                                            <datalist id="categorys">
-                                                    <option value="caregory1">caregory1</option>
-                                                    <option value="caregory2">caregory2</option>
-                                                    <option value="caregory3">caregory3</option>
+                                            <input required list="casetypes" autocomplete="off" placeholder="Search for Category" id="casetype" name="casetype" class="w-full p-10 form-control ">
+                                            <datalist id="casetypes">
+                                                    
                                                 </datalist>
 
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-evenly">
-                                        <span class="locationerror c-red fs-14 ml-20"> </span>
                                         <span class="casetypeerror c-red fs-14 ml-20"> </span>
+                                        <span class="locationerror c-red fs-14 ml-20"> </span>
                                     </div>
 
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
@@ -599,23 +299,37 @@
                                         </div>
                                     </div>
 
-                                    <div class=" w-full mt-30 d-flex justify-content-center mb-60 cur-point ">
+                                    <p class="bodyerror c-red fs-15 txt-c"> </p>
+
+                                    <div class=" w-full mt-30 d-flex justify-content-center mb-15 cur-point ">
                                         <div class="w-90 ">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Add photo / videos <span class="c-grey fs-15">(optional)</span></label>
-                                            <div class="caseimages image-preview w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                            <div class="caseimages w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                                <div class="d-flex flex-row "></div>
                                                 <div class=" d-flex  flex-column justify-content-center align-center selectcaseimages">
                                                     <img src="../imgs/uploadimage.svg " style="width: 30px;">
                                                     <span>Click here to add or to readd</span>
                                                 </div>
                                             </div>
                                             <p class="c-grey fs-14 mt-10">(hint: you can't delete choossen image if you want to delete, chosoe from first again)</p>
+                                            <p class="imageerror fs-15 c-red txt-c "></p>
                                         </div>
 
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="image-preview mb-40  w-90 rad-10 row justify-content-center align-center p-10 nav-bg " style="min-height: 150px; height: auto;">
+
+                                        </div>
                                     </div>
 
                                     <div class="modal-footer w-full d-flex justify-content-evenly">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <input type="submit" value="Add" class="btn btn-primary sendcasebutton">
+                                        <div class="d-flex">
+                                            <input type="submit" value="Add" class="btn btn-primary sendcasebutton ">
+                                            <div class="spinner-border text-info d-none ml-10" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
                                         <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
                                     </div>
                                 </form>
@@ -630,10 +344,34 @@
         </div>
     </div>
 
+    <!-- log out modal  -->
 
+    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
+                        Launch demo modal
+                        </button>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
+                <div class="modal-header">
 
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger p-10 hvr-float-shadow" id="log-out">Yes</button>
 
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20">
+                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -644,56 +382,151 @@
     <script src="../js/popper.min.js "></script>
     <script src="../js/helper.js "></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
+    <script src="../js/homeStaticEvents.js"></script>
 
-
-    <!-- take copy from text -->
     <script>
-        // Get the "Copy" element and the share link element
-        const copyLink = document.querySelector('.social-link');
-        const shareLink = document.querySelector('#share-link');
+        var idlist = [];
 
-        // Add click event listener to the "Copy" element
-        copyLink.addEventListener('click', () => {
-            // Create a temporary input element to hold the share link text
+        $(".notificationmark").click(function() {
+            $(".notification-content").toggleClass("d-none")
+        })
+        GetUserInfo("Dentists");
+        $("#log-out").click(function() {
+            logOut()
+        })
+        $("ul.dropdown-menu li a").click(function(e) {
+            e.preventDefault();
+        })
+    </script>
 
-            shareLink.select();
-            document.execCommand("copy");
-            shareLink.blur();
+    <!-- get chated people  -->
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+
+
+            var firstMassegeId;
+
+
+            $.ajax({
+                "method": "GET",
+                "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=7`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                beforeSend: function() {
+
+                },
+                success: function(data, st, xhr) {
+                    console.log(data);
+                    if (!(data.length == 0)) {
+                        for (var i = 0; i < data.length; i++) {
+                            let profilesrc;
+                            if (data[i].profilePicture == null) {
+                                profilesrc = "../imgs/profilepic.svg"
+                            } else {
+                                profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                            }
+                            $(".chat-users-ul").append(` <a href="../chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div class = "d-flex ">
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                  
+                                </div>
+                              
+                            </li>  </a>`)
+
+                        }
+                    }
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+
+
+            let notRemanningPeople = 0
+            let pageIndex2 = 2;
+
+            // gwr recent poeple when scroll 
+            $('.home-chats').scroll(function() {
+                var element = $(this);
+                if (element.scrollTop() + element.innerHeight() >= element[0].scrollHeight) {
+
+                    $.ajax({
+                        "method": "GET",
+                        "url": `${apiUrl}/api/Common/GetRecentMessages?Page=${pageIndex2}&Size=4`,
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        beforeSend: function() {
+                            if (notRemanningPeople == 0) {
+                                $(".loadingchats").removeClass("d-none")
+                            }
+                        },
+                        success: function(data, st, xhr) {
+                            $(".loadingchats").addClass("d-none")
+                            console.log(data)
+                            if (data.length == 0 && notRemanningPeople == 0) {
+                                $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
+                                notRemanningPeople = 1;
+                            } else {
+
+                                pageIndex2++;
+
+                                for (var i = 0; i < data.length; i++) {
+                                    let profilesrc;
+                                    if (data[i].profilePicture == null) {
+                                        profilesrc = "../imgs/profilepic.svg"
+                                    } else {
+                                        profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                    }
+                                    $(".chat-users-ul").append(` <a href="../chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                    
+                                </div>
+                              
+                            </li>  </a>`)
+
+                                }
+                            }
+                        },
+                        error: function(xhr, status, err) {
+
+                        }
+                    })
+
+
+                }
+            });
 
 
 
 
 
-        });
+        })();
     </script>
 
 
-    <!-- thisssssssssssssssssssss -->
-    <!-- share page for social media  -->
-    <script>
-        const link = encodeURI(window.location.href);
-        const msg = encodeURIComponent('Hey, I found this article');
-        const title = encodeURIComponent('Article or Post Title Here');
-
-        const fb = document.querySelector('.facebook-share');
-        fb.href = `https://www.facebook.com/share.php?u=${link}`;
-
-        const twitter = document.querySelector('.twitter-share');
-        twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
-
-        const whatsapp = document.querySelector('.whatsapp');
-        whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
-
-        // const linkedIn = document.querySelector('.linkedin');
-        // linkedIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${link}`;
-
-        // const reddit = document.querySelector('.reddit');
-        // reddit.href = `http://www.reddit.com/submit?url=${link}&title=${title}`;
-
-
-        // const telegram = document.querySelector('.telegram');
-        // telegram.href = `https://telegram.me/share/url?url=${link}&text=${msg}`;
-    </script>
 
 
     <script>
@@ -701,6 +534,13 @@
             e.preventDefault();
         })
 
+        $('.marketplace').on('click', function() {
+            window.location.href = "marketplace.html";
+        });
+
+        $('.findpatient').on('click', function() {
+            window.location.href = "home.html";
+        });
 
 
         $(".notificationmark").click(function() {
@@ -711,13 +551,7 @@
         })
 
 
-        $(".selectcaseimages").click(function() {
-            $(".selectcaseimage").trigger("click");
-        })
 
-        $(".selectcaseimages2").click(function() {
-            $(".selectcaseimage2").trigger("click");
-        })
 
         var locationDisplay = false;
 
@@ -750,165 +584,833 @@
     </script>
 
 
-    <!-- check if the value exisr in options or not -->
+    <!-- API request for posts -->
     <script>
-        // Get the input field and the datalist
-        var inputField = document.getElementById("category");
-        var datalist = document.getElementById("categorys");
-        var locationField = document.getElementById("location");
-        var locationDatalist = document.getElementById("locations");
-
-
-        // Listen for form submission
-        var sendcasebutton = document.querySelector('.sendcasebutton');
-        sendcasebutton.addEventListener('click', function(event) {
-            // Get the selected option from the datalist
-            var optionSelected = false;
-            for (var i = 0; i < datalist.options.length; i++) {
-                if (inputField.value == datalist.options[i].value) {
-                    optionSelected = true;
-                    break;
-                }
-            }
-
-            var optionSelected2 = false;
-            for (var i = 0; i < locationDatalist.options.length; i++) {
-                if (locationField.value == locationDatalist.options[i].value) {
-                    optionSelected2 = true;
-                    break;
-                }
-            }
-
-
-
-            // If the selected option is not in the datalist, prevent form submission
-            if (!optionSelected) {
-                event.preventDefault();
-                $(".casetypeerror").text(" Please select a valid Category.");
-                $(".casetypeerror").css("display", "block");
-
+        (async() => {
+            let pageIndex = 1;
+            let apiUrl = await GetServerDomain();;
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
             } else {
-                $(".casetypeerror").text("");
-                $(".casetypeerror").css("display", "none");
-            }
-
-            if (!optionSelected2) {
-                event.preventDefault();
-                $(".locationerror").text(" Please select a valid location.");
-                $(".locationerror").css("display", "block");
-
-            } else {
-                $(".locationerror").text("");
-                $(".locationerror").css("display", "none");
+                language = window.localStorage.getItem("language");
             }
 
 
-        });
-    </script>
 
-    <!-- thisssssssssssssssssssss -->
-    <!-- display selected images in container -->
-    <script>
-        function displayImages(input) {
-            if (input.files && input.files.length > 0) {
-                var previewContainer = document.querySelector('.image-preview');
 
-                var imagesToDelete = [];
 
-                for (var i = 0; i < input.files.length; i++) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var image = new Image();
-                        var deleteMark = document.createElement('div');
-                        deleteMark.innerHTML = 'x';
-                        deleteMark.style.position = "absolute";
-                        deleteMark.style.left = "2px";
-                        deleteMark.style.top = "0px";
-                        deleteMark.classList.add('delete-mark');
-                        var imageWrapper = document.createElement('div');
-                        imageWrapper.style.position = "relative";
-                        $(imageWrapper).addClass("mr-px-5")
-                        imageWrapper.classList.add('image-wrapper');
-                        imageWrapper.appendChild(image);
-                        imageWrapper.appendChild(deleteMark);
-                        image.src = e.target.result;
-                        $(imageWrapper).css('max-width', '80px');
-                        $(imageWrapper).css('max-height', '90%');
-                        $(image).css('max-width', '100%');
-                        $(image).css('max-height', '100%');
-                        previewContainer.prepend(imageWrapper);
+            //make request when page open to load data
 
-                        console.log('Input files:', input.files); // log input files to console
-                        deleteMark.onclick = function() {
-                            imagesToDelete.push(imageWrapper);
-                            imageWrapper.remove();
-                            var index = Array.from(previewContainer.children).indexOf(imageWrapper);
-                            if (index !== -1) {
-                                $(input).val(Array.from(input.files).filter(function(file, i) {
-                                    return i !== index;
-                                }));
-                            }
-                            console.log('Input files after delete: ', input.files); // log input files to console
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + `/api/Dentists/GetArticles?Page=1&Size=2`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                "data": {},
+                beforeSend: function() {
+                    $(".skeleton-loading").removeClass("d-none")
+                },
+                success: function(data, st, xhr) {
+                    console.log(data);
+                    $(".social-link").click(function(e) {
+                        let copiedinput = $(this).find('input')[0];
+                        copiedinput.select();
+                        document.execCommand('copy');
+                        copiedinput.blur();
+
+                    })
+                    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                        return new bootstrap.Tooltip(tooltipTriggerEl)
+                    })
+
+                    //   facebook seemore effect 
+                    var showMoreLinks = document.querySelectorAll('.seemore');
+                    var maxChars = 150;
+                    showMoreLinks.forEach(link => {
+                        var postText = link.closest('.post-text');
+                        var postDescription = postText.querySelector('.post-description');
+                        var descriptionText = postDescription.textContent.trim();
+                        var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                        if (descriptionText.length <= maxChars) {
+                            link.style.display = 'none';
+                        } else {
+                            postDescription.textContent = truncatedText;
                         }
+                        link.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            if (postDescription.textContent === truncatedText) {
+                                postDescription.textContent = descriptionText;
+                                link.textContent = 'Show less';
+                            } else {
+                                postDescription.textContent = truncatedText;
+                                link.textContent = 'See more';
+                            }
+                        });
+                    });
+
+                    $(".moreimg").click(function() {
+                        $(this).toggleClass("rotate-90");
+                        $(this).next("ul").toggleClass("d-none");
+                    })
+
+                    $(`.share-links`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+                    $(`.block`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+                    $(`.report`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+
+                    //request of report button
+                    $(`.reportbuton`).click(function(e) {
+                        e.preventDefault();
+                        let postId = $(this).attr("data-post-id");
+                        let parentofButton = $(this).parent();
+                        let perviosDiv = parentofButton.prev()[0];
+                        let textarea = $(perviosDiv).find('textarea')[0];
+                        let reason = $(textarea).val();
+
+                        let button = $(this);
+
+                        console.log(reason);
+                        console.log(postId);
+                        let reportObj = {
+                            "reported_post_id": postId,
+                            "reason": reason
+                        }
+
+                        let jsonData = JSON.stringify(reportObj);
+
+                        if (reason.length == 0 || reason == null) {
+                            delete reportObj.reason
+                        }
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/ReportPost",
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            "data": jsonData,
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("Report Sent Sucssfully")
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+
+                            },
+                            error: function(xhr, status, err) {
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "red")
+                                $(errorspan).text(xhr.responseJSON.error)
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            }
+                        })
+                    });
+
+
+                    //request of block button
+                    $(`.blockbutton`).click(function(e) {
+                        e.preventDefault();
+                        userId = $(this).attr("data-user-id");
+                        let blockbutton = $(this)
+                        let blockObj = {
+                            "blocked_user_id": userId
+                        }
+                        let jsonData = JSON.stringify(blockObj);
+
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(blockbutton).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("User is blocked")
+                                setTimeout(function() {
+                                    let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            },
+                            error: function(xhr, status, err) {
+                                if (xhr.status == 400) {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text(xhr.responseJSON.error)
+
+
+                                } else {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text("Something went wrong, please try again")
+
+                                }
+
+
+                            }
+                        })
+
+                    });
+                    for (var counter = 0; counter < data.length; counter++) {
+                        idlist.push(data[counter].postId)
+                        $(".home-posts").append(`<div class="home-post" id="${data[counter].postId}">
+                        <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
+                            <div class="post-head d-flex justify-content-between">
+                                <div class="post-user-info d-flex flex-row">
+                                    <div class="user-image rad-half mr-10">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                    </div>
+                                    <div class="post-info d-flex flex-column">
+                                        <div class="d-flex usernames align-center">
+                                            <span class="fs-rem-14 fw-bold name">${data[counter].userInfo.fullName}</span><span class="username fs-rem-12 c-grey">@${data[counter].userInfo.username}</span></div>
+                                     <span class="user-case fw-bold c-blue fs-rem-12">${data[counter].dentistInfo.academicDegree}</span>
+                                        <span class="user-mohafza c-grey fs-rem-10">${data[counter].dentistInfo.university}</span>
+                                        <div>
+                                            <span class="post-time c-grey fs-rem-10 mr-px-5">${data[counter].timeWritten}</span><span class="fs-rem-10 c-grey mr-px-5 edited">Edited at</span><span class="editedtime${data[counter].postId} edited fs-rem-10 c-grey">8</span></div>
+                                        <div class="casetype-bg p-1 txt-c w-fit case-type-rad"><span class="case-type c-white casetype-bg fs-rem-11  overflow-hidden" title = "${data[counter].category}" >${data[counter].category}</span></div>
+                                    </div>
+                                </div>
+                                <div class="more-about-post d-flex flex-column align-items-end">
+                                    <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
+                                    <ul class="p-10 dropbutton-bg mt-px-5 d-none">
+                                        <li class="p-10 share-links${data[counter].postId} share-links">Share via</li>
+                                        <!-- share moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none sharemodal " data-bs-toggle="modal" data-bs-target="#exampleModal${data[counter].postId}">
+                                                Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal${data[counter].postId}" tabindex="-1" aria-labelledby="exampleModalLabel${data[counter].postId}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content sharemodal-bg">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title c-white" id="exampleModalLabel${data[counter].postId}">Share</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="social-media-icons row flex-row p-20">
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point share-icon post1" style="width: fit-content;">
+                                                                <a class="whatsapp${data[counter].postId}" target="_blank"> <img src="../imgs/what's-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                <a class="facebook-share${data[counter].postId}" target="_blank"> <img src="../imgs/facebook-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                <a class="twitter-share${data[counter].postId}" target="_blank" > <img src="../imgs/twitter-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class=" social-link cur-point mt-20 w-100 p-px-5 d-flex align-center justify-content-between" data-post-id ="${data[counter].postId}">
+                                                            <input class="overflow-hidden cur-point w-80 copied-link " readonly id="share-link${data[counter].postId}"  data-post-id ="${data[counter].postId}">
+                                                            <span class="copy cur-point">Copy</span>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <li class="p-10 report">report</li>
+
+                                        <!-- report moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal100${data[counter].postId}">
+                                            Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal100${data[counter].postId}" tabindex="-1" aria-labelledby="exampleModalLabel100${data[counter].postId}" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
+
+                                                    <div class="modal-body reportmodaldiv w-70 case-bg">
+                                                        <div class="d-flex ">
+                                                            <p>Report <span class="reporteduser c-grey">@${data[counter].userInfo.username}’s post</span></p>
+                                                        </div>
+                                                        <div>
+                                                            <form>
+
+
+                                                                <div class="mb-3 w-100">
+
+                                                                    <textarea  placeholder="The reason of report" class="form-control reportarea${data[counter].postId}" id="exampleFormControlTextarea2${data[counter].postId}" rows="10"></textarea>
+
+                                                                </div>
+
+                                                                <div class="modal-footer d-flex justify-content-evenly">
+                                                                    <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow" data-post-id="${data[counter].postId}">
+                                                                    <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                                <div class = "mt-30 ">
+                                                                <span class="reporterror  txt-c  fs-rem-14 d-block"></span>    
+                                                                </div>
+
+                                                                
+                                                            </form>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <li class="p-10 block  lastli">block</li>
+                                        <!-- block moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1000${data[counter].postId}">
+                                            Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal1000${data[counter].postId}" tabindex="-1" aria-labelledby="exampleModalLabel1000${data[counter].postId}" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered blockmodaldiv">
+                                                <div class="modal-content rad-20">
+
+                                                    <div class="modal-body">
+                                                        <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@${data[counter].userInfo.username}</span> ?</p>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-evenly">
+                                                        <button type="button" class="btn btn-primary blockbutton   rad-25 p-30 shadow " data-user-id="${data[counter].userInfo.userId}">Yes</button>
+                                                        <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
+
+                                                    </div>
+                                                    <div class = "mt-30 mb-20">
+                                                    <span class = "blockerror blockerror c-red txt-c fs-rem-14 d-block"></span>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                 <div class="d-flex justify-content-between mb-20 ">
+                                    <h3 class="post-title">${data[counter].title}</h3>
+                                    
+                                </div>
+                                <p class="m-0 d-inline post-description" style="white-space: pre; text-wrap:wrap">${data[counter].body}</p><span class="cur-point seemore">... See more</span>
+                            </div>
+                            <div class="post-images post-images${data[counter].postId}">
+                                <div class=" d-flex w-100 mt-40 justify-content-center">
+                                  
+
+                                         <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                                            <div class="carousel-inner images${data[counter].postId} ">
+                                              
+                                               
+                                            </div>
+                                            <button class="carousel-control-prev carousel-control-prev${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next carousel-control-next${data[counter].postId}" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                            </div>
+
+                               
+
+                                </div>
+
+                            </div>
+                            <div class="post-call mt-40">
+                                <div class="w-full d-flex justify-content-between align-center">
+                                    <div class="likes">
+                                        <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">${data[counter].likes}</span>
+                                    </div>
+                                    <a href = "post.html?Id=${data[counter].postId}">
+                                        <div class="comments">
+                                        <i class="fa-regular fa-comment fa-flip-horizontal fs-rem-30" style="color: #0e8388;"></i><span class="numofcomments fw-bold fs-rem-25 ml-10">${data[counter].comments}</span>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`)
+
+
+                        // check if there is phone or not 
+                        if (data[counter].phone == null) {
+                            $(`.call${data[counter].postId} button`).attr('disabled', 'disabled');
+                        } else {
+                            $(`.call${data[counter].postId} button`).attr('title', data[counter].phone);
+                        }
+
+                        // check if Post is edited or not
+                        if (data[counter].timeUpdated == null) {
+                            $(".edited").css("display", "none");
+                        } else {
+                            $(`editedtime${data[counter].postId}`).text(data[counter].timeUpdated)
+                        }
+
+                        // check if user have profile pic or not
+                        if (data[counter].userInfo.profilePicture == null) {} else {
+                            $(`.profile${data[counter].postId}`).attr("src", `data:image/png;base64,${data[counter].userInfo.profilePicture}`);
+                        }
+
+                        //check if user have images and display it
+                        if (data[counter].images == null || data[counter].length == 0) {
+                            $(`.images${data[counter].postId}`).css("display", "none");
+                        } else {
+                            for (var i = 0; i < data[counter].images.length; i++) {
+                                let activeClass2 = i == 0 ? "active" : " ";
+                                console.log(i)
+                                $(`.images${data[counter].postId}`).append(`<div class="carousel-item  ${activeClass2}">
+                                                <img src="data:image/png;base64,${data[counter].images[i]}" class="h-full w-full control-slider-img-width" alt="" style="max-width:100%; max-height:300px; height:300px">
+                                                </div>`)
+                            }
+                        }
+
+
+                        if (data[counter].images.length == 1) {
+
+                            $(`.carousel-control-prev${data[counter].postId}`).addClass('d-none');
+                            $(`.carousel-control-next${data[counter].postId}`).addClass('d-none');
+                        }
+
+
+
+
+
+
+
+
+
+
+                        let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
+                        $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+
+
+                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                        var msg = encodeURIComponent('Hey, I found this article');
+                        var title = encodeURIComponent('Article or Post Title Here');
+
+                        var fb = document.querySelector(`.facebook-share${data[counter].postId}`);
+                        fb.href = `https://www.facebook.com/share.php?u=${link}`;
+
+                        var twitter = document.querySelector(`.twitter-share${data[counter].postId}`);
+                        twitter.href = `http://twitter.com/share?&url=${link}&text=${msg}&hashtags=javascript,programming`;
+
+                        var whatsapp = document.querySelector(`.whatsapp${data[counter].postId}`);
+                        whatsapp.href = `https://api.whatsapp.com/send?text=${msg}: ${link}`;
+
+
                     }
-                    reader.readAsDataURL(input.files[i]);
+                    // end of for loop
+
+
+
+
+
+
+                    $(".social-link").click(function(e) {
+                        let copiedinput = $(this).find('input')[0];
+                        copiedinput.select();
+                        document.execCommand('copy');
+                        copiedinput.blur();
+
+                    })
+
+
+
+
+                    //enable tolltip of bootstrap
+                    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                        return new bootstrap.Tooltip(tooltipTriggerEl)
+                    })
+
+                    //   facebook seemore effect 
+                    var showMoreLinks = document.querySelectorAll('.seemore');
+                    var maxChars = 150;
+                    showMoreLinks.forEach(link => {
+                        var postText = link.closest('.post-text');
+                        var postDescription = postText.querySelector('.post-description');
+                        var descriptionText = postDescription.textContent.trim();
+                        var truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
+                        if (descriptionText.length <= maxChars) {
+                            link.style.display = 'none';
+                        } else {
+                            postDescription.textContent = truncatedText;
+                        }
+                        link.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            if (postDescription.textContent === truncatedText) {
+                                postDescription.textContent = descriptionText;
+                                link.textContent = 'Show less';
+                            } else {
+                                postDescription.textContent = truncatedText;
+                                link.textContent = 'See more';
+                            }
+                        });
+                    });
+
+                    $(".moreimg").click(function() {
+                        $(this).toggleClass("rotate-90");
+                        $(this).next("ul").toggleClass("d-none");
+                    })
+
+                    $(`.share-links`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+                    $(`.block`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+                    $(`.report`).click(function() {
+                        $(this).next(`button`).trigger("click");
+                    })
+
+
+                    //request of report button
+                    $(`.reportbuton`).click(function(e) {
+                        e.preventDefault();
+                        let postId = $(this).attr("data-post-id");
+                        let parentofButton = $(this).parent();
+                        let perviosDiv = parentofButton.prev()[0];
+                        let textarea = $(perviosDiv).find('textarea')[0];
+                        let reason = $(textarea).val();
+
+                        let button = $(this);
+
+                        console.log(reason);
+                        console.log(postId);
+                        let reportObj = {
+                            "reported_post_id": postId,
+                            "reason": reason
+                        }
+
+                        let jsonData = JSON.stringify(reportObj);
+
+                        if (reason.length == 0 || reason == null) {
+                            delete reportObj.reason
+                        }
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/ReportPost",
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            "data": jsonData,
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("Report Sent Sucssfully")
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+
+                            },
+                            error: function(xhr, status, err) {
+                                let buttondiv = $(button).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "red")
+                                $(errorspan).text(xhr.responseJSON.error)
+
+                                setTimeout(function() {
+                                    let Cancelbutton = $(button).next(`.reportbutoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            }
+                        })
+                    });
+
+
+                    //request of block button
+                    $(`.blockbutton`).click(function(e) {
+                        e.preventDefault();
+                        userId = $(this).attr("data-user-id");
+                        let blockbutton = $(this)
+                        let blockObj = {
+                            "blocked_user_id": userId
+                        }
+                        let jsonData = JSON.stringify(blockObj);
+
+                        $.ajax({
+                            "method": "POST",
+                            "url": apiUrl + "/api/Common/BlockUser?blocked_user_id=" + userId,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+
+
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                let buttondiv = $(blockbutton).parent()[0];
+                                let errordiv = $(buttondiv).next('div')[0]
+                                let errorspan = $(errordiv).find('span')[0];
+                                $(errorspan).css("color", "green")
+                                $(errorspan).text("User is blocked")
+                                setTimeout(function() {
+                                    let Cancelbutton = $(blockbutton).next(`.blockbuttoncancel`)[0];
+                                    $(Cancelbutton).trigger('click');
+                                }, 2000)
+
+                            },
+                            error: function(xhr, status, err) {
+                                if (xhr.status == 400) {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text(xhr.responseJSON.error)
+
+
+                                } else {
+                                    let buttondiv = $(blockbutton).parent()[0];
+                                    let errordiv = $(buttondiv).next('div')[0]
+                                    let errorspan = $(errordiv).find('span')[0];
+                                    $(errorspan).css("color", "red")
+                                    $(errorspan).text("Something went wrong, please try again")
+
+                                }
+
+
+                            }
+                        })
+
+                    });
+
+                },
+                error: function(xhr, status, err) {
+                    $(".home-posts").html(`<h1 class = "txt-c mt-40 fs-20 c-grey">Something went wrong please try again later</h1>`);
+                    console.log(xhr)
                 }
-            }
-        }
-    </script>
+            })
 
-    <!-- make see more sacebook effect -->
-    <script>
-        const showMoreLinks = document.querySelectorAll('.seemore');
 
-        const maxChars = 150;
 
-        showMoreLinks.forEach(link => {
-            const postText = link.closest('.post-text');
-            const postDescription = postText.querySelector('.post-description');
-            const descriptionText = postDescription.textContent.trim();
-            const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
-
-            if (descriptionText.length <= maxChars) {
-                link.style.display = 'none';
-            } else {
-                postDescription.textContent = truncatedText;
-            }
-
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                if (postDescription.textContent === truncatedText) {
-                    postDescription.textContent = descriptionText;
-                    link.textContent = 'Show less';
-                } else {
-                    postDescription.textContent = truncatedText;
-                    link.textContent = 'See more';
-                }
+            notRemanning = 0
+            isRequestInProgress = false;
+            // make request when scroll
+            $(window).scroll(function() {
+                // Get the height of the document
+                getArticlePostOnLoad();
             });
-        });
+
+
+
+
+        })();
     </script>
 
-    <!-- enable tooltip of bootstrap -->
+
+
+    <!-- on change get posts  -->
     <script>
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
+        // request when cat changes
+        $("#findpatientselect3").change(function() {
+            isRequestInProgress = false;
+            notRemanning = 0
+            getArticlePostsOnChange();
+
+        })
+
+
+
+        // request when sort changes
+        $("#sfindpatientselect5").change(function() {
+            isRequestInProgress = false
+            notRemanning = 0
+            getArticlePostsOnChange()
+
         })
     </script>
 
 
+
+
+    <!-- add case requerst -->
     <script>
-        $(".search").keypress(function(event) {
-            if ((event.key).toLowerCase() == "enter") {
-                window.location.href = "search.html";
+        (async() => {
+            let apiUrl = await GetServerDomain();;
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
             }
-        })
+            $("form").submit(function(event) {
+                event.preventDefault();
 
-        $('.search-icon').on('click', function() {
-            window.location.href = "search.html";
-        });
+                let caseTitle = $(".casetitle").val();
+
+                let preCaseType = $("#casetype").val();
+                let caseType = CaseObj[preCaseType];
+                let caseDescribtion = $(".casedescribtion").val();
+
+
+
+
+
+                const formData = new FormData();
+
+                formData.append('ArticleCategoryId', caseType);
+                formData.append('Title', caseTitle);
+                formData.append('Body', caseDescribtion);
+                for (let i = 0; i < imageInputSize; i++) {
+                    let selectedImage = $(".selectcaseimage").prop('files')[i]
+                    formData.append('Images', selectedImage);
+                }
+
+                $.ajax({
+                    url: apiUrl + `/api/Dentists/AddArticle`,
+                    method: 'POST',
+                    data: formData,
+                    "xhrFields": {
+                        "withCredentials": true
+                    },
+                    "headers": {
+                        "ngrok-skip-browser-warning": "69420",
+                        "Accept-Language": language
+                    },
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $(".spinner-border").removeClass("d-none")
+
+                        $(".sendcasebutton").attr("disabled", "true");
+
+                    },
+                    success: function(data) {
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").removeAttr("disabled");
+                        let caseTitle = $(".casetitle").val("");
+                        let caseLocation = $("#location").val("");
+                        let caseType = $("#casetype").val("");
+                        let caseDescribtion = $(".casedescribtion").val("");
+                        $(".selectcaseimage").val("")
+                        $(".image-preview").html(``)
+                        $(".addcasecancell").trigger("click");
+                        console.log(data)
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr)
+                        if (xhr.responseJSON.errors.hasOwnProperty("Title")) {
+                            $(".titleError").text(xhr.responseJSON.errors.Title[0])
+                            $(".titleError").css("display", "block");
+                        } else {
+                            $(".titleError").text("")
+                            $(".titleError").css("display", "none");
+                        }
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("GovernorateId")) {
+                            $(".locationerror").text(xhr.responseJSON.errors.GovernorateId[0])
+                            $(".locationerror").css("display", "block");
+                        } else {
+                            $(".locationerror").text("")
+                            $(".locationerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Body")) {
+                            $(".bodyerror").text(xhr.responseJSON.errors.Body[0])
+                            $(".bodyerror").css("display", "block");
+                        } else {
+                            $(".bodyerror").text("")
+                            $(".bodyerror").css("display", "none");
+                        }
+
+
+                        if (xhr.responseJSON.errors.hasOwnProperty("Images")) {
+                            $(".imageerror").text(xhr.responseJSON.errors.Images[0])
+                            $(".imageerror").css("display", "block");
+                        } else {
+                            $(".imageerror").text("")
+                            $(".imageerror").css("display", "none");
+                        }
+
+                        $(".spinner-border").addClass("d-none")
+
+                        $(".sendcasebutton").removeAttr("disabled");
+                    }
+                });
+            })
+        })();
     </script>
-
 
 
 
