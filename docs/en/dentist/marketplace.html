@@ -353,7 +353,7 @@
                                     <div class="d-flex justify-content-center mt-80">
                                         <div class="mb-3 w-90 Casetitle">
                                             <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
-                                            <input type="text" class="form-control casetitle " required id="formGroupExampleInput" placeholder="Enter title">
+                                            <input type="text" class="form-control casetitle " minlength="3" required id="formGroupExampleInput" placeholder="Enter title">
                                         </div>
                                     </div>
                                     <p class="titleError c-red fs-15 txt-c titleError"> </p>
@@ -395,7 +395,7 @@
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
                                         <div class="mb-3 w-90">
                                             <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
-                                            <textarea required placeholder="Enter description" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            <textarea required placeholder="Enter description" class="form-control casedescribtion" id="exampleFormControlTextarea1" rows="5"></textarea>
                                         </div>
                                     </div>
                                     <p class="bodyerror c-red fs-15 txt-c"> </p>
@@ -421,8 +421,13 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer w-full d-flex justify-content-evenly">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <input type="submit" value="Add" class="btn btn-primary sendcasebutton">
+                                        <button type="button" class="btn btn-secondary addcasecancell" data-bs-dismiss="modal">Cancel</button>
+                                        <div class="d-flex">
+                                            <input type="submit" value="Add" class="btn btn-primary sendcasebutton ">
+                                            <div class="spinner-border text-info d-none ml-10" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
                                         <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
                                     </div>
                                 </form>
@@ -1370,7 +1375,7 @@
                     formData.append('GovernorateId', caseLocation);
                 }
 
-                formData.append('CaseTypeId', caseType);
+                formData.append('ListingCategoryId', caseType);
                 formData.append('Price', casePrice);
                 formData.append('Title', caseTitle);
                 formData.append('Body', caseDescribtion);
@@ -1380,7 +1385,7 @@
                 }
 
                 $.ajax({
-                    url: apiUrl + `/api/${selectedCase}`,
+                    url: apiUrl + `/api/Dentists/AddListing`,
                     method: 'POST',
                     data: formData,
                     "xhrFields": {
@@ -1409,6 +1414,7 @@
                         let caseDescribtion = $(".casedescribtion").val("");
                         $(".selectcaseimage").val("")
                         $(".image-preview").html(``)
+                        $("#price").val("");
                         $(".addcasecancell").trigger("click");
                         console.log(data)
 

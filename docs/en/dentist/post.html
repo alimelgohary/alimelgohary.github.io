@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../css/animate.min.css">
     <link rel="stylesheet" href="../css/hover.css">
     <link rel="stylesheet" href="../css/home.css">
-    <title>Home</title>
+    <title>Post</title>
     <link rel="icon" type=" image/svg+xml" href="../imgs/logo.svg" />
 
 
@@ -60,7 +60,7 @@
                         </li>
 
                         <li class="nav-item  fs-5 mr-15  ">
-                            <a href="" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
+                            <a href="../chat.html" class="nav-link active en"><img src="../imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
                         </li>
 
                         <li class="nav-item  fs-5 mr-15 hvr-buzz ">
@@ -70,6 +70,10 @@
 
                         <li class="nav-item  fs-5 mr-15">
                             <a href="" class="nav-link active en"><img src="../imgs/profilepic.svg" style="max-width:50px; width: 30px;"> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-10 logout">
+                            <a href="" class="nav-link active en log-out"><i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
                         </li>
                     </div>
                 </ul>
@@ -86,58 +90,28 @@
                     <li class="mb-30 mt-20 w-full p-10 rad-20">
                         <a href="profile.html"><img src="../imgs/profilepic.svg" style="width: 35px;" id="userphoto"><span class="txt-c ml-5 nameofapge" id="username"> Fouad Mohamed </span></a>
                     </li>
-                    <li class="mb-30 nav-bg w-full  p-10  home-bg">
+                    <li class="mb-30  w-full  p-10 findpatient cur-point ">
                         <div class="dropdown">
                             <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/findperson.svg"  style="width: 43px;"> <span class="nameofapge" id="findpatient">Find patient</span>
                             </button>
-                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#" id="findpatientselect1">Action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="findpatientselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="findpatientselect3">Something else </a></li>
-                            </ul>
+
                         </div>
                     </li>
-                    <li class="mb-30 w-full p-10 rad-20">
+                    <li class="mb-30 w-full p-10 rad-20 marketplace cur-point">
                         <div class="dropdown">
                             <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/marketplace.svg"  style="width: 43px;"> <span class="nameofapge" id="marketplace">Marketplace</span>
                             </button>
-                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton2">
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect1">Action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="marketplace.html" id="marketplaceselect3">Something else </a></li>
-                            </ul>
+
                         </div>
                     </li>
-                    <li class="mb-30 w-full p-10 rad-20">
+                    <li class="mb-30 w-full p-10 rad-20 articles cur-point">
                         <div class="dropdown">
                             <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                                <img src="../imgs/homearticles.svg"  style="width: 43px;"> <span class="nameofapge" id="articles">Articles</span>
                             </button>
-                            <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton3">
-                                <li><a class="dropdown-item" href="article.html" id="articlesselect1">Action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="article.html" id="articlesselect2">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="article.html" id="articlesselect3">Something else </a></li>
-                            </ul>
+
                         </div>
                     </li>
                 </ul>
@@ -158,7 +132,7 @@
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" alt="" class="user-profile" style="max-width: 100%;">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames">
@@ -166,11 +140,11 @@
                                         <span class="user-case fw-bold c-blue fs-rem-12">pateint</span>
                                         <span class="user-mohafza c-grey fs-rem-10">Dakahlia</span>
                                         <div>
-                                            <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5">Edited at</span><span class="editedtime fs-rem-10 c-grey">8</span></div>
-                                        <div class="casetype-bg p-1 txt-c w-40 case-type-rad"><span class="case-type c-white casetype-bg fs-rem-13">Filling</span></div>
+                                            <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5 update-post">Edited at</span><span class="editedtime fs-rem-10 c-grey update-post">8</span></div>
+                                        <div class="casetype-bg p-1 txt-c w-40 case-type-rad " style="min-width: fit-content;"><span class="case-type c-white casetype-bg fs-rem-13 case-typee">Filling</span></div>
                                     </div>
                                 </div>
-                                <div class="more-about-post d-flex flex-column align-center">
+                                <div class="more-about-post d-flex flex-column align-items-end">
                                     <img src="../imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
                                     <ul class="p-10 dropbutton-bg mt-px-5 d-none">
                                         <li class="p-10 share-links" id="forpost1">Share via</li>
@@ -245,8 +219,11 @@
                                                                 </div>
 
                                                                 <div class="modal-footer d-flex justify-content-evenly">
-                                                                    <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow">
+                                                                    <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow" data-post-id="">
                                                                     <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                                <div class="mt-30 ">
+                                                                    <span class="reporterror  txt-c  fs-rem-14 d-block"></span>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -275,9 +252,12 @@
                                                         <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@username</span> ?</p>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-evenly">
-                                                        <button type="button" class="btn btn-primary blockbutton rad-25 p-30 shadow">Yes</button>
+                                                        <button type="button" class="btn btn-primary blockbutton rad-25 p-30 shadow " data-user-id="">Yes</button>
                                                         <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
 
+                                                    </div>
+                                                    <div class="mt-30 mb-20">
+                                                        <span class="blockerror blockerror c-red txt-c fs-rem-14 d-block"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -290,16 +270,29 @@
                             <div class="post-text">
                                 <h3 class="post-title">Some title of the case</h3>
                                 <p class="m-0 d-inline post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, est voluptatum temporibus necessitatibus saepe recusandae ipsum minima commodi ipsa? Quo aspernatur qui voluptatibus aliquam minus officia magnam quod,
-                                    sed minima? </p><span class="cur-point seemore">... See more</span>
+                                    sed minima? </p>
+                                <!-- <span class="cur-point seemore">... See more</span> -->
                             </div>
-                            <div class="post-images">
-                                <div class="images d-flex w-100 mt-40 justify-content-center">
-                                    <div class="image h-75 mr-15">
-                                        <img src="../imgs/postphoto.svg" alt="">
+                            <div class="post-images ">
+                                <div class=" d-flex w-100 mt-40 justify-content-center">
+
+
+                                    <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                                        <div class="carousel-inner images ">
+
+
+                                        </div>
+                                        <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                        <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
                                     </div>
-                                    <div class="image h-75 mr-15">
-                                        <img src="../imgs/postphoto.svg" alt="">
-                                    </div>
+
+
 
                                 </div>
 
@@ -314,105 +307,111 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="post-comments d-flex w-full mt-25 ">
-                                <div class="post-comments-image rad-half mr-10" style="width: 50px;">
-                                    <a href=""><img src="../imgs/profilepic.svg" class="w-full cur-point" alt="" style="max-width: 100%;"></a>
-                                </div>
-                                <div class="post-comments-info w-full p-10 rad-10 nav-bg">
-                                    <div class="head-of-post-commnent d-flex justify-content-between mb-20">
-                                        <div class="post-commenter-info d-flex flex-column l-1-1">
-                                            <div>
-                                                <span class="user">Fouad</span><span class="username c-grey fs-14">@fouadmo20</span>
+                            <div class="d-flex flex-column post-comment-container ">
+
+                                <div class="post-comments d-flex w-full mt-25 ">
+                                    <div class="post-comments-image rad-half mr-10" style="width: 50px;">
+                                        <a href=""><img src="../imgs/profilepic.svg" class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%;"></a>
+                                    </div>
+                                    <div class="post-comments-info w-full p-10 rad-10 nav-bg">
+                                        <div class="head-of-post-commnent d-flex justify-content-between mb-20">
+                                            <div class="post-commenter-info d-flex flex-column l-1-1">
+                                                <div>
+                                                    <span class="user">Fouad</span><span class="username c-grey fs-14">@fouadmo20</span>
+                                                </div>
+                                                <span class="c-blue fs-14 comment-case">Undergraduate at Mansoura university</span>
+                                                <span class="commented-time c-grey fs-14">9h</span>
                                             </div>
-                                            <span class="c-blue fs-14 comment-case">Undergraduate at Mansoura university</span>
-                                            <span class="commented-time c-grey fs-14">9h</span>
-                                        </div>
-                                        <div class="comment-more  d-flex flex-column  ">
-                                            <img src="../imgs/comment-more.svg" class="w-full comment-options cur-point " alt="" style="max-width: 30px;">
-                                            <ul class="p-10 dropbutton-bg mt-px-5 d-none p-absolute">
+                                            <div class="comment-more  d-flex flex-column  ">
+                                                <img src="../imgs/comment-more.svg" class="w-full comment-options cur-point " alt="" style="max-width: 30px;">
+                                                <ul class="p-10 dropbutton-bg mt-px-5 d-none p-absolute">
 
 
-                                                <li class="p-10 comment-report">report</li>
+                                                    <li class="p-10 comment-report">report</li>
 
-                                                <!-- report moadale -->
+                                                    <!-- report moadale -->
 
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary d-none comment-reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal300">
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary d-none comment-reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal300">
                                             Launch demo modal
                                                 </button>
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal300" tabindex="-1" aria-labelledby="exampleModalLabel300" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal300" tabindex="-1" aria-labelledby="exampleModalLabel300" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
 
-                                                            <div class="modal-body reportmodaldiv w-70 case-bg">
-                                                                <div class="d-flex ">
-                                                                    <p>Report <span class="reporteduser c-grey">@username’s post</span></p>
+                                                                <div class="modal-body reportmodaldiv w-70 case-bg">
+                                                                    <div class="d-flex ">
+                                                                        <p>Report <span class="reporteduser-comment c-grey">@username’s Comment</span></p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <form>
+
+
+                                                                            <div class="mb-3 w-100">
+
+                                                                                <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea3" rows="10"></textarea>
+
+                                                                            </div>
+
+                                                                            <div class="modal-footer d-flex justify-content-evenly">
+                                                                                <input type="submit" class="btn btn-primary reportbuton-comment rad-25 p-30 shadow">
+                                                                                <button type="button" class="btn btn-secondary rad-25 reportbutoncancel-comment shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+
+
                                                                 </div>
-                                                                <div>
-                                                                    <form>
-
-
-                                                                        <div class="mb-3 w-100">
-
-                                                                            <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea3" rows="10"></textarea>
-
-                                                                        </div>
-
-                                                                        <div class="modal-footer d-flex justify-content-evenly">
-                                                                            <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow">
-                                                                            <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <li class="p-10 comment-block lastli">block</li>
-                                                <!-- block moadale -->
-
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary d-none comment-blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal3000">
-                                            Launch demo modal
-                                                </button>
-
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal3000" tabindex="-1" aria-labelledby="exampleModalLabel3000" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered blockmodaldiv">
-                                                        <div class="modal-content rad-20">
-
-                                                            <div class="modal-body">
-                                                                <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@username</span> ?</p>
-                                                            </div>
-                                                            <div class="modal-footer d-flex justify-content-evenly">
-                                                                <button type="button" class="btn btn-primary blockbutton rad-25 p-30 shadow">Yes</button>
-                                                                <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+
+                                                    <li class="p-10 comment-block lastli">block</li>
+                                                    <!-- block moadale -->
+
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary d-none comment-blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal3000">
+                                            Launch demo modal
+                                                </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal3000" tabindex="-1" aria-labelledby="exampleModalLabel3000" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered blockmodaldiv">
+                                                            <div class="modal-content rad-20">
+
+                                                                <div class="modal-body">
+                                                                    <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername-comment">@username</span> ?</p>
+                                                                </div>
+                                                                <div class="modal-footer d-flex justify-content-evenly">
+                                                                    <button type="button" class="btn btn-primary blockbutton-comment rad-25 p-30 shadow">Yes</button>
+                                                                    <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel-comment shadow" data-bs-dismiss="modal">No</button>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
 
-                                            </ul>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="comment-info w-full">
-                                        <span class="w-full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aperiam deserunt repellendus saepe, dicta fugiat sapiente ipsum modi illo, quidem nam excepturi ipsam voluptatem vitae eligendi consectetur praesentium perferendis quisquam.</span>
-                                    </div>
+                                        <div class="comment-info w-full">
+                                            <span class="w-full comment-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aperiam deserunt repellendus saepe, dicta fugiat sapiente ipsum modi illo, quidem nam excepturi ipsam voluptatem vitae eligendi consectetur praesentium perferendis quisquam.</span>
+                                        </div>
 
+
+                                    </div>
 
                                 </div>
+
+
 
                             </div>
-                            <span class="cur-point c-grey fs-rem-14 see-more-comments mt-30">View All comments</span>
+                            <span class="cur-point c-grey fs-rem-14 see-more-comments mt-30">View more comments</span>
 
                             <div class="w-full mt-30 d-flex justify-content-center">
                                 <input type="text" placeholder="Write a comment" class="p-10 nav-bg w-90 sendcomment">
@@ -433,25 +432,8 @@
                         </div>
                     </div>
                     <div class="chat-users mt-20 w-full d-flex">
-                        <ul class="overflow-auto w-full">
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Fouad Mohamed</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Essam</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Mostafa No3man</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ali Elgohary</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Samir</span>
-                            </li>
-                            <li class="cur-point mb-20 p-px-5">
-                                <img src="../imgs/profilepic.svg" alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none d-lg-inline"> <span class="chat-user fw-bold">Ahmed Fathlla</span>
-                            </li>
+                        <ul class="overflow-auto w-full chat-users-ul">
+
                         </ul>
                     </div>
                 </div>
@@ -477,104 +459,7 @@
 
     <div class="nav-bg d-none notification-content rad-10 " style="width: 350px; height: 450px; ">
         <p class="fs-25 fw-bold p-10 mb-20 ">Notifications</p>
-        <ul class="w-full">
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-like.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not ">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-verfiey.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div class="discription-content">
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li style="max-height: 93px;" class="w-full ">
-                <div class="notification-div w-full d-flex justify-content-start p-10">
-                    <div class="d-flex justify-content-start align-items-start">
-                        <img src="../imgs/notifacations/notifaction-key.svg" alt="" class="mr-px-5">
-                        <div class="d-flex flex-column w-70">
-                            <span class="notifaction-user fw-bold">Fouad Mohame</span>
-                            <div>
-                                <span class="notification-discribtion c-grey fs-13">Lorem ipsum dolor sit amet consectetur adipisicing</span> <span class="notification-time c-grey fs-13">.3h</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="seen-or-not d-none">
-
-                    </div>
-
-                </div>
-
-            </li>
+        <ul class="w-full notification-ul">
 
 
 
@@ -586,112 +471,34 @@
 
 
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary  modal2-button d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+    <!-- log out modal  -->
+
+    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
+                        Launch demo modal
+                        </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content dropbutton-bg ">
+    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
                 <div class="modal-header">
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="modalbody ">
-
-                        <div class="choosecase d-flex justify-content-evenly">
-                            <div>
-                                <input type="radio" id="Requestapatient" value="requestapatient" name="case"><label for="Requestapatient" id="requestapatient" class="ml-10 fw-bold">Request a patient</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="Sharecase" value="sharecase" name="case"><label for="Sharecase" id="sharecase" class="ml-10 fw-bold">Share case with other dentists</label>
-                            </div>
-                        </div>
-
-                        <div class="Requestapatient">
-                            <div class="sendcase w-full d-flex justify-content-center mt-30">
-                                <form class="bg-white w-80 d-flex flex-column p-30 mb-60">
-                                    <div class="img-of-case">
-                                        <img src="../imgs/addcase.svg" alt="" style="width: 40px;"><span id="addcase" class="fw-bold fs-15 ml-10">Add Case</span>
-                                    </div>
-
-
-                                    <div class="d-flex justify-content-center mt-80">
-                                        <div class="mb-3 w-90 Casetitle">
-                                            <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
-                                            <input type="text" class="form-control casetitle " required id="formGroupExampleInput" placeholder="Enter title">
-                                        </div>
-                                    </div>
-                                    <span class="titleerror c-red fs-14 ml-20"> </span>
-                                    <div class="w-90 d-flex justify-content-between align-center">
-                                        <div class="w-40 mt-30 p-20 casetype loction">
-                                            <p class="fw-bold fs-15">Location*</p>
-                                            <input required list="locations" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
-                                            <datalist id="locations">
-                                                    <option value="location1">location1</option>
-                                                    <option value="location2">location2</option>
-                                                    <option value="location3">location3</option>
-                                                </datalist>
-
-                                        </div>
-
-                                        <div class="w-40 mt-30 p-20 casetype">
-                                            <p class="fw-bold fs-15 ">Case type*</p>
-                                            <input required list="casetypes" placeholder="Search for type" id="casetype" name="casetype" class="w-full p-10 form-control ">
-                                            <datalist id="casetypes">
-                                                    <option value="case1">case1</option>
-                                                    <option value="case2">case2</option>
-                                                    <option value="case3">case3</option>
-                                                </datalist>
-
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-evenly">
-                                        <span class="casetypeerror c-red fs-14 ml-20"> </span>
-                                        <span class="locationerror c-red fs-14 ml-20"> </span>
-                                    </div>
-
-                                    <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
-                                        <div class="mb-3 w-90">
-                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
-                                            <textarea required placeholder="Enter description" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class=" w-full mt-30 d-flex justify-content-center mb-60 cur-point ">
-                                        <div class="w-90 ">
-                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Add photo / videos <span class="c-grey fs-15">(optional)</span></label>
-                                            <div class="caseimages image-preview w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
-                                                <div class=" d-flex  flex-column justify-content-center align-center selectcaseimages">
-                                                    <img src="../imgs/uploadimage.svg " style="width: 30px;">
-                                                    <span>Click here to add or to readd</span>
-                                                </div>
-                                            </div>
-                                            <p class="c-grey fs-14 mt-10">(hint: you can't delete choossen image if you want to delete, chosoe from first again)</p>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="modal-footer w-full d-flex justify-content-evenly">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <input type="submit" value="Add" class="btn btn-primary sendcasebutton">
-                                        <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-
-                    </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
                 </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger p-10 hvr-float-shadow" id="log-out">Yes</button>
 
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20">
+                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
+                </div>
             </div>
         </div>
     </div>
-
 
 
 
@@ -706,6 +513,134 @@
     <script src="../js/popper.min.js "></script>
     <script src="../js/helper.js "></script>
     <script src="../js/jquery-3.6.1.min.js "></script>
+    <script src="../js/post.js "></script>
+    <!-- get chated people  -->
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+
+
+            var firstMassegeId;
+
+
+            $.ajax({
+                "method": "GET",
+                "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=7`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                beforeSend: function() {
+
+                },
+                success: function(data, st, xhr) {
+                    console.log(data);
+                    if (!(data.length == 0)) {
+                        for (var i = 0; i < data.length; i++) {
+                            let profilesrc;
+                            if (data[i].profilePicture == null) {
+                                profilesrc = "../imgs/profilepic.svg"
+                            } else {
+                                profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                            }
+                            $(".chat-users-ul").append(` <a href="../chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div class = "d-flex ">
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                  
+                                </div>
+                              
+                            </li>  </a>`)
+
+                        }
+                    }
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+
+
+            let notRemanningPeople = 0
+            let pageIndex2 = 2;
+
+            // gwr recent poeple when scroll 
+            $('.home-chats').scroll(function() {
+                var element = $(this);
+                if (element.scrollTop() + element.innerHeight() >= element[0].scrollHeight) {
+
+                    $.ajax({
+                        "method": "GET",
+                        "url": `${apiUrl}/api/Common/GetRecentMessages?Page=${pageIndex2}&Size=4`,
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        beforeSend: function() {
+                            if (notRemanningPeople == 0) {
+                                $(".loadingchats").removeClass("d-none")
+                            }
+                        },
+                        success: function(data, st, xhr) {
+                            $(".loadingchats").addClass("d-none")
+                            console.log(data)
+                            if (data.length == 0 && notRemanningPeople == 0) {
+                                $(".chat-users-ul").append(`<h4 class = "fs-15 c-grey mt-10 mb-10">No remaining people</h4>`);
+                                notRemanningPeople = 1;
+                            } else {
+
+                                pageIndex2++;
+
+                                for (var i = 0; i < data.length; i++) {
+                                    let profilesrc;
+                                    if (data[i].profilePicture == null) {
+                                        profilesrc = "../imgs/profilepic.svg"
+                                    } else {
+                                        profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                                    }
+                                    $(".chat-users-ul").append(` <a href="../chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div>
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                    
+                                </div>
+                              
+                            </li>  </a>`)
+
+                                }
+                            }
+                        },
+                        error: function(xhr, status, err) {
+
+                        }
+                    })
+
+
+                }
+            });
+
+
+
+
+
+        })();
+    </script>
+
 
 
     <script>
@@ -718,6 +653,16 @@
         $('.search-icon').on('click', function() {
             window.location.href = "search.html";
         });
+
+        $(".articles").click(function() {
+            window.location.href = "article.html";
+        })
+        $(".marketplace").click(function() {
+            window.location.href = "marketplace.html";
+        })
+        $(".findpatient").click(function() {
+            window.location.href = "home.html";
+        })
     </script>
 
 
@@ -857,7 +802,7 @@
 
 
     <!-- make see more sacebook effect -->
-    <script>
+    <!-- <script>
         const showMoreLinks = document.querySelectorAll('.seemore');
 
         const maxChars = 150;
@@ -885,7 +830,7 @@
                 }
             });
         });
-    </script>
+    </script> -->
 
     <!-- enable tooltip of bootstrap -->
     <script>
@@ -897,7 +842,7 @@
 
     <script>
         $(".notification-content").blur(function() {
-            $(".notification-content").css("display", "none !important");
+            $(".notification-content").css("display", "none ");
         })
     </script>
 

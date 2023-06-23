@@ -265,6 +265,7 @@ input[type="radio"] {
 #location,
 #price,
 #category,
+#casetypesss,
 .discriptioncase textarea,
 .caseimages {
     background-color: #CBE4DE !important;
@@ -289,7 +290,8 @@ input[type="radio"] {
 #casetype,
 #location,
 #price,
-#category {
+#category,
+#casetypesss {
     padding-left: 35px;
 }
 
@@ -333,7 +335,8 @@ input[type="radio"] {
     #casetype2,
     #location,
     #price,
-    #category {
+    #category,
+    #casetypesss {
         padding-left: 10px;
     }
     .discri.discriptioncase #casetype::placeholder,
@@ -422,10 +425,13 @@ input[type="radio"] {
     width: 150px;
 }
 
-.more-about-post ul,
-.comment-more ul {
+.more-about-post ul {
     margin-bottom: 0;
     width: 100%;
+}
+
+.comment-more ul {
+    margin-bottom: 0;
 }
 
 .more-about-post ul {
@@ -451,7 +457,9 @@ input[type="radio"] {
 }
 
 .blockbutton,
-.blockbuttoncancel {
+.blockbutton-comment,
+.blockbuttoncancel,
+.blockbuttoncancel-comment {
     padding: 6px 30px !important;
     border-radius: 20px !important;
 }
@@ -465,7 +473,9 @@ input[type="radio"] {
 }
 
 .reportbuton,
-.reportbutoncancel {
+.reportbutoncancel,
+.reportbuton-comment,
+.reportbutoncancel-comment {
     padding: 2px 20px;
 }
 

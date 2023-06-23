@@ -41,6 +41,7 @@ $(".selectcaseimages2").click(function() {
     $(".selectcaseimage2").trigger("click");
 })
 
+caregoryDisplay = false
 
 $(".logout").click(function() {
     $(".logoutbutton").trigger("click");
@@ -59,6 +60,7 @@ $('input[name="case"]').change(function() {
         $("#location").removeAttr("required");
         locationDisplay = false;
         selectedCase = "Common/AddCase";
+        caregoryDisplay = true
     } else {
         $(".Requestapatient").css('display', 'block');
         $(".loction").css('display', 'block');
@@ -68,6 +70,7 @@ $('input[name="case"]').change(function() {
         $("#location").attr("required", "true");
         locationDisplay = true;
         selectedCase = "Dentists/AddSharing"
+        caregoryDisplay = true
     }
 })
 
@@ -122,7 +125,7 @@ sendcasebutton.addEventListener('click', function(event) {
 
 
     // If the selected option is not in the datalist, prevent form submission
-    if (!optionSelected) {
+    if (!optionSelected && caregoryDisplay) {
         event.preventDefault();
         $(".casetypeerror").text(" Please select a valid case type.");
         $(".casetypeerror").css("display", "block");
