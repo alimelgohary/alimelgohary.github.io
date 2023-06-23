@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="en/css/bootstrap.min.css">
     <link rel="stylesheet" href="en/css/all.min.css" />
     <link rel="stylesheet" href="en/css/framework.css" />
     <link rel="stylesheet" href="en/css/master.css" />
+    <link rel="stylesheet" href="en/css/hover.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,6 +66,13 @@
                     </a>
                 </li>
 
+                <li class=" logout">
+                    <a href="" class=" d-flex align-center fs-14 c-black rad-6 p-10 log-out">
+                        <i class="fa-solid fa-arrow-right-from-bracket c-black"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+
             </ul>
 
 
@@ -103,8 +112,8 @@
 
                     <div class=" body txt-c d-flex p-20 mt-20 mb-20 block-mobile">
                         <div>Fouad Mohaemd <span class=" d-block c-grey fs-14 mt-10">Developer</span></div>
-                        <div>40 <span class=" d-block c-grey fs-14 mt-10">Projects</span></div>
-                        <div>5000 $<span class=" d-block c-grey fs-14 mt-10">Earned</span></div>
+                        <div><span class="num-of-users">40</span> <span class=" d-block c-grey fs-14 mt-10">Users</span></div>
+                        <div><span class="num-of-request">0</span><span class=" d-block c-grey fs-14 mt-10">Requests</span></div>
 
                     </div>
                     <a href="profile.html" class="visit d-block rad-6 fs-14 bg-blue c-white w-fit btn-shape">Profile</a>
@@ -181,22 +190,22 @@
                     <div class="d-flex txt-c gap-20 f-wrap">
                         <div class="box p-20 rad-10 fs-13 c-grey">
                             <i class="fa-regular fa-rectangle-list fa-2x c-orange mb-10 "></i>
-                            <span class="d-block c-black fw-bold fs-25 mb-5">100</span>Total
+                            <span class="d-block c-black fw-bold fs-25 ">100</span>Total
                         </div>
 
                         <div class="box p-20 rad-10 fs-13 c-grey">
                             <i class="fa-solid fa-eye fa-2x mb-10 c-green"></i>
-                            <span class="d-block c-black fw-bold fs-25 mb-5">10</span>Viewing Now
+                            <span class="d-block c-black fw-bold fs-25">10</span>Viewing Now
                         </div>
 
                         <div class="box p-20 rad-10 fs-13 c-grey">
                             <i class="fa-solid fa-receipt mb-10 fa-2x c-blue"></i>
-                            <span class="d-block c-black fw-bold fs-25 mb-5">15</span>Accounts
+                            <span class="d-block c-black fw-bold fs-25 ">15</span>Accounts
                         </div>
 
                         <div class="box p-20 rad-10 fs-13 c-grey">
                             <i class="fa-solid fa-ban c-red mb-10 fa-2x"></i>
-                            <span class="d-block c-black fw-bold fs-25 mb-5">0</span>banned
+                            <span class="d-block c-black fw-bold fs-25 ">0</span>banned
                         </div>
                     </div>
 
@@ -544,13 +553,159 @@
 
 
 
+    <!-- log out modal  -->
+
+    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger p-10 hvr-buzz" id="log-out">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center  mt-10 mb-20">
+                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <script src="en/js/jquery-3.6.1.min.js"></script>
+    <script src="en/js/helper.js"></script>
+    <script src="en/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+            let language = window.localStorage.getItem("language")
+            if (language == null) {
+                language = "en";
+            }
+
+
+            function logOutfromadmin() {
+
+                (async() => {
+                    let apiUrl = await GetServerDomain();
+                    let language;
+                    if (window.localStorage.getItem("language") == null) {
+                        language = "en";
+                    } else {
+                        language = window.localStorage.getItem("language");
+                    }
+
+
+
+                    $.ajax({
+                        "method": "GET",
+                        "url": apiUrl + "/api/Users/Logout",
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        success: function(data, st, xhr) {
+                            console.log(data);
+                            window.location.href = "en/login.html"
+                        },
+                        error: function(xhr, status, err) {
+                            $(".logouterror").css("display", "block");
+                        }
+                    })
+
+
+
+                })();
+
+
+
+            }
+
+
+
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Landing/GetStats",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                "data": "{}",
+                success: function(data, st, xhr) {
+                    let numOfUsers = data.numberOfDentists + data.numberOfPatients
+                    $(".numOfPosts").text(data.numberOfPosts);
+                    $(".num-of-users").text(numOfUsers)
+                },
+                error: function(xhr, status, err) {
+                    $(".numOfPosts").text("0");
+                    $(".numOfDentist").text("0");
+                    $(".numOfPatient").text("0");
+                }
+            })
+
+
+
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Admins/GetNumberOfVerificationRequests",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+                    requestsNumber = data
+                    $(".num-of-request").text(requestsNumber)
+                    console.log(data)
+
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+        })();
+    </script>
     <script>
         $(".delete").click(function() {
             $(this).parent().toggleClass("done");
         })
+        $(".logout").click(function(e) {
+            e.preventDefault()
+            $(".logoutbutton").trigger("click");
+
+        })
+        $("#log-out").click(function() {
+            logOutfromadmin()
+        })
     </script>
+
+
 </body>
 
 </html>

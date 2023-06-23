@@ -24,6 +24,10 @@ a {
     text-decoration: none;
 }
 
+.logouterror {
+    display: none;
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -1572,4 +1576,14 @@ ul {
 
 .reject-cause-option {
     padding: 10px 30px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-footer button {
+    border: none;
+    padding: 7px 25px;
+    border-radius: 7px;
 }

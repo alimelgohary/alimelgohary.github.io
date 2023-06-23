@@ -278,10 +278,19 @@
 
                                         </div>
 
+                                        <div class="w-40 mt-30 d-none p-20 casetype">
+                                            <p class="fw-bold fs-15 ">Category*</p>
+                                            <input list="casetypes" autocomplete="off" placeholder="Search for Category" id="casetype" name="casetype" class="w-full p-10 form-control ">
+                                            <datalist id="casetypes">
+                                                    
+                                                </datalist>
+
+                                        </div>
+
                                         <div class="w-40 mt-30 p-20 casetype">
                                             <p class="fw-bold fs-15 ">Category*</p>
-                                            <input required list="casetypes" autocomplete="off" placeholder="Search for Category" id="casetype" name="casetype" class="w-full p-10 form-control ">
-                                            <datalist id="casetypes">
+                                            <input required list="casetypess" autocomplete="off" placeholder="Search for Category" id="casetypesss" name="casetype" class="w-full p-10 form-control ">
+                                            <datalist id="casetypess">
                                                     
                                                 </datalist>
 
@@ -294,8 +303,8 @@
 
                                     <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
                                         <div class="mb-3 w-90">
-                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
-                                            <textarea required placeholder="Enter description" class="form-control " id="exampleFormControlTextarea1" rows="5"></textarea>
+                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20 ">Description*</label>
+                                            <textarea required placeholder="Enter description" class="form-control casedescribtion" id="exampleFormControlTextarea1" rows="5"></textarea>
                                         </div>
                                     </div>
 
@@ -323,7 +332,7 @@
                                     </div>
 
                                     <div class="modal-footer w-full d-flex justify-content-evenly">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-secondary addcasecancell" data-bs-dismiss="modal">Cancel</button>
                                         <div class="d-flex">
                                             <input type="submit" value="Add" class="btn btn-primary sendcasebutton ">
                                             <div class="spinner-border text-info d-none ml-10" role="status">
@@ -386,7 +395,10 @@
 
     <script>
         var idlist = [];
-
+        let catObj = {};
+        $(".likes").click(function() {
+            $(".likes").toggleClass("c-green");
+        })
         $(".notificationmark").click(function() {
             $(".notification-content").toggleClass("d-none")
         })
@@ -597,6 +609,29 @@
             }
 
 
+            // Load Cat from server
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Generic/GetArticleCats",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+                    for (let i = 0; i < data.length; i++) {
+                        let selectElem = document.querySelector("#casetypess");
+                        selectElem.innerHTML += (`<option value = "${data[i].name}" ></option>`);
+                        catObj[data[i].name] = data[i].id
+                    }
+                    console.log(catObj)
+
+                },
+                error: function(xhr, status, err) {
+                    let selectElem = document.querySelector("#CurrentUni");
+                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
+                }
+            })
 
 
 
@@ -631,6 +666,8 @@
                         return new bootstrap.Tooltip(tooltipTriggerEl)
                     })
 
+
+
                     //   facebook seemore effect 
                     var showMoreLinks = document.querySelectorAll('.seemore');
                     var maxChars = 150;
@@ -660,6 +697,9 @@
                         $(this).toggleClass("rotate-90");
                         $(this).next("ul").toggleClass("d-none");
                     })
+                    $(".likes").click(function() {
+                        $(".likes").toggleClass("c-green");
+                    })
 
                     $(`.share-links`).click(function() {
                         $(this).next(`button`).trigger("click");
@@ -672,6 +712,10 @@
                     $(`.report`).click(function() {
                         $(this).next(`button`).trigger("click");
                     })
+
+
+
+
 
 
                     //request of report button
@@ -973,9 +1017,9 @@
                                 </div>
 
                             </div>
-                            <div class="post-call mt-40">
+                            <div class="post-call mt-40 ">
                                 <div class="w-full d-flex justify-content-between align-center">
-                                    <div class="likes">
+                                    <div class="likes givelike${data[counter].postId}" data-id ="${data[counter].postId}">
                                         <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">${data[counter].likes}</span>
                                     </div>
                                     <a href = "post.html?Id=${data[counter].postId}">
@@ -1056,11 +1100,41 @@
 
 
                     }
-                    // end of for loop
 
 
 
 
+                    $(".likes").click(function() {
+                        // $(".likes").toggleClass("c-green");
+
+                        let PostIdforlike = $(this).attr("data-id");
+
+                        $.ajax({
+                            "method": "PUT",
+                            "url": apiUrl + `/api/Dentists/LikeUnlikeArticle?articleId=${PostIdforlike}`,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                console.log(PostIdforlike);
+
+                            },
+                            error: function(xhr, status, err) {
+                                console.log(xhr);
+                            }
+                        })
+
+
+
+
+
+                    })
 
 
                     $(".social-link").click(function(e) {
@@ -1315,8 +1389,8 @@
 
                 let caseTitle = $(".casetitle").val();
 
-                let preCaseType = $("#casetype").val();
-                let caseType = CaseObj[preCaseType];
+                let preCat = $("#casetypesss").val();
+                let Cateory = catObj[preCat];
                 let caseDescribtion = $(".casedescribtion").val();
 
 
@@ -1325,7 +1399,7 @@
 
                 const formData = new FormData();
 
-                formData.append('ArticleCategoryId', caseType);
+                formData.append('ArticleCategoryId', Cateory);
                 formData.append('Title', caseTitle);
                 formData.append('Body', caseDescribtion);
                 for (let i = 0; i < imageInputSize; i++) {

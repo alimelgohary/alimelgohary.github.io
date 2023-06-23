@@ -33,44 +33,8 @@
 
     //##########     ON LOAD         #####################
     let pageIndex = 1;
-    // $.ajax({
-    //         "method": "GET",
-    //         "url": apiUrl + "/api/Landing/GetReviews?page=" + pageIndex,
-    //         "xhrFields": {
-    //             "withCredentials": true
-    //         },
-    //         "headers": {
-    //             "Content-Type": "application/json",
-    //             "ngrok-skip-browser-warning": "69420",
-    //             "Accept-Language": language
-    //         },
-    //         "data": "{}",
-    //         success: function(data, st, xhr) {
-    //             let reviewerNames = document.querySelectorAll(".reviewer");
-    //             let reviewText = document.querySelectorAll(".review-text");
-    //             let rateStar = document.querySelectorAll(".review-content .averge-rate");
-    //             let stars = "";
 
-    //             for (let i = 0; i < data.length; i++) {
-    //                 let numStar = data[i].rating;
-    //                 for (let j = 0; j < 5; j++) {
-    //                     if (j <= numStar) {
-    //                         stars += "<i class='fa-solid fa-star' style='color: #0E8388;'></i>"
-    //                     } else {
-    //                         stars += '<i class="fa-regular fa-star"></i>'
-    //                     }
-    //                 }
-    //                 reviewerNames[i].innerHTML = data[i].reviewer;
-    //                 reviewText[i].innerHTML = data[i].opinion;
-    //                 rateStar[i].innerHTML = stars;
-    //                 stars = "";
-    //             }
-    //             console.log(data)
-    //         },
-    //         error: function(xhr, status, err) {
 
-    //         }
-    //     })
 
     $.ajax({
             "method": "GET",

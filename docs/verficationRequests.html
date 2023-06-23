@@ -61,6 +61,13 @@
                         <span>Plans</span>
                     </a>
                 </li>
+
+                <li class=" logout">
+                    <a href="" class=" d-flex align-center fs-14 c-black rad-6 p-10 log-out">
+                        <i class="fa-solid fa-arrow-right-from-bracket c-black"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -94,6 +101,37 @@
 
 
 
+    <!-- log out modal  -->
+
+    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger p-10 hvr-buzz" id="log-out">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center  mt-10 mb-20">
+                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
     <script src="en/js/helper.js"></script>
@@ -103,7 +141,70 @@
     <script src="en/js/popper.min.js "></script>
     <script src="en/js/verfiyRequest.js"></script>
     <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+            let language = window.localStorage.getItem("language")
+            if (language == null) {
+                language = "en";
+            }
+
+
+            function logOutfromadmin() {
+
+                (async() => {
+                    let apiUrl = await GetServerDomain();
+                    let language;
+                    if (window.localStorage.getItem("language") == null) {
+                        language = "en";
+                    } else {
+                        language = window.localStorage.getItem("language");
+                    }
+
+
+
+                    $.ajax({
+                        "method": "GET",
+                        "url": apiUrl + "/api/Users/Logout",
+                        "xhrFields": {
+                            "withCredentials": true
+                        },
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "ngrok-skip-browser-warning": "69420",
+                            "Accept-Language": language
+                        },
+                        success: function(data, st, xhr) {
+                            console.log(data);
+                            window.location.href = "en/login.html"
+                        },
+                        error: function(xhr, status, err) {
+                            $(".logouterror").css("display", "block");
+                        }
+                    })
+
+
+
+                })();
+
+
+
+            }
+
+
+
+            $(".logout").click(function(e) {
+                e.preventDefault()
+                $(".logoutbutton").trigger("click");
+
+            })
+            $("#log-out").click(function() {
+                logOutfromadmin()
+            })
+
+        })();
     </script>
+
+
     <script>
         (async() => {
             let apiUrl = await GetServerDomain();
