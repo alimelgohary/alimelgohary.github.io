@@ -191,8 +191,12 @@ let commentIdList = [];
             "ngrok-skip-browser-warning": "69420",
             "Accept-Language": language
         },
+        beforeSend: function() {
+            $(".skeleton-loading").removeClass("d-none")
+        },
         success: function(data, st, xhr) {
             console.log(data)
+            $(".skeleton-loading").addClass("d-none")
             if (data.userInfo.profilePicture != null) {
                 $(".user-profile").attr("src", `data:image/png;base64,${data.userInfo.profilePicture}`)
             }
@@ -241,7 +245,7 @@ let commentIdList = [];
             $(".blockedusername").text("@" + data.userInfo.username);
             $(".reporteduser").text("@" + data.userInfo.username + "'s post");
 
-
+            $(".home-post").removeClass("d-none");
 
 
 

@@ -471,7 +471,7 @@ function getNotificationOnScroll() {
                         "Accept-Language": language
                     },
                     success: function(data, st, xhr) {
-                        console.log(data)
+                        console.log("data from scroll" + data)
                         if (data.length != 0) {
                             pageIndex2++;
                             for (let i = 0; i < data.length; i++) {
@@ -479,7 +479,7 @@ function getNotificationOnScroll() {
                 <li style="max-height: 93px;" class="w-full ">
                     <div class="notification-div w-full d-flex justify-content-start p-10">
                         <div class="d-flex justify-content-start align-items-start">
-                            <img src="../imgs/notifacations/notifaction-comment.svg" alt="" class="mr-px-5">
+                            <img src="../imgs/notifacations/notifaction-${data[i].icon}.svg" alt="" class="mr-px-5">
                             <div class="d-flex flex-column w-70">
                                 <span class="notifaction-user fw-bold">Fouad Mohame</span>
                                 <div>
