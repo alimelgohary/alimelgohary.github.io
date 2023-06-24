@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Members</title>
+    <title>Requests</title>
     <link rel="stylesheet" href="en/css/bootstrap.min.css">
     <link rel="stylesheet" href="en/css/all.min.css" />
     <link rel="stylesheet" href="en/css/animate.min.css">
@@ -13,9 +13,55 @@
     <link rel="stylesheet" href="en/css/framework.css" />
     <link rel="stylesheet" href="en/css/master.css" />
     <link rel="stylesheet" href="en/css/hover.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+    <script src="en/js/helper.js"></script>
+    <!-- check if checked in or not  -->
+    <script>
+        (async() => {
+            let pageIndex = 1;
+            let apiUrl = await GetServerDomain();
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+
+            // check if theuser is loged in or not 
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Users/IsAllowedToHomeTurbo",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                "data": {},
+                success: function(data, st, xhr) {
+                    console.log(data)
+                    if (data.nextPage == "homePatient") {
+                        window.location.href = "en/login.html";
+                    } else if (data.nextPage == "homeDentist") {
+                        window.location.href = "en/login.html";
+                    } else if (data.nextPage == "homeAdmin") {
+
+                    }
+                },
+                error: function(xhr, status, err) {
+                    console.log(xhr);
+                    window.location.href = "en/login.html";
+                }
+            })
+        })();
+    </script>
+
 </head>
 
 <body>
@@ -134,7 +180,7 @@
 
 
 
-    <script src="en/js/helper.js"></script>
+
     <script src="en/js/jquery-3.6.1.min.js"></script>
     <script src="en/js/bootstrap.bundle.min.js "></script>
     <script src="en/js/all.min.js "></script>

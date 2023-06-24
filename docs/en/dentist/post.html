@@ -127,7 +127,7 @@
 
 
                     <!-- the main one  -->
-                    <div class="home-post">
+                    <div class="home-post d-none">
                         <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
@@ -419,6 +419,26 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="loading-div mb-20">
+                    <div class="skeleton-loading bg-white rad-10 shadow-lg d-none">
+                        <div class="skeleton-loading__content">
+
+                            <div class="skeleton-loading__info">
+                                <div class="d-flex align-center mb-30">
+                                    <div class="skeleton-loading__image"></div>
+                                    <div class="skeleton-loading__name"></div>
+                                </div>
+                                <div class="skeleton-loading__title"></div>
+                                <div class="skeleton-loading__description"></div>
+                                <div class="skeleton-loading__text"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
             </div>
 
             <div class="home-chats bg-white rad-10">
@@ -696,7 +716,7 @@
     <!-- thisssssssssssssssssssss -->
     <!-- share page for social media  -->
     <script>
-        const link = encodeURI(window.location.href);
+        const link = encodeURI("http://freesmile.me/en/posts.html" + `?Id=${articleId}`);
         const msg = encodeURIComponent('Hey, I found this article');
         const title = encodeURIComponent('Article or Post Title Here');
 
@@ -794,7 +814,7 @@
             $(".comment-reportmodal").trigger("click");
         })
 
-        $("#share-link").val(window.location.href)
+        $("#share-link").val("http://freesmile.me/en/posts.html" + `?Id=${articleId}`)
     </script>
 
 

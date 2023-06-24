@@ -354,10 +354,10 @@ function getMarketPlacePostsOnChange() {
 
 
                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                        $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+                        $(`#share-link${data[counter].postId}`).val("en/posts.html" + `?Id=${everyPostId}`);
 
 
-                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                        var link = encodeURI("en/posts.html" + `?Id=${everyPostId}`);
                         var msg = encodeURIComponent('Hey, I found this article');
                         var title = encodeURIComponent('Article or Post Title Here');
 
@@ -1070,10 +1070,10 @@ function getPostOnLoad() {
 
 
                                 let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                                $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+                                $(`#share-link${data[counter].postId}`).val("en/posts.html" + `?Id=${everyPostId}`);
 
 
-                                var link = encodeURI(window.location.href + `#${everyPostId}`);
+                                var link = encodeURI("en/posts.html" + `?Id=${everyPostId}`);
                                 var msg = encodeURIComponent('Hey, I found this article');
                                 var title = encodeURIComponent('Article or Post Title Here');
 
@@ -1579,10 +1579,10 @@ function getHomePostsOnChange(detiestOrPatient) {
 
 
                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                        $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+                        $(`#share-link${data[counter].postId}`).val("en/posts.html" + `?Id=${everyPostId}`);
 
 
-                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                        var link = encodeURI("en/posts.html" + `?Id=${everyPostId}`);
                         var msg = encodeURIComponent('Hey, I found this article');
                         var title = encodeURIComponent('Article or Post Title Here');
 
@@ -2340,10 +2340,10 @@ function getArticlePostOnLoad() {
 
 
                                 let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                                $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+                                $(`#share-link${data[counter].postId}`).val("en/posts.html" + `?Id=${everyPostId}`);
 
 
-                                var link = encodeURI(window.location.href + `#${everyPostId}`);
+                                var link = encodeURI("en/posts.html" + `?Id=${everyPostId}`);
                                 var msg = encodeURIComponent('Hey, I found this article');
                                 var title = encodeURIComponent('Article or Post Title Here');
 
@@ -2850,10 +2850,10 @@ function getArticlePostsOnChange() {
 
 
                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                        $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+                        $(`#share-link${data[counter].postId}`).val("en/posts.html" + `?Id=${everyPostId}`);
 
 
-                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                        var link = encodeURI("en/posts.html" + `?Id=${everyPostId}`);
                         var msg = encodeURIComponent('Hey, I found this article');
                         var title = encodeURIComponent('Article or Post Title Here');
 

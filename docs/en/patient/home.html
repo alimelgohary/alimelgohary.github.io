@@ -746,10 +746,10 @@
 
 
                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                        $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+                        $(`#share-link${data[counter].postId}`).val("http://freesmile.me/en/posts.html" + `?Id=${everyPostId}`);
 
 
-                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                        var link = encodeURI("http://freesmile.me/en/posts.html" + `?Id=${everyPostId}`);
                         var msg = encodeURIComponent('Hey, I found this article');
                         var title = encodeURIComponent('Article or Post Title Here');
 
@@ -1441,10 +1441,10 @@
 
 
                                         let everyPostId = $(`#share-link${data[counter].postId}`).attr("data-post-id");
-                                        $(`#share-link${data[counter].postId}`).val(window.location.href + `#${everyPostId}`);
+                                        $(`#share-link${data[counter].postId}`).val("http://freesmile.me/en/posts.html" + `?Id=${everyPostId}`);
 
 
-                                        var link = encodeURI(window.location.href + `#${everyPostId}`);
+                                        var link = encodeURI("http://freesmile.me/en/posts.html" + `?Id=${everyPostId}`);
                                         var msg = encodeURIComponent('Hey, I found this article');
                                         var title = encodeURIComponent('Article or Post Title Here');
 
