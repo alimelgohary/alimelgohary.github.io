@@ -821,36 +821,7 @@
 
 
 
-    <!-- make see more sacebook effect -->
-    <!-- <script>
-        const showMoreLinks = document.querySelectorAll('.seemore');
 
-        const maxChars = 150;
-
-        showMoreLinks.forEach(link => {
-            const postText = link.closest('.post-text');
-            const postDescription = postText.querySelector('.post-description');
-            const descriptionText = postDescription.textContent.trim();
-            const truncatedText = descriptionText.substring(0, maxChars).trim() + '...';
-
-            if (descriptionText.length <= maxChars) {
-                link.style.display = 'none';
-            } else {
-                postDescription.textContent = truncatedText;
-            }
-
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                if (postDescription.textContent === truncatedText) {
-                    postDescription.textContent = descriptionText;
-                    link.textContent = 'Show less';
-                } else {
-                    postDescription.textContent = truncatedText;
-                    link.textContent = 'See more';
-                }
-            });
-        });
-    </script> -->
 
     <!-- enable tooltip of bootstrap -->
     <script>

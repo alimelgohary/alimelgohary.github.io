@@ -732,18 +732,19 @@ let commentIdList = [];
     $(".sendcomment").keyup(function(e) {
 
         if (e.key == "Enter") {
+            let commentt = $(".sendcomment").val()
             $(".post-comment-container").append(` <div class="post-comments d-flex w-full mt-25 ">
                                     <div class="post-comments-image rad-half mr-10" style="width: 50px; max-width:50px">
-                                        <a href=""><img src=${imageSrc} class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%;border-radius: 50%"></a>
+                                        <a href=""><img src="../imgs/profilepic.svg" class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%;border-radius: 50%"></a>
                                     </div>
                                     <div class="post-comments-info w-full p-10 rad-10 nav-bg">
                                         <div class="head-of-post-commnent d-flex justify-content-between mb-20">
                                             <div class="post-commenter-info d-flex flex-column l-1-1">
                                                 <div>
-                                                    <span class="user">${data[i].userInfo.fullName}</span><span class="username c-grey fs-14">@${data[i].userInfo.username}</span>
+                                                    <span class="user">Fouad</span><span class="username c-grey fs-14">@mo20</span>
                                                 </div>
-                                                <span class="c-blue fs-14 comment-case comment-case${data[i].commentId}">${data[i].dentistInfo.university}</span>
-                                                <span class="commented-time c-grey fs-14">${data[i].timeWritten}</span>
+                                                <span class="c-blue fs-14 comment-case comment-case">Undergraduate</span>
+                                                <span class="commented-time c-grey fs-14">1s</span>
                                             </div>
                                             <div class="comment-more  d-flex flex-column  ">
                                                 <img src="../imgs/comment-more.svg" class="w-full comment-options cur-point " alt="" style="max-width: 30px;">
@@ -755,18 +756,18 @@ let commentIdList = [];
                                                     <!-- report moadale -->
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary d-none comment-reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal${data[i].commentId}">
+                                                    <button type="button" class="btn btn-primary d-none comment-reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1000">
                                             Launch demo modal
                                                 </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal${data[i].commentId}" tabindex="-1" aria-labelledby="exampleModalLabel300" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal1000" tabindex="-1" aria-labelledby="exampleModalLabel300" aria-hidden="true">
                                                         <div class="modal-dialog modal-lg">
                                                             <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
 
                                                                 <div class="modal-body reportmodaldiv w-70 case-bg">
                                                                     <div class="d-flex ">
-                                                                        <p>Report <span class="reporteduser-comment c-grey">@${data[i].userInfo.username}’s Comment</span></p>
+                                                                        <p>Report <span class="reporteduser-comment c-grey">@’s Comment</span></p>
                                                                     </div>
                                                                     <div>
                                                                         <form>
@@ -774,12 +775,12 @@ let commentIdList = [];
 
                                                                             <div class="mb-3 w-100">
 
-                                                                                <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea${data[i].commentId}" rows="10"></textarea>
+                                                                                <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea" rows="10"></textarea>
 
                                                                             </div>
 
                                                                             <div class="modal-footer d-flex justify-content-evenly">
-                                                                                <input type="submit" class="btn btn-primary reportbuton-comment rad-25 p-30 shadow" data-commentId = "${data[i].commentId}">
+                                                                                <input type="submit" class="btn btn-primary reportbuton-comment rad-25 p-30 shadow" data-commentId = "">
                                                                                 <button type="button" class="btn btn-secondary rad-25 reportbutoncancel-comment shadow" data-bs-dismiss="modal">Cancel</button>
                                                                             </div>
                                                                         </form>
@@ -796,20 +797,20 @@ let commentIdList = [];
                                                     <!-- block moadale -->
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary d-none comment-blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1${data[i].commentId}">
+                                                    <button type="button" class="btn btn-primary d-none comment-blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                                             Launch demo modal
                                                 </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal1${data[i].commentId}" tabindex="-1" aria-labelledby="exampleModalLabel3000" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel3000" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered blockmodaldiv">
                                                             <div class="modal-content rad-20">
 
                                                                 <div class="modal-body">
-                                                                    <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername-comment">@${data[i].userInfo.username}</span> ?</p>
+                                                                    <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername-comment">@</span> ?</p>
                                                                 </div>
                                                                 <div class="modal-footer d-flex justify-content-evenly">
-                                                                    <button type="button" class="btn btn-primary blockbutton-comment rad-25 p-30 shadow" data-personId="${data[i].userInfo.userId}">Yes</button>
+                                                                    <button type="button" class="btn btn-primary blockbutton-comment rad-25 p-30 shadow" data-personId="">Yes</button>
                                                                     <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel-comment shadow" data-bs-dismiss="modal">No</button>
 
                                                                 </div>
@@ -823,13 +824,15 @@ let commentIdList = [];
                                         </div>
 
                                         <div class="comment-info w-full">
-                                            <span class="w-full comment-body">${data[i].body}</span>
+                                            <span class="w-full comment-body">${commentt}</span>
                                         </div>
 
 
                                     </div>
 
                                 </div> `)
+
+            $(".sendcomment").val("")
         }
     })
 
