@@ -1973,6 +1973,47 @@ function getArticlePostOnLoad() {
                                 $(this).next(`button`).trigger("click");
                             })
 
+                            $(".likes").click(function() {
+                                let numoflikes = $(this).find('.numoflikes').text();
+                                let maindiv = $(this)
+
+                                let PostIdforlike = $(this).attr("data-id");
+
+                                $.ajax({
+                                    "method": "PUT",
+                                    "url": apiUrl + `/api/Dentists/LikeUnlikeArticle?articleId=${PostIdforlike}`,
+                                    "xhrFields": {
+                                        "withCredentials": true
+                                    },
+                                    "headers": {
+                                        "Content-Type": "application/json",
+                                        "ngrok-skip-browser-warning": "69420",
+                                        "Accept-Language": language
+                                    },
+                                    success: function(data, st, xhr) {
+                                        console.log(data);
+                                        console.log(PostIdforlike);
+                                        $(maindiv).toggleClass("c-green");
+                                        if ($(maindiv).hasClass("c-green")) {
+                                            numoflikes++;
+                                        } else {
+                                            numoflikes--;
+                                        }
+                                        $(maindiv).find('.numoflikes').text(numoflikes);
+                                        console.log(numoflikes);
+
+                                    },
+                                    error: function(xhr, status, err) {
+                                        console.log(xhr);
+                                    }
+                                })
+
+
+
+
+
+                            })
+
 
                             //request of report button
                             $(`.reportbuton`).click(function(e) {
@@ -2101,6 +2142,10 @@ function getArticlePostOnLoad() {
                                 })
 
                             });
+
+
+
+
 
                             for (var counter = 0; counter < data.length; counter++) {
                                 idlist.push(data[counter].postId);
@@ -2278,7 +2323,7 @@ function getArticlePostOnLoad() {
                             </div>
                             <div class="post-call mt-40">
                                 <div class="w-full d-flex justify-content-between align-center">
-                                    <div class="likes">
+                                    <div class="likes" data-id ="${data[counter].postId}">
                                         <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">${data[counter].likes}</span>
                                     </div>
                                     <a href = "post.html?Id=${data[counter].postId}">
@@ -2362,6 +2407,48 @@ function getArticlePostOnLoad() {
 
 
 
+
+
+                            $(".likes").click(function() {
+                                let numoflikes = $(this).find('.numoflikes').text();
+                                let maindiv = $(this)
+
+                                let PostIdforlike = $(this).attr("data-id");
+
+                                $.ajax({
+                                    "method": "PUT",
+                                    "url": apiUrl + `/api/Dentists/LikeUnlikeArticle?articleId=${PostIdforlike}`,
+                                    "xhrFields": {
+                                        "withCredentials": true
+                                    },
+                                    "headers": {
+                                        "Content-Type": "application/json",
+                                        "ngrok-skip-browser-warning": "69420",
+                                        "Accept-Language": language
+                                    },
+                                    success: function(data, st, xhr) {
+                                        console.log(data);
+                                        console.log(PostIdforlike);
+                                        $(maindiv).toggleClass("c-green");
+                                        if ($(maindiv).hasClass("c-green")) {
+                                            numoflikes++;
+                                        } else {
+                                            numoflikes--;
+                                        }
+                                        $(maindiv).find('.numoflikes').text(numoflikes);
+                                        console.log(numoflikes);
+
+                                    },
+                                    error: function(xhr, status, err) {
+                                        console.log(xhr);
+                                    }
+                                })
+
+
+
+
+
+                            })
 
 
 
@@ -2592,12 +2679,12 @@ function getArticlePostsOnChange() {
         $(".home-posts").html(" ");
         idlist = [];
 
-        cartegoryValue = $(".casetype").val();
-        sortValue = $("#sorting").val();
+        cartegoryValue = $("#casetypess3").val();
+        sortValue = $(".sort").val();
 
         $.ajax({
             "method": "GET",
-            "url": apiUrl + `/api/Dentists/GetArticles?Size=2&ArticleCategoryId=${cartegoryValue}&sortBy=${sortValue}`,
+            "url": apiUrl + `/api/Dentists/GetArticles?Size=2&previouslyFetched=${idlist}&ArticleCategoryId=${cartegoryValue}&sortBy=${sortValue}`,
             "xhrFields": {
                 "withCredentials": true
             },
@@ -2612,7 +2699,7 @@ function getArticlePostsOnChange() {
             },
             success: function(data, st, xhr) {
                 console.log(data);
-                console.log(governateValue);
+
 
                 if (data.length == 0) {
 
@@ -2871,6 +2958,46 @@ function getArticlePostsOnChange() {
                     // end of for loop
 
 
+                    $(".likes").click(function() {
+                        let numoflikes = $(this).find('.numoflikes').text();
+                        let maindiv = $(this)
+
+                        let PostIdforlike = $(this).attr("data-id");
+
+                        $.ajax({
+                            "method": "PUT",
+                            "url": apiUrl + `/api/Dentists/LikeUnlikeArticle?articleId=${PostIdforlike}`,
+                            "xhrFields": {
+                                "withCredentials": true
+                            },
+                            "headers": {
+                                "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "69420",
+                                "Accept-Language": language
+                            },
+                            success: function(data, st, xhr) {
+                                console.log(data);
+                                console.log(PostIdforlike);
+                                $(maindiv).toggleClass("c-green");
+                                if ($(maindiv).hasClass("c-green")) {
+                                    numoflikes++;
+                                } else {
+                                    numoflikes--;
+                                }
+                                $(maindiv).find('.numoflikes').text(numoflikes);
+                                console.log(numoflikes);
+
+                            },
+                            error: function(xhr, status, err) {
+                                console.log(xhr);
+                            }
+                        })
+
+
+
+
+
+                    })
 
 
 

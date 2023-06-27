@@ -35,7 +35,7 @@
     let pageIndex = 1;
 
 
-
+    // Get reviews 
     $.ajax({
             "method": "GET",
             "url": apiUrl + "/api/Landing/GetReviews?page=" + pageIndex,
@@ -49,31 +49,12 @@
             },
             "data": "{}",
             success: function(data, st, xhr) {
-                let content = "";
-                let stars = "";
-                for (let i = 0; i < data.length; i++) {
-                    let numStar = data[i].rating;
-                    for (let j = 0; j < 5; j++) {
-                        if (j <= numStar) {
-                            stars += "<i class='fa-solid fa-star' style='color: #0E8388;'></i>";
-                        } else {
-                            stars += '<i class="fa-regular fa-star"></i>';
-                        }
-                    }
-                    content += `<div class="reviews-info d-flex flex-column mb-30 " data-aos="fade-right" data-aos-mirror="true">
-                    <p class="fw-bold fs-25 mb-15 reviewer">${ data[i].reviewer} </p>
-                    <div class="averge-rate fs-25 d-block mb-40">${stars}
-                    </div>
-                    <p class="fs-15 mb-40 review-text">${data[i].opinion}</p>
-                    <hr class="breaker">
-                </div>`;
-                    stars = "";
 
-                }
-                $(".review-content").html(content)
-                console.log(data)
+
             },
-            error: function(xhr, status, err) {}
+            error: function(xhr, status, err) {
+
+            }
         })
         //##########     Over ALL       #####################
     $.ajax({

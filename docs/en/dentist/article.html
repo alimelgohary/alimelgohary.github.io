@@ -116,8 +116,14 @@
                             </button>
                             <ul class="dropdown-menu dropbutton-bg" aria-labelledby="dropdownMenuButton3">
 
+                                <li class="mt-10 mb-10 d-none">
+                                    <a class="dropdown-item" href="#" id="findpatientselect2"> <select class="casetype select-Optmize" id="casetypes2">
+                                        <option value="0" selected>category</option>
+                                       
+                                    </select></a>
+                                </li>
                                 <li class="mt-10 mb-10">
-                                    <a class="dropdown-item" href="#" id="findpatientselect2"> <select class="casetype select-Optmize">
+                                    <a class="dropdown-item" href="#" id="findpatientselect8"> <select class="select-Optmize" id="casetypess3">
                                         <option value="0" selected>category</option>
                                        
                                     </select></a>
@@ -633,6 +639,34 @@
                 }
             })
 
+            // Load Cat from server
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Generic/GetArticleCats",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+
+                    console.log(data);
+                    for (let i = 0; i < data.length; i++) {
+                        let selectElem = document.querySelector("#casetypess3");
+                        selectElem.innerHTML += (`<option value = "${data[i].id}" class=" d-block c-black" >${data[i].name}</option>`);
+                        catObj[data[i].name] = data[i].id
+                    }
+                    console.log(catObj)
+
+                },
+                error: function(xhr, status, err) {
+                    let selectElem = document.querySelector("#CurrentUni");
+                    selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
+                }
+            })
+
+
+
 
 
             //make request when page open to load data
@@ -1105,7 +1139,8 @@
 
 
                     $(".likes").click(function() {
-                        // $(".likes").toggleClass("c-green");
+                        let numoflikes = $(this).find('.numoflikes').text();
+                        let maindiv = $(this)
 
                         let PostIdforlike = $(this).attr("data-id");
 
@@ -1123,6 +1158,14 @@
                             success: function(data, st, xhr) {
                                 console.log(data);
                                 console.log(PostIdforlike);
+                                $(maindiv).toggleClass("c-green");
+                                if ($(maindiv).hasClass("c-green")) {
+                                    numoflikes++;
+                                } else {
+                                    numoflikes--;
+                                }
+                                $(maindiv).find('.numoflikes').text(numoflikes);
+                                console.log(numoflikes);
 
                             },
                             error: function(xhr, status, err) {
@@ -1363,7 +1406,7 @@
 
 
         // request when sort changes
-        $("#sfindpatientselect5").change(function() {
+        $("#findpatientselect8").change(function() {
             isRequestInProgress = false
             notRemanning = 0
             getArticlePostsOnChange()
