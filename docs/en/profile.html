@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
+
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@3.0.0-beta.6/dist/aos.css" rel="stylesheet">
+
+    <script src="js/helper.js "></script>
+    <script src="js/jquery-3.6.1.min.js "></script>
+
+    <link rel="stylesheet" href="css/Normalize.css">
+    <link rel="stylesheet" href="css/imagehover.min.css">
+    <link rel="stylesheet" href="css/imagehover.css">
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/home.css">
+    <title>Profile</title>
+    <link rel="icon" type=" image/svg+xml" href="imgs/logo.svg" />
+
+    <!-- check if checked in or not  -->
+    <!-- <script>
+        (async() => {
+            let pageIndex = 1;
+            let apiUrl = await GetServerDomain();
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
+
+
+            // check if theuser is loged in or not 
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Users/IsAllowedToHomeTurbo",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                "data": {},
+                success: function(data, st, xhr) {
+                    console.log(data)
+                    if (data.nextPage == "homePatient") {
+                        window.location.href = "login.html";
+                    } else if (data.nextPage == "homeDentist") {
+
+                    } else if (data.nextPage == "homeAdmin") {
+                        window.location.href = "login.html";
+                    }
+                },
+                error: function(xhr, status, err) {
+                    console.log(xhr);
+                    window.location.href = "login.html";
+                }
+            })
+        })();
+    </script> -->
+
+
+</head>
+
+<body class="home-bg">
+
+    <nav class="navbar navbar-expand-lg    position-sticky fixed-top  " style="background-color: #CBE4DE;">
+        <div class="container-fluid ">
+            <a class="navbar-brand " href="home.html"><img style="width: 50px; height:auto" src="imgs/logo.svg" alt=""></a><span class="tittle">FreeSmile</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon bg-light mt-3"><i class="fa-solid fa-bars "></i></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex justify-content-between flex-row w-full col-mob">
+                    <div class="d-flex justify-content-center align-center ">
+                        <li class="nav-item  fs-5 ml-130">
+                            <!-- make it margin right instead of left in arabic -->
+                            <div class="search p-relative">
+                                <span class="search-icon"></span>
+                                <input type="search" placeholder="Type a Word" id="search" class="p-10 ">
+
+                            </div>
+                        </li>
+                    </div>
+                    <div class="d-flex col-mob">
+                        <li class="nav-item  fs-5 mr-10">
+                            <a href="" class="nav-link active en"><span class="c-black fs-25 mr-5" id="language">EN</span><i class="fa-solid fa-globe fs-25 c-black"></i> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 d-none d-lg-block  l-border">
+                            <a href="" class="nav-link active en"> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15 chatpage ">
+                            <a href="../chat.html" class="nav-link active en"><img src="imgs/comment.svg" style="max-width:50px; width: 30px;"></a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15 hvr-buzz ">
+                            <a href="" class="nav-link active en notificationmark "><img src="imgs/bell.svg" style="max-width:50px; width: 30px;"> </a>
+
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-15">
+                            <a href="" class="nav-link active en"><img src="imgs/profilepic.svg" style="max-width:50px; width: 30px;"> </a>
+                        </li>
+
+                        <li class="nav-item  fs-5 mr-10 logout">
+                            <a href="" class="nav-link active en log-out"><i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid mt-30">
+        <div class="w-full d-flex justify-content-between">
+
+            <div class="home-pages bg-white position-sticky rad-10">
+                <div class="chat-header d-flex justify-content-between mb-10 p-15">
+                    <div>
+                        <span class="fw-bold fs-rem-20">Intro</span>
+                    </div>
+
+                </div>
+
+                <ul class="fs-rem-14 d-flex flex-column w-full h-full ">
+                    <li>
+                        <div class="d-flex justify-content-center align-items-center align-center p-20">
+                            <div class=" flex-column case-bg d-flex flex-column p-20 rad-10 text-break">
+                                <p class="bio  rad-10 text-break" style=" max-height: 150px;overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illum ab cum quidem temporibus aliquam suscipit voluptatum dolore iste, in iure numquam ipsam commo </p>
+                                <span class="txt-c cur-point hvr-buzz editbio"> <i class="fa-solid fa-pen mr-px-5"></i>   Edit Bio </span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="d-flex justify-content-center align-items-center align-center p-20">
+                            <div class=" case-bg d-flex  p-20 rad-10 w-100 text-break justify-content-center align-items-center " style="min-width: 150px;">
+                                <p class="addreview  rad-10 text-break d-flex align-center" style="min-height: 100px; max-height: 150px; overflow: hidden;"> Review </p>
+
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="home-content ">
+
+                <div class="profile-info d-flex flex-column bg-white rad-10" style="box-shadow: 0px 2px 4px 0px;">
+                    <div class="profile-background w-100  sharemodal-bg " style="height: 250px;">
+
+                    </div>
+
+                    <div class="profile-info-text d-flex bg-white">
+                        <div class="profile-image p-relative">
+                            <img src="imgs/profilepic.svg" alt="" class="w-100 rad-half">
+                            <i class="fa-solid fa-pen hvr-buzz cur-point"></i>
+
+                        </div>
+                        <div class="profile-text mt-20 ml-20 d-flex flex-column">
+                            <div>
+                                <span class="fullname fw-bold">Fouad Mohamed</span> <span class="user c-grey fs-15">@fouadmo20</span>
+                            </div>
+                            <p class="info-about-uni c-blue fs-13 fw-bold">Undergraduate at Mansoura university</p>
+                            <div class=" c-grey fs-rem-12">
+                                <span class="governate ">Ad Daqahliyah</span> , <span class="country  ">Egypt</span>
+                                <a href="#" class="ml-10 contact-info">Contact info</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chossing-cat mt-80">
+                        <hr />
+                        <div class="mt-10">
+                            <ul class="p-10 d-flex justify-content-evenly ">
+                                <li class="pb-10 border-bootom-grey  cur-point" data-get-post="GetPatientsCases">Posts</li>
+                                <li class="pb-10 border-bootom-grey cur-point" data-get-post="GetListings">Marketplace</li>
+                                <li class="pb-10 border-bootom-grey border-bootom-blue  cur-point" data-get-post="GetArticles">Articles</li>
+                                <li class="pb-10 border-bootom-grey cur-point" data-get-post="">Photos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="w-full p-px-5 addcase rad-10 nav-bg d-flex justify-content-around mt-20">
+                    <div class="statephoto ml-10 mt-px-5 d-none d-sm-block">
+                        <img src="imgs/profilepic.svg" style="max-height: 50px; height: 48px;">
+                    </div>
+                    <div class="inputstate w-80 ">
+                        <input type="text" disabled class="w-full rad-10 bg-white" placeholder="Click anywhere to add case">
+                    </div>
+
+                </div>
+
+
+
+                <div class="home-posts mt-25">
+                    <!-- the main one  -->
+                    <div class="home-post">
+                        <div class="mb-30 post-body d-flex flex-column p-30 bg-white  rad-10">
+                            <div class="post-head d-flex justify-content-between">
+                                <div class="post-user-info d-flex flex-row">
+                                    <div class="user-image rad-half mr-10">
+                                        <img src="imgs/profilepic.svg" alt="" class="user-profile" style="max-width: 100%;">
+                                    </div>
+                                    <div class="post-info d-flex flex-column">
+                                        <div class="d-flex usernames">
+                                            <span class="fs-rem-14 fw-bold name">Fouad Mohamed</span><span class="username fs-rem-12 c-grey">@fouadmo20</span></div>
+                                        <span class="user-case fw-bold c-blue fs-rem-12">pateint</span>
+                                        <span class="user-mohafza c-grey fs-rem-10">Dakahlia</span>
+                                        <div>
+                                            <span class="post-time c-grey fs-rem-10 mr-px-5">9h</span><span class="fs-rem-10 c-grey mr-px-5 update-post">Edited at</span><span class="editedtime fs-rem-10 c-grey update-post">8</span></div>
+                                        <div class="casetype-bg p-1 txt-c w-40 case-type-rad " style="min-width: fit-content;"><span class="case-type c-white casetype-bg fs-rem-13 case-typee">Filling</span></div>
+                                    </div>
+                                </div>
+                                <div class="more-about-post d-flex flex-column align-items-end">
+                                    <img src="imgs/more.svg" class="moreimg cur-point" style="width: 30px; max-width: 35px;">
+                                    <ul class="p-10 dropbutton-bg mt-px-5 d-none">
+                                        <li class="p-10 share-links" id="forpost1">Share via</li>
+                                        <!-- share moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none sharemodal" data-bs-toggle="modal" data-bs-target="#exampleModal10">
+                                                Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel10" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content sharemodal-bg">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title c-white" id="exampleModalLabel2">Share</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="social-media-icons row flex-row p-20">
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point share-icon post1" style="width: fit-content;">
+                                                                <a class="whatsapp"> <img src="imgs/what's-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                <a class="facebook-share"> <img src="imgs/facebook-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                            <div class="col-6 col-md-3 p-0 p-1 cur-point  share-icon" style="width: fit-content;">
+                                                                <a class="twitter-share"> <img src="imgs/twitter-share.svg" alt="" style="max-width: 100%;"></a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="social-link cur-point mt-20 w-100 p-px-5 d-flex align-center justify-content-between">
+
+                                                            <input class="overflow-hidden cur-point w-80 copied-link " readonly id="share-link">
+
+
+                                                            <span class="copy cur-point">Copy</span>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <li class="p-10 report">report</li>
+
+                                        <!-- report moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal100">
+                                            Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal100" tabindex="-1" aria-labelledby="exampleModalLabel100" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
+
+                                                    <div class="modal-body reportmodaldiv w-70 case-bg">
+                                                        <div class="d-flex ">
+                                                            <p>Report <span class="reporteduser c-grey">@username’s post</span></p>
+                                                        </div>
+                                                        <div>
+                                                            <form>
+
+
+                                                                <div class="mb-3 w-100">
+
+                                                                    <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea2" rows="10"></textarea>
+
+                                                                </div>
+
+                                                                <div class="modal-footer d-flex justify-content-evenly">
+                                                                    <input type="submit" class="btn btn-primary reportbuton rad-25 p-30 shadow" data-post-id="">
+                                                                    <button type="button" class="btn btn-secondary rad-25 reportbutoncancel shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                                <div class="mt-30 ">
+                                                                    <span class="reporterror  txt-c  fs-rem-14 d-block"></span>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <li class="p-10 block lastli">block</li>
+                                        <!-- block moadale -->
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary d-none blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal1000">
+                                            Launch demo modal
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal1000" tabindex="-1" aria-labelledby="exampleModalLabel1000" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered blockmodaldiv">
+                                                <div class="modal-content rad-20">
+
+                                                    <div class="modal-body">
+                                                        <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername">@username</span> ?</p>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-evenly">
+                                                        <button type="button" class="btn btn-primary blockbutton rad-25 p-30 shadow " data-user-id="">Yes</button>
+                                                        <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel shadow" data-bs-dismiss="modal">No</button>
+
+                                                    </div>
+                                                    <div class="mt-30 mb-20">
+                                                        <span class="blockerror blockerror c-red txt-c fs-rem-14 d-block"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                <h3 class="post-title">Some title of the case</h3>
+                                <p class="m-0 d-inline post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, est voluptatum temporibus necessitatibus saepe recusandae ipsum minima commodi ipsa? Quo aspernatur qui voluptatibus aliquam minus officia magnam quod,
+                                    sed minima? </p>
+                                <!-- <span class="cur-point seemore">... See more</span> -->
+                            </div>
+                            <div class="post-images ">
+                                <div class=" d-flex w-100 mt-40 justify-content-center">
+
+
+                                    <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                                        <div class="carousel-inner images ">
+
+
+                                        </div>
+                                        <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                        <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                            <div class="post-call mt-40">
+                                <div class="w-full d-flex justify-content-between align-center">
+                                    <div class="likes">
+                                        <i class="fa-solid fa-hands-clapping  fs-rem-30" style="color: #0e8388;"></i><span class="numoflikes fw-bold fs-rem-25 ml-10">100</span>
+                                    </div>
+                                    <div class="comments">
+                                        <i class="fa-regular fa-comment fa-flip-horizontal fs-rem-30" style="color: #0e8388;"></i><span class="numofcomments fw-bold fs-rem-25 ml-10">15</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column post-comment-container ">
+
+                                <div class="post-comments d-flex w-full mt-25 ">
+                                    <div class="post-comments-image rad-half mr-10" style="width: 50px;">
+                                        <a href=""><img src="imgs/profilepic.svg" class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%;"></a>
+                                    </div>
+                                    <div class="post-comments-info w-full p-10 rad-10 nav-bg">
+                                        <div class="head-of-post-commnent d-flex justify-content-between mb-20">
+                                            <div class="post-commenter-info d-flex flex-column l-1-1">
+                                                <div>
+                                                    <span class="user">Fouad</span><span class="username c-grey fs-14">@fouadmo20</span>
+                                                </div>
+                                                <span class="c-blue fs-14 comment-case">Undergraduate at Mansoura university</span>
+                                                <span class="commented-time c-grey fs-14">9h</span>
+                                            </div>
+                                            <div class="comment-more  d-flex flex-column  ">
+                                                <img src="imgs/comment-more.svg" class="w-full comment-options cur-point " alt="" style="max-width: 30px;">
+                                                <ul class="p-10 dropbutton-bg mt-px-5 d-none p-absolute">
+
+
+                                                    <li class="p-10 comment-report">report</li>
+
+                                                    <!-- report moadale -->
+
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary d-none comment-reportmodal" data-bs-toggle="modal" data-bs-target="#exampleModal300">
+                                            Launch demo modal
+                                                </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal300" tabindex="-1" aria-labelledby="exampleModalLabel300" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content rad-20 d-flex justify-content-center align-center p-50 reportmodal-bg">
+
+                                                                <div class="modal-body reportmodaldiv w-70 case-bg">
+                                                                    <div class="d-flex ">
+                                                                        <p>Report <span class="reporteduser-comment c-grey">@username’s Comment</span></p>
+                                                                    </div>
+                                                                    <div>
+                                                                        <form>
+
+
+                                                                            <div class="mb-3 w-100">
+
+                                                                                <textarea required placeholder="The reason of report" class="form-control reportarea" id="exampleFormControlTextarea3" rows="10"></textarea>
+
+                                                                            </div>
+
+                                                                            <div class="modal-footer d-flex justify-content-evenly">
+                                                                                <input type="submit" class="btn btn-primary reportbuton-comment rad-25 p-30 shadow">
+                                                                                <button type="button" class="btn btn-secondary rad-25 reportbutoncancel-comment shadow" data-bs-dismiss="modal">Cancel</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <li class="p-10 comment-block lastli">block</li>
+                                                    <!-- block moadale -->
+
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary d-none comment-blockmodal" data-bs-toggle="modal" data-bs-target="#exampleModal3000">
+                                            Launch demo modal
+                                                </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal3000" tabindex="-1" aria-labelledby="exampleModalLabel3000" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered blockmodaldiv">
+                                                            <div class="modal-content rad-20">
+
+                                                                <div class="modal-body">
+                                                                    <p class="fw-bold txt-c">Are you sure you want to block<span class="c-grey blockedusername-comment">@username</span> ?</p>
+                                                                </div>
+                                                                <div class="modal-footer d-flex justify-content-evenly">
+                                                                    <button type="button" class="btn btn-primary blockbutton-comment rad-25 p-30 shadow">Yes</button>
+                                                                    <button type="button" class="btn btn-secondary rad-25 blockbuttoncancel-comment shadow" data-bs-dismiss="modal">No</button>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="comment-info w-full">
+                                            <span class="w-full comment-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum aperiam deserunt repellendus saepe, dicta fugiat sapiente ipsum modi illo, quidem nam excepturi ipsam voluptatem vitae eligendi consectetur praesentium perferendis quisquam.</span>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <span class="cur-point c-grey fs-rem-14 see-more-comments mt-30">View more comments</span>
+
+                            <div class="w-full mt-30 d-flex justify-content-center">
+                                <input type="text" placeholder="Write a comment" class="p-10 nav-bg w-90 sendcomment">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="loading-div mb-20">
+                    <div class="skeleton-loading bg-white rad-10 shadow-lg d-none">
+                        <div class="skeleton-loading__content">
+
+                            <div class="skeleton-loading__info">
+                                <div class="d-flex align-center mb-30">
+                                    <div class="skeleton-loading__image"></div>
+                                    <div class="skeleton-loading__name"></div>
+                                </div>
+                                <div class="skeleton-loading__title"></div>
+                                <div class="skeleton-loading__description"></div>
+                                <div class="skeleton-loading__text"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="home-chats bg-white rad-10">
+                <div class="chat-content d-flex flex-column w-100 p-10">
+                    <div class="chat-header d-flex justify-content-between mb-10">
+                        <div>
+                            <span class="fw-bold fs-rem-20">Chats</span>
+                        </div>
+
+                    </div>
+
+                    <div class="chat-users mt-20 w-full d-flex flex-column">
+                        <ul class=" w-full chat-users-ul">
+
+                        </ul>
+                        <div class="progress loadingchats d-none">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="nav-bg d-none notification-content rad-10 " style="width: 350px; height: 450px; ">
+        <p class="fs-25 fw-bold p-10 mb-20 ">Notifications</p>
+        <ul class="w-full notification-ul">
+
+
+
+        </ul>
+
+    </div>
+
+
+
+
+
+
+    <!-- log out modal  -->
+
+    <button type="button" class="btn btn-primary logoutbutton d-none" data-bs-toggle="modal" data-bs-target="#exampleModal100000000000000000000">
+                        Launch demo modal
+                        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal100000000000000000000" tabindex="-1" aria-labelledby="exampleModal100000000000000000000" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered logoutmodal">
+            <div class="modal-content rad-10">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <p class="fs-20 c-red fw-bold txt-c">Are you sure you want to log out ?</p>
+                </div>
+                <div class="modal-footer d-flex w-full justify-content-around mb-25">
+                    <button type="button" class="btn btn-secondary p-10 hvr-float-shadow" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary bg-danger p-10 hvr-float-shadow" id="log-out">Yes</button>
+
+                </div>
+                <div class="d-flex justify-content-center mt-10 mb-20">
+                    <span class="txt-c logouterror c-red">Some thing went wrong ,please try again later</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Edit bio modal -->
+    <button type="button" class="btn btn-primary d-none biotrrigermodal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Bio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
+                        <div class="mb-3 w-90">
+                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20"></label>
+                            <textarea required placeholder="Enter bio" maxlength="500" class="form-control bioediting" id="exampleFormControlTextarea1" rows="5"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cancel-edited-bio" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary save-edited-bio">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Review -->
+    <button type="button" class="btn btn-primary d-none reviewtrrigermodal" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+  Launch demo modal
+</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel3">Add Review</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
+                        <div class="mb-3 w-90">
+                            <label for="exampleFormControlTextarea2" class="form-label fw-bold fs-20"></label>
+                            <textarea required placeholder="Enter review" maxlength="500" class="form-control addrevieww" id="exampleFormControlTextarea7" rows="5"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cancel-add-review" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary save-add-review">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- add case modal -->
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary  modal2-button d-none" data-bs-toggle="modal" data-bs-target="#exampleModal5">
+  Launch demo modal
+</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content dropbutton-bg ">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modalbody ">
+
+                        <div class="choosecase d-flex justify-content-evenly">
+                            <div>
+                                <input type="radio" id="Requestapatient" value="requestapatient" name="case"><label for="Requestapatient" id="requestapatient" class="ml-10 fw-bold">Request a patient</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="Sharecase" value="sharecase" name="case"><label for="Sharecase" id="sharecase" class="ml-10 fw-bold">Share case with other dentists</label>
+                            </div>
+                        </div>
+
+                        <div class="Requestapatient">
+                            <div class="sendcase w-full d-flex justify-content-center mt-30">
+                                <form class="bg-white w-80 d-flex flex-column p-30 mb-60">
+                                    <div class="img-of-case">
+                                        <img src="imgs/addcase.svg" alt="" style="width: 40px;"><span id="addcase" class="fw-bold fs-15 ml-10">Add Case</span>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center mt-80 ">
+                                        <div class="mb-3 w-90 Casetitle">
+                                            <label for="formGroupExampleInput" class="form-label fw-bold fs-20">Title*</label>
+                                            <input type="text" class="form-control casetitle " autocomplete="off" required id="formGroupExampleInput" maxlength="50" placeholder="Enter title">
+                                        </div>
+                                    </div>
+                                    <p class="titleError c-red fs-15 txt-c "> </p>
+                                    <div class="d-flex justify-content-center Casephone mt-30">
+                                        <div class="mb-3 w-90 Casetitle Casephone">
+                                            <label for="formGroupExampleInput2" class="form-label fw-bold fs-20">Phone</label>
+                                            <input type="text" class="form-control casephone " autocomplete="off" id="formGroupExampleInput2" min="10" maxlength="10" placeholder="Enter The phone">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="w-90 d-flex justify-content-between align-center">
+                                        <div class="w-40 mt-30 p-20 casetype loction">
+                                            <p class="fw-bold fs-15">Location*</p>
+                                            <input required list="locations" autocomplete="off" placeholder="Search for location" id="location" name="location" class="w-full p-10 form-control ">
+                                            <datalist id="locations">
+                                                    
+                                                </datalist>
+
+                                        </div>
+
+                                        <div class="w-40 mt-30 p-20 casetype">
+                                            <p class="fw-bold fs-15 ">Case type*</p>
+                                            <input required list="casetypes" autocomplete="off" placeholder="Search for type" id="casetype" name="casetype" class="w-full p-10 form-control addcasetype">
+                                            <datalist id="casetypes">
+                                             
+                                                </datalist>
+
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-evenly">
+                                        <span class="casetypeerror c-red fs-14 ml-20"> </span>
+                                        <span class="locationerror c-red fs-14 ml-20"> </span>
+                                    </div>
+
+                                    <div class="discriptioncase w-full mt-30 d-flex justify-content-center">
+                                        <div class="mb-3 w-90">
+                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Description*</label>
+                                            <textarea required placeholder="Enter description" maxlength="500" class="form-control casedescribtion" id="exampleFormControlTextarea5" rows="5"></textarea>
+
+                                        </div>
+                                    </div>
+                                    <p class="bodyerror c-red fs-15 txt-c"> </p>
+
+                                    <div class=" w-full mt-30 d-flex justify-content-center mb-15 cur-point ">
+                                        <div class="w-90 ">
+                                            <label for="exampleFormControlTextarea1" class="form-label fw-bold fs-20">Add photo / videos <span class="c-grey fs-15">(optional)</span></label>
+                                            <div class="caseimages w-full rad-10 d-flex justify-content-center align-center " style="height: 200px;">
+                                                <div class="d-flex flex-row "></div>
+                                                <div class=" d-flex  flex-column justify-content-center align-center selectcaseimages">
+                                                    <img src="imgs/uploadimage.svg " style="width: 30px;">
+                                                    <span>Click here to add or to readd</span>
+                                                </div>
+                                            </div>
+                                            <p class="c-grey fs-14 mt-10">(hint: you can't delete choossen image if you want to delete, chosoe from first again)</p>
+                                            <p class="imageerror fs-15 c-red txt-c "></p>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="image-preview mb-40  w-90 rad-10 row justify-content-center align-center p-10 nav-bg " style="min-height: 150px; height: auto;">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer w-full d-flex justify-content-evenly">
+                                        <button type="button" class="btn btn-secondary addcasecancell" data-bs-dismiss="modal">Cancel</button>
+                                        <div class="d-flex">
+                                            <input type="submit" value="Add" class="btn btn-primary sendcasebutton ">
+                                            <div class="spinner-border text-info d-none ml-10" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+
+                                        <input type="file" class="selectcaseimage d-none" multiple onchange="displayImages(this)">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js "></script>
+    <script src="js/all.min.js "></script>
+    <script src="js/popper.min.js "></script>
+    <script src="js/profile.js "></script>
+
+
+
+
+    <script>
+        let getPost;
+        GetUserInfo("Dentists");
+        $(".editbio").click(function() {
+            $(".biotrrigermodal").trigger("click");
+            $(".bioediting").val($(".bio").text())
+        })
+
+
+
+        $(".addreview").click(function() {
+            $(".reviewtrrigermodal").trigger("click");
+        })
+
+        $(".save-edited-bio").click(function() {
+            let bio = $(".bioediting").val()
+
+            $(".bio").text(bio);
+            $(".cancel-edited-bio").trigger("click");
+        })
+
+        $(".save-add-review").click(function() {
+            let review = $(".addrevieww").val()
+
+            $(".addreview").text(review);
+            $(".cancel-add-review").trigger("click");
+        })
+
+
+        let allCategories = document.querySelectorAll(".chossing-cat ul li");
+        allCategories.forEach(function(category) {
+            $(category).click(function() {
+
+                allCategories.forEach(function(category) {
+                    $(category).removeClass("border-bootom-blue")
+                })
+                getPost = $(this).attr("data-get-post")
+                $(this).addClass("border-bootom-blue")
+                console.log(getPost)
+            })
+        })
+
+        $(".addcase").click(function() {
+            $(".modal2-button").trigger("click")
+        })
+    </script>
+
+    <!-- log out  -->
+    <script>
+        $("#log-out").click(function() {
+            logOut()
+        })
+    </script>
+
+
+
+
+
+    <!-- get chated people  -->
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+            var firstMassegeId;
+
+            $.ajax({
+                "method": "GET",
+                "url": `${apiUrl}/api/Common/GetRecentMessages?Page=1&Size=7`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                beforeSend: function() {
+
+                },
+                success: function(data, st, xhr) {
+                    console.log(data);
+                    if (!(data.length == 0)) {
+                        for (var i = 0; i < data.length; i++) {
+                            let profilesrc;
+                            if (data[i].profilePicture == null) {
+                                profilesrc = "imgs/profilepic.svg"
+                            } else {
+                                profilesrc = "data:image/png;base64," + data[i].profilePicture;
+                            }
+                            $(".chat-users-ul").append(` <a href="chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
+                            
+                                <div class = "d-flex ">
+                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                </div>
+                                <div class="d-flex flex-column chat-user-text">
+                                    <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>
+                                  
+                                </div>
+                              
+                            </li>  </a>`)
+
+                        }
+                    }
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+
+
+        })();
+    </script>
+
+
+
+</body>
+
+</html>

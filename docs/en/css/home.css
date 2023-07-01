@@ -881,3 +881,48 @@ input[type="radio"] {
 *::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
+
+.addreview:hover {
+    color: red;
+    transition-duration: .2s;
+    cursor: pointer;
+}
+
+.profile-background {
+    border-radius: 10px 10px 0px 0px;
+}
+
+.profile-image {
+    margin: -12% 0px 0px 10%;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.profile-image .fa-pen {
+    padding: 7px;
+    border-radius: 50%;
+    background-color: gray;
+    position: absolute;
+    top: 63%;
+    left: 77%;
+}
+
+.profile-text p {
+    margin: 0px;
+}
+
+.profile-text .contact-info {
+    text-decoration: underline;
+    color: #0C8AE5;
+}
+
+.profile-text .contact-info:hover {
+    color: red;
+    transition-duration: .1s;
+}
+
+.chossing-cat hr {
+    height: 2px;
+    color: #000000;
+}
