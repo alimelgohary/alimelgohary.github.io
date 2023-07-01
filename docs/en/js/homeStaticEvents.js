@@ -283,7 +283,7 @@ function displayImages(input) {
             reader.onload = function(e) {
                 var image = new Image();
                 var deleteMark = document.createElement('div');
-                deleteMark.innerHTML = 'x';
+
                 deleteMark.style.position = "absolute";
                 deleteMark.style.left = "2px";
                 deleteMark.style.top = "0px";
