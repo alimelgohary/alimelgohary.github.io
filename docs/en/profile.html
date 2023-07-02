@@ -145,8 +145,8 @@
                 <ul class="fs-rem-14 d-flex flex-column w-full h-full ">
                     <li>
                         <div class="d-flex justify-content-center align-items-center align-center p-20">
-                            <div class=" flex-column case-bg d-flex flex-column p-20 rad-10 text-break">
-                                <p class="bio  rad-10 text-break" style=" max-height: 150px;overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis illum ab cum quidem temporibus aliquam suscipit voluptatum dolore iste, in iure numquam ipsam commo </p>
+                            <div class=" flex-column case-bg d-flex flex-column p-20 rad-10 text-break w-100">
+                                <p class="bio  rad-10 text-break " style=" max-height: 150px;overflow: hidden;"></p>
                                 <span class="txt-c cur-point hvr-buzz editbio"> <i class="fa-solid fa-pen mr-px-5"></i>   Edit Bio </span>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
 
                     <div class="profile-info-text d-flex bg-white">
                         <div class="profile-image p-relative">
-                            <img src="imgs/profilepic.svg" alt="" class="w-100 rad-half">
+                            <img src="imgs/profilepic.svg" alt="" class="w-100 rad-half profile-pic">
                             <i class="fa-solid fa-pen hvr-buzz cur-point"></i>
 
                         </div>
@@ -848,15 +848,20 @@
                     $(".grad").text(data.academicDegree);
                     $(".uni").text(data.university);
                     $(".more-info-contact").append(` <button type="button" class="btn    contact-info" data-bs-toggle="popover" title="Phone : ${data.phone} " data-bs-content="E-Mail : ${data.email}">Contact-info</button> 
-                    
-
-                    `
-
-                    )
+                    `)
                     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
                     var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
                         return new bootstrap.Popover(popoverTriggerEl)
                     })
+
+                    if (data.profilePicture != null) {
+                        $(".profile-pic").attr('src', `data:image/png;base64,${data.profilePicture}`)
+                    }
+                    if (data.bio == null) {
+                        $(".bio").text(``);
+                    } else {
+                        $(".bio").text(data.bio);
+                    }
 
                 },
                 error: function(xhr, status, err) {
