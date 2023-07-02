@@ -180,12 +180,16 @@
                         </div>
                         <div class="profile-text mt-20 ml-20 d-flex flex-column">
                             <div>
-                                <span class="fullname fw-bold">Fouad Mohamed</span> <span class="user c-grey fs-15">@fouadmo20</span>
+                                <span class="fullname fw-bold"></span> <span class="user c-grey fs-15"></span>
                             </div>
-                            <p class="info-about-uni c-blue fs-13 fw-bold">Undergraduate at Mansoura university</p>
-                            <div class=" c-grey fs-rem-12">
-                                <span class="governate ">Ad Daqahliyah</span> , <span class="country  ">Egypt</span>
-                                <a href="#" class="ml-10 contact-info">Contact info</a>
+                            <div class=" c-blue fs-13 fw-bold">
+
+                                <span class="grad"> </span> at <span class="uni"></span>
+                            </div>
+                            <div class=" c-grey fs-rem-12 mt-px-5 more-info-contact">
+                                <span class="governate d-none">Ad Daqahliyah</span> , <span class="country  d-none">Egypt</span>
+
+
                             </div>
                         </div>
                     </div>
@@ -813,7 +817,57 @@
     <script src="js/all.min.js "></script>
     <script src="js/popper.min.js "></script>
     <script src="js/profile.js "></script>
+    <script>
+        (async() => {
+            let apiUrl = await GetServerDomain();
+            let language;
+            if (window.localStorage.getItem("language") == null) {
+                language = "en";
+            } else {
+                language = window.localStorage.getItem("language");
+            }
 
+
+
+            $.ajax({
+                "method": "GET",
+                "url": apiUrl + "/api/Dentists/GetSettings",
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+                    console.log(data);
+
+                    $(".fullname").text(data.fullName);
+                    $(".user").text("@" + data.username)
+                    $(".grad").text(data.academicDegree);
+                    $(".uni").text(data.university);
+                    $(".more-info-contact").append(` <button type="button" class="btn    contact-info" data-bs-toggle="popover" title="Phone : ${data.phone} " data-bs-content="E-Mail : ${data.email}">Contact-info</button> 
+                    
+
+                    `
+
+                    )
+                    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+                    var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+                        return new bootstrap.Popover(popoverTriggerEl)
+                    })
+
+                },
+                error: function(xhr, status, err) {
+
+                }
+            })
+
+
+
+        })();
+    </script>
 
 
 
