@@ -926,3 +926,7 @@ input[type="radio"] {
     height: 2px;
     color: #000000;
 }
+
+.more-info-contact .btn {
+    font-size: 13px;
+}

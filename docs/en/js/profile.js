@@ -184,3 +184,9 @@ $(".moreimg").click(function() {
     $(this).toggleClass("rotate-90")
     $(this).next("ul").toggleClass("d-none")
 })
+
+
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+})

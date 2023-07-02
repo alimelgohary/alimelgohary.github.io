@@ -58,6 +58,28 @@
         }
     })
 
+
+    $.ajax({
+        "method": "GET",
+        "url": apiUrl + "/api/Generic/GetAcademicDegrees",
+        "headers": {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+            "Accept-Language": language
+        },
+        success: function(data, st, xhr) {
+            for (let i = 0; i < data.length; i++) {
+                let selectElem = document.querySelector("#acadimic-deg");
+                selectElem.innerHTML += ("<option value=" + data[i]['id'] + ">" + data[i]['name'] + "</option>");
+            }
+        },
+        error: function(xhr, status, err) {
+            let selectElem = document.querySelector("#CurrentUni");
+            selectElem.innerHTML += ("<option> Some Thing went wrong try again later </option>");
+        }
+    })
+
+
     // when the field of input image is clicked go to the input image from form and click it
     $(".fidphoto").click(function() {
         $(".idphoto").trigger("click");
