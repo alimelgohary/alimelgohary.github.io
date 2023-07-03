@@ -137,7 +137,7 @@
             <div class="home-pages bg-white position-sticky rad-10">
                 <ul class="fs-rem-14 d-flex flex-column w-full h-full ">
                     <li class="mb-30 mt-20 w-full p-10 rad-20">
-                        <a href="../profile.html"><img src="../imgs/profilepic.svg" style="width: 35px;" id="userphoto"><span class="txt-c ml-5 nameofapge" id="username"> Fouad Mohamed </span></a>
+                        <a href="../profile.html"><img src="../imgs/profilepic.svg" style="width: 35px; height: 35px;" class="rad-half" id="userphoto"><span class="txt-c ml-5 nameofapge" id="username"> Fouad Mohamed </span></a>
                     </li>
                     <li class="mb-30 nav-bg w-full  p-10  home-bg">
                         <div class="dropdown">
@@ -719,7 +719,7 @@
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;width:35px;height:35px">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -1409,7 +1409,7 @@
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;width:35px;height:35px">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -1902,7 +1902,7 @@
                             $(".chat-users-ul").append(` <a href="../chat.html?id=${data[i].userId}">  <li class="cur-point mb-20 p-px-5 d-flex flex-row">
                             
                                 <div class = "d-flex ">
-                                    <img src=${profilesrc} alt="" style="max-width: 30px; max-height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
+                                    <img src=${profilesrc} alt="" style="width: 30px; height:30px;" class="user-photo mr-px-5 d-none rad-half d-lg-inline">
                                 </div>
                                 <div class="d-flex flex-column chat-user-text">
                                     <span class="chat-user fw-bold fs-rem-14">${data[i].fullName}</span>

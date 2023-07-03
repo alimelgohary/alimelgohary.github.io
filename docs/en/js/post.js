@@ -62,6 +62,8 @@ function getNotification() {
     })();
 }
 
+let commentUni, commentFull, commentUser, commentProfilePic;
+
 getNotification();
 
 function getNotificationOnScroll() {
@@ -146,9 +148,7 @@ function getNotificationOnScroll() {
 }
 
 
-$(".likes").click(function() {
-    $(".likes").toggleClass("c-green");
-})
+
 
 getNotificationOnScroll();
 
@@ -177,6 +177,83 @@ let commentIdList = [];
     } else {
         language = window.localStorage.getItem("language");
     }
+
+
+    $(".likes").click(function() {
+        let numoflikes = $(this).find('.numoflikes').text();
+        let maindiv = $(this)
+
+        let PostIdforlike = $(this).attr("data-id");
+
+        $.ajax({
+            "method": "PUT",
+            "url": apiUrl + `/api/Dentists/LikeUnlikeArticle?articleId=${articleId}`,
+            "xhrFields": {
+                "withCredentials": true
+            },
+            "headers": {
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "69420",
+                "Accept-Language": language
+            },
+            success: function(data, st, xhr) {
+                console.log(data);
+                console.log(PostIdforlike);
+                $(maindiv).toggleClass("c-green");
+                if ($(maindiv).hasClass("c-green")) {
+                    numoflikes++;
+                } else {
+                    numoflikes--;
+                }
+                $(maindiv).find('.numoflikes').text(numoflikes);
+                console.log(numoflikes);
+
+            },
+            error: function(xhr, status, err) {
+                console.log(xhr);
+            }
+        })
+
+
+
+
+
+    })
+
+
+
+
+    $.ajax({
+        "method": "GET",
+        "url": apiUrl + "/api/Dentists/GetSettings",
+        "xhrFields": {
+            "withCredentials": true
+        },
+        "headers": {
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420",
+            "Accept-Language": language
+        },
+        success: function(data, st, xhr) {
+            console.log(data);
+            commentFull = data.fullName;
+            commentUser = data.username;
+            commentUni = data.university;
+
+            if (data.profilePicture == null) {
+                commentProfilePic = "../imgs/profilepic.svg";
+            } else {
+                commentProfilePic = "data:image/png;base64," + data.profilePicture;
+            }
+
+
+
+        },
+        error: function(xhr, status, err) {
+
+        }
+    })
+
 
 
 
@@ -408,7 +485,7 @@ let commentIdList = [];
                 commentIdList.push(data[0].commentId)
 
                 if (data[0].userInfo.profilePicture != null) {
-                    $(".post-comment-profile").attr("src", `data:image/png;base64,${data.userInfo.profilePicture}`)
+                    $(".post-comment-profile").attr("src", `data:image/png;base64,${data[0].userInfo.profilePicture}`)
                 }
                 $(".post-commenter-info .user").text(data[0].userInfo.fullName)
                 $(".post-commenter-info .username").text("@" + data[0].userInfo.username)
@@ -529,7 +606,7 @@ let commentIdList = [];
 
                         $(".post-comment-container").append(` <div class="post-comments d-flex w-full mt-25 ">
                                     <div class="post-comments-image rad-half mr-10" style="width: 50px; max-width:50px">
-                                        <a href=""><img src=${imageSrc} class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%;border-radius: 50%"></a>
+                                        <a href=""><img src=${imageSrc} class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%; width:35px;height:35px;border-radius: 50%"></a>
                                     </div>
                                     <div class="post-comments-info w-full p-10 rad-10 nav-bg">
                                         <div class="head-of-post-commnent d-flex justify-content-between mb-20">
@@ -730,20 +807,40 @@ let commentIdList = [];
 
 
     $(".sendcomment").keyup(function(e) {
-
+        let idOfPost = articleId;
+        let commentBody = $(".sendcomment").val();
+        let commentOb = {
+            "articleId": idOfPost,
+            "body": commentBody
+        }
+        let commentJson = JSON.stringify(commentOb);
         if (e.key == "Enter") {
-            let commentt = $(".sendcomment").val()
-            $(".post-comment-container").append(` <div class="post-comments d-flex w-full mt-25 ">
+            $.ajax({
+                "method": "POST",
+                "url": apiUrl + `/api/Dentists/ArticleAddComment`,
+                "xhrFields": {
+                    "withCredentials": true
+                },
+                data: commentJson,
+                "headers": {
+                    "Content-Type": "application/json",
+                    "ngrok-skip-browser-warning": "69420",
+                    "Accept-Language": language
+                },
+                success: function(data, st, xhr) {
+                    let commentt = $(".sendcomment").val()
+                    console.log(data)
+                    $(".post-comment-container").append(` <div class="post-comments d-flex w-full mt-25 ">
                                     <div class="post-comments-image rad-half mr-10" style="width: 50px; max-width:50px">
-                                        <a href=""><img src="../imgs/profilepic.svg" class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%;border-radius: 50%"></a>
+                                        <a href=""><img src="${commentProfilePic}" class="w-full cur-point post-comment-profile" alt="" style="max-width: 100%;width:35px;height:35px;border-radius: 50%"></a>
                                     </div>
                                     <div class="post-comments-info w-full p-10 rad-10 nav-bg">
                                         <div class="head-of-post-commnent d-flex justify-content-between mb-20">
                                             <div class="post-commenter-info d-flex flex-column l-1-1">
                                                 <div>
-                                                    <span class="user">Fouad</span><span class="username c-grey fs-14">@mo20</span>
+                                                    <span class="user">${commentFull}</span><span class="username c-grey fs-14">@${commentUser}</span>
                                                 </div>
-                                                <span class="c-blue fs-14 comment-case comment-case">Undergraduate</span>
+                                                <span class="c-blue fs-14 comment-case comment-case">${commentUni}</span>
                                                 <span class="commented-time c-grey fs-14">1s</span>
                                             </div>
                                             <div class="comment-more  d-flex flex-column  ">
@@ -831,8 +928,13 @@ let commentIdList = [];
                                     </div>
 
                                 </div> `)
+                    $(".sendcomment").val("")
 
-            $(".sendcomment").val("")
+                },
+                error: function(xhr, status, err) {
+                    console.log(xhr)
+                }
+            })
         }
     })
 

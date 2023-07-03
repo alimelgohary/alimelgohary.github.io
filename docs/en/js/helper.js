@@ -129,7 +129,7 @@ function getMarketPlacePostsOnChange() {
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;width:45px;height:45px">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -840,7 +840,7 @@ function getPostOnLoad() {
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;width:45px;height:45px">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -1358,7 +1358,7 @@ function getHomePostsOnChange(detiestOrPatient) {
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;width:45px;height:45px">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -2156,7 +2156,7 @@ function getArticlePostOnLoad() {
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;width:45px;height:45px">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
@@ -2716,7 +2716,7 @@ function getArticlePostsOnChange() {
                             <div class="post-head d-flex justify-content-between">
                                 <div class="post-user-info d-flex flex-row">
                                     <div class="user-image rad-half mr-10">
-                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;">
+                                        <img src="../imgs/profilepic.svg" class = "profile${data[counter].postId} rad-half" alt="" style="max-width: 100%;width:45px;height:45px">
                                     </div>
                                     <div class="post-info d-flex flex-column">
                                         <div class="d-flex usernames align-center">
