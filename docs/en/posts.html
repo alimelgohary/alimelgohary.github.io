@@ -118,7 +118,7 @@
         (async() => {
             let apiUrl = await GetServerDomain();
             let language;
-            let PostId = window.location.href.split("Id=")[1];
+            let PostId = window.location.href.split("id=")[1];
             if (window.localStorage.getItem("language") == null) {
                 language = "en";
             } else {
