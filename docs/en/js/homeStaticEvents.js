@@ -373,6 +373,7 @@ function getNotification() {
     (async() => {
         let apiUrl = await GetServerDomain();
         let language;
+        let notiPostId
         if (window.localStorage.getItem("language") == null) {
             language = "en";
         } else {
@@ -394,9 +395,12 @@ function getNotification() {
             },
             success: function(data, st, xhr) {
                 console.log(data)
+
                 if (data.length != 0) {
                     for (let i = 0; i < data.length; i++) {
-                        $(".notification-ul").append(`<a href="../posts.html?id=${data[i].notificationId}">
+
+
+                        $(".notification-ul").append(`<a href="../posts.html?id=${data[i].nextPage.split("_")[1]}">
                 <li style="max-height: 93px;" class="w-full ">
                     <div class="notification-div w-full d-flex justify-content-start p-10">
                         <div class="d-flex justify-content-start align-items-start">
