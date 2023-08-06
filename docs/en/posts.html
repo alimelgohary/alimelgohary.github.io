@@ -37,25 +37,19 @@
 
     <div class="container-fluid mt-30">
         <div class="w-full d-flex justify-content-between">
-
+            
             <div class="home-pages bg-white position-sticky rad-10" style="opacity: 0;">
-
+                
             </div>
 
             <div class="home-content ">
-
-
-
-
                 <div class="home-posts mt-25 ">
-
-
-
+                    
                 </div>
+                
                 <div class="loading-div mb-20">
                     <div class="skeleton-loading bg-white rad-10 shadow-lg d-none">
                         <div class="skeleton-loading__content">
-
                             <div class="skeleton-loading__info">
                                 <div class="d-flex align-center mb-30">
                                     <div class="skeleton-loading__image"></div>
@@ -68,41 +62,14 @@
                         </div>
                     </div>
 
-
-
                 </div>
             </div>
 
             <div class="home-chats bg-white rad-10" style="opacity: 0;">
 
             </div>
-
-
-
         </div>
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -118,7 +85,7 @@
         (async() => {
             let apiUrl = await GetServerDomain();
             let language;
-            let PostId = window.location.href.split("id=")[1];
+            let PostId = window.location.href.split("Id=")[1];
             if (window.localStorage.getItem("language") == null) {
                 language = "en";
             } else {
